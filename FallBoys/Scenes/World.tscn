@@ -22,6 +22,9 @@ position = Vector2( -42, -27 )
 [node name="Platform4" parent="Level" instance=ExtResource( 1 )]
 position = Vector2( -69, 18 )
 
+[node name="Platform5" parent="Level" instance=ExtResource( 1 )]
+position = Vector2( 56, 246 )
+
 [node name="Camera" type="Camera2D" parent="."]
 current = true
 script = ExtResource( 3 )
