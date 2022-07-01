@@ -76,6 +76,7 @@ func _ready():
 
 func _process(delta):
 	for s in ships:
+		s.position = calculate_position(s)
 		#Calcular posicion de cada punto
 		pass
 #	line.set_point_position(0, $Ship1.position)
@@ -84,6 +85,10 @@ func _process(delta):
 #		ships[i].position = line.get_point_position(i + 1)
 #	line.set_point_position(ships.size() + 1, $Ship2.position)
 #	update()
+
+func calculate_position(s : PinJoint2D):
+	return lerp(get_node(s.get_node_a()).position, get_node(s.get_node_b()).position, 0.5)
+	
 
 func get_weight(i, size):
 	return (float(i+1))/(size+1)
