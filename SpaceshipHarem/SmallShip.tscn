@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ship_0002.png" type="Texture" id=1]
+
+[node name="SmallShip" type="PinJoint2D"]
+softness = 0.1
+
+[node name="SmallShipSprite" type="Sprite" parent="."]
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )

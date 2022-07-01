@@ -1,11 +1,11 @@
-extends KinematicBody2D
+extends RigidBody2D
 
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 var movement = Vector2.ZERO
-var speed = 100
+var speed = 500
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,5 +23,8 @@ func _process(delta):
 		movement.y = speed
 
 func _physics_process(delta):
-	move_and_slide(movement)
+	if movement == Vector2.ZERO:
+		pass
+	else:
+		apply_central_impulse(movement*delta)
 	
