@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "RigidBody2D",
+"class": "Chain",
+"language": "GDScript",
+"path": "res://Player/Scripts/Chain.gd"
+} ]
+_global_script_class_icons={
+"Chain": ""
+}
+
 [application]
 
 config/name="Spaceship Harem"
