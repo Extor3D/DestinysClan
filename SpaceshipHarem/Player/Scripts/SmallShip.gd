@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 func _process(delta):
 	global_rotation = 0

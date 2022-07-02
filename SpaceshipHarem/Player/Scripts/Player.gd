@@ -53,6 +53,15 @@ func _ready():
 	$Ship2.position = nextPosition
 	j.set_node_b(NodePath($Ship2.get_path()))
 	
+func _physics_process(delta):
+	for f in $Formations.get_children():
+		var bodies = f.get_overlapping_bodies()
+		#print(bodies)
+		var formation = arrays_have_same_content(bodies, ships)
+		if formation:
+			print("Formation!")
+		
+	
 func calc_next_position(currentPosition: Vector2, chain: Chain):
 	return currentPosition + Vector2(0, (chain.get_node("CollisionShape2D").get_shape().height/2)+2)
 	
@@ -74,5 +83,9 @@ func create_joint(p: Vector2, node_a: NodePath):
 func calculate_position(s: PinJoint2D):
 	return lerp(get_node(s.get_node_a()).position, get_node(s.get_node_b()).position, 0.5)
 	
-func get_weight(i, size):
-	return (float(i+1))/(size+1)
+func arrays_have_same_content(array1, array2):
+	if array1.size() != array2.size(): return false
+	for item in array1:
+		if !array2.has(item): return false
+		if array1.count(item) != array2.count(item): return false
+	return true

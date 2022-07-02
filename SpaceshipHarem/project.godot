@@ -76,6 +76,10 @@ ship2_down={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+
 [physics]
 
 common/enable_pause_aware_picking=true
