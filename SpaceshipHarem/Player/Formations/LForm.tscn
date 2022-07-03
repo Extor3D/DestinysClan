@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 25.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 26.0
+
+[node name="LForm" type="Area2D"]
+
+[node name="End1" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="End1"]
+shape = SubResource( 1 )
+
+[node name="End2" type="Area2D" parent="."]
+position = Vector2( 56, 106 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="End2"]
+shape = SubResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -31, -28, 28, -28, 28, 81, 84, 80, 85, 129, -31, 134 )
