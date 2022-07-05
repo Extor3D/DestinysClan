@@ -1,7 +1,7 @@
 # DestinysClan
 En este repositorio se guarda el codigo relativo a los proyectos de nuestro grupo de Ludover.
 
-# Spaship Harem
+# Spaceship Harem
 Juego Shoot em up horizontal en el que la principal mecanica es manejar 2 naves que guian una cadena de naves. Esta cadena permite realizar formaciones que dan power ups al jugador para superar los niveles.
 
 ## Documento del juego
