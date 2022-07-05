@@ -12,9 +12,15 @@
 script = ExtResource( 4 )
 
 [node name="Ship1" parent="." instance=ExtResource( 3 )]
+collision_mask = 13
+contacts_reported = 2
+contact_monitor = true
 sprite = ExtResource( 2 )
 
 [node name="Ship2" parent="." instance=ExtResource( 3 )]
+collision_mask = 13
+contacts_reported = 2
+contact_monitor = true
 side = 1
 sprite = ExtResource( 1 )
 
@@ -27,3 +33,10 @@ visible = false
 visible = false
 
 [node name="LForm" parent="Formations" instance=ExtResource( 7 )]
+visible = false
+
+[node name="ShotTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="ShotTimer" to="." method="_on_ShotTimer_timeout"]

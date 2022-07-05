@@ -1,13 +1,18 @@
 extends Node2D
 
 export var starting_ships = 5
+export var health = 5
 export var softness = 0.1
 export var bias = 0
+export var cadence = 0.5
+
 var ships : Array
 var ship_scene = preload("res://Player/SmallShip.tscn")
 var chain_scene = preload("res://Player/Chain.tscn")
+var shot_scene = preload("res://Player/Shot.tscn")
 
 func _ready():
+	$ShotTimer.start(cadence)
 	var nextPosition = $Ship1.position
 	
 	#Variable of node a
@@ -52,13 +57,34 @@ func _ready():
 	#Attach ship and last node to joint
 	$Ship2.position = nextPosition
 	j.set_node_b(NodePath($Ship2.get_path()))
-	
+		
 func _physics_process(delta):
+	if collide_with_enemies() or collide_with_bullets():
+		health -= 1
+	
 	for f in $Formations.get_children():
-		var s = 1 + (starting_ships*0.1 - 0.5 )
+		var s = 1 + (starting_ships * 0.1 - 0.5 )
 		f.position = get_higher_ship()
 		f.scale = Vector2(s, s)
 		is_formation_done(f)
+		
+func collide_with_bullets():
+	var bodies = $Ship1.get_colliding_bodies() + $Ship2.get_colliding_bodies()
+	for b in bodies:
+		if b.get_collision_layer() == 8:
+			b.queue_free()
+			return true
+	
+	return false
+
+func collide_with_enemies():
+	var bodies = $Ship1.get_colliding_bodies() + $Ship2.get_colliding_bodies()
+	for b in bodies:
+		if b.get_collision_layer() == 4:
+			b.queue_free()
+			return true
+	
+	return false
 		
 func get_higher_ship():
 	if $Ship1.position.y < $Ship2.position.y:
@@ -88,7 +114,6 @@ func calculate_position(s: PinJoint2D):
 	return lerp(get_node(s.get_node_a()).position, get_node(s.get_node_b()).position, 0.5)
 	
 func array_is_included_in_array(array1, array2):
-	#if array1.size() != array2.size(): return false
 	for item in array1:
 		if !array2.has(item): return false
 		if array1.count(item) != array2.count(item): return false
@@ -102,4 +127,18 @@ func is_formation_done(formation):
 		var ship2_in_1 = formation.get_node("End1").overlaps_body($Ship2)
 		var ship2_in_2 = formation.get_node("End2").overlaps_body($Ship2)
 		if (ship1_in_1 and ship2_in_2) or (ship1_in_2 and ship2_in_1):
-			print("Formation!")
+			print(formation)
+
+
+func _on_ShotTimer_timeout():
+	#Add sound here
+	create_shot($Ship1.global_position + Vector2($Ship1/ShipSprite.texture.get_width()/2, 0))
+	create_shot($Ship2.global_position + Vector2($Ship2/ShipSprite.texture.get_width()/2, 0))
+	for s in ships:
+		create_shot(s.global_position)
+	$ShotTimer.start(cadence)
+	
+func create_shot(p: Vector2):
+	var shot = shot_scene.instance()
+	shot.position = p
+	get_tree().root.add_child(shot)
