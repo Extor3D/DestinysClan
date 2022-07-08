@@ -7,8 +7,12 @@ radius = 3.0
 height = 34.0
 
 [node name="Chain" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 48
 mass = 0.102041
 gravity_scale = 0.0
+contacts_reported = 2
+contact_monitor = true
 linear_damp = 10.0
 script = ExtResource( 1 )
 
@@ -18,3 +22,5 @@ shape = SubResource( 1 )
 [node name="Icon" type="Sprite" parent="CollisionShape2D"]
 position = Vector2( 0, -9.53674e-07 )
 scale = Vector2( 0.09375, 0.625 )
+
+[connection signal="body_entered" from="." to="." method="_on_Chain_body_entered"]

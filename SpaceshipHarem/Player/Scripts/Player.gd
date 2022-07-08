@@ -5,7 +5,10 @@ export var health = 5
 export var softness = 0.1
 export var bias = 0
 export var cadence = 0.5
+export var max_energy = 100
+export var delta_energy = 0.5
 
+var energy : float = 0
 var ships : Array
 var ship_scene = preload("res://Player/SmallShip.tscn")
 var chain_scene = preload("res://Player/Chain.tscn")
@@ -57,26 +60,24 @@ func _ready():
 	#Attach ship and last node to joint
 	$Ship2.position = nextPosition
 	j.set_node_b(NodePath($Ship2.get_path()))
-		
+	
 func _physics_process(delta):
-	if collide_with_enemies() or collide_with_bullets():
+	if collide_with_enemies():
 		health -= 1
 	
-	for f in $Formations.get_children():
-		var s = 1 + (starting_ships * 0.1 - 0.5 )
-		f.position = get_higher_ship()
-		f.scale = Vector2(s, s)
-		is_formation_done(f)
+	if Input.is_action_pressed("activate_formation"):
+		for f in $Formations.get_children():
+			if f.energy <= energy:
+				var s = 1 + (starting_ships * 0.1 - 0.5 )
+				f.position = get_higher_ship()
+				f.scale = Vector2(s, s)
+				if is_formation_done(f):
+					print(f)
+					energy -= f.energy
+			
+func _process(delta):
+	energy = move_toward(energy, max_energy, delta_energy)
 		
-func collide_with_bullets():
-	var bodies = $Ship1.get_colliding_bodies() + $Ship2.get_colliding_bodies()
-	for b in bodies:
-		if b.get_collision_layer() == 8:
-			b.queue_free()
-			return true
-	
-	return false
-
 func collide_with_enemies():
 	var bodies = $Ship1.get_colliding_bodies() + $Ship2.get_colliding_bodies()
 	for b in bodies:
@@ -86,6 +87,12 @@ func collide_with_enemies():
 	
 	return false
 		
+func take_damage(damage):
+	#Add damage sound here
+	health -= damage
+	if health <= 0:
+		queue_free()
+
 func get_higher_ship():
 	if $Ship1.position.y < $Ship2.position.y:
 		return $Ship1.position
@@ -127,7 +134,8 @@ func is_formation_done(formation):
 		var ship2_in_1 = formation.get_node("End1").overlaps_body($Ship2)
 		var ship2_in_2 = formation.get_node("End2").overlaps_body($Ship2)
 		if (ship1_in_1 and ship2_in_2) or (ship1_in_2 and ship2_in_1):
-			print(formation)
+			return true
+	return false
 
 
 func _on_ShotTimer_timeout():

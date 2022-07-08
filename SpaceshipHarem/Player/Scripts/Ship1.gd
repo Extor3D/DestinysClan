@@ -9,6 +9,9 @@ export var speed = 500
 var movement = Vector2.ZERO
 var ship_name = "ship1"
 
+func take_damage(damage):
+	get_parent().take_damage(damage)
+
 func _ready():
 	get_node("ShipSprite").texture = sprite
 	if side == sides.LEFT:
@@ -29,4 +32,8 @@ func _process(delta):
 
 func _physics_process(delta):
 	apply_central_impulse(movement*delta)
-	
+
+func _on_Ship_body_entered(body):
+	if body.get_collision_layer() == 32:
+		body.queue_free()
+		take_damage(1)

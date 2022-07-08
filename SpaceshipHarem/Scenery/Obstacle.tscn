@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenery/Sprites/tile_0181.png" type="Texture" id=1]
+[ext_resource path="res://Scenery/Scripts/Obstacle.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="Obstacle" type="RigidBody2D"]
+position = Vector2( 294, 46 )
+collision_layer = 32
+collision_mask = 17
+gravity_scale = 0.0
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )

@@ -99,6 +99,11 @@ ship2_down={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+activate_formation={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [layer_names]
 
@@ -106,6 +111,8 @@ ship2_down={
 2d_physics/layer_2="Player_Shots"
 2d_physics/layer_3="Enemies"
 2d_physics/layer_4="Enemy_Shots"
+2d_physics/layer_5="Chains"
+2d_physics/layer_6="Obstacles"
 
 [physics]
 
