@@ -5,16 +5,16 @@
 [node name="Column" type="Node2D"]
 
 [node name="Obstacle" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, 0 )
+position = Vector2( -44, 0 )
 
 [node name="Obstacle2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, 22 )
+position = Vector2( -22, 0 )
 
 [node name="Obstacle3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, 44 )
+position = Vector2( 0, 0 )
 
 [node name="Obstacle4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, 66 )
+position = Vector2( 22, 0 )
 
 [node name="Obstacle5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, 88 )
+position = Vector2( 44, 0 )
