@@ -1,18 +1,35 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://TestScene.gd" type="Script" id=3]
-[ext_resource path="res://Scenery/Obstacle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenery/Column.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 328.5, 47.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 41.5, 265 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
 
+[node name="CleanWhenOut" type="Node2D" parent="."]
+
+[node name="Enemy" parent="CleanWhenOut" instance=ExtResource( 2 )]
+position = Vector2( 672, 232 )
+
+[node name="Column" parent="CleanWhenOut" instance=ExtResource( 4 )]
+position = Vector2( 498, 13 )
+
+[node name="Column2" parent="CleanWhenOut" instance=ExtResource( 4 )]
+position = Vector2( 670, 107 )
+
+[node name="Column3" parent="CleanWhenOut" instance=ExtResource( 4 )]
+position = Vector2( 850, 10 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 100, 30 )
-
-[node name="Enemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 670, 223 )
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -20,4 +37,41 @@ position = Vector2( 670, 223 )
 margin_right = 40.0
 margin_bottom = 14.0
 
-[node name="Obstacle" parent="." instance=ExtResource( 4 )]
+[node name="EnemyTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="ObstacleTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 0
+
+[node name="CollShapeTop" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 320, -49 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 0
+
+[node name="CollShapeBot" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2( 320, 528 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+collision_layer = 0
+
+[node name="CollShapeLeft" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2( -44.5, 239 )
+shape = SubResource( 2 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+collision_layer = 0
+
+[node name="CollShapeLeft" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2( 685, 249 )
+shape = SubResource( 2 )
+
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_EnemyTimer_timeout"]
+[connection signal="timeout" from="ObstacleTimer" to="." method="_on_ObstacleTimer_timeout"]

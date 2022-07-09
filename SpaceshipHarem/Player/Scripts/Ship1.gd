@@ -8,6 +8,7 @@ export var speed = 500
 
 var movement = Vector2.ZERO
 var ship_name = "ship1"
+var blink = false
 
 func take_damage(damage):
 	get_parent().take_damage(damage)
@@ -29,6 +30,10 @@ func _process(delta):
 		movement.y = -speed
 	if Input.is_action_pressed(ship_name + "_down"):
 		movement.y = speed
+	if blink:
+		$ShipSprite.set_modulate(Color.crimson)
+	else:
+		$ShipSprite.set_modulate(Color.white)
 
 func _physics_process(delta):
 	apply_central_impulse(movement*delta)

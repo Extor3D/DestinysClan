@@ -27,17 +27,19 @@ sprite = ExtResource( 1 )
 [node name="Formations" type="Node2D" parent="."]
 
 [node name="DForm" parent="Formations" instance=ExtResource( 6 )]
-visible = false
 
 [node name="CForm" parent="Formations" instance=ExtResource( 5 )]
-visible = false
 
 [node name="LForm" parent="Formations" instance=ExtResource( 7 )]
-visible = false
 
 [node name="ShotTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
 
+[node name="InviTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="Ship1" to="Ship1" method="_on_Ship_body_entered"]
+[connection signal="body_entered" from="Ship2" to="Ship2" method="_on_Ship_body_entered"]
 [connection signal="timeout" from="ShotTimer" to="." method="_on_ShotTimer_timeout"]
+[connection signal="timeout" from="InviTimer" to="." method="_on_InviTimer_timeout"]

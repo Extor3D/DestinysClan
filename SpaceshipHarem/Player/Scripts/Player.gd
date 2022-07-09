@@ -7,6 +7,7 @@ export var bias = 0
 export var cadence = 0.5
 export var max_energy = 100
 export var delta_energy = 0.5
+export var inv_time = 1
 
 var energy : float = 0
 var ships : Array
@@ -15,7 +16,7 @@ var chain_scene = preload("res://Player/Chain.tscn")
 var shot_scene = preload("res://Player/Shot.tscn")
 
 func _ready():
-	$ShotTimer.start(cadence)
+	$ShotTimer.wait_time = cadence
 	var nextPosition = $Ship1.position
 	
 	#Variable of node a
@@ -63,7 +64,7 @@ func _ready():
 	
 func _physics_process(delta):
 	if collide_with_enemies():
-		health -= 1
+		take_damage(1)
 	
 	if Input.is_action_pressed("activate_formation"):
 		for f in $Formations.get_children():
@@ -78,6 +79,7 @@ func _physics_process(delta):
 func _process(delta):
 	energy = move_toward(energy, max_energy, delta_energy)
 		
+		
 func collide_with_enemies():
 	var bodies = $Ship1.get_colliding_bodies() + $Ship2.get_colliding_bodies()
 	for b in bodies:
@@ -89,9 +91,13 @@ func collide_with_enemies():
 		
 func take_damage(damage):
 	#Add damage sound here
-	health -= damage
-	if health <= 0:
-		queue_free()
+	if $InviTimer.get_time_left() <= 0:
+		health -= damage
+		$InviTimer.start(inv_time)
+		$Ship1.blink = true
+		$Ship2.blink = true
+		if health <= 0:
+			queue_free()
 
 func get_higher_ship():
 	if $Ship1.position.y < $Ship2.position.y:
@@ -144,9 +150,14 @@ func _on_ShotTimer_timeout():
 	create_shot($Ship2.global_position + Vector2($Ship2/ShipSprite.texture.get_width()/2, 0))
 	for s in ships:
 		create_shot(s.global_position)
-	$ShotTimer.start(cadence)
+	
 	
 func create_shot(p: Vector2):
 	var shot = shot_scene.instance()
 	shot.position = p
 	get_tree().root.add_child(shot)
+
+
+func _on_InviTimer_timeout():
+	$Ship1.blink = false
+	$Ship2.blink = false
