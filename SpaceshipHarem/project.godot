@@ -27,10 +27,11 @@ config/icon="res://icon.png"
 [display]
 
 window/size/width=640
-window/size/height=480
+window/size/height=360
+window/size/resizable=false
 window/size/test_width=1280
-window/size/test_height=960
-window/stretch/mode="2d"
+window/size/test_height=720
+window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
 [importer_defaults]
@@ -120,4 +121,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+2d/snapping/use_gpu_pixel_snap=true
 environment/default_environment="res://default_env.tres"

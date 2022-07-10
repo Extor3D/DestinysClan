@@ -11,6 +11,7 @@ export var inv_time = 1
 
 var energy : float = 0
 var ships : Array
+var joints : Array
 var ship_scene = preload("res://Player/SmallShip.tscn")
 var chain_scene = preload("res://Player/Chain.tscn")
 var shot_scene = preload("res://Player/Shot.tscn")
@@ -51,6 +52,7 @@ func _ready():
 		lastNode = NodePath(chain.get_path())
 		nextPosition = chain.position
 		j.set_node_b(lastNode)
+		joints.append(j)
 		
 		#Calculate next position
 		nextPosition = calc_next_position(chain.position, chain)
@@ -73,7 +75,7 @@ func _physics_process(delta):
 				f.position = get_higher_ship()
 				f.scale = Vector2(s, s)
 				if is_formation_done(f):
-					print(f)
+					f.do_effect(s)
 					energy -= f.energy
 			
 func _process(delta):
@@ -86,7 +88,6 @@ func collide_with_enemies():
 		if b.get_collision_layer() == 4:
 			b.queue_free()
 			return true
-	
 	return false
 		
 func take_damage(damage):
