@@ -11,7 +11,7 @@ export var inv_time = 1
 
 var energy : float = 0
 var ships : Array
-var joints : Array
+var chains : Array
 var ship_scene = preload("res://Player/SmallShip.tscn")
 var chain_scene = preload("res://Player/Chain.tscn")
 var shot_scene = preload("res://Player/Shot.tscn")
@@ -28,6 +28,7 @@ func _ready():
 	
 	#Create first chain and attach it to joint
 	var chain = create_chain(nextPosition)
+	chains.append(chain)
 	nextPosition = chain.position
 	lastNode = NodePath(chain.get_path())
 	j.set_node_b(lastNode)
@@ -49,10 +50,10 @@ func _ready():
 		
 		#Create next chain and attach it to joint
 		chain = create_chain(nextPosition)
+		chains.append(chain)
 		lastNode = NodePath(chain.get_path())
 		nextPosition = chain.position
 		j.set_node_b(lastNode)
-		joints.append(j)
 		
 		#Calculate next position
 		nextPosition = calc_next_position(chain.position, chain)
@@ -76,6 +77,8 @@ func _physics_process(delta):
 				f.scale = Vector2(s, s)
 				if is_formation_done(f):
 					f.do_effect(s)
+					for c in chains:
+						c.set_mode(RigidBody2D.MODE_CHARACTER)
 					energy -= f.energy
 			
 func _process(delta):
@@ -158,6 +161,9 @@ func create_shot(p: Vector2):
 	shot.position = p
 	get_tree().root.add_child(shot)
 
+func clear_formation():
+	for c in chains:
+		c.set_mode(RigidBody2D.MODE_RIGID)
 
 func _on_InviTimer_timeout():
 	$Ship1.blink = false
