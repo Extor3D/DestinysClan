@@ -4,6 +4,7 @@ export(float) var energy = 80
 var effect_scene = preload("res://Player/Formations/Effects/DefenseEffect.tscn")
 
 func do_effect(scale):
+	#Scale and position the formation in the higher ship position.
 	var effect = effect_scene.instance()
 	effect.scale = Vector2(scale, scale)
 	effect.position = get_parent().owner.get_higher_ship()

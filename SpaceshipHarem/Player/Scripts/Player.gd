@@ -69,14 +69,18 @@ func _physics_process(delta):
 	if collide_with_enemies():
 		take_damage(1)
 	
+	#Formations logic
 	if Input.is_action_pressed("activate_formation"):
+		#Iterate all formations when button pressed
 		for f in $Formations.get_children():
 			if f.energy <= energy:
+				#Calculate scaling based on number of ships
 				var s = 1 + (starting_ships * 0.1 - 0.5 )
-				f.position = get_higher_ship()
 				f.scale = Vector2(s, s)
+				f.position = get_higher_ship()
 				if is_formation_done(f):
 					f.do_effect(s)
+					#Change the mode of the chaings to keep them in place
 					for c in chains:
 						c.set_mode(RigidBody2D.MODE_CHARACTER)
 					energy -= f.energy
@@ -127,9 +131,6 @@ func create_joint(p: Vector2, node_a: NodePath):
 	j.set_node_a(node_a)
 	return j
 
-func calculate_position(s: PinJoint2D):
-	return lerp(get_node(s.get_node_a()).position, get_node(s.get_node_b()).position, 0.5)
-	
 func array_is_included_in_array(array1, array2):
 	for item in array1:
 		if !array2.has(item): return false
@@ -137,8 +138,11 @@ func array_is_included_in_array(array1, array2):
 	return true
 	
 func is_formation_done(formation):
+	#Get the ships in the formation shape
 	var areas = formation.get_overlapping_areas()
+	#Check if all the Connecting ships are inside the formation
 	if array_is_included_in_array(ships, areas):
+		#Check if the ends of the formation have the Main Ships
 		var ship1_in_1 = formation.get_node("End1").overlaps_body($Ship1)
 		var ship1_in_2 = formation.get_node("End2").overlaps_body($Ship1)
 		var ship2_in_1 = formation.get_node("End1").overlaps_body($Ship2)

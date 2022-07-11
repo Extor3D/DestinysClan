@@ -30,6 +30,8 @@ func _process(delta):
 		movement.y = -speed
 	if Input.is_action_pressed(ship_name + "_down"):
 		movement.y = speed
+	
+	#Invincibility color
 	if blink:
 		$ShipSprite.set_modulate(Color.crimson)
 	else:

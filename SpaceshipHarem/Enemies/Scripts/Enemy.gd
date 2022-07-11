@@ -6,13 +6,8 @@ export(float) var cadence = 2
 var shot_scene = preload("res://Enemies/EnemyShot.tscn")
 
 func _physics_process(delta):
-	var coll = move_and_collide(Vector2(-speed * delta, 0))
-	if coll:
-		var shot = coll.get_collider()
-		health -= shot.damage
-		shot.queue_free()
-		if health <= 0:
-			queue_free()
+	move_and_collide(Vector2(-speed * delta, 0))
+
 
 func take_damage(damage):
 	#Add damage sound here
