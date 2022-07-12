@@ -6,7 +6,6 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 [node name="Obstacle" type="RigidBody2D"]
-position = Vector2( 294, 46 )
 collision_layer = 32
 collision_mask = 17
 gravity_scale = 0.0

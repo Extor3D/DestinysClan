@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Player/Formations/Formation.gd" type="Script" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 25.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 26.0
+
+[node name="IForm" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="End1" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="End1"]
+shape = SubResource( 1 )
+
+[node name="End2" type="Area2D" parent="."]
+position = Vector2( 1, 217 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="End2"]
+shape = SubResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -29, -27, 27, -27, 28, 244, -27, 244 )

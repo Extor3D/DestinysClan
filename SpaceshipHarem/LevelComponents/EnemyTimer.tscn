@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://LevelComponents/Scripts/EnemyTimer.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=2]
+
+[node name="EnemyTimer" type="Timer"]
+autostart = true
+script = ExtResource( 1 )
+enemy = ExtResource( 2 )
+
+[node name="CleanWhenOut" type="Node2D" parent="."]
+
+[connection signal="timeout" from="." to="." method="_on_EnemyTimer_timeout"]
