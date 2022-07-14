@@ -6,7 +6,16 @@
 wait_time = 2.2
 autostart = true
 script = ExtResource( 1 )
+duration = 10.0
 
 [node name="CleanWhenOut" type="Node2D" parent="."]
 
+[node name="StartTime" type="Timer" parent="."]
+one_shot = true
+
+[node name="Duration" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="." to="." method="spawn_tunnel"]
+[connection signal="timeout" from="StartTime" to="." method="_on_StartTime_timeout"]
+[connection signal="timeout" from="Duration" to="." method="_on_Duration_timeout"]

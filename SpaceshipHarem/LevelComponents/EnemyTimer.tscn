@@ -4,10 +4,19 @@
 [ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=2]
 
 [node name="EnemyTimer" type="Timer"]
+wait_time = 0.1
 autostart = true
 script = ExtResource( 1 )
 enemy = ExtResource( 2 )
 
 [node name="CleanWhenOut" type="Node2D" parent="."]
 
+[node name="EndTime" type="Timer" parent="."]
+one_shot = true
+
+[node name="StartTime" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="." to="." method="_on_EnemyTimer_timeout"]
+[connection signal="timeout" from="EndTime" to="." method="_on_EndTime_timeout"]
+[connection signal="timeout" from="StartTime" to="." method="_on_StartTime_timeout"]

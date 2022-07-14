@@ -3,6 +3,9 @@ extends Timer
 
 var obstacle_scene = preload("res://Scenery/Column.tscn")
 
+export (float) var start_time = 0
+export (float) var duration = 5
+
 #Space (in pixels) between walls of the tunnel
 var tunnel_size = 200
 #Y coordinate of the center of the tunnel
@@ -12,6 +15,8 @@ var rng = RandomNumberGenerator.new()
 
 func _ready():
 	rng.randomize()
+	$StartTime.start(start_time)
+	set_paused(true)
 
 func spawn_tunnel():
 	var rot = 0
@@ -49,3 +54,15 @@ func _process(delta):
 			if c.global_position.x < -50:
 				#Remove the node if it leaves the screen from the left
 				c.queue_free()
+
+
+func _on_StartTime_timeout():
+	#Starts the spawner when the start timer timeouts
+	set_paused(false)
+	if duration > 0:
+		$Duration.start(duration)
+
+
+func _on_Duration_timeout():
+	#Stops the spawner when duration timeouts
+	set_paused(true)
