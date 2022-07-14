@@ -1,6 +1,7 @@
 extends Timer
 
 export (PackedScene) var enemy
+export (Dictionary) var enemy_variables
 export (int) var y_center = 180
 export (int) var height = 80
 export (float) var start_time = 0
@@ -16,6 +17,8 @@ func _on_EnemyTimer_timeout():
 	#Create a new enemy in the specified range
 	if enemy != null:
 		var e = enemy.instance()
+		for k in enemy_variables.keys():
+			e.set(k, enemy_variables.get(k))
 		e.global_position = Vector2(get_viewport().size.x + 10, rng.randi_range(y_center - height, y_center + height))
 		$CleanWhenOut.add_child(e)
 
