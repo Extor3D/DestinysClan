@@ -16,6 +16,8 @@ var ship_scene = preload("res://Player/SmallShip.tscn")
 var chain_scene = preload("res://Player/Chain.tscn")
 var shot_scene = preload("res://Player/Shot.tscn")
 
+var is_in_formation = false
+
 func _ready():
 	$ShotTimer.wait_time = cadence
 	var nextPosition = $Ship1.position
@@ -70,7 +72,7 @@ func _physics_process(delta):
 		take_damage(1)
 	
 	#Formations logic
-	if Input.is_action_pressed("activate_formation"):
+	if Input.is_action_pressed("activate_formation") and not is_in_formation:
 		#Iterate all formations when button pressed
 		for f in $Formations.get_children():
 			if f.energy <= energy:
@@ -79,6 +81,7 @@ func _physics_process(delta):
 				f.scale = Vector2(s, s)
 				f.position = get_higher_ship()
 				if is_formation_done(f):
+					is_in_formation = true
 					f.do_effect(s)
 					#Change the mode of the chaings to keep them in place
 					for c in chains:
@@ -166,9 +169,14 @@ func create_shot(p: Vector2):
 	get_tree().root.add_child(shot)
 
 func clear_formation():
+	is_in_formation = false
 	for c in chains:
 		c.set_mode(RigidBody2D.MODE_RIGID)
 
 func _on_InviTimer_timeout():
 	$Ship1.blink = false
 	$Ship2.blink = false
+
+func set_cadence(c: float):
+	$ShotTimer.wait_time = c
+	

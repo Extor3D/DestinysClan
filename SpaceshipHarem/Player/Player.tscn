@@ -1,13 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/Sprites/ship_0001.png" type="Texture" id=1]
 [ext_resource path="res://Player/Sprites/ship_0000.png" type="Texture" id=2]
 [ext_resource path="res://Player/ControlledShip.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/Scripts/Player.gd" type="Script" id=4]
-[ext_resource path="res://Player/Formations/CForm.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Player/Formations/DForm.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Player/Formations/LForm.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Player/Formations/IForm.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Player/Formations/ArrowForm.tscn" type="PackedScene" id=8]
 
 [node name="Player" type="Node2D"]
 script = ExtResource( 4 )
@@ -29,11 +27,7 @@ sprite = ExtResource( 1 )
 
 [node name="DForm" parent="Formations" instance=ExtResource( 6 )]
 
-[node name="CForm" parent="Formations" instance=ExtResource( 5 )]
-
-[node name="LForm" parent="Formations" instance=ExtResource( 7 )]
-
-[node name="IForm" parent="Formations" instance=ExtResource( 8 )]
+[node name="ArrowForm" parent="Formations" instance=ExtResource( 8 )]
 
 [node name="ShotTimer" type="Timer" parent="."]
 wait_time = 0.5

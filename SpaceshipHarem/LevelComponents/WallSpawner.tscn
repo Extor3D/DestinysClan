@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://LevelComponents/Scripts/ObstacleTimer.gd" type="Script" id=1]
+[ext_resource path="res://LevelComponents/Scripts/WallSpawner.gd" type="Script" id=1]
 
-[node name="TunnelSpawner" type="Timer"]
-wait_time = 2.2
+[node name="WallSpawner" type="Timer"]
+wait_time = 0.5
 autostart = true
 script = ExtResource( 1 )
 

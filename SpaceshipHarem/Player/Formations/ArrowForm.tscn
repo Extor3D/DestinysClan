@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Player/Formations/Formation.gd" type="Script" id=1]
+[ext_resource path="res://Player/Formations/Scripts/Formation.gd" type="Script" id=1]
+[ext_resource path="res://Player/Formations/Effects/ArrowEffect.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 25.0
@@ -8,8 +9,10 @@ radius = 25.0
 [sub_resource type="CircleShape2D" id=2]
 radius = 26.0
 
-[node name="IForm" type="Area2D"]
+[node name="ArrowForm" type="Area2D"]
 script = ExtResource( 1 )
+energy = 50.0
+effect_scene = ExtResource( 2 )
 
 [node name="End1" type="Area2D" parent="."]
 
@@ -17,10 +20,11 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="End2" type="Area2D" parent="."]
-position = Vector2( 1, 217 )
+position = Vector2( -128, 60 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="End2"]
 shape = SubResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -29, -27, 27, -27, 28, 244, -27, 244 )
+position = Vector2( -222, 71 )
+polygon = PoolVector2Array( 70, -28, 221, -31, 189, -90, 240, -87, 280, -32, 281, 10, 71, 11 )

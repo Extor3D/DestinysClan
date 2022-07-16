@@ -1,7 +1,7 @@
 extends Area2D
 
 export(float) var energy = 80
-var effect_scene = preload("res://Player/Formations/Effects/DefenseEffect.tscn")
+export(PackedScene) var effect_scene
 
 func do_effect(scale):
 	#Scale and position the formation in the higher ship position.
