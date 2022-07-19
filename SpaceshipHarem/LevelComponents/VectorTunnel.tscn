@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://LevelComponents/VectorTunnel.gd" type="Script" id=1]
+[ext_resource path="res://Scenery/Sprites/tile_0056.png" type="Texture" id=2]
+
+[node name="VectorTunnel" type="Node2D"]
+script = ExtResource( 1 )
+type = 3
+duration = 100.0
+new_vert_time = 0.5
+tunnel_size = 150.0
+top_texture = ExtResource( 2 )
+bot_texture = ExtResource( 2 )
+
+[node name="StartTime" type="Timer" parent="."]
+one_shot = true
+
+[node name="EndTime" type="Timer" parent="."]
+one_shot = true
+
+[node name="BetweenVerts" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="TunnelTop" type="Node2D" parent="."]
+
+[node name="TunnelView" type="Polygon2D" parent="TunnelTop"]
+
+[node name="TunnelBody" type="KinematicBody2D" parent="TunnelTop"]
+collision_layer = 0
+
+[node name="TunnelCollision" type="CollisionPolygon2D" parent="TunnelTop/TunnelBody"]
+
+[node name="TunnelBot" type="Node2D" parent="."]
+
+[node name="TunnelView" type="Polygon2D" parent="TunnelBot"]
+
+[node name="TunnelBody" type="KinematicBody2D" parent="TunnelBot"]
+collision_layer = 0
+
+[node name="TunnelCollision" type="CollisionPolygon2D" parent="TunnelBot/TunnelBody"]
+
+[connection signal="timeout" from="StartTime" to="." method="_on_StartTime_timeout"]
+[connection signal="timeout" from="EndTime" to="." method="_on_EndTime_timeout"]
+[connection signal="timeout" from="BetweenVerts" to="." method="_on_BetweenVerts_timeout"]

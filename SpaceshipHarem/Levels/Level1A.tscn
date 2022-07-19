@@ -4,7 +4,7 @@
 [ext_resource path="res://LevelComponents/HUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemies/Enemy2.tscn" type="PackedScene" id=4]
-[ext_resource path="res://LevelComponents/EnemyTimer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://LevelComponents/Spawner.tscn" type="PackedScene" id=6]
 
 [node name="Node2D" type="Node2D"]
 
@@ -19,22 +19,10 @@ position = Vector2( 3, 2 )
 [node name="Level Intro" type="Node2D" parent="."]
 
 [node name="EnemyTimer2" parent="Level Intro" instance=ExtResource( 6 )]
-enemy = ExtResource( 4 )
-enemy_variables = {
-"move_speed": 500,
-"turn_speed": -3.5,
-"vspeed": 500.0
-}
 start_time = 5.0
 duration = 9.0
 
 [node name="EnemyTimer" parent="Level Intro" instance=ExtResource( 6 )]
-enemy = ExtResource( 4 )
-enemy_variables = {
-"move_speed": 500,
-"turn_speed": 3.5,
-"vspeed": 500.0
-}
 start_time = 15.0
 duration = 10.0
 
@@ -49,21 +37,9 @@ position = Vector2( 851, 146 )
 position = Vector2( 717, 276 )
 
 [node name="EnemyTimer3" parent="Level Intro" instance=ExtResource( 6 )]
-enemy = ExtResource( 4 )
-enemy_variables = {
-"move_speed": 100,
-"turn_speed": 1.7,
-"vspeed": 500.0
-}
 start_time = 26.0
 duration = 9.0
 
 [node name="EnemyTimer4" parent="Level Intro" instance=ExtResource( 6 )]
-enemy = ExtResource( 4 )
-enemy_variables = {
-"move_speed": 100,
-"turn_speed": -1.7,
-"vspeed": 500.0
-}
 start_time = 26.0
 duration = 9.0

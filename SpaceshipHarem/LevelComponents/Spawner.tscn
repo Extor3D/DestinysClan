@@ -1,13 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://LevelComponents/Scripts/EnemyTimer.gd" type="Script" id=1]
-[ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=2]
 
-[node name="EnemyTimer" type="Timer"]
+[node name="Spawner" type="Timer"]
 wait_time = 0.1
 autostart = true
 script = ExtResource( 1 )
-enemy = ExtResource( 2 )
 
 [node name="CleanWhenOut" type="Node2D" parent="."]
 
