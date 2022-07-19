@@ -16,11 +16,14 @@ export (float) var step_max = 30
 export (Texture) var top_texture
 export (Texture) var bot_texture
 
-var x_left = -100
-var x_right = 740
+var x_left = -200
+var x_right = 840
 
 var draw_bot = false
 var draw_top = false
+
+var opening_finish = false
+var end_tunnel = false
 
 var polygon_top : Array
 var polygon_bot : Array
@@ -44,16 +47,16 @@ func _ready():
 	rng.randomize()
 	$StartTime.start(start_time)
 	if draw_top:
-		polygon_top.append(Vector2(x_left, y - tunnel_size/2))
-		polygon_top.append(Vector2(x_left, -100))
+		polygon_top.append(Vector2(x_right + 50, y - tunnel_size/2))
+		polygon_top.append(Vector2(x_right - 50, -10))
 		polygon_top.append(Vector2(x_right, -100))
 		polygon_top.append(Vector2(x_right, y - tunnel_size/2))
 		$TunnelTop/TunnelView.texture = top_texture
 		set_array(polygon_top, $TunnelTop)
 	
 	if draw_bot:
-		polygon_bot.append(Vector2(x_left, y + tunnel_size/2))
-		polygon_bot.append(Vector2(x_left, 460))
+		polygon_bot.append(Vector2(x_right + 50, y + tunnel_size/2))
+		polygon_bot.append(Vector2(x_right - 50, 460))
 		polygon_bot.append(Vector2(x_right, 460))
 		polygon_bot.append(Vector2(x_right, y + tunnel_size/2))
 		$TunnelBot/TunnelView.texture = bot_texture
@@ -61,9 +64,13 @@ func _ready():
 	
 func _process(delta):
 	if draw_top:
+		if not opening_finish:
+			move_start($TunnelTop, polygon_top, delta)
 		move_polygon($TunnelTop, polygon_top, delta)
 		move_texture($TunnelTop, delta)
 	if draw_bot:
+		if not opening_finish:
+			move_start($TunnelBot, polygon_bot, delta)
 		move_polygon($TunnelBot, polygon_bot, delta)
 		move_texture($TunnelBot, delta)
 
@@ -71,22 +78,46 @@ func move_texture(tunnel, delta):
 	var off = tunnel.get_node("TunnelView").texture_offset + Vector2(tunnel_speed * delta, 0)
 	tunnel.get_node("TunnelView").texture_offset = off
 
+func move_start(tunnel, pol, delta):
+	move_range(pol, 0, 2, 1, delta)	
+	var vert = pol[0]
+	if vert.x < x_left - 300:
+		opening_finish = true
+	set_array(pol, tunnel)
+
 func move_polygon(tunnel, pol, delta):
-	for i in range(pol.size()-1, 3, -1):
+	var end = 3
+	if end_tunnel:
+		end = -1
+	move_range(pol, pol.size()-1, end, -1, delta)
+	for i in range(pol.size()-1, end, -1):
+		var vert = pol[i]
+		if vert.x < x_left and not end_tunnel:
+			pol.remove(i)
+	set_array(pol, tunnel)
+	
+func move_range(pol, start, end, step, delta):
+	for i in range(start, end, step):
 		var vert = pol[i]
 		vert.x -= delta * tunnel_speed
-		if vert.x < x_left:
-			pol.remove(i)
-		else:
-			pol[i] = vert
-	set_array(pol, tunnel)
+		pol[i] = vert
 	
 func _on_StartTime_timeout():
 	$BetweenVerts.start(new_vert_time)
 	$EndTime.start(duration)
 
 func _on_EndTime_timeout():
+	end_tunnel = true
+	close_tunnel($TunnelTop, polygon_top, -10)
+	close_tunnel($TunnelBot, polygon_bot, 370)
 	$BetweenVerts.set_paused(true)
+	
+func close_tunnel(tunnel, pol, pos_y):
+	var vert = pol[3]
+	vert.y = pos_y
+	vert.x += 100
+	pol[3] = vert
+	set_array(pol, tunnel)
 
 func _on_BetweenVerts_timeout():
 	if draw_top:
