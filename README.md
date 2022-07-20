@@ -7,6 +7,10 @@ Juego Shoot em up horizontal en el que la principal mecanica es manejar 2 naves 
 ## Documento del juego
 https://docs.google.com/document/d/1be5-f_8Tmdowrpco7hSKC_PkVP-Dv1YIiB9Rp6wCEa8
 
+## Slides de presentación
+[Destiny’s Clan](https://docs.google.com/presentation/d/1pttlzzjYQoYmUYncnTILISbjoMfcSqIZAog8zNggJd0/edit#slide=id.p)
+
+
 ## Tableros
 ### Tablero de Trabajo
 https://trello.com/b/nOpiQ5cz/destinys-clan
