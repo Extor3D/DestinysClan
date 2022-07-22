@@ -108,8 +108,10 @@ func _on_StartTime_timeout():
 
 func _on_EndTime_timeout():
 	end_tunnel = true
-	close_tunnel($TunnelTop, polygon_top, -10)
-	close_tunnel($TunnelBot, polygon_bot, 370)
+	if draw_top:
+		close_tunnel($TunnelTop, polygon_top, -10)
+	if draw_bot:
+		close_tunnel($TunnelBot, polygon_bot, 370)
 	$BetweenVerts.set_paused(true)
 	
 func close_tunnel(tunnel, pol, pos_y):

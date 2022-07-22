@@ -15,6 +15,10 @@ one_shot = true
 [node name="StartTime" type="Timer" parent="."]
 one_shot = true
 
+[node name="WarningSign" type="Polygon2D" parent="."]
+color = Color( 1, 0, 0, 0.537255 )
+polygon = PoolVector2Array( -13, 0, -59, -52, -46, -63, 0, -13, 43, -63, 58, -49, 13, -1, 56, 42, 38, 56, 0, 12, -42, 56, -59, 44 )
+
 [connection signal="timeout" from="." to="." method="_on_EnemyTimer_timeout"]
 [connection signal="timeout" from="EndTime" to="." method="_on_EndTime_timeout"]
 [connection signal="timeout" from="StartTime" to="." method="_on_StartTime_timeout"]

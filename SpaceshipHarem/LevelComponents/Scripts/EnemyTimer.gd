@@ -6,12 +6,16 @@ export (int) var y_center = 180
 export (int) var height = 80
 export (float) var start_time = 0
 export (float) var duration = 5
+export (bool) var warning = false
 var rng = RandomNumberGenerator.new()
 
 func _ready():
 	rng.randomize()
 	$StartTime.start(start_time)
 	set_paused(true)
+	$WarningSign.visible = false
+	$WarningSign.global_position = Vector2(600, y_center)
+	$WarningSign.scale = Vector2(height/float(50), height/float(50))
 
 func _on_EnemyTimer_timeout():
 	#Create a new enemy in the specified range
@@ -32,9 +36,12 @@ func _process(delta):
 func _on_EndTime_timeout():
 	#Stops the spawner when duration timeouts
 	set_paused(true)
+	if warning:
+		$WarningSign.visible = false
 
 func _on_StartTime_timeout():
 	#Starts the spawner when the start timer timeouts
 	set_paused(false)
+	$WarningSign.visible = warning
 	if duration > 0:
 		$EndTime.start(duration)

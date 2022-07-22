@@ -6,6 +6,7 @@
 wait_time = 2.2
 autostart = true
 script = ExtResource( 1 )
+duration = 50.0
 
 [node name="CleanWhenOut" type="Node2D" parent="."]
 
