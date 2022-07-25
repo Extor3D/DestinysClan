@@ -1,12 +1,21 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://LevelComponents/PlayerLimits.tscn" type="PackedScene" id=1]
 [ext_resource path="res://LevelComponents/HUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemies/Enemy2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://LevelComponents/Sprites/Space Background.png" type="Texture" id=5]
 [ext_resource path="res://LevelComponents/Spawner.tscn" type="PackedScene" id=6]
 
+[sub_resource type="ImageTexture" id=1]
+
 [node name="Node2D" type="Node2D"]
+
+[node name="SpaceBackground" type="Sprite" parent="."]
+position = Vector2( 323.25, 181.5 )
+scale = Vector2( 1.0825, 1.00833 )
+texture = ExtResource( 5 )
+normal_map = SubResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 123, 108 )
@@ -21,10 +30,11 @@ position = Vector2( 3, 2 )
 [node name="EnemyTimer1" parent="Level Intro" instance=ExtResource( 6 )]
 scene = ExtResource( 4 )
 scene_variables = {
-"move_speed": 100,
-"turn_speed": 1.5
+"move_speed": 140,
+"turn_speed": 5.0
 }
-y_center = 0
+y_center = 50
+height = 30
 start_time = 5.0
 duration = 9.0
 warning = true
@@ -41,10 +51,11 @@ position = Vector2( 717, 276 )
 [node name="EnemyTimer2" parent="Level Intro" instance=ExtResource( 6 )]
 scene = ExtResource( 4 )
 scene_variables = {
-"move_speed": 100,
-"turn_speed": -1.5
+"move_speed": 140,
+"turn_speed": -5.0
 }
-y_center = 360
+y_center = 310
+height = 30
 start_time = 15.0
 duration = 9.0
 warning = true
@@ -55,6 +66,7 @@ scene_variables = {
 "move_speed": 100,
 "turn_speed": -2.9
 }
+height = 60
 start_time = 26.0
 duration = 9.0
 warning = true
@@ -65,6 +77,55 @@ scene_variables = {
 "move_speed": 100,
 "turn_speed": 2.9
 }
+height = 60
 start_time = 26.0
+duration = 9.0
+warning = true
+
+[node name="Level Outro" type="Node2D" parent="."]
+
+[node name="EnemyTimer1" parent="Level Outro" instance=ExtResource( 6 )]
+scene = ExtResource( 4 )
+scene_variables = {
+"move_speed": 140,
+"turn_speed": 5.0
+}
+y_center = 50
+height = 30
+start_time = 40.0
+duration = 9.0
+warning = true
+
+[node name="EnemyTimer2" parent="Level Outro" instance=ExtResource( 6 )]
+scene = ExtResource( 4 )
+scene_variables = {
+"move_speed": 140,
+"turn_speed": -5.0
+}
+y_center = 310
+height = 30
+start_time = 53.0
+duration = 9.0
+warning = true
+
+[node name="EnemyTimer3" parent="Level Outro" instance=ExtResource( 6 )]
+scene = ExtResource( 4 )
+scene_variables = {
+"move_speed": 100,
+"turn_speed": -2.9
+}
+height = 60
+start_time = 40.0
+duration = 9.0
+warning = true
+
+[node name="EnemyTimer4" parent="Level Outro" instance=ExtResource( 6 )]
+scene = ExtResource( 4 )
+scene_variables = {
+"move_speed": 100,
+"turn_speed": 2.9
+}
+height = 60
+start_time = 53.0
 duration = 9.0
 warning = true
