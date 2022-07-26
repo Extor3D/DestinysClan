@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Chain",
 "language": "GDScript",
 "path": "res://Player/Scripts/Chain.gd"
+}, {
+"base": "Node2D",
+"class": "VectorTunnel",
+"language": "GDScript",
+"path": "res://LevelComponents/Scripts/VectorTunnel.gd"
 } ]
 _global_script_class_icons={
-"Chain": ""
+"Chain": "",
+"VectorTunnel": ""
 }
 
 [application]

@@ -1,6 +1,8 @@
 extends Node2D
+class_name VectorTunnel
 
 enum types {TOP = 1, BOT = 2, BOTH = 3}
+const NO_END = -1
 
 export (types) var type
 export (float) var start_time
@@ -104,7 +106,8 @@ func move_range(pol, start, end, step, delta):
 	
 func _on_StartTime_timeout():
 	$BetweenVerts.start(new_vert_time)
-	$EndTime.start(duration)
+	if duration != NO_END:
+		$EndTime.start(duration)
 
 func _on_EndTime_timeout():
 	end_tunnel = true

@@ -6,7 +6,7 @@
 [node name="VectorTunnel" type="Node2D"]
 script = ExtResource( 1 )
 type = 3
-duration = 15.0
+duration = -1.0
 new_vert_time = 0.5
 tunnel_size = 150.0
 top_texture = ExtResource( 2 )

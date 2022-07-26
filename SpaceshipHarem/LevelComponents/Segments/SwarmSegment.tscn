@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://LevelComponents/Segments/SwarmSegment.gd" type="Script" id=2]
+
+[node name="SwarmSegment" type="Node2D"]
+script = ExtResource( 2 )
+scene = ExtResource( 1 )
