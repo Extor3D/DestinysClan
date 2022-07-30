@@ -1,7 +1,7 @@
 extends Node2D
 
 export var starting_ships = 5
-export var health = 5
+export var max_health = 5
 export var softness = 0.1
 export var bias = 0
 export var cadence = 0.5
@@ -10,6 +10,7 @@ export var delta_energy = 0.5
 export var inv_time = 1
 
 var energy : float = 0
+var health = 5
 var ships : Array
 var chains : Array
 var ship_scene = preload("res://Player/SmallShip.tscn")
@@ -20,6 +21,7 @@ var is_in_formation = false
 
 func _ready():
 	$ShotTimer.wait_time = cadence
+	var health = max_health
 	var nextPosition = $Ship1.position
 	
 	#Variable of node a

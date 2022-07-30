@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sad01.png-5aab8452b5e27a672cecede080f75c1b.stex"
+path="res://.import/sad01.png-ca74113a4e0fea001391b812e2993c62.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/mouth/sad01.png"
-dest_files=[ "res://.import/sad01.png-5aab8452b5e27a672cecede080f75c1b.stex" ]
+source_file="res://Generators/Pilot/images/mouth/sad01.png"
+dest_files=[ "res://.import/sad01.png-ca74113a4e0fea001391b812e2993c62.stex" ]
 
 [params]
 

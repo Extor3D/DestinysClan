@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grin01.png-15f90abb88fa7c6ee8ae65a2ca2cb47b.stex"
+path="res://.import/grin01.png-1366f888878e92267a1c206af9ce4d98.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/mouth/grin01.png"
-dest_files=[ "res://.import/grin01.png-15f90abb88fa7c6ee8ae65a2ca2cb47b.stex" ]
+source_file="res://Generators/Pilot/images/mouth/grin01.png"
+dest_files=[ "res://.import/grin01.png-1366f888878e92267a1c206af9ce4d98.stex" ]
 
 [params]
 

@@ -2,8 +2,8 @@ extends Node2D
 
 enum types {OPEN = 1, TUNNEL = 2, HELL = 3}
 
-export (types) var type
-export (int) var difficulty
+export (types) var type = types.OPEN
+export (int) var difficulty = 1
 
 var rng = RandomNumberGenerator.new()
 
@@ -20,8 +20,9 @@ var tunnel_scene = preload("res://LevelComponents/VectorTunnel.tscn")
 var spawner_scene = preload("res://LevelComponents/Spawner.tscn")
 var swarmer_scene = preload("res://LevelComponents/Segments/SwarmSegment.tscn")
 
-#Enemy Scene
+#Objects Scenes
 var enemy_scene = preload("res://Enemies/Enemy.tscn")
+var obstacle_scene = preload("res://Scenery/Obstacle.tscn")
 
 func _ready():
 	rng.randomize()
@@ -41,11 +42,12 @@ func calculate_times():
 	finish = end_start + interlude_time + part_duration
 	
 func create_open_level():
-	add_swarm($Start, 0, part_duration)
+	add_asteroid_field($PlayArea, 0, part_duration)
+	#add_swarm($PlayArea, 0, part_duration)
 
 func create_tunnel_level():
 	create_tunnel(0, VectorTunnel.NO_END, VectorTunnel.types.BOTH)
-	create_start_part($Start)
+	create_start_part($PlayArea)
 	
 func create_start_part(start):
 	create_spawner(start, 0, part_duration)
@@ -79,7 +81,7 @@ func create_tunnel(start, duration, type):
 	tunnel.step_max = rng.randi_range(50, 10)
 	tunnel.top_texture
 	tunnel.bot_texture
-	$Start.add_child(tunnel)
+	$PlayArea.add_child(tunnel)
 
 func add_swarm(part, start, duration):
 	var swarmer = swarmer_scene.instance()
@@ -93,3 +95,17 @@ func add_swarm(part, start, duration):
 	swarmer.duration = duration
 	swarmer.wait = 1/difficulty
 	part.add_child(swarmer)
+	
+func add_asteroid_field(part, start, duration):
+	var spawner = spawner_scene.instance()
+	spawner.scene = obstacle_scene
+	var vars = {"speed": -30 + -difficulty*3,
+				"rot_spd": rng.randi_range(-3, 3)}
+	spawner.scene_variables = vars
+	spawner.y_center = 180
+	spawner.height = 180
+	spawner.start_time = start
+	spawner.duration = duration
+	spawner.warning = false
+	spawner.set_wait_time(4.35 - 0.35 * difficulty)
+	part.add_child(spawner)

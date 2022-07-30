@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Enemies/Weapons/SpreadWeapon.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/EnemyShot.tscn" type="PackedScene" id=2]
+
+[node name="SpreadWeapon" type="Node2D"]
+position = Vector2( 317, 162 )
+script = ExtResource( 1 )
+bullet_scene = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Rotator" type="Node2D" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_ShootTimer_timeout"]

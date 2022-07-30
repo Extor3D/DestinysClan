@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/male08_shadow.png-9c3b8f06aac90f3f2cb258fa9da846cc.stex"
+path="res://.import/male08_shadow.png-f87643ffdbd6824734ea8068dc8182d4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/hair/base/male08_shadow.png"
-dest_files=[ "res://.import/male08_shadow.png-9c3b8f06aac90f3f2cb258fa9da846cc.stex" ]
+source_file="res://Generators/Pilot/images/hair/base/male08_shadow.png"
+dest_files=[ "res://.import/male08_shadow.png-f87643ffdbd6824734ea8068dc8182d4.stex" ]
 
 [params]
 

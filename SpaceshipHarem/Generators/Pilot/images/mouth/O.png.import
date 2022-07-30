@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/O.png-27c2d039af4cc5e3f6a69cdad5cfc72c.stex"
+path="res://.import/O.png-5da2de113e30b1c8c535db8dbb39abcf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/mouth/O.png"
-dest_files=[ "res://.import/O.png-27c2d039af4cc5e3f6a69cdad5cfc72c.stex" ]
+source_file="res://Generators/Pilot/images/mouth/O.png"
+dest_files=[ "res://.import/O.png-5da2de113e30b1c8c535db8dbb39abcf.stex" ]
 
 [params]
 

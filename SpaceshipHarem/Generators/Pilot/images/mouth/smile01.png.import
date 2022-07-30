@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/smile01.png-20836b316dfc90bf123c376b94905bef.stex"
+path="res://.import/smile01.png-2dfdb9e9c5cded3a53be283e6c722c9c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/mouth/smile01.png"
-dest_files=[ "res://.import/smile01.png-20836b316dfc90bf123c376b94905bef.stex" ]
+source_file="res://Generators/Pilot/images/mouth/smile01.png"
+dest_files=[ "res://.import/smile01.png-2dfdb9e9c5cded3a53be283e6c722c9c.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/male04.png-33c578f422626f9db8fa600f8deeaaf3.stex"
+path="res://.import/male04.png-8d87ac5916ce6df37ffe6b77ae26dbb3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/hair/base/male04.png"
-dest_files=[ "res://.import/male04.png-33c578f422626f9db8fa600f8deeaaf3.stex" ]
+source_file="res://Generators/Pilot/images/hair/base/male04.png"
+dest_files=[ "res://.import/male04.png-8d87ac5916ce6df37ffe6b77ae26dbb3.stex" ]
 
 [params]
 

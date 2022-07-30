@@ -31,4 +31,5 @@ func _on_ShotTimer_timeout():
 func create_shot(p: Vector2):
 	var shot = shot_scene.instance()
 	shot.position = p
+	shot.rotation = PI
 	get_parent().add_child(shot)

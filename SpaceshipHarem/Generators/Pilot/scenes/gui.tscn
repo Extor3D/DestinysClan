@@ -1256,5 +1256,5 @@ rect_min_size = Vector2( 150, 52.5 )
 window_title = "Save Portrait"
 access = 2
 filters = PoolStringArray( "*.png ; PNG Images" )
-current_dir = "/home"
-current_path = "/home/"
+current_dir = "/Alejandro/Dev/DestinysClan/Repo/SpaceshipHarem"
+current_path = "/Alejandro/Dev/DestinysClan/Repo/SpaceshipHarem/"

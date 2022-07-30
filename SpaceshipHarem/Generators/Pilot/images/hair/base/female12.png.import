@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/female12.png-386b6727b02d8a92f78a9b23f9f24da6.stex"
+path="res://.import/female12.png-afbc49ffc1dcd5863ebb77f29324d03e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/hair/base/female12.png"
-dest_files=[ "res://.import/female12.png-386b6727b02d8a92f78a9b23f9f24da6.stex" ]
+source_file="res://Generators/Pilot/images/hair/base/female12.png"
+dest_files=[ "res://.import/female12.png-afbc49ffc1dcd5863ebb77f29324d03e.stex" ]
 
 [params]
 

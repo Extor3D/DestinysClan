@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ponytail01_decoration01.png-c0c6b6fc1fdffb2f0f5f1f585c9719b9.stex"
+path="res://.import/ponytail01_decoration01.png-5e7399cd87afcde12ae8df44613a4d3a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/hair/base/ponytail01_decoration01.png"
-dest_files=[ "res://.import/ponytail01_decoration01.png-c0c6b6fc1fdffb2f0f5f1f585c9719b9.stex" ]
+source_file="res://Generators/Pilot/images/hair/base/ponytail01_decoration01.png"
+dest_files=[ "res://.import/ponytail01_decoration01.png-5e7399cd87afcde12ae8df44613a4d3a.stex" ]
 
 [params]
 

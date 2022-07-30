@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/long02.png-cfb70b65e6d65bdf60fe5929499dfdc4.stex"
+path="res://.import/long02.png-da3e1895390ae9eba6d6a955c2a04824.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/hair/back/long02.png"
-dest_files=[ "res://.import/long02.png-cfb70b65e6d65bdf60fe5929499dfdc4.stex" ]
+source_file="res://Generators/Pilot/images/hair/back/long02.png"
+dest_files=[ "res://.import/long02.png-da3e1895390ae9eba6d6a955c2a04824.stex" ]
 
 [params]
 

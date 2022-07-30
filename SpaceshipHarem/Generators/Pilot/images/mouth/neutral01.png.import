@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/neutral01.png-2f739412e411df0706a5490461621e56.stex"
+path="res://.import/neutral01.png-8654576ced68755ae1cad9fe31a8dd8d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/mouth/neutral01.png"
-dest_files=[ "res://.import/neutral01.png-2f739412e411df0706a5490461621e56.stex" ]
+source_file="res://Generators/Pilot/images/mouth/neutral01.png"
+dest_files=[ "res://.import/neutral01.png-8654576ced68755ae1cad9fe31a8dd8d.stex" ]
 
 [params]
 

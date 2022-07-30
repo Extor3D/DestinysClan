@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/earrings.png-2e3c3f706c67fdf1616e30cde0553a1c.stex"
+path="res://.import/earrings.png-facfce6c05c9e46752a2211b648d658a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/hair/base/earrings.png"
-dest_files=[ "res://.import/earrings.png-2e3c3f706c67fdf1616e30cde0553a1c.stex" ]
+source_file="res://Generators/Pilot/images/hair/base/earrings.png"
+dest_files=[ "res://.import/earrings.png-facfce6c05c9e46752a2211b648d658a.stex" ]
 
 [params]
 

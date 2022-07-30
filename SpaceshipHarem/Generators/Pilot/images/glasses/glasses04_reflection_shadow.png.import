@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/glasses04_reflection_shadow.png-ccea097aa96746ebfa3bf7929c750cb0.stex"
+path="res://.import/glasses04_reflection_shadow.png-7ed2c56ba7dce121ee519cbf09c39836.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/glasses/glasses04_reflection_shadow.png"
-dest_files=[ "res://.import/glasses04_reflection_shadow.png-ccea097aa96746ebfa3bf7929c750cb0.stex" ]
+source_file="res://Generators/Pilot/images/glasses/glasses04_reflection_shadow.png"
+dest_files=[ "res://.import/glasses04_reflection_shadow.png-7ed2c56ba7dce121ee519cbf09c39836.stex" ]
 
 [params]
 
