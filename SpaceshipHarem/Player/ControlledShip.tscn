@@ -4,7 +4,7 @@
 [ext_resource path="res://Player/Scripts/Ship.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 7.0
+radius = 4.12311
 
 [node name="ControlledShip" type="RigidBody2D"]
 mode = 2

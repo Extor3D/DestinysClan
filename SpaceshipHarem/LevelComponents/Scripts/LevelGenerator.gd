@@ -3,7 +3,7 @@ extends Node2D
 enum types {OPEN = 1, TUNNEL = 2, HELL = 3}
 
 export (types) var type = types.OPEN
-export (int) var difficulty = 1
+export (int, 1, 10) var difficulty = 1
 
 var rng = RandomNumberGenerator.new()
 
@@ -14,6 +14,7 @@ var end_start
 var finish
 var interlude_time = 5
 
+onready var play_area = $PlayArea
 
 #Components Scenes
 var tunnel_scene = preload("res://LevelComponents/VectorTunnel.tscn")
@@ -22,6 +23,7 @@ var swarmer_scene = preload("res://LevelComponents/Segments/SwarmSegment.tscn")
 
 #Objects Scenes
 var enemy_scene = preload("res://Enemies/Enemy.tscn")
+var bullet_hell_scene = preload("res://Enemies/BulletHellEnemy.tscn")
 var obstacle_scene = preload("res://Scenery/Obstacle.tscn")
 
 func _ready():
@@ -33,7 +35,7 @@ func _ready():
 		types.TUNNEL:
 			create_tunnel_level()
 		types.HELL:
-			pass
+			create_hell_level()
 			
 func calculate_times():
 	part_duration = base_time + difficulty
@@ -48,6 +50,30 @@ func create_open_level():
 func create_tunnel_level():
 	create_tunnel(0, VectorTunnel.NO_END, VectorTunnel.types.BOTH)
 	create_start_part($PlayArea)
+	
+func create_hell_level():
+	var spawner1 = add_hell_sub_boss(true)
+	var spawner2 = add_hell_sub_boss(false)
+	spawner1.connect("spawner_cleared", spawner2, "start_timer")
+	var spawner3 = add_hell_sub_boss(false)
+	spawner2.connect("spawner_cleared", spawner3, "start_timer")
+	
+func add_hell_sub_boss(on_ready):
+	var spawner = spawner_scene.instance()
+	spawner.scene = bullet_hell_scene
+	var vars = {"speed": 100,
+				"health": 50 + difficulty * 10,
+				"difficulty": difficulty }
+	spawner.scene_variables = vars
+	spawner.y_center = 180
+	spawner.height = 1
+	spawner.start_time = 0
+	spawner.duration = 1
+	spawner.warning = false
+	spawner.set_wait_time(0.8)
+	spawner.start_on_ready = on_ready
+	play_area.add_child(spawner)
+	return spawner
 	
 func create_start_part(start):
 	create_spawner(start, 0, part_duration)

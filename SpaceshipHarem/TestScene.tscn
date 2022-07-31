@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://LevelComponents/VectorTunnel.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://LevelComponents/Sprites/Space Background.png" type="Texture" id=8]
 [ext_resource path="res://Scenery/Obstacle.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Enemies/BulletHellEnemy.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ImageTexture" id=1]
 
@@ -100,5 +101,14 @@ scene_variables = {
 height = 160
 start_time = 35.0
 duration = 25.0
+
+[node name="BossShip" parent="Outro" instance=ExtResource( 4 )]
+wait_time = 0.8
+scene = ExtResource( 10 )
+scene_variables = {
+}
+height = 1
+start_time = 60.0
+duration = 1.0
 
 [node name="HUD" parent="." instance=ExtResource( 3 )]

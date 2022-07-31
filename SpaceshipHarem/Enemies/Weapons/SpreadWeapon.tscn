@@ -4,7 +4,6 @@
 [ext_resource path="res://Enemies/EnemyShot.tscn" type="PackedScene" id=2]
 
 [node name="SpreadWeapon" type="Node2D"]
-position = Vector2( 317, 162 )
 script = ExtResource( 1 )
 bullet_scene = ExtResource( 2 )
 
