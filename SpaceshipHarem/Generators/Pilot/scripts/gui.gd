@@ -16,6 +16,14 @@ const COLORS = [
 	["#d0da91","#314829","#0a1a0d"],
 	["#fdf5cc","#cc8665","#644133"],
 	["#eecc8c","#644133","#2a1722"],
+	["#f8a052","#61480d","#2a1722"],
+	["#fbfefe","#5d807f","#2a1722"],
+	["#7e787d","#61480d","#2a1722"], #Grey
+	["#32a000","#112711","#112711"], #VerdeOscuro
+	["#8a5339","#220d04","#112711"], #DarkBrown
+	["#fbf2c5","#99966b","#112711"], #Olive	
+	
+	["#fde838","#000000","#000000"], #dummyYellow
 ]
 const SHADOW_COLORS = [
 	"#2a1722","#22264f","#181420","#4c335c","#0a1a0d"
@@ -23,6 +31,9 @@ const SHADOW_COLORS = [
 const WHITE_COLOR = "#ffffff"
 const BLACK_COLOR = "#0f0814"
 const BUFFER_SIZE = 128
+
+const SPECIES = ["Gatashi","Diablo","Humano","Marciano","Androide"]
+const STATS = ["Max HP","Speed","Damage","Max Energy","Recovery Speed"]
 
 var buffer:= []
 var buffer_index:= 0
@@ -38,9 +49,14 @@ onready var hair_material: ShaderMaterial = $Viewport/Portrait/Hair.material
 
 
 func _randomize():
+	
+	# Seleccion de especie
+	var pilot_specie = SPECIES[randi() % SPECIES.size()]	
 	# Si es humano
+
 	var skin_color = max(randi()%3-1, 0)
-	# Si no es humano ...
+
+	
 	## Completar
 	var primary_color = randi()%COLORS.size()
 	var secondary_color = randi()%COLORS.size()
@@ -97,12 +113,49 @@ func _randomize():
 	if randf()<0.75:
 		data["Hair/Eyes/Glasses"] = 0
 	
-	if "android" in portrait.get_node("Body").Sprites.keys()[data.Body].to_lower() && randf()<0.5:
-		skin_color = 2
-		data.skin_light_color = Color(COLORS[skin_color][0])
-		data.skin_dark_color = Color(COLORS[skin_color][1])
-		data.skin_shadow_color = Color(COLORS[skin_color][2])
+	#if "android" in portrait.get_node("Body").Sprites.keys()[data.Body].to_lower() && randf()<0.5:
+	var main_stat = "Max HP"
 	
+	var scd_stat = STATS[randi() % STATS.size()]	
+	""" 	SPECIES = [["Gatashi",[7,13,15],"Max HP"]
+	,"Diablo","Humano","Marciano","Androide"] 
+	fin 
+	"""
+	if pilot_specie == "Gatashi":
+		skin_color = 7  #Negro
+		#skin_color = 13 #  Naranja
+		#skin_color = 15 #  Gris
+		main_stat = "Max HP"	
+	if pilot_specie == "Diablo":
+		skin_color = 5 #Rojo
+		#skin_color = 6 # Rosa 
+		#skin_color = 4 #  Violeta
+		main_stat = "Speed"
+	if pilot_specie == "Humano":
+		skin_color = 0 
+		#skin_color = 17 #Morocho
+		#skin_color = 18 #Asiatico
+		#skin_color = 11 #Amarillo
+		main_stat = "Damage"
+	if pilot_specie == "Marciano":
+		skin_color = 9 # Azul
+		#skin_color = 8 # Otro Celeste
+		#skin_color = 10 # Verde Claro
+		#skin_color = 16 # Verde Oscuro
+		main_stat = "Max Energy"
+	if pilot_specie == "Androide":
+		#skin_color = 14 # blanco
+		skin_color = 2 #Celeste
+		#skin_color = 3 # Otro Celeste
+		#skin_color = 12 #Otro amarillo
+		main_stat = "Recovery Speed"
+	
+	while (main_stat == scd_stat): 
+		scd_stat = STATS[randi() % STATS.size()]
+	
+	data.skin_light_color = Color(COLORS[skin_color][0])
+	data.skin_dark_color = Color(COLORS[skin_color][1])
+	data.skin_shadow_color = Color(COLORS[skin_color][2])
 	buffer_index += 1
 	buffer[buffer_index] = data
 	if buffer_index>BUFFER_SIZE:
