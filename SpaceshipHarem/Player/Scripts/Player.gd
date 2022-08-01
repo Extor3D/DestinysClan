@@ -1,16 +1,24 @@
 extends Node2D
 
+export(int, 0, 10) var stat_health = 5
+export(int, 0, 10) var stat_agility = 5
+export(int, 0, 10) var stat_range = 5
+export(int, 0, 10) var stat_energy = 5
+export(int, 0, 10) var stat_mind = 5
+
 export var starting_ships = 5
-export var max_health = 5
 export var softness = 0.1
 export var bias = 0
 export var cadence = 0.5
-export var max_energy = 100
-export var delta_energy = 0.5
 export var inv_time = 1
 
+var max_health
+var health
 var energy : float = 0
-var health = 5
+var max_energy = 100
+var delta_energy = 0.5
+var damage
+var speed
 var ships : Array
 var chains : Array
 var ship_scene = preload("res://Player/SmallShip.tscn")
@@ -21,7 +29,16 @@ var is_in_formation = false
 
 func _ready():
 	$ShotTimer.wait_time = cadence
-	var health = max_health
+	damage = stat_range + 1
+	max_health = stat_health + 5
+	max_energy = 50 + stat_energy * 5
+	speed = 300 + stat_agility * 70
+	delta_energy = 0.02 + float(stat_mind) * 0.005
+	
+	$Ship1.speed = speed
+	$Ship2.speed = speed
+	
+	health = max_health
 	var nextPosition = $Ship1.position
 	
 	#Variable of node a
@@ -159,15 +176,16 @@ func is_formation_done(formation):
 
 func _on_ShotTimer_timeout():
 	#Add sound here
-	create_shot($Ship1.global_position + Vector2($Ship1/ShipSprite.texture.get_width()/2, 0))
-	create_shot($Ship2.global_position + Vector2($Ship2/ShipSprite.texture.get_width()/2, 0))
+	create_shot($Ship1.global_position + Vector2($Ship1/ShipSprite.texture.get_width()/2, 0), damage)
+	create_shot($Ship2.global_position + Vector2($Ship2/ShipSprite.texture.get_width()/2, 0), damage)
 	for s in ships:
-		create_shot(s.global_position)
+		create_shot(s.global_position, damage)
 	
 	
-func create_shot(p: Vector2):
+func create_shot(p: Vector2, d: int):
 	var shot = shot_scene.instance()
 	shot.position = p
+	shot.damage = d
 	get_tree().root.add_child(shot)
 
 func clear_formation():
