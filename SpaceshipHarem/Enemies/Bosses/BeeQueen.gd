@@ -45,7 +45,7 @@ func _on_ShotTimer_timeout():
 func create_shot(p: Vector2):
 	var bee_type = randf()
 	var shot = shot_scene.instance()
-	if bee_type < 0.75:
+	if bee_type < 0.65:
 		shot.turn_speed = 0
 		shot.shot_scene = worber_bee_shot
 	else:
