@@ -29,7 +29,7 @@ var is_in_formation = false
 
 func _ready():
 	$ShotTimer.wait_time = cadence
-	damage = stat_range + 1
+	damage = 1 + stat_range * 0.2
 	max_health = stat_health + 5
 	max_energy = 50 + stat_energy * 5
 	speed = 300 + stat_agility * 70

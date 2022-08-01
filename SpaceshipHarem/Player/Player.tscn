@@ -9,11 +9,6 @@
 
 [node name="Player" type="Node2D"]
 script = ExtResource( 4 )
-stat_health = 0
-stat_agility = 0
-stat_range = 0
-stat_energy = 0
-stat_mind = 0
 
 [node name="Ship1" parent="." instance=ExtResource( 3 )]
 collision_mask = 13
