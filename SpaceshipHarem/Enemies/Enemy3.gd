@@ -7,7 +7,7 @@ export(float) var vspeed = 0
 var shot_scene = preload("res://Enemies/Enemy.tscn")
 
 
-export(float) var turn_speed = 2.7  # in radians/sec
+export(float) var turn_speed = -2.7  # in radians/sec
 export(float) var move_speed = 150  # pixels/sec
 
 func _physics_process(delta):
