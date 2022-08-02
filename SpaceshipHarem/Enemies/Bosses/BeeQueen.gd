@@ -2,9 +2,11 @@ extends KinematicBody2D
 
 export(float) var speed = 150
 export(float) var Yspeed = 50
-export(int) var health = 1000
+export(int) var health = 500
 export(int) var hold_x = 490
 export(int) var hold_y = 100
+export(int) var dificulty = 5
+
 var sube = true
 export(float) var cadence = 0.5
 export(float) var vspeed = 0
@@ -45,12 +47,12 @@ func _on_ShotTimer_timeout():
 func create_shot(p: Vector2):
 	var bee_type = randf()
 	var shot = shot_scene.instance()
-	if bee_type < 0.65:
+	if bee_type <  (0.45 +((10 -  dificulty) *  0.05)):
 		shot.turn_speed = 0
 		shot.shot_scene = worber_bee_shot
 	else:
 		shot.turn_speed = 0.3
-		if bee_type <0.90:
+		if bee_type > 0.90 - (0.25 * (dificulty)):
 			shot.turn_speed = -2.7
 			
 	

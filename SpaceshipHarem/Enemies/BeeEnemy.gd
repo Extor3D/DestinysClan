@@ -4,11 +4,11 @@ export(float) var speed = 200
 export(int) var health = 10
 export(float) var cadence = 2
 export(float) var vspeed = 0
-var shot_scene = preload("res://Enemies/BeeEnemy.tscn")
+var shot_scene = preload("res://Enemies/EnemyShot.tscn")
 
 
-export(float) var turn_speed = -2.7  # in radians/sec
-export(float) var move_speed = 150  # pixels/sec
+export(float) var turn_speed = 0   # in radians/sec  -2.7 to rotate
+export(float) var move_speed = 100  # pixels/sec
 
 func _physics_process(delta):
 	rotation +=turn_speed * delta
