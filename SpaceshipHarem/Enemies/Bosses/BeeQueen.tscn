@@ -8,7 +8,6 @@ radius = 17.3268
 height = 48.2396
 
 [node name="Enemy" type="KinematicBody2D"]
-rotation = 0.0411345
 collision_layer = 4
 collision_mask = 3
 script = ExtResource( 2 )
@@ -18,7 +17,7 @@ wait_time = 0.5
 autostart = true
 
 [node name="Sprite" type="Sprite" parent="."]
-rotation = -1.60642
+rotation = -1.5708
 scale = Vector2( 3.40626, 3.49999 )
 texture = ExtResource( 1 )
 
