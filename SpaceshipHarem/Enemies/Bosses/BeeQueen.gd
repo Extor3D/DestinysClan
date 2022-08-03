@@ -7,10 +7,13 @@ export(int) var hold_x = 490
 export(int) var hold_y = 100
 export(int) var dificulty = 5
 
+enum mutations {NONE = 1, EARTH = 2, WIND = 3, FIRE=4 , ICE=5}
+export (mutations) var mutation = mutations.NONE
+
 var sube = true
 export(float) var cadence = 0.5
 export(float) var vspeed = 0
-var spawner_bee_scene = preload("res://Enemies/Enemy3.tscn")
+var spawner_bee_scene = preload("res://Enemies/BeeSpawner.tscn")
 var worber_bee_shot = preload("res://Enemies/EnemyShot.tscn")
 var shot_scene = spawner_bee_scene
 
@@ -46,14 +49,19 @@ func _on_ShotTimer_timeout():
 	
 func create_shot(p: Vector2):
 	var bee_type = randf()
+	var bee_side = randf()
+	var bee_modifier = 1
+	if bee_side  > 0.50:
+		bee_modifier = -1
 	var shot = shot_scene.instance()
 	if bee_type <  (0.45 +((10 -  dificulty) *  0.05)):
 		shot.turn_speed = 0
 		shot.shot_scene = worber_bee_shot
 	else:
-		shot.turn_speed = 0.3
+		
+		shot.turn_speed = 0.3 * bee_modifier
 		if bee_type > 0.90 - (0.25 * (dificulty)):
-			shot.turn_speed = -2.7
+			shot.turn_speed = -2.7 * bee_modifier
 			
 	
 	
