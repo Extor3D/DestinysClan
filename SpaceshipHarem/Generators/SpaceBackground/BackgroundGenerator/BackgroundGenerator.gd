@@ -17,8 +17,8 @@ export (GradientTexture) var colorscheme
 var planet_objects = []
 var star_objects = []
 
-#func _ready():
-#	_set_new_colors(colorscheme, background_color)
+func _ready():
+	_set_new_colors(colorscheme, Color.black)
 
 func set_mirror_size(new):
 	mirror_size = new

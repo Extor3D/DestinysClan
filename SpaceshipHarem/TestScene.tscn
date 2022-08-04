@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://LevelComponents/VectorTunnel.tscn" type="PackedScene" id=2]
@@ -7,19 +7,14 @@
 [ext_resource path="res://LevelComponents/PlayerLimits.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Enemies/Enemy2.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=7]
-[ext_resource path="res://LevelComponents/Sprites/Space Background.png" type="Texture" id=8]
+[ext_resource path="res://LevelComponents/SpaceBackground.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenery/Obstacle.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Enemies/BulletHellEnemy.tscn" type="PackedScene" id=10]
 
-[sub_resource type="ImageTexture" id=1]
-
 [node name="Level" type="Node2D"]
 
-[node name="SpaceBackground" type="Sprite" parent="."]
-position = Vector2( 323.25, 181.5 )
-scale = Vector2( 1.0825, 1.00833 )
-texture = ExtResource( 8 )
-normal_map = SubResource( 1 )
+[node name="BackgroundGenerator" parent="." instance=ExtResource( 8 )]
+type = 1
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 100, 30 )

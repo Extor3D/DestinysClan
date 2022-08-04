@@ -7,8 +7,8 @@ export(int, 0, 10) var stat_energy = 5
 export(int, 0, 10) var stat_mind = 5
 
 export var starting_ships = 5
-export var softness = 0.1
-export var bias = 0
+var softness = 0.1
+var bias = 0
 export var cadence = 0.5
 export var inv_time = 1
 
@@ -27,13 +27,19 @@ var shot_scene = preload("res://Player/Shot.tscn")
 
 var is_in_formation = false
 
+func get_stat(stat, minimum, maximum):
+	var s = minimum + stat * (maximum - minimum) / 10 
+	return s
+	
+
 func _ready():
 	$ShotTimer.wait_time = cadence
-	damage = 1 + stat_range * 0.2
-	max_health = stat_health + 5
-	max_energy = 50 + stat_energy * 5
-	speed = 300 + stat_agility * 70
-	delta_energy = 0.02 + float(stat_mind) * 0.005
+	
+	damage = get_stat(stat_range, 1, 3)
+	max_health = int(get_stat(stat_health, 5, 15))
+	max_energy = int(get_stat(stat_energy, 50, 100))
+	speed = get_stat(stat_agility, 300, 600)
+	delta_energy = get_stat(stat_mind, 0.02, 0.05)
 	
 	$Ship1.speed = speed
 	$Ship2.speed = speed

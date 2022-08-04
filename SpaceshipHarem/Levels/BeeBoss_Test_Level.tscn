@@ -26,7 +26,7 @@ scale = Vector2( 1.06667, 1 )
 [node name="Outro" type="Node2D" parent="."]
 
 [node name="Boss" parent="Outro" instance=ExtResource( 2 )]
-position = Vector2( 766, 179 )
+position = Vector2( 771, 177 )
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -1 )
