@@ -11,7 +11,8 @@ enum mutations {NONE = 1, EARTH = 2, WIND = 3, FIRE=4 , ICE=5}
 export (mutations) var mutation = mutations.NONE
 
 var sube = true
-export(float) var cadence = 0.5
+#corregir ajuste por dificultad?
+export(float) var cadence = 0.8 - (0.1 * dificulty/2)
 export(float) var vspeed = 0
 var spawner_bee_scene = preload("res://Enemies/BeeSpawner.tscn")
 var worber_bee_shot = preload("res://Enemies/EnemyShot.tscn")
