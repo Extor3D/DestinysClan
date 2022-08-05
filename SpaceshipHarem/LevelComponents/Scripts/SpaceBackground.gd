@@ -1,6 +1,7 @@
 extends Node2D
+class_name SpaceBackground
 
-enum types {SPACE = 1, FIRE = 2, COLD = 3}
+enum types {SPACE = 1, FIRE = 2, ICE = 3}
 
 export (types) var type = types.SPACE
 
@@ -86,7 +87,7 @@ func _ready():
 			select_colorscheme(background, space_color)
 		types.FIRE:
 			select_colorscheme(background, fire_color)
-		types.COLD:
+		types.ICE:
 			select_colorscheme(background, cold_color)
 	
 	

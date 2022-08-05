@@ -15,12 +15,18 @@ _global_script_classes=[ {
 "path": "res://Player/Scripts/Chain.gd"
 }, {
 "base": "Node2D",
+"class": "SpaceBackground",
+"language": "GDScript",
+"path": "res://LevelComponents/Scripts/SpaceBackground.gd"
+}, {
+"base": "Node2D",
 "class": "VectorTunnel",
 "language": "GDScript",
 "path": "res://LevelComponents/Scripts/VectorTunnel.gd"
 } ]
 _global_script_class_icons={
 "Chain": "",
+"SpaceBackground": "",
 "VectorTunnel": ""
 }
 

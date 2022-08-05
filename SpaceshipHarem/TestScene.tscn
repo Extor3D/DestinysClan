@@ -14,7 +14,7 @@
 [node name="Level" type="Node2D"]
 
 [node name="BackgroundGenerator" parent="." instance=ExtResource( 8 )]
-type = 1
+type = 2
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 100, 30 )

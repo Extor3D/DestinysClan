@@ -1,8 +1,10 @@
 extends Node2D
 
 enum types {OPEN = 1, TUNNEL = 2, HELL = 3}
+enum themes {NONE = 1, FIRE = 2, ICE = 3}
 
 export (types) var type = types.OPEN
+export (themes) var theme = themes.NONE
 export (int, 1, 10) var difficulty = 1
 
 var rng = RandomNumberGenerator.new()
@@ -14,7 +16,13 @@ var end_start
 var finish
 var interlude_time = 5
 
+var on_surface = false
+
 onready var play_area = $PlayArea
+onready var background = $BackGround
+
+#Background Scenes
+var space_scene = preload("res://LevelComponents/SpaceBackground.tscn")
 
 #Components Scenes
 var tunnel_scene = preload("res://LevelComponents/VectorTunnel.tscn")
@@ -29,6 +37,8 @@ var obstacle_scene = preload("res://Scenery/Obstacle.tscn")
 func _ready():
 	rng.randomize()
 	calculate_times()
+	on_surface = not randi() % 2
+	create_background(on_surface, theme)
 	match type:
 		types.OPEN:
 			create_open_level()
@@ -43,6 +53,12 @@ func calculate_times():
 	end_start = mid_start + interlude_time + part_duration
 	finish = end_start + interlude_time + part_duration
 	
+func create_background(on_surface: bool, type: int):
+	if not on_surface:
+		var space_back = space_scene.instance()
+		space_back.type = type
+		background.add_child(space_back)
+		
 func create_open_level():
 	add_asteroid_field($PlayArea, 0, part_duration)
 	#add_swarm($PlayArea, 0, part_duration)

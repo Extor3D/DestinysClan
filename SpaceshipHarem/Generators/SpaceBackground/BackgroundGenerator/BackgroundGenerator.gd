@@ -12,12 +12,14 @@ onready var big_star_scene = preload("res://Generators/SpaceBackground/Backgroun
 var should_tile = false
 var reduce_background = false
 var mirror_size = Vector2(200,200)
+var rng = RandomNumberGenerator.new()
 
 export (GradientTexture) var colorscheme
 var planet_objects = []
 var star_objects = []
 
 func _ready():
+	rng.randomize()
 	_set_new_colors(colorscheme, Color.black)
 
 func set_mirror_size(new):
@@ -37,7 +39,7 @@ func toggle_reduce_background():
 	nebulae.material.set_shader_param("reduce_background", reduce_background)
 
 func generate_new():
-	starstuff.material.set_shader_param("seed", rand_range(1.0, 10.0))
+	starstuff.material.set_shader_param("seed", rng.randf_range(1.0, 10.0))
 	starstuff.material.set_shader_param("pixels", max(rect_size.x, rect_size.y))
 	
 	var aspect = Vector2(1,1)
@@ -47,7 +49,7 @@ func generate_new():
 		aspect = Vector2(1.0, rect_size.y / rect_size.x)
 	
 	starstuff.material.set_shader_param("uv_correct", aspect)
-	nebulae.material.set_shader_param("seed", rand_range(1.0, 10.0))
+	nebulae.material.set_shader_param("seed", rng.randf_range(1.0, 10.0))
 	nebulae.material.set_shader_param("pixels", max(rect_size.x, rect_size.y))
 	nebulae.material.set_shader_param("uv_correct", aspect)
 	
@@ -98,14 +100,14 @@ func _set_new_colors(new_scheme, new_background):
 
 func _place_planet():
 	var min_size = min(rect_size.x, rect_size.y)
-	var scale = Vector2(1,1)*(rand_range(0.2, 0.7)*rand_range(0.5, 1.0)*min_size*0.005)
+	var scale = Vector2(1,1)*(rng.randf_range(0.2, 0.7)*rng.randf_range(0.5, 1.0)*min_size*0.005)
 	
 	var pos = Vector2()
 	if (should_tile):
 		var offs = scale.x * 100.0 * 0.5
-		pos = Vector2(int(rand_range(offs, rect_size.x - offs)), int(rand_range(offs, rect_size.y - offs)))
+		pos = Vector2(int(rng.randf_range(offs, rect_size.x - offs)), int(rng.randf_range(offs, rect_size.y - offs)))
 	else:
-		pos = Vector2(int(rand_range(0, rect_size.x)), int(rand_range(0, rect_size.y)))
+		pos = Vector2(int(rng.randf_range(0, rect_size.x)), int(rng.randf_range(0, rect_size.y)))
 	
 	var planet = planet_scene.instance()
 	planet.scale = scale
@@ -117,9 +119,9 @@ func _place_big_star():
 	var pos = Vector2()
 	if (should_tile):
 		var offs = 10.0
-		pos = Vector2(int(rand_range(offs, rect_size.x - offs)), int(rand_range(offs, rect_size.y - offs)))
+		pos = Vector2(int(rng.randf_range(offs, rect_size.x - offs)), int(rng.randf_range(offs, rect_size.y - offs)))
 	else:
-		pos = Vector2(int(rand_range(0, rect_size.x)), int(rand_range(0, rect_size.y)))
+		pos = Vector2(int(rng.randf_range(0, rect_size.x)), int(rng.randf_range(0, rect_size.y)))
 	
 	var star = big_star_scene.instance()
 	star.position = pos

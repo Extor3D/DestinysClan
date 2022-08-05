@@ -7,13 +7,14 @@
 [node name="LevelGenerator" type="Node2D"]
 script = ExtResource( 1 )
 type = 3
+theme = 3
 
 [node name="HUD" parent="." instance=ExtResource( 3 )]
 
 [node name="PlayerLimits" parent="." instance=ExtResource( 2 )]
 
-[node name="PlayArea" type="Node" parent="."]
-
 [node name="BackGround" type="Node" parent="."]
+
+[node name="PlayArea" type="Node" parent="."]
 
 [node name="ForeGround" type="Node" parent="."]
