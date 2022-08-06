@@ -30,7 +30,9 @@ var spawner_scene = preload("res://LevelComponents/Spawner.tscn")
 var swarmer_scene = preload("res://LevelComponents/Segments/SwarmSegment.tscn")
 
 #Objects Scenes
-var enemy_scene = preload("res://Enemies/Enemy.tscn")
+export (PackedScene) var enemy_scene = preload("res://Enemies/Enemy.tscn")
+export (PackedScene) var secondary_scene = preload("res://Enemies/Enemy.tscn")
+export (PackedScene) var tertiary_scene = preload("res://Enemies/Enemy.tscn")
 var bullet_hell_scene = preload("res://Enemies/BulletHellEnemy.tscn")
 var obstacle_scene = preload("res://Scenery/Obstacle.tscn")
 
