@@ -4,6 +4,8 @@
 [ext_resource path="res://Generators/SpaceBackground/BackgroundGenerator/BackgroundGenerator.tscn" type="PackedScene" id=3]
 
 [node name="BackgroundGenerator" type="Node2D"]
+z_index = -10
+z_as_relative = false
 script = ExtResource( 1 )
 type = 3
 
