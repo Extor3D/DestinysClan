@@ -4,7 +4,7 @@ export(float) var speed = 200
 export(int) var health = 10
 export(float) var cadence = 2
 export(float) var vspeed = 0
-var shot_scene = preload("res://Enemies/EnemyShot.tscn")
+var shot_scene = preload("res://Enemies/Shots/EnemyShot.tscn")
 
 
 export(float) var turn_speed = 0   # in radians/sec  -2.7 to rotate

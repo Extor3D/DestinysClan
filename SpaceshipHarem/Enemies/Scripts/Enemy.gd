@@ -3,7 +3,7 @@ extends KinematicBody2D
 export(float) var speed = 100
 export(int) var health = 10
 export(float) var cadence = 2
-var shot_scene = preload("res://Enemies/EnemyShot.tscn")
+var shot_scene = preload("res://Enemies/Shots/EnemyShot.tscn")
 
 func _physics_process(delta):
 	move_and_collide(Vector2(-speed * delta, 0))

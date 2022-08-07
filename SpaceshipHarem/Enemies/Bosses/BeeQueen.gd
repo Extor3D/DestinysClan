@@ -15,7 +15,7 @@ var sube = true
 export(float) var cadence = 0.8 - (0.1 * dificulty/2)
 export(float) var vspeed = 0
 var spawner_bee_scene = preload("res://Enemies/BeeSpawner.tscn")
-var worber_bee_shot = preload("res://Enemies/EnemyShot.tscn")
+var worber_bee_shot = preload("res://Enemies/Shots/EnemyShot.tscn")
 var shot_scene = spawner_bee_scene
 
 export(float) var turn_speed = 0  # in radians/sec

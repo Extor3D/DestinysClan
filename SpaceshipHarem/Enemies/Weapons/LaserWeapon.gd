@@ -1,22 +1,26 @@
 extends Node2D
-class_name SpreadWeapon
+class_name LaserWeapon
 
 enum weapons {ROTATING = 1, HALLWAY = 2, CIRCULAR = 3, SHOTGUN = 4, BARRAGE = 5, RANDOM = 6}
 
-onready var shoot_timer = $Timer
+onready var laser_timer_on = $TimerOn
+onready var laser_timer_off = $TimerOff
 onready var rotater = $Rotator
 
-export(PackedScene) var bullet_scene
 export(int, 0, 200) var rotate_speed = 10
 export(int, -359, 359) var rotate_from = -30
 export(int, -359, 359) var rotate_to = 30
-export(float, 0, 1, 0.05) var shoot_timer_wait_time = 0.1
+export(float, 0, 5, 0.5) var laser_timer_hold_on = 0.5
+export(float, 0, 10, 0.5) var laser_timer_hold_off = 0.5
 export(int, 0, 10) var spawn_point_count = 2
 export(int, 0, 500) var radius = 100
-export(int, 0, 360) var shot_angle_from = 0
-export(int, 0, 360) var shot_angle_to = 80
+export(int, 0, 360) var laser_angle_from = 0
+export(int, 0, 360) var laser_angle_to = 80
+export(int, 1, 100) var laser_size = 10
 export(bool) var back_and_forth = true
 export(bool) var home_in_player = false
+
+var laser_scene : PackedScene = preload("res://Enemies/Shots/EnemyShot.tscn")
 
 var weapon_rotation
 var player_node
@@ -32,7 +36,7 @@ func _ready():
 		rotate_to += 180
 		rotate_from += 180
 	
-	var step = deg2rad((shot_angle_to-shot_angle_from) / spawn_point_count)
+	var step = deg2rad((laser_angle_to-laser_angle_from) / spawn_point_count)
 	
 	for i in range(spawn_point_count):
 		var spawn_point = Node2D.new()
@@ -41,8 +45,9 @@ func _ready():
 		spawn_point.rotation = pos.angle()
 		rotater.add_child(spawn_point)
 		
-	shoot_timer.wait_time = shoot_timer_wait_time
-	shoot_timer.start()
+	laser_timer_off.wait_time = laser_timer_hold_off
+	laser_timer_on.wait_time = laser_timer_hold_on
+	laser_timer_off.start()
 	
 	rotation_middle = (rotate_to - rotate_from) / 2
 	weapon_rotation = rotate_from
@@ -86,10 +91,19 @@ func _process(delta):
 
 func _on_ShootTimer_timeout() -> void:
 	for s in rotater.get_children():
-		var bullet = bullet_scene.instance()
-		get_tree().root.add_child(bullet)
-		bullet.position = s.global_position
-		bullet.rotation = s.global_rotation	
+		var laser = laser_scene.instance()
+		s.add_child(laser)
+		laser.position = s.global_position
+		laser.rotation = s.global_rotation
+	laser_timer_on.stop()
+	laser_timer_off.start()
+		
+func _on_TimerOff_timeout():
+	for s in rotater.get_children():
+		#Llamar a cada laser para que muera
+		pass
+	laser_timer_off.stop()
+	laser_timer_on.start()
 		
 func set_rotating_spread(diff):
 	var wait = 0.5 - float(diff) * 0.03

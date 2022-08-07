@@ -43,7 +43,7 @@ start_on_ready = false
 scene = ExtResource( 10 )
 start = 20.0
 duration = 5.0
-wait = 3.0
+wait = 0.5
 waves = 5
 rows = 8
 

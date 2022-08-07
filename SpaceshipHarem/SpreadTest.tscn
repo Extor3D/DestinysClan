@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Enemies/BeeEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://LevelComponents/Segments/SwarmSegment.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="SwarmSegment" parent="." instance=ExtResource( 2 )]
+scene = ExtResource( 1 )
+scene_variables = {
+}
+duration = 5.0
+wait = 3.0
+waves = 5
+rows = 8

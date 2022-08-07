@@ -7,7 +7,7 @@
 [ext_resource path="res://Player/Formations/DForm.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/Formations/ArrowForm.tscn" type="PackedScene" id=8]
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Node2D" groups=["Player"]]
 script = ExtResource( 4 )
 stat_energy = 10
 stat_mind = 10
