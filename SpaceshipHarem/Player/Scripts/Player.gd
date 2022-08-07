@@ -92,7 +92,7 @@ func _ready():
 	$Ship2.position = nextPosition
 	j.set_node_b(NodePath($Ship2.get_path()))
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	if collide_with_enemies():
 		take_damage(1)
 	
@@ -113,7 +113,7 @@ func _physics_process(delta):
 						c.set_mode(RigidBody2D.MODE_CHARACTER)
 					energy -= f.energy
 			
-func _process(delta):
+func _process(_delta):
 	energy = move_toward(energy, max_energy, delta_energy)
 		
 		
@@ -125,10 +125,10 @@ func collide_with_enemies():
 			return true
 	return false
 		
-func take_damage(damage):
+func take_damage(d):
 	#Add damage sound here
 	if $InviTimer.get_time_left() <= 0:
-		health -= damage
+		health -= d
 		$InviTimer.start(inv_time)
 		$Ship1.blink = true
 		$Ship2.blink = true

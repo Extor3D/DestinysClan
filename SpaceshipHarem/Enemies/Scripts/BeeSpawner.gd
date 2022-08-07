@@ -37,6 +37,6 @@ func create_shot(p: Vector2):
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 
-func _process(delta):
+func _process(_delta):
 	if position.x < 0 || position.y < 0 || position.y > 600:
 		queue_free()

@@ -3,7 +3,7 @@ extends Area2D
 export(float) var speed = 500
 export(int) var damage = 1
 
-func _process(delta):
+func _process(_delta):
 	if position.x > 700:
 		queue_free()
 

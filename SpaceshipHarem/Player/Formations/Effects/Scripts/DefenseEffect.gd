@@ -1,6 +1,6 @@
 extends Area2D
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	position = get_parent().get_higher_ship()
 
 func _on_DefenseEffect_area_entered(area):

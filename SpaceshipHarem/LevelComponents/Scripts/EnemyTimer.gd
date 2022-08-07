@@ -35,7 +35,7 @@ func _on_EnemyTimer_timeout():
 		e.global_position = Vector2(get_viewport().size.x + 10, rng.randi_range(y_center - height, y_center + height))
 		$CleanWhenOut.add_child(e)
 
-func _process(delta):
+func _process(_delta):
 	#Loop all the nodes in CleanWhenOut
 	for c in $CleanWhenOut.get_children():
 		if c is Node2D and c.global_position.x < -50:

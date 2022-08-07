@@ -24,14 +24,14 @@ func _ready():
 		create_spawner(start + i * wave_dur, wave_dur - wait, scene, scene_variables, y, size/2)
 		y = top + size * rng.randi_range(1, rows) - size/2
 	
-func create_spawner(start, duration, scene, variables, y, h):
+func create_spawner(st, dur, scn, variables, y, h):
 	var spawner = spawner_scene.instance()
-	spawner.scene = scene
+	spawner.scene = scn
 	spawner.scene_variables = variables
 	spawner.y_center = y
 	spawner.height = h
-	spawner.start_time = start
-	spawner.duration = duration
+	spawner.start_time = st
+	spawner.duration = dur
 	spawner.warning = true
 	spawner.set_wait_time(0.1)
 	add_child(spawner)

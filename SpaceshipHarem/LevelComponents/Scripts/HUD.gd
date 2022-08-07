@@ -18,7 +18,7 @@ var en_slope = 5
 func _ready():
 	pass
 
-func _process(delta):
+func _process(_delta):
 	#If the Player is still alive, we get the energy and health from it
 	if get_parent().has_node("Player"):
 		var player = get_parent().get_node("Player")
@@ -31,7 +31,7 @@ func _process(delta):
 		draw_bar(hp_left, hp_top, hp_height, hp_slope, 0, hp_bar, get_col_array(Color.red, Color.yellow, 0))
 
 func draw_bar(left, top, height, slope, length, bar, col):
-	var poly : Array
+	var poly : Array = []
 	poly.append(Vector2(left, top + height))
 	poly.append(Vector2(left + slope, top))
 	poly.append(Vector2(left + slope + length, top))
@@ -40,7 +40,7 @@ func draw_bar(left, top, height, slope, length, bar, col):
 	bar.set_vertex_colors(col)
 	
 func get_col_array(start_col, end_col, perc):
-	var array : PoolColorArray
+	var array : PoolColorArray = []
 	var col = start_col.linear_interpolate(end_col, perc)
 	array.append(start_col)
 	array.append(start_col)

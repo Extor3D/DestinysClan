@@ -4,6 +4,12 @@
 
 [node name="LaserWeapon" type="Node2D"]
 script = ExtResource( 1 )
+rotate_speed = 50
+rotate_from = 0
+rotate_to = 359
+laser_timer_hold_off = 5.0
+spawn_point_count = 5
+radius = 10
 
 [node name="TimerOn" type="Timer" parent="."]
 

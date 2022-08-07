@@ -55,10 +55,10 @@ func calculate_times():
 	end_start = mid_start + interlude_time + part_duration
 	finish = end_start + interlude_time + part_duration
 	
-func create_background(on_surface: bool, type: int):
-	if not on_surface:
+func create_background(on_srfce: bool, t: int):
+	if not on_srfce:
 		var space_back = space_scene.instance()
-		space_back.type = type
+		space_back.type = t
 		background.add_child(space_back)
 		
 func create_open_level():
@@ -110,9 +110,9 @@ func create_spawner(part, start, duration):
 	spawner.set_wait_time(4.35 - 0.35 * difficulty)
 	part.add_child(spawner)
 
-func create_tunnel(start, duration, type):
+func create_tunnel(start, duration, t):
 	var tunnel = tunnel_scene.instance()
-	tunnel.type = type
+	tunnel.type = t
 	tunnel.start_time = start
 	tunnel.duration = duration
 	tunnel.new_vert_time = 1 / difficulty

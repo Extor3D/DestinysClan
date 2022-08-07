@@ -96,7 +96,7 @@ func select_colorscheme(back, scheme):
 	scheme.remove(0)
 	global_scheme.gradient.colors = scheme
 
-func _process(delta):
+func _process(_delta):
 	position.x -= 0.005 
 	dust_scroll.position.x -= 0.01
 	nebulae_scroll.position.x -= 0.03 

@@ -20,7 +20,7 @@ func _ready():
 	else:
 		ship_name = "ship2"
 
-func _process(delta):
+func _process(_delta):
 	movement = Vector2.ZERO
 	if Input.is_action_pressed(ship_name + "_left"):
 		movement.x = -speed
