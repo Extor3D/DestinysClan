@@ -12,12 +12,12 @@ spawn_point_count = 5
 radius = 10
 
 [node name="TimerOn" type="Timer" parent="."]
+one_shot = true
 
 [node name="TimerOff" type="Timer" parent="."]
-autostart = true
+one_shot = true
 
 [node name="Rotator" type="Node2D" parent="."]
 
-[connection signal="timeout" from="TimerOn" to="." method="_on_ShootTimer_timeout"]
-[connection signal="timeout" from="TimerOff" to="." method="_on_ShootTimer_timeout"]
+[connection signal="timeout" from="TimerOn" to="." method="_on_TimerOn_timeout"]
 [connection signal="timeout" from="TimerOff" to="." method="_on_TimerOff_timeout"]

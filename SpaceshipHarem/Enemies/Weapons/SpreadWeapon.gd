@@ -89,7 +89,7 @@ func _on_ShootTimer_timeout() -> void:
 		var bullet = bullet_scene.instance()
 		get_tree().root.add_child(bullet)
 		bullet.position = s.global_position
-		bullet.rotation = s.global_rotation	
+		bullet.rotation = s.global_rotation
 		
 func set_rotating_spread(diff):
 	var wait = 0.5 - float(diff) * 0.03

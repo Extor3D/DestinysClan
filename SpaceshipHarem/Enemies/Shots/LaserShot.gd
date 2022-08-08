@@ -1,6 +1,6 @@
 extends Node2D
 
-export(int, 1, 100) var size = 10
+export(int, 1, 100) var size = 1
 
 onready var laser_graphic = $Laser
 onready var warning_graphic = $Warning
@@ -10,8 +10,6 @@ onready var laser_collision = $LaserEffect/LaserCollision
 
 var on = false
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	laser_graphic.hide()
 	laser_graphic.scale = Vector2(1, size)
@@ -25,7 +23,6 @@ func _on_WarningTime_timeout():
 	warning_graphic.hide()
 	laser_graphic.visible = true
 	on = true
-
 
 func _on_LaserEffect_body_entered(body):
 	if on:
