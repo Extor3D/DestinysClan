@@ -1,19 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Enemies/Weapons/LaserWeapon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Enemies/Bosses/RandomBoss.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
-[node name="LaserWeapon" parent="." instance=ExtResource( 1 )]
-position = Vector2( 556, 172 )
-rotate_speed = 15
-rotate_from = -40
-rotate_to = 40
-laser_timer_hold_on = 4.0
-laser_timer_hold_off = 3.0
-spawn_point_count = 1
-radius = 30
-laser_angle_to = 360
+[node name="RandomBoss" parent="." instance=ExtResource( 1 )]
