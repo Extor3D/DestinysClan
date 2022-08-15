@@ -17,3 +17,7 @@ theme = 3
 [node name="PlayArea" type="Node" parent="."]
 
 [node name="BackGround" type="Node" parent="."]
+
+[node name="BossTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="BossTimer" to="." method="spawn_boss"]

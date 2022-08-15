@@ -1,6 +1,6 @@
 extends Node2D
 
-enum types {OPEN = 1, TUNNEL = 2, HELL = 3}
+enum types {OPEN = 1, HELL = 2}
 enum themes {NONE = 1, FIRE = 2, ICE = 3}
 
 export (types) var type = types.OPEN
@@ -22,12 +22,16 @@ var segments = []
 
 onready var play_area = $PlayArea
 onready var background = $BackGround
+onready var timer = $BossTimer
 
 #Background Scenes
 var space_scene = preload("res://LevelComponents/SpaceBackground.tscn")
 
 #Segments
 var thin_tunnel_segment = preload("res://LevelComponents/Segments/ThinTunnelSegment.tscn")
+var asteroid_segment = preload("res://LevelComponents/Segments/AsteroidSegment.tscn")
+
+var random_boss_scene = preload("res://Enemies/Bosses/RandomBoss.tscn")
 
 #Components Scenes
 var tunnel_scene = preload("res://LevelComponents/VectorTunnel.tscn")
@@ -41,6 +45,8 @@ export (PackedScene) var tertiary_scene = preload("res://Enemies/Enemy.tscn")
 var bullet_hell_scene = preload("res://Enemies/BulletHellEnemy.tscn")
 var obstacle_scene = preload("res://Scenery/Obstacle.tscn")
 
+var possible_segments = [thin_tunnel_segment, asteroid_segment]
+
 func _ready():
 	rng.randomize()
 	calculate_times()
@@ -49,8 +55,6 @@ func _ready():
 	match type:
 		types.OPEN:
 			create_open_level()
-		types.TUNNEL:
-			create_tunnel_level()
 		types.HELL:
 			create_hell_level()
 			
@@ -67,25 +71,19 @@ func create_background(on_srfce: bool, t: int):
 		background.add_child(space_back)
 		
 func create_open_level():
-	var seg1 = thin_tunnel_segment.instance()
-	seg1.difficulty = difficulty
-	segments.append(seg1)
-	var seg2 = thin_tunnel_segment.instance()
-	seg2.difficulty = difficulty
-	segments.append(seg2)
-	var seg3 = thin_tunnel_segment.instance()
-	seg3.difficulty = difficulty
-	segments.append(seg3)
-	play_area.add_child(seg3)
-	seg2.next_segment = seg3.get_path()
-	play_area.add_child(seg2)
-	seg1.next_segment = seg2.get_path()
-	play_area.add_child(seg1)
-	seg1.start_segment()
-
-func create_tunnel_level():
-	create_tunnel(0, VectorTunnel.NO_END, VectorTunnel.types.BOTH)
-	create_start_part($PlayArea)
+	for i in 2:
+		# To test a segment, use this line and comment the "possible_segments" line
+		# Remember to declare the scene at the top of this file
+		# var s = <your_scene>
+		var s = possible_segments.pop_at(rng.randi_range(0, possible_segments.size() - 1))
+		var seg = s.instance()
+		seg.difficulty = difficulty
+		seg.number = i + 1
+		seg.connect("segment_ended", self, "next_segment")
+		segments.append(seg)
+		play_area.add_child(seg)
+		
+	segments[0].start_segment()
 	
 func create_hell_level():
 	var spawner1 = add_hell_sub_boss(true)
@@ -128,23 +126,6 @@ func create_spawner(part, start, duration):
 	spawner.set_wait_time(4.35 - 0.35 * difficulty)
 	part.add_child(spawner)
 
-func create_tunnel(start, duration, t):
-	var tunnel = tunnel_scene.instance()
-	tunnel.type = t
-	tunnel.start_time = start
-	tunnel.duration = duration
-	tunnel.new_vert_time = 1 / difficulty
-	tunnel.tunnel_speed = 50 + difficulty*5
-	tunnel.tunnel_size = 200 - difficulty*10
-	tunnel.top = 100 + rng.randi_range(-50, 20)
-	tunnel.low = 260 + rng.randi_range(-20, 50)
-	tunnel.y = 180 + rng.randi_range(-50, 50)
-	tunnel.step_min = rng.randi_range(-50, -10)
-	tunnel.step_max = rng.randi_range(50, 10)
-	tunnel.top_texture
-	tunnel.bot_texture
-	$PlayArea.add_child(tunnel)
-
 func add_swarm(part, start, duration):
 	var swarmer = swarmer_scene.instance()
 	swarmer.scene = enemy_scene
@@ -158,16 +139,16 @@ func add_swarm(part, start, duration):
 	swarmer.wait = 1/difficulty
 	part.add_child(swarmer)
 	
-func add_asteroid_field(part, start, duration):
-	var spawner = spawner_scene.instance()
-	spawner.scene = obstacle_scene
-	var vars = {"speed": -30 + -difficulty*3,
-				"rot_spd": rng.randi_range(-3, 3)}
-	spawner.scene_variables = vars
-	spawner.y_center = 180
-	spawner.height = 180
-	spawner.start_time = start
-	spawner.duration = duration
-	spawner.warning = false
-	spawner.set_wait_time(4.35 - 0.35 * difficulty)
-	part.add_child(spawner)
+func spawn_boss():
+	var boss = random_boss_scene.instance()
+	boss.position = Vector2(700, 180)
+	boss.health = 100 + 20 * difficulty
+	boss.difficulty = difficulty
+	play_area.add_child(boss)
+	
+func next_segment(n):
+	if segments.size() <= n:
+		timer.start(5)
+	else:
+		segments[n].start_segment()
+

@@ -7,5 +7,6 @@
 
 [node name="LevelGenerator" parent="." instance=ExtResource( 3 )]
 theme = 2
+difficulty = 10
 
 [node name="Player" parent="LevelGenerator" instance=ExtResource( 1 )]
