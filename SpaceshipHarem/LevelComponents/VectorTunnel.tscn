@@ -25,9 +25,13 @@ wait_time = 0.5
 
 [node name="TunnelView" type="Polygon2D" parent="TunnelTop"]
 
-[node name="TunnelBody" type="KinematicBody2D" parent="TunnelTop"]
+[node name="TunnelBody" type="RigidBody2D" parent="TunnelTop"]
 collision_layer = 0
 collision_mask = 17
+mode = 3
+gravity_scale = 0.0
+contacts_reported = 1
+contact_monitor = true
 
 [node name="TunnelCollision" type="CollisionPolygon2D" parent="TunnelTop/TunnelBody"]
 
@@ -35,12 +39,17 @@ collision_mask = 17
 
 [node name="TunnelView" type="Polygon2D" parent="TunnelBot"]
 
-[node name="TunnelBody" type="KinematicBody2D" parent="TunnelBot"]
+[node name="TunnelBody" type="RigidBody2D" parent="TunnelBot"]
 collision_layer = 0
 collision_mask = 17
+gravity_scale = 0.0
+contacts_reported = 1
+contact_monitor = true
 
 [node name="TunnelCollision" type="CollisionPolygon2D" parent="TunnelBot/TunnelBody"]
 
 [connection signal="timeout" from="StartTime" to="." method="_on_StartTime_timeout"]
 [connection signal="timeout" from="EndTime" to="." method="_on_EndTime_timeout"]
 [connection signal="timeout" from="BetweenVerts" to="." method="_on_BetweenVerts_timeout"]
+[connection signal="body_entered" from="TunnelTop/TunnelBody" to="." method="_on_TunnelBody_body_entered"]
+[connection signal="body_entered" from="TunnelBot/TunnelBody" to="." method="_on_TunnelBody_body_entered"]

@@ -18,16 +18,21 @@ var interlude_time = 5
 
 var on_surface = false
 
+var segments = []
+
 onready var play_area = $PlayArea
 onready var background = $BackGround
 
 #Background Scenes
 var space_scene = preload("res://LevelComponents/SpaceBackground.tscn")
 
+#Segments
+var thin_tunnel_segment = preload("res://LevelComponents/Segments/ThinTunnelSegment.tscn")
+
 #Components Scenes
 var tunnel_scene = preload("res://LevelComponents/VectorTunnel.tscn")
 var spawner_scene = preload("res://LevelComponents/Spawner.tscn")
-var swarmer_scene = preload("res://LevelComponents/Segments/SwarmSegment.tscn")
+var swarmer_scene = preload("res://LevelComponents/SwarmSegment.tscn")
 
 #Objects Scenes
 export (PackedScene) var enemy_scene = preload("res://Enemies/Enemy.tscn")
@@ -62,8 +67,21 @@ func create_background(on_srfce: bool, t: int):
 		background.add_child(space_back)
 		
 func create_open_level():
-	add_asteroid_field($PlayArea, 0, part_duration)
-	#add_swarm($PlayArea, 0, part_duration)
+	var seg1 = thin_tunnel_segment.instance()
+	seg1.difficulty = difficulty
+	segments.append(seg1)
+	var seg2 = thin_tunnel_segment.instance()
+	seg2.difficulty = difficulty
+	segments.append(seg2)
+	var seg3 = thin_tunnel_segment.instance()
+	seg3.difficulty = difficulty
+	segments.append(seg3)
+	play_area.add_child(seg3)
+	seg2.next_segment = seg3.get_path()
+	play_area.add_child(seg2)
+	seg1.next_segment = seg2.get_path()
+	play_area.add_child(seg1)
+	seg1.start_segment()
 
 func create_tunnel_level():
 	create_tunnel(0, VectorTunnel.NO_END, VectorTunnel.types.BOTH)

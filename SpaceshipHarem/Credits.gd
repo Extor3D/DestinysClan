@@ -1,5 +1,7 @@
 extends Node
 
+# Lava tile
+# https://bepxl.art/portfolio/texturas-pixel-art/
 
 # Bullet Hell Pattern by robyn3choi
 # https://github.com/robyn3choi/godot-tutorial_bullet-hell-pattern-generator/

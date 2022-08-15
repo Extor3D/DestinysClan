@@ -17,6 +17,7 @@ export (float) var step_min = -30
 export (float) var step_max = 30
 export (Texture) var top_texture
 export (Texture) var bot_texture
+export (bool) var can_damage = false
 
 var x_left = -200
 var x_right = 840
@@ -138,4 +139,7 @@ func add_vert_to_pol(tunnel, pol, next_y):
 func set_array(array: Array, tunnel: Node2D):
 	tunnel.get_node("TunnelView").set_polygon(PoolVector2Array(array))
 	tunnel.get_node("TunnelBody/TunnelCollision").set_polygon(PoolVector2Array(array))
-	
+
+func _on_TunnelBody_body_entered(body):
+	if can_damage:
+		body.take_damage(1)

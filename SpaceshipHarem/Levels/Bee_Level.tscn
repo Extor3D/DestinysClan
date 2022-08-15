@@ -6,7 +6,7 @@
 [ext_resource path="res://Enemies/BeeSpawner.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemies/Bosses/BeeQueen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://LevelComponents/Spawner.tscn" type="PackedScene" id=8]
-[ext_resource path="res://LevelComponents/Segments/SwarmSegment.tscn" type="PackedScene" id=9]
+[ext_resource path="res://LevelComponents/SwarmSegment.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Enemies/BeeEnemy.tscn" type="PackedScene" id=10]
 
 [node name="Node2D" type="Node2D"]
