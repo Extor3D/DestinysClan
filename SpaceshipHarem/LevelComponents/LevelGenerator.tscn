@@ -19,5 +19,6 @@ theme = 3
 [node name="BackGround" type="Node" parent="."]
 
 [node name="BossTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="timeout" from="BossTimer" to="." method="spawn_boss"]
