@@ -54,6 +54,10 @@ config/name="Spaceship Harem"
 run/main_scene="res://TestScene.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Global.gd"
+
 [display]
 
 window/size/width=640

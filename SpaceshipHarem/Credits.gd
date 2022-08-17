@@ -1,5 +1,8 @@
 extends Node
 
+# Destiny's Child Logo
+# https://www.logomaker.com/
+
 # Lava tile
 # https://bepxl.art/portfolio/texturas-pixel-art/
 
