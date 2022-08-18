@@ -29,7 +29,7 @@ var space_scene = preload("res://LevelComponents/SpaceBackground.tscn")
 
 #Segments
 var thin_tunnel_segment = preload("res://LevelComponents/Segments/ThinTunnelSegment.tscn")
-var asteroid_segment = preload("res://LevelComponents/Segments/AsteroidSegment.tscn")
+var asteroid_segment = preload("res://LevelComponents/Segments/DeepSpaceSegment.tscn")
 
 var random_boss_scene = preload("res://Enemies/Bosses/RandomBoss.tscn")
 
