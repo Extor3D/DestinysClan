@@ -32,7 +32,8 @@ const WHITE_COLOR = "#ffffff"
 const BLACK_COLOR = "#0f0814"
 const BUFFER_SIZE = 128
 
-#const SPECIES = ["Gatashi","Diablo","Humano","Marciano","Androide"]
+const DRAGS_NAME=["Claire Geeman","Thea Terre","Tira Mendus","Deedee Sign","Sasha Sass","Enna Fincible","Siam Pathy","Phara Waye","Selly Foxx","Juju Bee","Bella Lush","Sella Stice","Claire Rickal","Melody Gale","Mistress Galore","Noë Stalgia","Chichi Swank","Bea Constrictor","May Stirius","Sam Armie","Sia Gothic","Sara Donique","Anna Conda","Sofie Moore","Elle Lectrick","Sue Burben","Eva Siff","Jo Nee","Genna Russ","Liv Lee","Connie Fidence","Barba Rouse","Kaye Bye","Eve Forric","Penny Ramma","Miss Fortune","Lea Ness","Remi Nissent","Cecil Sunshine","Miss Sanguine","Lisse Truss","Raye Bitt","Ora Kelle","Sue Missif","Sia Dellic","Ella Gants","Raye Nessance","Lucy Luck","Vye Sual","Poppy Cox","Kitsch Kitsch Bang Bang","Maggie Magma","Super Nova"]
+	
 const SPECIES = [["Gatashi",[7,13,15],"Max HP",["Y","G"]],["Diablo",[5,6,4],"Speed",["O","X"]],	["Humano",[17,18,11],"Damage",["F1","F2"]],	["Marciano",[9,8,10,16],"Max Energy",["M","W"]],["Androide",[2,3,12,14],"Recovery Speed",["B1","B2"]]] 
 const STATS = ["Max HP","Speed","Damage","Max Energy","Recovery Speed"]
 const COMMON_FORMS = ["D","U","C","A","L"]
@@ -53,7 +54,8 @@ onready var hair_material: ShaderMaterial = $Viewport/Portrait/Hair.material
 func _randomize():
 	
 	# Seleccion de especie
-	var pilot_specie = SPECIES[randi() % SPECIES.size()]	
+	var pilot_specie = SPECIES[randi() % SPECIES.size()]
+	var pilot_name = DRAGS_NAME[randi() % DRAGS_NAME.size()]	
 	# Si es humano
 	var skin_color = max(randi()%3-1, 0)
 
