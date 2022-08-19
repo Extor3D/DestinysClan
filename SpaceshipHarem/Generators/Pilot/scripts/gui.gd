@@ -32,8 +32,10 @@ const WHITE_COLOR = "#ffffff"
 const BLACK_COLOR = "#0f0814"
 const BUFFER_SIZE = 128
 
-const SPECIES = ["Gatashi","Diablo","Humano","Marciano","Androide"]
+#const SPECIES = ["Gatashi","Diablo","Humano","Marciano","Androide"]
+const SPECIES = [["Gatashi",[7,13,15],"Max HP",["Y","G"]],["Diablo",[5,6,4],"Speed",["O","X"]],	["Humano",[17,18,11],"Damage",["F1","F2"]],	["Marciano",[9,8,10,16],"Max Energy",["M","W"]],["Androide",[2,3,12,14],"Recovery Speed",["B1","B2"]]] 
 const STATS = ["Max HP","Speed","Damage","Max Energy","Recovery Speed"]
+const COMMON_FORMS = ["D","U","C","A","L"]
 
 var buffer:= []
 var buffer_index:= 0
@@ -53,7 +55,6 @@ func _randomize():
 	# Seleccion de especie
 	var pilot_specie = SPECIES[randi() % SPECIES.size()]	
 	# Si es humano
-
 	var skin_color = max(randi()%3-1, 0)
 
 	
@@ -114,36 +115,53 @@ func _randomize():
 		data["Hair/Eyes/Glasses"] = 0
 	
 	#if "android" in portrait.get_node("Body").Sprites.keys()[data.Body].to_lower() && randf()<0.5:
-	var main_stat = "Max HP"
-	
+	var main_stat = pilot_specie[2]
+	#Analizar si el stat tiene que ser diferente si o si
 	var scd_stat = STATS[randi() % STATS.size()]	
-	""" 	SPECIES = [["Gatashi",[7,13,15],"Max HP"]
-	,"Diablo","Humano","Marciano","Androide"] 
+	
+	#Sacar esto
+	var rarity = 0
+	
+	
+	var pilot_stats = [[rarity/2,main_stat],[rarity/4,scd_stat]]
+	var posible_colors = pilot_specie[1]
+	skin_color =  posible_colors[randi() % posible_colors.size()]	
+	var posible_formations = COMMON_FORMS
+	#Mejorar el random?
+	posible_formations.append_array(pilot_specie[3])
+	var pilot_formation = posible_formations[randi() % posible_formations.size()]
+
+	""" 	SPECIES = [["Gatashi",[7,13,15],"Max HP",["Y","G"]],
+	["Diablo",[5,6,4],"Speed",["O","X"]],
+	["Humano",[17,18,11],"Damage",["F1","F2"]],
+	["Marciano",[9,8,10,16],"Max Energy",["M","W"]],
+	["Androide",[2,3,12,14],"Recovery Speed",["/","\"]],
+	] 
 	fin 
 	"""
-	if pilot_specie == "Gatashi":
+	if pilot_specie[0] == "Gatashi":
 		skin_color = 7  #Negro
 		#skin_color = 13 #  Naranja
 		#skin_color = 15 #  Gris
 		main_stat = "Max HP"	
-	if pilot_specie == "Diablo":
+	if pilot_specie[0] == "Diablo":
 		skin_color = 5 #Rojo
 		#skin_color = 6 # Rosa 
 		#skin_color = 4 #  Violeta
 		main_stat = "Speed"
-	if pilot_specie == "Humano":
+	if pilot_specie[0] == "Humano":
 		skin_color = 0 
 		#skin_color = 17 #Morocho
 		#skin_color = 18 #Asiatico
 		#skin_color = 11 #Amarillo
 		main_stat = "Damage"
-	if pilot_specie == "Marciano":
+	if pilot_specie[0] == "Marciano":
 		skin_color = 9 # Azul
 		#skin_color = 8 # Otro Celeste
 		#skin_color = 10 # Verde Claro
 		#skin_color = 16 # Verde Oscuro
 		main_stat = "Max Energy"
-	if pilot_specie == "Androide":
+	if pilot_specie[0] == "Androide":
 		#skin_color = 14 # blanco
 		skin_color = 2 #Celeste
 		#skin_color = 3 # Otro Celeste
