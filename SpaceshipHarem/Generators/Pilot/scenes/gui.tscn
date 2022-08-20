@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Generators/Pilot/scenes/portrait.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Generators/Pilot/scripts/gui.gd" type="Script" id=2]
+[ext_resource path="res://Generators/Pilot/scripts/Pilot_data.gd" type="Script" id=3]
 
 [sub_resource type="ViewportTexture" id=1]
 viewport_path = NodePath("Viewport")
@@ -45,3 +46,31 @@ margin_top = -32.0
 margin_right = -572.0
 margin_bottom = -16.0
 custom_styles/panel = SubResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 393.0
+margin_top = 8.0
+margin_right = 571.0
+margin_bottom = 45.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 3.02
+text = "Piloto"
+align = 1
+
+[node name="Profile_Title" type="RichTextLabel" parent="."]
+margin_left = 393.0
+margin_top = 58.0
+margin_right = 615.0
+margin_bottom = 98.0
+bbcode_enabled = true
+bbcode_text = "[u][shake]Informacion de Perfil[/shake][/u]"
+text = "Informacion de Perfil"
+
+[node name="Pilot_data" type="RichTextLabel" parent="."]
+margin_left = 392.0
+margin_top = 73.0
+margin_right = 618.0
+margin_bottom = 354.0
+bbcode_enabled = true
+script = ExtResource( 3 )

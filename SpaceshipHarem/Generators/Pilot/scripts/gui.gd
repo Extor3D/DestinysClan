@@ -33,6 +33,8 @@ const BLACK_COLOR = "#0f0814"
 const BUFFER_SIZE = 128
 
 const DRAGS_NAME=["Claire Geeman","Thea Terre","Tira Mendus","Deedee Sign","Sasha Sass","Enna Fincible","Siam Pathy","Phara Waye","Selly Foxx","Juju Bee","Bella Lush","Sella Stice","Claire Rickal","Melody Gale","Mistress Galore","Noë Stalgia","Chichi Swank","Bea Constrictor","May Stirius","Sam Armie","Sia Gothic","Sara Donique","Anna Conda","Sofie Moore","Elle Lectrick","Sue Burben","Eva Siff","Jo Nee","Genna Russ","Liv Lee","Connie Fidence","Barba Rouse","Kaye Bye","Eve Forric","Penny Ramma","Miss Fortune","Lea Ness","Remi Nissent","Cecil Sunshine","Miss Sanguine","Lisse Truss","Raye Bitt","Ora Kelle","Sue Missif","Sia Dellic","Ella Gants","Raye Nessance","Lucy Luck","Vye Sual","Poppy Cox","Kitsch Kitsch Bang Bang","Maggie Magma","Super Nova"]
+const FLAVOR_TEXT=[" Nada de terroristas de la gramática ,  frágiles emocionales ,  Drama Queens , incultas o de higiene dudosa (en negrita). No personas llamadas Florencia, ni tener una remera que diga 'te quiero pero soy un bardo' ni un tatuaje que diga 'soltar'.",
+"Videos y fotitos para vos¡ Info x privado¡","Hola soy de Pollux 7. Tengo 27 años busco amistad y luego se ve", "Hola Buen dia a todos soy nuevite por aqui,  tengo 26 años y divorciade, busco chongo o lo que de","Me gusta viajar , el aire libre, reunirme para pasar buenos momentos. Deseo conocer gente que tenga buen humor y buenas energías"]
 
 #const SPECIES = ["Gatashi","Diablo","Humano","Marciano","Androide"]
 const SPECIES = [["Gatashi",[7,13,15],"Max HP",["Y","G"]],["Diablo",[5,6,4],"Speed",["O","X"]],	["Humano",[17,18,11],"Damage",["F1","F2"]],	["Marciano",[9,8,10,16],"Max Energy",["M","W"]],["Androide",[2,3,12,14],"Recovery Speed",["B1","B2"]]] 
@@ -50,13 +52,17 @@ onready var secondary_material: ShaderMaterial = $Viewport/Portrait/Cloths/Secon
 onready var detail_material: ShaderMaterial = $Viewport/Portrait/Cloths/Details.material
 onready var eye_material: ShaderMaterial = $Viewport/Portrait/Hair/Eyes.material
 onready var hair_material: ShaderMaterial = $Viewport/Portrait/Hair.material
+onready var label:= $Label
+onready var pilot_data:= $Pilot_data
 
 
 func _randomize():
 	
 	# Seleccion de especie
 	var pilot_specie = SPECIES[randi() % SPECIES.size()]
-	var pilot_name = DRAGS_NAME[randi() % DRAGS_NAME.size()]	
+	var pilot_name = DRAGS_NAME[randi() % DRAGS_NAME.size()]
+	var pilot_flavor = FLAVOR_TEXT[randi() % FLAVOR_TEXT.size()]
+
 	# Si es humano
 	var skin_color = max(randi()%3-1, 0)
 
@@ -124,7 +130,7 @@ func _randomize():
 	var scd_stat = STATS[randi() % STATS.size()]	
 	
 	#Sacar esto
-	var rarity = 0
+	var rarity = 5
 	
 	
 	var pilot_stats = [[rarity/2,main_stat],[rarity/4,scd_stat]]
@@ -134,7 +140,13 @@ func _randomize():
 	#Mejorar el random?
 	posible_formations.append_array(pilot_specie[3])
 	var pilot_formation = posible_formations[randi() % posible_formations.size()]
-
+	
+	label.text = pilot_name
+	pilot_data.add_text('\n' + "[b][color="+ str(COLORS[skin_color][0])+"]" + pilot_specie[0] + '[/color][/b]\n' )
+	pilot_data.add_text('\n[wave]' + pilot_flavor + '[/wave]\n\n' + "Posicion Favorita: [rainbow freq=0.5 sat=10 val=20]" + pilot_formation + '[/rainbow]\n\n')
+	
+	pilot_data.add_text("[b]HÁBITOS | INTERESES[/b]" + '\n[rainbow]' + str(pilot_stats[0][1]) + " + " + str(pilot_stats[0][0]) + '[/rainbow]\n[rainbow]' + str(pilot_stats[1][1]) + " + " + str(pilot_stats[1][0]) + "[/rainbow]")
+	
 	""" 	SPECIES = [["Gatashi",[7,13,15],"Max HP",["Y","G"]],
 	["Diablo",[5,6,4],"Speed",["O","X"]],
 	["Humano",[17,18,11],"Damage",["F1","F2"]],
