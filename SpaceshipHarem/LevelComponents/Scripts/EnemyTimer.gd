@@ -5,7 +5,9 @@ signal spawner_cleared
 export (PackedScene) var scene
 export (Dictionary) var scene_variables
 export (int) var y_center = 180
+export (int) var x_center = 740
 export (int) var height = 80
+export (int) var width = 40
 export (float) var start_time = 0
 export (float) var duration = 5
 export (bool) var warning = false
@@ -13,6 +15,7 @@ export (bool) var start_on_ready = true
 var rng = RandomNumberGenerator.new()
 
 var ended = false
+var margin = 40
 
 func _ready():
 	rng.randomize()
@@ -20,7 +23,8 @@ func _ready():
 	if start_on_ready:
 		start_timer()
 	$WarningSign.visible = false
-	$WarningSign.global_position = Vector2(600, y_center)
+	var warn_pos = Vector2(clamp(x_center, margin, get_viewport().size.x - margin), clamp(y_center, margin, get_viewport().size.y - margin))		
+	$WarningSign.global_position = warn_pos
 	$WarningSign.scale = Vector2(height/float(50), height/float(50))
 	
 func start_timer():
@@ -32,15 +36,10 @@ func _on_EnemyTimer_timeout():
 		var e = scene.instance()
 		for k in scene_variables.keys():
 			e.set(k, scene_variables.get(k))
-		e.global_position = Vector2(get_viewport().size.x + 10, rng.randi_range(y_center - height, y_center + height))
+		e.global_position = Vector2(rng.randi_range(x_center - width, x_center + width), rng.randi_range(y_center - height, y_center + height))
 		$CleanWhenOut.add_child(e)
 
 func _process(_delta):
-	#Loop all the nodes in CleanWhenOut
-	for c in $CleanWhenOut.get_children():
-		if c is Node2D and c.global_position.x < -50:
-			#Remove the node if it leaves the screen from the left
-			c.queue_free()
 	if $CleanWhenOut.get_child_count() == 0 and ended:
 		emit_signal("spawner_cleared")
 		queue_free()
