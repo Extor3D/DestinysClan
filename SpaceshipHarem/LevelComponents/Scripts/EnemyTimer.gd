@@ -2,16 +2,21 @@ extends Timer
 
 signal spawner_cleared
 
-export (PackedScene) var scene
-export (Dictionary) var scene_variables
-export (int) var y_center = 180
-export (int) var x_center = 740
-export (int) var height = 80
-export (int) var width = 40
-export (float) var start_time = 0
-export (float) var duration = 5
-export (bool) var warning = false
-export (bool) var start_on_ready = true
+#---Spawner Scene---
+#This scene creates an area where it can spawn certain other scenes at a
+#fixed intervals, when it's set to start and lasts a certain duration.
+#
+
+export (PackedScene) var scene				#Scene to spawn
+export (Dictionary) var scene_variables		#Dictonary of variables to set to each spawned scene
+export (int) var y_center = 180				#Center of the spawn area Y coordinate
+export (int) var x_center = 740				#Center of the spawn area X coordinate
+export (int) var height = 80				#Height from the center to the top of the area, this is also repeated downwards
+export (int) var width = 40					#Length from the center to the right of the area, this is also repeated leftwards
+export (float) var start_time = 0			#Time in seconds when the spawner starts
+export (float) var duration = 5				#Time in seconds the spawn lasts
+export (bool) var warning = false			#Shows a warning sign in the border when the spawner activates
+export (bool) var start_on_ready = true		#Set to true to start the spawner whenever it's created, if false, it can be started with "start_timer()"
 var rng = RandomNumberGenerator.new()
 
 var ended = false
