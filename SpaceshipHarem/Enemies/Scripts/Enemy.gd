@@ -26,3 +26,6 @@ func create_shot(p: Vector2):
 	shot.position = p
 	shot.rotation = PI
 	get_parent().add_child(shot)
+
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()
