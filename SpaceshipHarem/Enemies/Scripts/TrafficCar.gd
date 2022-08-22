@@ -1,9 +1,12 @@
 extends KinematicBody2D
 
 export(float) var speed = 100
-export(int) var health = 10
+export(int) var health = 1000
+# Cadence time the honks
 export(float) var cadence = 2
-onready var sound:= $AudioStreamPlayer2D
+export(float) var color = 2
+export(float) var driver = "Sunday Driver"
+
 var shot_scene = preload("res://Enemies/Shots/EnemyShot.tscn")
 
 func _physics_process(delta):
@@ -11,17 +14,19 @@ func _physics_process(delta):
 
 func _ready():
 	$ShotTimer.start(cadence)
+	var rot = 1
+
 
 func take_damage(damage):
 	#Add damage sound here
-	sound.play()
 	health -= damage
 	if health <= 0:
 		queue_free()
 
 func _on_ShotTimer_timeout():
 	#Add shotting sound here
-	create_shot(global_position - Vector2($Sprite.texture.get_width()/2, 0))
+	#create_shot(global_position - Vector2($Sprite.texture.get_width()/2, 0))
+	pass
 	
 func create_shot(p: Vector2):
 	var shot = shot_scene.instance()

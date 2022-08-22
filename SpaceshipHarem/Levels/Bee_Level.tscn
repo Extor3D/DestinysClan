@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://LevelComponents/PlayerLimits.tscn" type="PackedScene" id=2]
-[ext_resource path="res://LevelComponents/LevelGenerator.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Enemies/BeeSpawner.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemies/Bosses/BeeQueen.tscn" type="PackedScene" id=7]
@@ -10,15 +9,6 @@
 [ext_resource path="res://Enemies/BeeEnemy.tscn" type="PackedScene" id=10]
 
 [node name="Node2D" type="Node2D"]
-
-[node name="LevelGenerator" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, -1 )
-type = 2
-theme = 1
-enemy_scene = ExtResource( 6 )
-
-[node name="Player" parent="LevelGenerator" instance=ExtResource( 4 )]
-position = Vector2( 155, 116 )
 
 [node name="Settings" type="Node2D" parent="."]
 
@@ -54,3 +44,8 @@ one_shot = true
 scene = ExtResource( 7 )
 start_time = 40.0
 duration = 10.0
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 155, 89 )
+
+[node name="Spawner" parent="." instance=ExtResource( 8 )]
