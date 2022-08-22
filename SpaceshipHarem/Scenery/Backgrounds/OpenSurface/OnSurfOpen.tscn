@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenery/Backgrounds/OpenSurface/5.png" type="Texture" id=1]
+[ext_resource path="res://Scenery/Backgrounds/OpenSurface/2.png" type="Texture" id=2]
+[ext_resource path="res://Scenery/Backgrounds/OpenSurface/3.png" type="Texture" id=3]
+[ext_resource path="res://Scenery/Backgrounds/OpenSurface/4.png" type="Texture" id=4]
+[ext_resource path="res://Scenery/Backgrounds/OpenSurface/1.png" type="Texture" id=5]
+[ext_resource path="res://Scenery/Backgrounds/OpenSurface/6.png" type="Texture" id=6]
+[ext_resource path="res://Scenery/Backgrounds/OpenSurface/OnSurfOpen.gd" type="Script" id=7]
+
+[node name="OnSurfOpenNode" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="OnSurfOpen" type="ParallaxBackground" parent="."]
+
+[node name="Sky" type="ParallaxLayer" parent="OnSurfOpen"]
+motion_scale = Vector2( 0, 0 )
+motion_mirroring = Vector2( 640, 0 )
+
+[node name="Sprite" type="Sprite" parent="OnSurfOpen/Sky"]
+position = Vector2( 320.5, 181.5 )
+scale = Vector2( 2.39338, 2.30625 )
+texture = ExtResource( 5 )
+
+[node name="Cloud1" type="ParallaxLayer" parent="OnSurfOpen"]
+motion_scale = Vector2( 0.1, 0 )
+motion_mirroring = Vector2( 640, 0 )
+
+[node name="Sprite" type="Sprite" parent="OnSurfOpen/Cloud1"]
+position = Vector2( 222, 114 )
+texture = ExtResource( 2 )
+
+[node name="Mountains" type="ParallaxLayer" parent="OnSurfOpen"]
+motion_scale = Vector2( 0.2, 0 )
+motion_mirroring = Vector2( 640, 0 )
+
+[node name="Sprite" type="Sprite" parent="OnSurfOpen/Mountains"]
+position = Vector2( 320, 183 )
+scale = Vector2( 2.35294, 2.275 )
+texture = ExtResource( 3 )
+
+[node name="Hills" type="ParallaxLayer" parent="OnSurfOpen"]
+motion_scale = Vector2( 0.3, 0 )
+motion_mirroring = Vector2( 640, 0 )
+
+[node name="Sprite" type="Sprite" parent="OnSurfOpen/Hills"]
+position = Vector2( 319, 182 )
+scale = Vector2( 2.36029, 2.2625 )
+texture = ExtResource( 4 )
+
+[node name="Grass" type="ParallaxLayer" parent="OnSurfOpen"]
+motion_scale = Vector2( 0.5, 0 )
+motion_mirroring = Vector2( 640, 0 )
+
+[node name="Sprite" type="Sprite" parent="OnSurfOpen/Grass"]
+position = Vector2( 320, 181.5 )
+scale = Vector2( 2.35294, 2.26875 )
+texture = ExtResource( 1 )
+
+[node name="CloserGrass" type="ParallaxLayer" parent="OnSurfOpen"]
+motion_scale = Vector2( 1, 0 )
+motion_mirroring = Vector2( 640, 0 )
+
+[node name="Sprite" type="Sprite" parent="OnSurfOpen/CloserGrass"]
+position = Vector2( 320.5, 181.5 )
+scale = Vector2( 2.34926, 2.26875 )
+texture = ExtResource( 6 )

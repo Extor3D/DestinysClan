@@ -57,9 +57,6 @@ script = ExtResource( 3 )
 material = SubResource( 1 )
 margin_right = 100.0
 margin_bottom = 100.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Cloud" type="ColorRect" parent="."]
 material = SubResource( 2 )

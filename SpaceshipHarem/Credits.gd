@@ -3,6 +3,9 @@ extends Node
 # Destiny's Child Logo
 # https://www.logomaker.com/
 
+# Open Planet Surface Background
+# https://opengameart.org/content/pixel-art-parallax-background
+
 # Lava tile
 # https://bepxl.art/portfolio/texturas-pixel-art/
 
@@ -13,10 +16,10 @@ extends Node
 # https://github.com/V-ktor/pixel-art-portraits
 
 # Planet Generator based on the original project "PixelPlanets" by Deep-Fold:
-#https://github.com/Deep-Fold/PixelPlanets
+# https://github.com/Deep-Fold/PixelPlanets
 
 # Planet Generator based on the original project "PixelSpace" by Deep-Fold:
-#https://github.com/Deep-Fold/PixelSpace
+# https://github.com/Deep-Fold/PixelSpace
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

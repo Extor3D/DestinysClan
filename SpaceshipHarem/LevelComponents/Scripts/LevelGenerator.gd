@@ -16,7 +16,7 @@ var end_start
 var finish
 var interlude_time = 5
 
-var on_surface = false
+var on_surface = true
 
 var segments = []
 
@@ -26,6 +26,8 @@ onready var timer = $BossTimer
 
 #Background Scenes
 var space_scene = preload("res://LevelComponents/SpaceBackground.tscn")
+var planet_scene = preload("res://Generators/World/PlanetGenerator.tscn")
+var open_surf_scene = preload("res://Scenery/Backgrounds/OpenSurface/OnSurfOpen.tscn")
 
 #Segments
 var thin_tunnel_segment = preload("res://LevelComponents/Segments/ThinTunnelSegment.tscn")
@@ -51,7 +53,7 @@ var possible_segments = [trafficjam_segment,trafficjam_segment]
 func _ready():
 	rng.randomize()
 	calculate_times()
-	on_surface = not randi() % 2
+	on_surface = rng.randf() < 0.5
 	create_background(on_surface, theme)
 	match type:
 		types.OPEN:
@@ -69,7 +71,17 @@ func create_background(on_srfce: bool, t: int):
 	if not on_srfce:
 		var space_back = space_scene.instance()
 		space_back.type = t
+		var planet = planet_scene.instance()
+		planet.theme = theme
+		planet.size = 2000
+		planet.global_position = Vector2(-675, 300)
+		background.add_child(planet)
 		background.add_child(space_back)
+	else:
+		if theme == themes.NONE:
+			var back = open_surf_scene.instance()
+			background.add_child(back)
+		
 		
 func create_open_level():
 	for i in 2:
