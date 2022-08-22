@@ -52,9 +52,6 @@ anchor_bottom = 1.0
 margin_right = -412.0
 margin_bottom = -200.0
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Land" type="ColorRect" parent="."]
 material = SubResource( 1 )
