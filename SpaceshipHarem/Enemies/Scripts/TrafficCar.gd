@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-export(float) var speed = 100
+export(float) var xspeed = 100
+export(float) var yspeed = 0
 export(int) var health = 1000
 # Cadence time the honks
 export(float) var cadence = 2
@@ -10,7 +11,8 @@ export(float) var driver = "Sunday Driver"
 var shot_scene = preload("res://Enemies/Shots/EnemyShot.tscn")
 
 func _physics_process(delta):
-	move_and_collide(Vector2(-speed * delta, 0))
+	
+	move_and_collide(Vector2(-xspeed * delta, -yspeed * delta))
 
 func _ready():
 	$ShotTimer.start(cadence)
