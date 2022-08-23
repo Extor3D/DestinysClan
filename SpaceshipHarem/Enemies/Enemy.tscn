@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Enemies/Sprites/ship_0011.png" type="Texture" id=1]
+[ext_resource path="res://Enemies/Sprites/ship-0011.png" type="Texture" id=1]
 [ext_resource path="res://Enemies/Scripts/Enemy.gd" type="Script" id=2]
 [ext_resource path="res://Enemies/Sounds/boom.wav" type="AudioStream" id=3]
 

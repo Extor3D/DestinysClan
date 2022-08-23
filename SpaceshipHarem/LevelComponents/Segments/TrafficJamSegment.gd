@@ -34,7 +34,7 @@ func start_segment():
 	rng.randomize()
 	
 
-	for i in 3 :
+	for i in 2 :
 		print("Vuelta")
 		for j in difficulty /3 :
 			var way = types[rng.randi_range(0, types.size() - 1)]

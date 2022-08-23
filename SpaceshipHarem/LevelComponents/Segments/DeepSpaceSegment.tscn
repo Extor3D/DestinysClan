@@ -4,6 +4,7 @@
 
 [node name="DeepSpaceSegment" type="Node2D"]
 script = ExtResource( 1 )
+difficulty = 10
 
 [node name="SegmentTime" type="Timer" parent="."]
 
