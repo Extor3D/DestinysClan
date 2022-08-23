@@ -50,7 +50,7 @@ var bullet_hell_scene = preload("res://Enemies/BulletHellEnemy.tscn")
 var obstacle_scene = preload("res://Scenery/Obstacle.tscn")
 
 #var possible_segments = [thin_tunnel_segment, asteroid_segment,trafficjam_segment]
-var possible_segments = [DeepSpace_Segment,DeepSpace_Segment]
+var possible_segments = [DeepSpace_Segment,trafficjam_segment]
 func _ready():
 	rng.randomize()
 	calculate_times()

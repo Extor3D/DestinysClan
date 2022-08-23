@@ -102,7 +102,13 @@ func _randomize():
 			var num: int = portrait.get_node(part).Sprites.size()-portrait.get_node(part).get(type)
 			if TYPES.find(type)!=TYPES.size()-1:
 				num = portrait.get_node(part).get(TYPES[TYPES.find(type)+1])
-			data[part] = randi()%num+portrait.get_node(part).get(type)
+			if part == "Body":
+				if pilot_specie[0] == "Androide":
+					data[part] = 3
+				else:
+					data[part] = rand_range(1, 2)
+			else:
+				data[part] = randi()%num+portrait.get_node(part).get(type)
 		else:
 			data[part] = randi()%portrait.get_node(part).Sprites.size()
 	if data.Hair==0:
@@ -123,6 +129,8 @@ func _randomize():
 	data.brows_offset = randi()%3-1
 	if randf()<0.75:
 		data["Hair/Eyes/Glasses"] = 0
+	if pilot_specie[0] == "Gatashi":
+		data["Hair/Details"] = 2
 	
 	#if "android" in portrait.get_node("Body").Sprites.keys()[data.Body].to_lower() && randf()<0.5:
 	var main_stat = pilot_specie[2]
@@ -145,44 +153,8 @@ func _randomize():
 	pilot_data.add_text('\n' + "[b][color="+ str(COLORS[skin_color][0])+"]" + pilot_specie[0] + '[/color][/b]\n' )
 	pilot_data.add_text('\n[wave]' + pilot_flavor + '[/wave]\n\n' + "Posicion Favorita: [rainbow freq=0.5 sat=10 val=20]" + pilot_formation + '[/rainbow]\n\n')
 	
-	pilot_data.add_text("[b]HÁBITOS | INTERESES[/b]" + '\n[rainbow]' + str(pilot_stats[0][1]) + " + " + str(pilot_stats[0][0]) + '[/rainbow]\n[rainbow]' + str(pilot_stats[1][1]) + " + " + str(pilot_stats[1][0]) + "[/rainbow]")
-	
-	""" 	SPECIES = [["Gatashi",[7,13,15],"Max HP",["Y","G"]],
-	["Diablo",[5,6,4],"Speed",["O","X"]],
-	["Humano",[17,18,11],"Damage",["F1","F2"]],
-	["Marciano",[9,8,10,16],"Max Energy",["M","W"]],
-	["Androide",[2,3,12,14],"Recovery Speed",["/","\"]],
-	] 
-	fin 
-	"""
-	if pilot_specie[0] == "Gatashi":
-		skin_color = 7  #Negro
-		#skin_color = 13 #  Naranja
-		#skin_color = 15 #  Gris
-		main_stat = "Max HP"	
-	if pilot_specie[0] == "Diablo":
-		skin_color = 5 #Rojo
-		#skin_color = 6 # Rosa 
-		#skin_color = 4 #  Violeta
-		main_stat = "Speed"
-	if pilot_specie[0] == "Humano":
-		skin_color = 0 
-		#skin_color = 17 #Morocho
-		#skin_color = 18 #Asiatico
-		#skin_color = 11 #Amarillo
-		main_stat = "Damage"
-	if pilot_specie[0] == "Marciano":
-		skin_color = 9 # Azul
-		#skin_color = 8 # Otro Celeste
-		#skin_color = 10 # Verde Claro
-		#skin_color = 16 # Verde Oscuro
-		main_stat = "Max Energy"
-	if pilot_specie[0] == "Androide":
-		#skin_color = 14 # blanco
-		skin_color = 2 #Celeste
-		#skin_color = 3 # Otro Celeste
-		#skin_color = 12 #Otro amarillo
-		main_stat = "Recovery Speed"
+	pilot_data.add_text("[b]HÁBITOS | INTERESES[/b]" + '\n[rainbow freq=0.1]' + str(pilot_stats[0][1]) + " + " + str(pilot_stats[0][0]) + '[/rainbow]\n[rainbow freq=0.1]' + str(pilot_stats[1][1]) + " + " + str(pilot_stats[1][0]) + "[/rainbow]")
+
 	
 	while (main_stat == scd_stat): 
 		scd_stat = STATS[randi() % STATS.size()]
