@@ -130,12 +130,18 @@ func _randomize():
 	if randf()<0.75:
 		data["Hair/Eyes/Glasses"] = 0
 	if pilot_specie[0] == "Gatashi":
-		data["Hair/Details"] = 2
+		data["Hair/Front"] = 13
+	elif pilot_specie[0] == "Diablo":
+		data["Hair/Front"] = 14
+	elif data["Hair/Front"] >= 13:
+		data["Hair/Front"] = rand_range(0,12)
 	
 	#if "android" in portrait.get_node("Body").Sprites.keys()[data.Body].to_lower() && randf()<0.5:
 	var main_stat = pilot_specie[2]
 	#Analizar si el stat tiene que ser diferente si o si
-	var scd_stat = STATS[randi() % STATS.size()]	
+	var scd_stat = STATS[randi() % STATS.size()]
+	while (main_stat == scd_stat): 
+		scd_stat = STATS[randi() % STATS.size()]	
 	
 	#Sacar esto
 	var rarity = 5
@@ -148,16 +154,20 @@ func _randomize():
 	#Mejorar el random?
 	posible_formations.append_array(pilot_specie[3])
 	var pilot_formation = posible_formations[randi() % posible_formations.size()]
+
+	
+	# TEXTOS
 	
 	label.text = pilot_name
+	#str(data["Hair/Front"]) # 
+	
 	pilot_data.add_text('\n' + "[b][color="+ str(COLORS[skin_color][0])+"]" + pilot_specie[0] + '[/color][/b]\n' )
 	pilot_data.add_text('\n[wave]' + pilot_flavor + '[/wave]\n\n' + "Posicion Favorita: [rainbow freq=0.5 sat=10 val=20]" + pilot_formation + '[/rainbow]\n\n')
-	
+
 	pilot_data.add_text("[b]HÁBITOS | INTERESES[/b]" + '\n[rainbow freq=0.1]' + str(pilot_stats[0][1]) + " + " + str(pilot_stats[0][0]) + '[/rainbow]\n[rainbow freq=0.1]' + str(pilot_stats[1][1]) + " + " + str(pilot_stats[1][0]) + "[/rainbow]")
 
 	
-	while (main_stat == scd_stat): 
-		scd_stat = STATS[randi() % STATS.size()]
+
 	
 	data.skin_light_color = Color(COLORS[skin_color][0])
 	data.skin_dark_color = Color(COLORS[skin_color][1])
