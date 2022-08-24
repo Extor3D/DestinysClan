@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 var velocity = Vector2.ZERO
 var air_jump = true
+var max_y_speed = 400
 
 export (int) var speed = 100
 export (int) var jump_speed = -2000
@@ -21,12 +22,16 @@ func _draw():
 
 	if not is_on_floor():
 		$AnimatedSprite.animation = "falling"
+		
+func _process(delta):
+	_draw()
 
 func _physics_process(delta):
 	move_player(delta)
 	
 func move_player(delta):
 	var dir = 0
+	var snap = Vector2.DOWN * 32
 	if Input.is_action_pressed("move_right"):
 		dir += 1
 
@@ -39,18 +44,19 @@ func move_player(delta):
 		velocity.x = lerp(velocity.x, 0, friction)
 
 	velocity.y += gravity * delta
-	velocity = move_and_slide(velocity, Vector2.UP,false,4,1.5,false)
+	
 	var grounded = is_on_floor()
+	if not air_jump and is_on_floor():
+		air_jump = true
 
 	if Input.is_action_just_pressed("jump"):
 		if grounded:
 			velocity.y = jump_speed
-			air_jump = true
+			snap = Vector2.ZERO
 		elif air_jump:
-			velocity.y = -400
+			velocity.y = jump_speed
 			air_jump = false
 			
-	velocity.y = clamp(velocity.y, -400, 100)
-	_draw()
-
-
+	velocity.y = clamp(velocity.y, -400, max_y_speed)
+	
+	velocity = move_and_slide_with_snap(velocity, snap, Vector2.UP, true, 2, deg2rad(50), true)

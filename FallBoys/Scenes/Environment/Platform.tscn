@@ -5,8 +5,7 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[node name="Platform" type="RigidBody2D"]
-position = Vector2( 30, 0 )
+[node name="Platform" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

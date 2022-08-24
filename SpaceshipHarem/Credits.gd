@@ -3,6 +3,9 @@ extends Node
 # Destiny's Child Logo
 # https://www.logomaker.com/
 
+# Charybdis font
+# https://www.1001fonts.com/charybdis-font.html
+
 # Open Planet Surface Background
 # https://opengameart.org/content/pixel-art-parallax-background
 

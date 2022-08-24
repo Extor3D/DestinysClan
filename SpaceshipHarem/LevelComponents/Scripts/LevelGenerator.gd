@@ -33,7 +33,7 @@ var open_surf_scene = preload("res://Scenery/Backgrounds/OpenSurface/OnSurfOpen.
 var thin_tunnel_segment = preload("res://LevelComponents/Segments/ThinTunnelSegment.tscn")
 var asteroid_segment = preload("res://LevelComponents/Segments/DeepSpaceSegment.tscn")
 var trafficjam_segment = preload("res://LevelComponents/Segments/TrafficJamSegment.tscn")
-var DeepSpace_Segment = preload("res://LevelComponents/Segments/DeepSpaceSegment.tscn")
+var deepSpace_segment = preload("res://LevelComponents/Segments/DeepSpaceSegment.tscn")
 
 var random_boss_scene = preload("res://Enemies/Bosses/RandomBoss.tscn")
 
@@ -50,7 +50,8 @@ var bullet_hell_scene = preload("res://Enemies/BulletHellEnemy.tscn")
 var obstacle_scene = preload("res://Scenery/Obstacle.tscn")
 
 #var possible_segments = [thin_tunnel_segment, asteroid_segment,trafficjam_segment]
-var possible_segments = [DeepSpace_Segment,trafficjam_segment]
+var possible_segments = [deepSpace_segment, trafficjam_segment]
+
 func _ready():
 	rng.randomize()
 	calculate_times()
