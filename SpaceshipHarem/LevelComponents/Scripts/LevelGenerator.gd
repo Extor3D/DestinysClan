@@ -1,9 +1,7 @@
 extends Node2D
 
-enum types {OPEN = 1, HELL = 2}
 enum themes {NONE = 1, FIRE = 2, ICE = 3}
 
-export (types) var type = types.OPEN
 export (themes) var theme = themes.NONE
 export (int, 1, 10) var difficulty = 1
 
@@ -57,11 +55,7 @@ func _ready():
 	calculate_times()
 	on_surface = rng.randf() < 0.5
 	create_background(on_surface, theme)
-	match type:
-		types.OPEN:
-			create_open_level()
-		types.HELL:
-			create_hell_level()
+	create_open_level()
 			
 func calculate_times():
 	part_duration = base_time + difficulty
