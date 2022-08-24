@@ -23,14 +23,14 @@ func _ready():
 func _process(_delta):
 	movement = Vector2.ZERO
 	if Input.is_action_pressed(ship_name + "_left"):
-		movement.x = -speed
+		movement.x = -speed * Input.get_action_strength(ship_name + "_left")
 	if Input.is_action_pressed(ship_name + "_right"):
-		movement.x = speed
+		movement.x = speed * Input.get_action_strength(ship_name + "_right")
 	if Input.is_action_pressed(ship_name + "_up"):
-		movement.y = -speed
+		movement.y = -speed * Input.get_action_strength(ship_name + "_up")
 	if Input.is_action_pressed(ship_name + "_down"):
-		movement.y = speed
-	
+		movement.y = speed * Input.get_action_strength(ship_name + "_down")
+	 
 	#Invincibility color
 	if blink:
 		$ShipSprite.set_modulate(Color.crimson)
