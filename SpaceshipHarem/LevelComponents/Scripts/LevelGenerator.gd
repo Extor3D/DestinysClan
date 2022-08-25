@@ -26,6 +26,7 @@ onready var timer = $BossTimer
 var space_scene = preload("res://LevelComponents/SpaceBackground.tscn")
 var planet_scene = preload("res://Generators/World/PlanetGenerator.tscn")
 var open_surf_scene = preload("res://Scenery/Backgrounds/OpenSurface/OnSurfOpen.tscn")
+var ice_surf_scene = preload("res://Scenery/Backgrounds/IceSurface/IceSurfaceBackground.tscn")
 
 #Segments
 var thin_tunnel_segment = preload("res://LevelComponents/Segments/ThinTunnelSegment.tscn")
@@ -74,10 +75,13 @@ func create_background(on_srfce: bool, t: int):
 		background.add_child(planet)
 		background.add_child(space_back)
 	else:
-		if theme == themes.NONE:
-			var back = open_surf_scene.instance()
-			background.add_child(back)
-		
+		match theme:
+			themes.NONE:
+				var back = open_surf_scene.instance()
+				background.add_child(back)
+			themes.ICE:
+				var back = ice_surf_scene.instance()
+				background.add_child(back)
 		
 func create_open_level():
 	for i in 2:
