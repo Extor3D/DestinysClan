@@ -9,6 +9,12 @@ extends Node
 # Open Planet Surface Background
 # https://opengameart.org/content/pixel-art-parallax-background
 
+# Glacial Mountains Background
+# https://vnitti.itch.io/glacial-mountains-parallax-background
+
+# Underwater Background
+# https://ansimuz.itch.io/underwater-fantasy-pixel-art-environment
+
 # Lava tile
 # https://bepxl.art/portfolio/texturas-pixel-art/
 
