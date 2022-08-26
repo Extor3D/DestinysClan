@@ -33,6 +33,9 @@ const BLACK_COLOR = "#0f0814"
 const BUFFER_SIZE = 128
 
 const DRAGS_NAME=["Claire Geeman","Thea Terre","Tira Mendus","Deedee Sign","Sasha Sass","Enna Fincible","Siam Pathy","Phara Waye","Selly Foxx","Juju Bee","Bella Lush","Sella Stice","Claire Rickal","Melody Gale","Mistress Galore","Noë Stalgia","Chichi Swank","Bea Constrictor","May Stirius","Sam Armie","Sia Gothic","Sara Donique","Anna Conda","Sofie Moore","Elle Lectrick","Sue Burben","Eva Siff","Jo Nee","Genna Russ","Liv Lee","Connie Fidence","Barba Rouse","Kaye Bye","Eve Forric","Penny Ramma","Miss Fortune","Lea Ness","Remi Nissent","Cecil Sunshine","Miss Sanguine","Lisse Truss","Raye Bitt","Ora Kelle","Sue Missif","Sia Dellic","Ella Gants","Raye Nessance","Lucy Luck","Vye Sual","Poppy Cox","Kitsch Kitsch Bang Bang","Maggie Magma","Super Nova"]
+const OCCUPATION=["Estudiante","Monotributista","Experto en Cosas","Alma Libre",
+"Freelancer","Soy mi Propio Jefe","Arreglo Monopatines por deporte","Tu Media Naranja","De la universidad de la vida","Casi-Influencer","Contador de Estrellas"]
+
 const FLAVOR_TEXT=[" Nada de terroristas de la gramática ,  frágiles emocionales ,  Drama Queens , incultas o de higiene dudosa (en negrita). No personas llamadas Florencia, ni tener una remera que diga 'te quiero pero soy un bardo' ni un tatuaje que diga 'soltar'.",
 "Videos y fotitos para vos¡ Info x privado¡","Hola soy de Pollux 7. Tengo 27 años busco amistad y luego se ve", "Hola Buen dia a todos soy nuevite por aqui,  tengo 26 años y divorciade, busco chongo o lo que de","Me gusta viajar , el aire libre, reunirme para pasar buenos momentos. Deseo conocer gente que tenga buen humor y buenas energías"]
 
@@ -52,7 +55,7 @@ onready var secondary_material: ShaderMaterial = $Viewport/Portrait/Cloths/Secon
 onready var detail_material: ShaderMaterial = $Viewport/Portrait/Cloths/Details.material
 onready var eye_material: ShaderMaterial = $Viewport/Portrait/Hair/Eyes.material
 onready var hair_material: ShaderMaterial = $Viewport/Portrait/Hair.material
-onready var label:= $Label
+onready var label:= $MarginContainer/HBoxContainer/Label
 onready var pilot_data:= $Pilot_data
 
 
@@ -144,10 +147,13 @@ func _randomize():
 		scd_stat = STATS[randi() % STATS.size()]	
 	
 	#Sacar esto
-	var rarity = 5
+	var rarity = 5  #Legendary: 6
+	var plus = 0
+	if (int(rarity) % 2) == 1:
+		plus += 1
 	
 	
-	var pilot_stats = [[rarity/2,main_stat],[rarity/4,scd_stat]]
+	var pilot_stats = [[(rarity/2 + plus  ),main_stat],[floor(rarity/2),scd_stat]]
 	var posible_colors = pilot_specie[1]
 	skin_color =  posible_colors[randi() % posible_colors.size()]	
 	var posible_formations = COMMON_FORMS
@@ -157,8 +163,11 @@ func _randomize():
 
 	
 	# TEXTOS
+	var pilot_age = int(rand_range(18,39))
+	var pilot_distance = stepify(rand_range(45,95), 0.01)
+	var pilot_occupattion = OCCUPATION[randi() % OCCUPATION.size()]
 	
-	label.text = pilot_name
+	label.text = pilot_name +" , " + str(pilot_age) + ".\n  " + pilot_occupattion+ ".\n A unos " + str(pilot_distance) + " millones de kilómetros de ti."
 	#str(data["Hair/Front"]) # 
 	
 	pilot_data.add_text('\n' + "[b][color="+ str(COLORS[skin_color][0])+"]" + pilot_specie[0] + '[/color][/b]\n' )

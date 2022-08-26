@@ -47,17 +47,6 @@ margin_right = -572.0
 margin_bottom = -16.0
 custom_styles/panel = SubResource( 2 )
 
-[node name="Label" type="Label" parent="."]
-margin_left = 393.0
-margin_top = 8.0
-margin_right = 571.0
-margin_bottom = 45.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-size_flags_stretch_ratio = 3.02
-text = "Piloto"
-align = 1
-
 [node name="Profile_Title" type="RichTextLabel" parent="."]
 margin_left = 393.0
 margin_top = 58.0
@@ -74,3 +63,27 @@ margin_right = 618.0
 margin_bottom = 354.0
 bbcode_enabled = true
 script = ExtResource( 3 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 26.0
+margin_top = 289.0
+margin_right = 297.0
+margin_bottom = 347.0
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+margin_right = 271.0
+margin_bottom = 58.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 271.0
+margin_bottom = 58.0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+margin_right = 37.0
+margin_bottom = 14.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 3.02
+text = "Piloto"
+align = 1
+valign = 3
