@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Enemies/Weapons/EnemyBomb.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/Sprites/Objects/bomb.png" type="Texture" id=2]
+
+[node name="Bomb" type="Node2D"]
+script = ExtResource( 1 )
+radius = 20
+
+[node name="BombSprite" type="Sprite" parent="."]
+z_index = 1
+texture = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

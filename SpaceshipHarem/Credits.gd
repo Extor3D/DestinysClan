@@ -6,6 +6,9 @@ extends Node
 # Charybdis font
 # https://www.1001fonts.com/charybdis-font.html
 
+# Explosion Animation
+# https://opengameart.org/content/explosion-animations
+
 # Open Planet Surface Background
 # https://opengameart.org/content/pixel-art-parallax-background
 

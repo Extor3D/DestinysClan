@@ -7,7 +7,6 @@
 radius = 1.0
 
 [node name="BombShot" type="Node2D"]
-position = Vector2( 299, 164 )
 script = ExtResource( 1 )
 warn_time = 3.0
 radius = 100
