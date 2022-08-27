@@ -33,6 +33,7 @@ var thin_tunnel_segment = preload("res://LevelComponents/Segments/ThinTunnelSegm
 var asteroid_segment = preload("res://LevelComponents/Segments/DeepSpaceSegment.tscn")
 var trafficjam_segment = preload("res://LevelComponents/Segments/TrafficJamSegment.tscn")
 var deepSpace_segment = preload("res://LevelComponents/Segments/DeepSpaceSegment.tscn")
+var bomb_shower_segment = preload("res://LevelComponents/Segments/BombShowerSegment.tscn")
 
 var random_boss_scene = preload("res://Enemies/Bosses/RandomBoss.tscn")
 
@@ -88,7 +89,8 @@ func create_open_level():
 		# To test a segment, use this line and comment the "possible_segments" line
 		# Remember to declare the scene at the top of this file
 		# var s = <your_scene>
-		var s = possible_segments.pop_at(rng.randi_range(0, possible_segments.size() - 1))
+		var s = bomb_shower_segment
+		#var s = possible_segments.pop_at(rng.randi_range(0, possible_segments.size() - 1))
 		var seg = s.instance()
 		seg.difficulty = difficulty
 		seg.number = i + 1
