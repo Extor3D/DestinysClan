@@ -7,7 +7,6 @@
 z_index = -10
 z_as_relative = false
 script = ExtResource( 1 )
-type = 3
 
 [node name="Background" parent="." instance=ExtResource( 3 )]
 margin_right = 100.0

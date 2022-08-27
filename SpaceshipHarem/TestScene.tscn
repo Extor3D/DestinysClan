@@ -24,11 +24,11 @@ position = Vector2( 100, 30 )
 [node name="Intro" type="Node2D" parent="."]
 
 [node name="EnemyTimer" parent="Intro" instance=ExtResource( 4 )]
-wait_time = 1.0
+wait_time = 0.5
 scene = ExtResource( 7 )
 scene_variables = {
-"health": 5,
-"speed": 100.0
+"health": 20,
+"speed": 300.0
 }
 height = 60
 
