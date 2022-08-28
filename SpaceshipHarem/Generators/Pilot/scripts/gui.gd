@@ -33,14 +33,16 @@ const BLACK_COLOR = "#0f0814"
 const BUFFER_SIZE = 128
 
 const DRAGS_NAME=["Claire Geeman","Thea Terre","Tira Mendus","Deedee Sign","Sasha Sass","Enna Fincible","Siam Pathy","Phara Waye","Selly Foxx","Juju Bee","Bella Lush","Sella Stice","Claire Rickal","Melody Gale","Mistress Galore","Noë Stalgia","Chichi Swank","Bea Constrictor","May Stirius","Sam Armie","Sia Gothic","Sara Donique","Anna Conda","Sofie Moore","Elle Lectrick","Sue Burben","Eva Siff","Jo Nee","Genna Russ","Liv Lee","Connie Fidence","Barba Rouse","Kaye Bye","Eve Forric","Penny Ramma","Miss Fortune","Lea Ness","Remi Nissent","Cecil Sunshine","Miss Sanguine","Lisse Truss","Raye Bitt","Ora Kelle","Sue Missif","Sia Dellic","Ella Gants","Raye Nessance","Lucy Luck","Vye Sual","Poppy Cox","Kitsch Kitsch Bang Bang","Maggie Magma","Super Nova"]
+const OTHER_NAME=["Rene Gado","Sasha Mado","Ariel Ganado","Connie Modo", "Andrea Eaeaea" , "Charlie Mon"]
+
 const OCCUPATION=["Estudiante","Monotributista","Experto en Cosas","Alma Libre",
 "Freelancer","Soy mi Propio Jefe","Arreglo Monopatines por deporte","Tu Media Naranja","De la universidad de la vida","Casi-Influencer","Contador de Estrellas"]
 
-const FLAVOR_TEXT=[" Nada de terroristas de la gramática ,  frágiles emocionales ,  Drama Queens , incultas o de higiene dudosa (en negrita). No personas llamadas Florencia, ni tener una remera que diga 'te quiero pero soy un bardo' ni un tatuaje que diga 'soltar'.",
+const FLAVOR_TEXT=[" Nada de terroristas de la gramática ,  frágiles emocionales ,  Drama Queens , incultxs o de higiene dudosa. No personas llamadas Florencia, ni tener una remera que diga 'te quiero pero soy un bardo' ni un tatuaje que diga 'soltar'.",
 "Videos y fotitos para vos¡ Info x privado¡","Hola soy de Pollux 7. Tengo 27 años busco amistad y luego se ve", "Hola Buen dia a todos soy nuevite por aqui,  tengo 26 años y divorciade, busco chongo o lo que de","Me gusta viajar , el aire libre, reunirme para pasar buenos momentos. Deseo conocer gente que tenga buen humor y buenas energías"]
 
 #const SPECIES = ["Gatashi","Diablo","Humano","Marciano","Androide"]
-const SPECIES = [["Gatashi",[7,13,15],"Max HP",["Y","G"]],["Diablo",[5,6,4],"Speed",["O","X"]],	["Humano",[17,18,11],"Damage",["F1","F2"]],	["Marciano",[9,8,10,16],"Max Energy",["M","W"]],["Androide",[2,3,12,14],"Recovery Speed",["B1","B2"]]] 
+const SPECIES = [["Gatashi",[7,13,15],"Max HP",["Y","G"],"cat_ship.png"],["Diablo",[5,6,4],"Speed",["O","X"],"diablo_ship.png"],	["Humano",[17,18,11],"Damage",["F1","F2"],"human_ship.png"],	["Marciano",[9,8,10,16],"Max Energy",["M","W"],"martian_ship.png"],["Androide",[2,3,12,14],"Recovery Speed",["B1","B2"],"android_ship.png"]] 
 const STATS = ["Max HP","Speed","Damage","Max Energy","Recovery Speed"]
 const COMMON_FORMS = ["D","U","C","A","L"]
 
@@ -58,6 +60,7 @@ onready var hair_material: ShaderMaterial = $Viewport/Portrait/Hair.material
 onready var label:= $MarginContainer/HBoxContainer/Label
 onready var pilot_data:= $Pilot_data
 
+#var test_ship = preload("res://Enemies/Sprites/Races/diablo_ship.png")
 
 func _randomize():
 	
@@ -65,9 +68,8 @@ func _randomize():
 	var pilot_specie = SPECIES[randi() % SPECIES.size()]
 	var pilot_name = DRAGS_NAME[randi() % DRAGS_NAME.size()]
 	var pilot_flavor = FLAVOR_TEXT[randi() % FLAVOR_TEXT.size()]
-
-	# Si es humano
-	var skin_color = max(randi()%3-1, 0)
+	var pilot_ship = load("res://Enemies/Sprites/Races/" + pilot_specie[4])
+	var skin_color = 0
 
 	type = TYPES[randi() % TYPES.size()]
 	
@@ -162,7 +164,7 @@ func _randomize():
 	var pilot_formation = posible_formations[randi() % posible_formations.size()]
 
 	
-	# TEXTOS
+	# PERFIL DEL CANDIDATO
 	var pilot_age = int(rand_range(18,39))
 	var pilot_distance = stepify(rand_range(45,95), 0.01)
 	var pilot_occupattion = OCCUPATION[randi() % OCCUPATION.size()]
@@ -175,9 +177,12 @@ func _randomize():
 
 	pilot_data.add_text("[b]HÁBITOS | INTERESES[/b]" + '\n[rainbow freq=0.1]' + str(pilot_stats[0][1]) + " + " + str(pilot_stats[0][0]) + '[/rainbow]\n[rainbow freq=0.1]' + str(pilot_stats[1][1]) + " + " + str(pilot_stats[1][0]) + "[/rainbow]")
 
-	
+	$Ship.texture = pilot_ship
+	$Ship.modulate = Color(COLORS[hair_color][0]) #Color(0.07, 0.15, 0.07)
+	$Ship.modulate.a = 1
+	$Ship.modulate.s = 1
 
-	
+	# ARMAR EL RETRATO
 	data.skin_light_color = Color(COLORS[skin_color][0])
 	data.skin_dark_color = Color(COLORS[skin_color][1])
 	data.skin_shadow_color = Color(COLORS[skin_color][2])

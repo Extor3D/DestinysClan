@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bomb_sound2.wav-0cba36fc2774a2d3e8dcbe8ad87f3bc8.sample"
+
+[deps]
+
+source_file="res://Enemies/Sounds/bomb_sound2.wav"
+dest_files=[ "res://.import/bomb_sound2.wav-0cba36fc2774a2d3e8dcbe8ad87f3bc8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

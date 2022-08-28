@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Generators/Pilot/scenes/portrait.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Generators/Pilot/scripts/gui.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Generators/Pilot/scenes/Background/romboid.png" type="Texture" id=4]
 [ext_resource path="res://Generators/Pilot/scenes/Background/profile.PNG" type="Texture" id=5]
 [ext_resource path="res://Generators/Pilot/scenes/Background/description.PNG" type="Texture" id=6]
+[ext_resource path="res://Enemies/Sprites/ship-0011.png" type="Texture" id=7]
 
 [sub_resource type="ViewportTexture" id=1]
 viewport_path = NodePath("Viewport")
@@ -23,8 +24,8 @@ anchor_bottom = 1.0
 script = ExtResource( 2 )
 
 [node name="Romboid" type="Sprite" parent="."]
-position = Vector2( 324.534, 178.457 )
-scale = Vector2( 1.06777, 1.1245 )
+position = Vector2( 324.035, 178.457 )
+scale = Vector2( 1.06942, 1.1245 )
 texture = ExtResource( 4 )
 
 [node name="Description" type="Sprite" parent="Romboid"]
@@ -105,3 +106,8 @@ size_flags_stretch_ratio = 3.02
 text = "Piloto"
 align = 1
 valign = 3
+
+[node name="Ship" type="Sprite" parent="."]
+modulate = Color( 0.07, 0.15, 0.07, 1 )
+position = Vector2( 605, 319 )
+texture = ExtResource( 7 )
