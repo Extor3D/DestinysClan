@@ -33,16 +33,12 @@ var sub_boss_segment = preload("res://LevelComponents/Segments/SubBossSegment.ts
 var random_boss_scene = preload("res://Enemies/Bosses/RandomBoss.tscn")
 
 #Components Scenes
-var tunnel_scene = preload("res://LevelComponents/VectorTunnel.tscn")
-var spawner_scene = preload("res://LevelComponents/Spawner.tscn")
 var swarmer_scene = preload("res://LevelComponents/SwarmSegment.tscn")
 
 #Objects Scenes
 export (PackedScene) var enemy_scene = preload("res://Enemies/Enemy.tscn")
 export (PackedScene) var secondary_scene = preload("res://Enemies/Enemy.tscn")
 export (PackedScene) var tertiary_scene = preload("res://Enemies/Enemy.tscn")
-var bullet_hell_scene = preload("res://Enemies/BulletHellEnemy.tscn")
-var obstacle_scene = preload("res://Scenery/Obstacle.tscn")
 
 var possible_segments = [thin_tunnel_segment, 
 						asteroid_segment, 
@@ -92,45 +88,6 @@ func create_level():
 		play_area.add_child(seg)
 		
 	segments[0].start_segment()
-	
-func create_hell_level():
-	var spawner1 = add_hell_sub_boss(true)
-	var spawner2 = add_hell_sub_boss(false)
-	spawner1.connect("spawner_cleared", spawner2, "start_timer")
-	var spawner3 = add_hell_sub_boss(false)
-	spawner2.connect("spawner_cleared", spawner3, "start_timer")
-	
-func add_hell_sub_boss(on_ready):
-	var spawner = spawner_scene.instance()
-	spawner.scene = bullet_hell_scene
-	var vars = {"speed": 100,
-				"health": 50 + difficulty * 10,
-				"difficulty": difficulty }
-	spawner.scene_variables = vars
-	spawner.y_center = 180
-	spawner.height = 1
-	spawner.start_time = 0
-	spawner.duration = 1
-	spawner.warning = false
-	spawner.set_wait_time(0.8)
-	spawner.start_on_ready = on_ready
-	play_area.add_child(spawner)
-	return spawner
-	
-	
-func create_spawner(part, start, duration):
-	var spawner = spawner_scene.instance()
-	spawner.scene = enemy_scene
-	var vars = {"speed": 60 + difficulty*5,
-				"health": 1}
-	spawner.scene_variables = vars
-	spawner.y_center = 180
-	spawner.height = 80
-	spawner.start_time = start
-	spawner.duration = duration
-	spawner.warning = false
-	spawner.set_wait_time(4.35 - 0.35 * difficulty)
-	part.add_child(spawner)
 
 func add_swarm(part, start, duration):
 	var swarmer = swarmer_scene.instance()
