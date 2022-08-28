@@ -7,16 +7,16 @@ export (int, 1, 100) var radius = 30
 
 onready var timer = $WarningTimer
 onready var explosion = $ExplosionRange
-onready var sound:= $AudioStreamPlayer2D
+onready var sound = $AudioStreamPlayer2D
 
 
 var exp_effect : PackedScene = preload("res://Effects/Explosion.tscn")
-var ExplotionSound = preload("res://Enemies/Sounds/bomb_sound2.wav")
 
 
 func _ready():
 	explosion.get_node("CollisionShape2D").shape.radius = radius
 	timer.start(warn_time)
+	sound.play()
 
 func _process(_delta):
 	update()
@@ -24,9 +24,7 @@ func _process(_delta):
 func _draw():
 	draw_circle(Vector2(0,0), radius, Color(1, 0.1, 0.1, 0.5))
 	draw_circle(Vector2(0,0), lerp(0, radius, (warn_time - timer.time_left) / warn_time), Color.red)
-	if !sound.is_playing():
-		sound.stream = ExplotionSound
-		sound.play()
+
 
 func _on_WarningTimer_timeout():
 	var eff = exp_effect.instance()

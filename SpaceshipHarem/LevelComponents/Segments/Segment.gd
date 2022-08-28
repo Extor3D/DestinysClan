@@ -1,7 +1,6 @@
 extends Node2D
 class_name Segment
 
-signal last_segment
 signal segment_ended(number)
 
 export(int, 1, 10) var difficulty = 1

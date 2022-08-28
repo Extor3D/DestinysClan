@@ -12,7 +12,7 @@ var warn_time = 1
 func start_segment():
 	rng.randomize()
 	var time = 15 + difficulty * 2
-	var bomb_time = 1 - float(difficulty)/12
+	var bomb_time = 0.85 - float(difficulty)/20
 	rad = 60 - difficulty * 2
 	timer.start(time)
 	bomb_timer.start(bomb_time)

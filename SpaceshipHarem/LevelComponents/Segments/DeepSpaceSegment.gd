@@ -18,13 +18,15 @@ var types = [
 [{"yspeed": 70  -difficulty*3,"xspeed": -70 ,"cadence":100,"rotation_degrees": 315},[400,-50,50,50],"DIAG4"]
 ]
 
+var spawners = []
+
 var rng = RandomNumberGenerator.new()
 
 func start_segment():
 	var time = 15 + difficulty * 2
-	add_enemy_group(time/3,3,primary_enemy_scene)
-	add_enemy_group(time/3,time/3,secondary_enemy_scene)
-	add_enemy_group(time/3,time * 2/3,tertiary_enemy_scene)
+	spawners.append(add_enemy_group(time/3,3,primary_enemy_scene))
+	spawners.append(add_enemy_group(time/3,time/3,secondary_enemy_scene))
+	spawners.append(add_enemy_group(time/3,time * 2/3,tertiary_enemy_scene))
 	timer.start(time)
 	
 func _on_SegmentTime_timeout():
@@ -47,3 +49,4 @@ func add_enemy_group(duration,start,enemy):
 	spawner.warning = false
 	spawner.set_wait_time(1.35 - 0.2 * difficulty)
 	add_child(spawner)
+	return spawner

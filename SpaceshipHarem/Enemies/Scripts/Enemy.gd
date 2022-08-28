@@ -3,7 +3,7 @@ extends KinematicBody2D
 export(float) var speed = 100
 export(int) var health = 10
 export(float) var cadence = 2
-onready var sound:= $AudioStreamPlayer2D
+onready var sound = $AudioStreamPlayer2D
 var shot_scene = preload("res://Enemies/Shots/EnemyShot.tscn")
 
 func _physics_process(delta):
@@ -13,7 +13,6 @@ func _ready():
 	$ShotTimer.start(cadence)
 
 func take_damage(damage):
-	#Add damage sound here
 	sound.play()
 	health -= damage
 	if health <= 0:

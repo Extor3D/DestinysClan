@@ -7,13 +7,6 @@ export (int, 1, 10) var difficulty = 1
 
 var rng = RandomNumberGenerator.new()
 
-var base_time = 20
-var part_duration
-var mid_start
-var end_start
-var finish
-var interlude_time = 5
-
 var on_surface = true
 
 var segments = []
@@ -32,8 +25,10 @@ var ice_surf_scene = preload("res://Scenery/Backgrounds/IceSurface/IceSurfaceBac
 var thin_tunnel_segment = preload("res://LevelComponents/Segments/ThinTunnelSegment.tscn")
 var asteroid_segment = preload("res://LevelComponents/Segments/DeepSpaceSegment.tscn")
 var trafficjam_segment = preload("res://LevelComponents/Segments/TrafficJamSegment.tscn")
-var deepSpace_segment = preload("res://LevelComponents/Segments/DeepSpaceSegment.tscn")
+var deep_space_segment = preload("res://LevelComponents/Segments/DeepSpaceSegment.tscn")
 var bomb_shower_segment = preload("res://LevelComponents/Segments/BombShowerSegment.tscn")
+var bomber_segment = preload("res://LevelComponents/Segments/BomberEnemiesSegment.tscn")
+var sub_boss_segment = preload("res://LevelComponents/Segments/SubBossSegment.tscn")
 
 var random_boss_scene = preload("res://Enemies/Bosses/RandomBoss.tscn")
 
@@ -49,22 +44,21 @@ export (PackedScene) var tertiary_scene = preload("res://Enemies/Enemy.tscn")
 var bullet_hell_scene = preload("res://Enemies/BulletHellEnemy.tscn")
 var obstacle_scene = preload("res://Scenery/Obstacle.tscn")
 
-#var possible_segments = [thin_tunnel_segment, asteroid_segment,trafficjam_segment]
-var possible_segments = [deepSpace_segment, trafficjam_segment]
+var possible_segments = [thin_tunnel_segment, 
+						asteroid_segment, 
+						trafficjam_segment,
+						deep_space_segment,
+						bomb_shower_segment,
+						bomber_segment,
+						sub_boss_segment]
+
 
 func _ready():
 	rng.randomize()
-	calculate_times()
 	on_surface = rng.randf() < 0.5
 	create_background(on_surface, theme)
-	create_open_level()
+	create_level()
 			
-func calculate_times():
-	part_duration = base_time + difficulty
-	mid_start = part_duration
-	end_start = mid_start + interlude_time + part_duration
-	finish = end_start + interlude_time + part_duration
-	
 func create_background(on_srfce: bool, t: int):
 	if not on_srfce:
 		var space_back = space_scene.instance()
@@ -84,13 +78,12 @@ func create_background(on_srfce: bool, t: int):
 				var back = ice_surf_scene.instance()
 				background.add_child(back)
 		
-func create_open_level():
-	for i in 2:
+func create_level():
+	for i in 3:
 		# To test a segment, use this line and comment the "possible_segments" line
 		# Remember to declare the scene at the top of this file
 		# var s = <your_scene>
-		var s = bomb_shower_segment
-		#var s = possible_segments.pop_at(rng.randi_range(0, possible_segments.size() - 1))
+		var s = possible_segments.pop_at(rng.randi_range(0, possible_segments.size() - 1))
 		var seg = s.instance()
 		seg.difficulty = difficulty
 		seg.number = i + 1
@@ -124,8 +117,6 @@ func add_hell_sub_boss(on_ready):
 	play_area.add_child(spawner)
 	return spawner
 	
-func create_start_part(start):
-	create_spawner(start, 0, part_duration)
 	
 func create_spawner(part, start, duration):
 	var spawner = spawner_scene.instance()
@@ -162,7 +153,7 @@ func spawn_boss():
 	play_area.add_child(boss)
 	
 func next_segment(n):
-	if segments.size() <= n:
+	if n >= segments.size():
 		timer.start(5)
 	else:
 		segments[n].start_segment()

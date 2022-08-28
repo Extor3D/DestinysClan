@@ -24,12 +24,12 @@ var types = [
 [{"yspeed": 70  -difficulty*3,"xspeed": -70 ,"cadence":100,"rotation_degrees": 315},[400,-50,50,50],"DIAG4"]
 ] # Hacia Abajo
 
+var spawners = []
 
 func start_segment():
 	var time = 30 + difficulty * 2
 	var ways = types.size()
 	var previous_ways = []
-	var rng = RandomNumberGenerator.new()
 	var way_passed = 3
 	rng.randomize()
 	
@@ -44,7 +44,7 @@ func start_segment():
 				way_id = way[2]
 				print("Repetido")
 			previous_ways.append(way_id)
-			add_traffic_line(time/3,way_passed,primary_enemy_scene,way)
+			spawners.append(add_traffic_line(time/3,way_passed,primary_enemy_scene,way))
 		#add_traffic_line(time/3,time/3,primary_enemy_scene,way)
 		#add_enemy_group(time/3,time * 2/3,primary_enemy_scene,way)
 		way_passed += time/3
@@ -52,6 +52,8 @@ func start_segment():
 	timer.start(time)	
 	
 func _on_SegmentTime_timeout():
+	for s in spawners:
+		s.stop()
 	end_segment()
 	
 func _ready():
@@ -61,10 +63,7 @@ func add_traffic_line(duration,start,enemy,line):
 	var spawner = spawner_scene.instance()
 	spawner.scene = enemy
 	var vars = line[0]
-
 	spawner.scene_variables = vars
-	
-
 	spawner.y_center = line[1][0]
 	spawner.x_center = line[1][1]
 	spawner.height = line[1][2]
@@ -74,3 +73,4 @@ func add_traffic_line(duration,start,enemy,line):
 	spawner.warning = true
 	spawner.set_wait_time(2.35 - 0.2 * difficulty)
 	add_child(spawner)
+	return spawner
