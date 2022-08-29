@@ -1,5 +1,7 @@
 extends Node2D
 
+signal new_segment(number)
+
 enum themes {NONE = 1, FIRE = 2, ICE = 3}
 
 export (themes) var theme = themes.NONE
@@ -114,4 +116,5 @@ func next_segment(n):
 		timer.start(5)
 	else:
 		segments[n].start_segment()
+	emit_signal("new_segment", n)
 

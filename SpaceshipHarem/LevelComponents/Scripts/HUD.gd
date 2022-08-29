@@ -2,6 +2,7 @@ extends Node2D
 
 onready var hp_bar = $HPBar
 onready var en_bar = $EnergyBar
+onready var level = get_parent()
 
 var hp_length = 200
 var hp_top = 10
@@ -15,8 +16,16 @@ var en_left = 10
 var en_height = 5
 var en_slope = 5
 
+var segments_bars = []
+var segment_dist : float = 2
+var segment_top = 10
+var segment_height = 15
+var segment_slope = 15
+var segment_left = 220
+var segment_length = 200
+
 func _ready():
-	pass
+	level.connect("new_segment", self, "paint_segment")
 
 func _process(_delta):
 	#If the Player is still alive, we get the energy and health from it
@@ -29,7 +38,25 @@ func _process(_delta):
 		draw_bar(en_left, en_top, en_height, en_slope, perc_en * en_length, en_bar, get_col_array(Color.red, Color.green, perc_en))
 	else:
 		draw_bar(hp_left, hp_top, hp_height, hp_slope, 0, hp_bar, get_col_array(Color.red, Color.yellow, 0))
-
+	
+	if segments_bars.empty():
+		for i in level.segments.size():
+			var segment = Polygon2D.new()
+			draw_segment_bar(segment, i, level.segments.size())
+			segments_bars.append(segment)
+			add_child(segment)
+			paint_segment(0)
+			
+func paint_segment(n):
+	for i in segments_bars.size():
+		var s = segments_bars[i]
+		if n >= segments_bars.size():
+			s.set_vertex_colors(get_col_array(Color.red, Color.red, 1))
+		elif n == i:
+			s.set_vertex_colors(get_col_array(Color.yellow, Color.yellow, 1))
+		else:
+			s.set_vertex_colors(get_col_array(Color.green, Color.green, 1))
+			
 func draw_bar(left, top, height, slope, length, bar, col):
 	var poly : Array = []
 	poly.append(Vector2(left, top + height))
@@ -38,6 +65,34 @@ func draw_bar(left, top, height, slope, length, bar, col):
 	poly.append(Vector2(left + length, top + height))
 	bar.set_polygon(PoolVector2Array(poly))
 	bar.set_vertex_colors(col)
+	
+func draw_segment_bar(s, i, n):
+	var poly : Array = []
+	var top_left = Vector2(segment_left + segment_slope + i * float((segment_length - segment_slope) / n) + segment_dist, segment_top)
+	var top_right = Vector2(segment_left + segment_slope + (i + 1) * float((segment_length - segment_slope) / n) - segment_dist, segment_top)
+	var bot_left = Vector2(segment_left + i * (float(segment_length + segment_slope) / n) + segment_dist, segment_top + segment_height)
+	var bot_right = Vector2(segment_left + (i + 1) * (float(segment_length + segment_slope) / n) - segment_dist, segment_top + segment_height)
+	
+	poly.append(bot_left)
+	poly.append(top_left)
+	poly.append(top_right)
+	poly.append(bot_right)
+	s.set_polygon(poly)
+	s.set_vertex_colors(get_col_array(Color.green, Color.green, 1))
+
+func draw_segments_bar(s):
+	var poly : Array = []
+	var top = 10
+	var height = 20
+	var slope = 20
+	var left = 220
+	var length = 200
+	poly.append(Vector2(left, top + height))
+	poly.append(Vector2(left + slope, top))
+	poly.append(Vector2(left - slope + length, top))
+	poly.append(Vector2(left + length, top + height))
+	s.set_polygon(poly)
+	s.set_vertex_colors(get_col_array(Color.green, Color.green, 1))
 	
 func get_col_array(start_col, end_col, perc):
 	var array : PoolColorArray = []
