@@ -1,9 +1,7 @@
 extends Node2D
 class_name SpaceBackground
 
-enum types {SPACE = 1, FIRE = 2, ICE = 3}
-
-export (types) var type = types.SPACE
+export (Global.themes) var theme = Global.themes.LAND
 
 onready var background = $Background
 onready var dust_scroll = $DustScroll
@@ -82,12 +80,12 @@ func _ready():
 	planets.toggle_transparancy()
 	planets.generate_new()
 	
-	match type:
-		types.SPACE:
+	match theme:
+		Global.themes.LAND:
 			select_colorscheme(background, space_color)
-		types.FIRE:
+		Global.themes.FIRE:
 			select_colorscheme(background, fire_color)
-		types.ICE:
+		Global.themes.ICE:
 			select_colorscheme(background, cold_color)
 	
 	

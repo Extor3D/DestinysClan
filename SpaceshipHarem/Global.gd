@@ -1,10 +1,19 @@
 extends Node
 
+enum themes {LAND = 1, FIRE = 2, ICE = 3}
+
 var current_scene = null
 
+var rng = RandomNumberGenerator.new()
 var level = 1
+var current_difficulty = 1
+var current_theme = themes.LAND
+
+func get_random_theme_key():
+	return themes.keys()[rng.randi() % themes.size()]
 
 func _ready():
+	rng.randomize()
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() - 1)
 

@@ -2,9 +2,7 @@ extends Node2D
 
 signal new_segment(number)
 
-enum themes {NONE = 1, FIRE = 2, ICE = 3}
-
-export (themes) var theme = themes.NONE
+export (Global.themes) var theme = Global.themes.LAND
 export (int, 1, 10) var difficulty = 1
 
 var rng = RandomNumberGenerator.new()
@@ -54,13 +52,15 @@ var possible_segments = [thin_tunnel_segment,
 func _ready():
 	rng.randomize()
 	on_surface = rng.randf() < 0.5
-	create_background(on_surface, theme)
+	difficulty = Global.current_difficulty
+	theme = Global.current_theme
+	create_background(on_surface)
 	create_level()
 			
-func create_background(on_srfce: bool, t: int):
+func create_background(on_srfce: bool):
 	if not on_srfce:
 		var space_back = space_scene.instance()
-		space_back.type = t
+		space_back.theme = theme
 		var planet = planet_scene.instance()
 		planet.theme = theme
 		planet.size = 2000
@@ -69,10 +69,10 @@ func create_background(on_srfce: bool, t: int):
 		background.add_child(space_back)
 	else:
 		match theme:
-			themes.NONE:
+			Global.themes.LAND:
 				var back = open_surf_scene.instance()
 				background.add_child(back)
-			themes.ICE:
+			Global.themes.ICE:
 				var back = ice_surf_scene.instance()
 				background.add_child(back)
 		
