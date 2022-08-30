@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cat_ship.png-955077fee5694c00bcbc046f86a3bff3.stex"
+path="res://.import/android_ship.png-6cb1540ecf36cb7212de6313896b3dd3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Sprites/Races/cat_ship.png"
-dest_files=[ "res://.import/cat_ship.png-955077fee5694c00bcbc046f86a3bff3.stex" ]
+source_file="res://Player/Sprites/Races/android_ship.png"
+dest_files=[ "res://.import/android_ship.png-6cb1540ecf36cb7212de6313896b3dd3.stex" ]
 
 [params]
 

@@ -68,7 +68,7 @@ func _randomize():
 	var pilot_specie = SPECIES[randi() % SPECIES.size()]
 	var pilot_name = DRAGS_NAME[randi() % DRAGS_NAME.size()]
 	var pilot_flavor = FLAVOR_TEXT[randi() % FLAVOR_TEXT.size()]
-	var pilot_ship = load("res://Enemies/Sprites/Races/" + pilot_specie[4])
+	var pilot_ship = load("res://Player/Sprites/Races/" + pilot_specie[4])
 	var skin_color = 0
 
 	type = TYPES[randi() % TYPES.size()]

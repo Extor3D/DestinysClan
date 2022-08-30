@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/diablo_ship.png-eace1d4d7b6ec43821e15dca0101023a.stex"
+path="res://.import/cat_ship.png-eac0b1b6c8c70b47e1dd17bf47302d2a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Sprites/Races/diablo_ship.png"
-dest_files=[ "res://.import/diablo_ship.png-eace1d4d7b6ec43821e15dca0101023a.stex" ]
+source_file="res://Player/Sprites/Races/cat_ship.png"
+dest_files=[ "res://.import/cat_ship.png-eac0b1b6c8c70b47e1dd17bf47302d2a.stex" ]
 
 [params]
 
