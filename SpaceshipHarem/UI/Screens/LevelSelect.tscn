@@ -16,7 +16,7 @@ alignment = 1
 margin_right = 440.0
 margin_bottom = 17.0
 custom_fonts/font = ExtResource( 2 )
-text = "Select level"
+text = "Select next stage"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
@@ -62,14 +62,14 @@ margin_right = 170.0
 margin_bottom = 142.0
 
 [node name="Diff" type="Label" parent="VBoxContainer/HBoxContainer/Planet1Container/HBoxContainer2"]
-margin_right = 42.0
+margin_right = 49.0
 margin_bottom = 17.0
 custom_fonts/font = ExtResource( 2 )
-text = "Level:"
+text = "Threat:"
 
 [node name="DiffVal" type="Label" parent="VBoxContainer/HBoxContainer/Planet1Container/HBoxContainer2"]
-margin_left = 46.0
-margin_right = 46.0
+margin_left = 53.0
+margin_right = 53.0
 margin_bottom = 17.0
 custom_fonts/font = ExtResource( 2 )
 
@@ -115,14 +115,14 @@ margin_right = 170.0
 margin_bottom = 142.0
 
 [node name="Diff" type="Label" parent="VBoxContainer/HBoxContainer/Planet2Container/HBoxContainer2"]
-margin_right = 42.0
+margin_right = 49.0
 margin_bottom = 17.0
 custom_fonts/font = ExtResource( 2 )
-text = "Level:"
+text = "Threat:"
 
 [node name="DiffVal" type="Label" parent="VBoxContainer/HBoxContainer/Planet2Container/HBoxContainer2"]
-margin_left = 46.0
-margin_right = 46.0
+margin_left = 53.0
+margin_right = 53.0
 margin_bottom = 17.0
 custom_fonts/font = ExtResource( 2 )
 
