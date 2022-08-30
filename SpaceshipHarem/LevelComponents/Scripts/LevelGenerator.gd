@@ -20,6 +20,7 @@ var space_scene = preload("res://LevelComponents/SpaceBackground.tscn")
 var planet_scene = preload("res://Generators/World/PlanetGenerator.tscn")
 var open_surf_scene = preload("res://Scenery/Backgrounds/OpenSurface/OnSurfOpen.tscn")
 var ice_surf_scene = preload("res://Scenery/Backgrounds/IceSurface/IceSurfaceBackground.tscn")
+var fire_surf_scene = preload("res://Scenery/Backgrounds/FireSurface/FireSurfaceBackground.tscn")
 
 #Segments
 var thin_tunnel_segment = preload("res://LevelComponents/Segments/ThinTunnelSegment.tscn")
@@ -74,6 +75,9 @@ func create_background(on_srfce: bool):
 				background.add_child(back)
 			Global.themes.ICE:
 				var back = ice_surf_scene.instance()
+				background.add_child(back)
+			Global.themes.FIRE:
+				var back = fire_surf_scene.instance()
 				background.add_child(back)
 		
 func create_level():

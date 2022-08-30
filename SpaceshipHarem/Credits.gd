@@ -15,6 +15,9 @@ extends Node
 # Glacial Mountains Background
 # https://vnitti.itch.io/glacial-mountains-parallax-background
 
+# Caves Background
+# https://ansimuz.itch.io/warped-caves
+
 # Underwater Background
 # https://ansimuz.itch.io/underwater-fantasy-pixel-art-environment
 
