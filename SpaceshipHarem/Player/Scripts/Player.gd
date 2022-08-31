@@ -6,7 +6,6 @@ export(int, 0, 10) var stat_range = 5
 export(int, 0, 10) var stat_energy = 5
 export(int, 0, 10) var stat_mind = 5
 
-export var starting_ships = 5
 var softness = 0.1
 var bias = 0
 export var cadence = 0.5
@@ -63,9 +62,11 @@ func _ready():
 	#Calculate next position
 	nextPosition = calc_next_position(chain.position, chain)
 	
-	for i in starting_ships:
+	for i in Global.current_pilots:
 		#Create ship and put it at the end of the chain
 		var s = ship_scene.instance()
+		s.specie = i.specie
+		s.main_color = i.color
 		s.position = Vector2(0, chain.get_node("CollisionShape2D").get_shape().height/2)
 		get_node(lastNode).add_child(s)
 		
@@ -102,7 +103,7 @@ func _physics_process(_delta):
 		for f in $Formations.get_children():
 			if f.energy <= energy:
 				#Calculate scaling based on number of ships
-				var s = 1 + (starting_ships * 0.1 - 0.5 )
+				var s = 1 + (Global.current_pilots.size() * 0.1 - 0.5 )
 				f.scale = Vector2(s, s)
 				f.position = get_higher_ship()
 				if is_formation_done(f):

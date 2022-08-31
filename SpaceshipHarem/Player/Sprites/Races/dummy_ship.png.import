@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ship-dummy.png-b56f0a4997183cfadb8d7803993a0582.stex"
+path="res://.import/dummy_ship.png-7378597cae6a91c1a2bd756065f066fc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Sprites/ship-dummy.png"
-dest_files=[ "res://.import/ship-dummy.png-b56f0a4997183cfadb8d7803993a0582.stex" ]
+source_file="res://Player/Sprites/Races/dummy_ship.png"
+dest_files=[ "res://.import/dummy_ship.png-7378597cae6a91c1a2bd756065f066fc.stex" ]
 
 [params]
 

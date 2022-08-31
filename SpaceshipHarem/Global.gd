@@ -1,13 +1,25 @@
 extends Node
 
 enum themes {LAND = 1, FIRE = 2, ICE = 3}
+const SPECIES = [["Gatashi",[7,13,15],"Max HP",["Y","G"],"cat_ship.png"],["Diablo",[5,6,4],"Speed",["O","X"],"diablo_ship.png"],	["Humano",[17,18,11],"Damage",["F1","F2"],"human_ship.png"],	["Marciano",[9,8,10,16],"Max Energy",["M","W"],"martian_ship.png"],["Androide",[2,3,12,14],"Recovery Speed",["B1","B2"],"android_ship.png"]] 
 
 var current_scene = null
 
+#Game globals
 var rng = RandomNumberGenerator.new()
 var level = 1
 var current_difficulty = 1
 var current_theme = themes.LAND
+
+#Player globals
+var current_pilots = []
+
+
+func get_specie_by_name(name):
+	for i in SPECIES.size():
+		if SPECIES[i][0] == name:
+			return SPECIES[i]
+	return null
 
 func get_random_theme_key():
 	return themes.keys()[rng.randi() % themes.size()]
@@ -16,6 +28,19 @@ func _ready():
 	rng.randomize()
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() - 1)
+	current_pilots.append(get_dummy_data("Dummy", Color.yellow))
+	current_pilots.append(get_dummy_data("Gatashi", Color.green))
+	current_pilots.append(get_dummy_data("Humano", Color.crimson))
+
+func get_dummy_data(sp, co):
+	var data = {
+		name = "dum",
+		formation = "P",
+		stats = [[2, "Max HP"], [1, "Speed"]],
+		color = co, 
+		specie = sp
+	}
+	return data
 
 func goto_scene(path):
 	# This function will usually be called from a signal callback,

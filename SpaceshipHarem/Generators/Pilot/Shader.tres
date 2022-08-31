@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 light_color : hint_color = vec4(1.0,0.9,0.88,1.0);
+uniform vec4 dark_color : hint_color = vec4(0.6,0.42,0.53,1.0);
+uniform vec4 shadow_color : hint_color = vec4(0.13,0.15,0.31,1.0);
+uniform vec4 white_color : hint_color = vec4(1.0,1.0,1.0,1.0);
+uniform vec4 black_color : hint_color = vec4(0.06,0.03,0.08,1.0);
+
+void fragment()
+{
+	vec4 mask = texture(TEXTURE,UV);
+	float weight = min(10.0*max(abs(mask.r-mask.g),abs(mask.b-mask.g)),1.0);
+	float value = (mask.r+mask.g+mask.b)/3.0;
+	COLOR = (dark_color*mask.r+light_color*mask.g+shadow_color*mask.b)*weight+(black_color*(1.0-value)+white_color*value)*(1.0-weight);
+	COLOR.a = mask.a;
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/light_color = Color( 0.14902, 0.14902, 0.14902, 1 )
+shader_param/dark_color = Color( 0.0588235, 0.0313726, 0.0784314, 1 )
+shader_param/shadow_color = Color( 0.13, 0.15, 0.31, 1 )
+shader_param/white_color = Color( 1, 1, 1, 1 )
+shader_param/black_color = Color( 0.06, 0.03, 0.08, 1 )

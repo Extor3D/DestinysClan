@@ -1,17 +1,52 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/Scripts/SmallShip.gd" type="Script" id=1]
-[ext_resource path="res://Player/Sprites/ship-dummy.png" type="Texture" id=2]
+[ext_resource path="res://Player/Sprites/Races/dummy_ship.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 3.16228
 
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+uniform vec4 u_light_color_key : hint_color = vec4(0.0,1.0,0.0,1.0);
+uniform vec4 u_dark_color_key : hint_color = vec4(0.5,0.5,0.0,1.0);
+uniform vec4 u_light_replacement_color : hint_color;
+uniform vec4 u_dark_replacement_color : hint_color;
+
+vec4 get_color(vec4 col, vec4 key, vec4 replacement) {
+	vec4 d4 = abs(col - key);
+    float d = max(max(d4.r, d4.g), d4.b);
+    if(d < 0.1) {
+        col = replacement;
+    }
+    return col;
+}
+
+void fragment() {
+    vec4 col = texture(TEXTURE, UV);
+	col = get_color(col, u_light_color_key, u_light_replacement_color);
+	COLOR = get_color(col, u_dark_color_key, u_dark_replacement_color);
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = SubResource( 2 )
+shader_param/u_light_color_key = Color( 0, 1, 0, 1 )
+shader_param/u_dark_color_key = Color( 0.5, 0.5, 0, 1 )
+shader_param/u_light_replacement_color = Color( 0, 0, 0, 1 )
+shader_param/u_dark_replacement_color = null
+
 [node name="SmallShip" type="Area2D"]
+position = Vector2( 48, 24 )
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="SmallShipSprite" type="Sprite" parent="."]
+material = SubResource( 3 )
 rotation = 1.5708
 texture = ExtResource( 2 )

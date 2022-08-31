@@ -27,6 +27,7 @@
 [ext_resource path="res://Generators/Pilot/scripts/beard.gd" type="Script" id=25]
 [ext_resource path="res://Generators/Pilot/scripts/details.gd" type="Script" id=26]
 [ext_resource path="res://Generators/Pilot/scripts/glasses.gd" type="Script" id=27]
+[ext_resource path="res://Generators/Pilot/Shader.tres" type="Material" id=28]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -58,14 +59,6 @@ shader_param/black_color = Color( 0.0588235, 0.0313726, 0.0784314, 1 )
 shader = SubResource( 1 )
 shader_param/light_color = Color( 1, 0.901961, 0.878431, 1 )
 shader_param/dark_color = Color( 0.6, 0.419608, 0.529412, 1 )
-shader_param/shadow_color = Color( 0.13, 0.15, 0.31, 1 )
-shader_param/white_color = Color( 1, 1, 1, 1 )
-shader_param/black_color = Color( 0.06, 0.03, 0.08, 1 )
-
-[sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 1 )
-shader_param/light_color = Color( 0.14902, 0.14902, 0.14902, 1 )
-shader_param/dark_color = Color( 0.0588235, 0.0313726, 0.0784314, 1 )
 shader_param/shadow_color = Color( 0.13, 0.15, 0.31, 1 )
 shader_param/white_color = Color( 1, 1, 1, 1 )
 shader_param/black_color = Color( 0.06, 0.03, 0.08, 1 )
@@ -110,7 +103,7 @@ texture = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Cloths" type="Sprite" parent="."]
-material = SubResource( 4 )
+material = ExtResource( 28 )
 texture = ExtResource( 4 )
 script = ExtResource( 13 )
 
