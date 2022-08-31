@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/human_ship.png-f2a5817fd1cfdebd0d8983ef5e6bbd88.stex"
+path="res://.import/human_ship.png-5ae8a8e51e84e32192b52dcaafd1f441.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Sprites/Races/human_ship.png"
-dest_files=[ "res://.import/human_ship.png-f2a5817fd1cfdebd0d8983ef5e6bbd88.stex" ]
+source_file="res://Player/Sprites/Races/human_ship.png"
+dest_files=[ "res://.import/human_ship.png-5ae8a8e51e84e32192b52dcaafd1f441.stex" ]
 
 [params]
 
