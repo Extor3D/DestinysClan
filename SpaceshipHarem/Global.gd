@@ -31,6 +31,9 @@ func _ready():
 	current_pilots.append(get_dummy_data("Dummy", Color.yellow))
 	current_pilots.append(get_dummy_data("Gatashi", Color.green))
 	current_pilots.append(get_dummy_data("Humano", Color.crimson))
+	current_pilots.append(get_dummy_data("Androide", Color.yellow))
+	current_pilots.append(get_dummy_data("Diablo", Color.orange))
+	current_pilots.append(get_dummy_data("Marciano", Color.blue))
 
 func get_dummy_data(sp, co):
 	var data = {
