@@ -3,11 +3,11 @@ extends Node
 enum themes {LAND = 1, FIRE = 2, ICE = 3}
 enum STAT_NAMES {MaxHP, Speed, Damage, MaxEnergy, RecoverySpeed}
 
-const SPECIES = [["Gatashi",[7,13,15],STAT_NAMES.MaxHP,["Y","G"],"cat_ship.png"],
-				 ["Diablo",[5,6,4],STAT_NAMES.Speed,["O","X"],"diablo_ship.png"],
-				 ["Humano",[17,18,11],STAT_NAMES.Damage,["F1","F2"],"human_ship.png"],
-				 ["Marciano",[9,8,10,16],STAT_NAMES.MaxEnergy,["M","W"],"martian_ship.png"],
-				 ["Androide",[2,3,12,14],STAT_NAMES.RecoverySpeed,["B1","B2"],"android_ship.png"]] 
+var SPECIES =   [["Gatashi",[7,13,15],STAT_NAMES.keys()[STAT_NAMES.MaxHP],["Y","G"],"cat_ship.png"],
+				 ["Diablo",[5,6,4],STAT_NAMES.keys()[STAT_NAMES.Speed],["O","X"],"diablo_ship.png"],
+				 ["Humano",[17,18,11],STAT_NAMES.keys()[STAT_NAMES.Damage],["F1","F2"],"human_ship.png"],
+				 ["Marciano",[9,8,10,16],STAT_NAMES.keys()[STAT_NAMES.MaxEnergy],["M","W"],"martian_ship.png"],
+				 ["Androide",[2,3,12,14],STAT_NAMES.keys()[STAT_NAMES.RecoverySpeed],["B1","B2"],"android_ship.png"]] 
 var current_scene = null
 
 #Game globals
