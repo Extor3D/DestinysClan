@@ -190,7 +190,15 @@ func _randomize():
 	buffer[buffer_index] = data
 	if buffer_index>BUFFER_SIZE:
 		buffer_index = 0
+		
 	
+	data.name = pilot_name
+	data.formation = pilot_formation
+	data.color = Color(COLORS[hair_color][0]) 
+	data.stats = pilot_stats
+	data.specie = pilot_specie[0]
+
+	print(data)
 	set_portrait(data)
 
 func set_portrait(data: Dictionary):
