@@ -9,8 +9,6 @@
 
 [node name="Player" type="Node2D" groups=["Player"]]
 script = ExtResource( 4 )
-stat_energy = 10
-stat_mind = 10
 
 [node name="Ship1" parent="." instance=ExtResource( 3 )]
 collision_mask = 13

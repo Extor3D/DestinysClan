@@ -42,8 +42,6 @@ const FLAVOR_TEXT=[" Nada de terroristas de la gramática ,  frágiles emocional
 "Videos y fotitos para vos¡ Info x privado¡","Hola soy de Pollux 7. Tengo 27 años busco amistad y luego se ve", "Hola Buen dia a todos soy nuevite por aqui,  tengo 26 años y divorciade, busco chongo o lo que de","Me gusta viajar , el aire libre, reunirme para pasar buenos momentos. Deseo conocer gente que tenga buen humor y buenas energías"]
 
 #const SPECIES = ["Gatashi","Diablo","Humano","Marciano","Androide"]
-const SPECIES = [["Gatashi",[7,13,15],"Max HP",["Y","G"],"cat_ship.png"],["Diablo",[5,6,4],"Speed",["O","X"],"diablo_ship.png"],	["Humano",[17,18,11],"Damage",["F1","F2"],"human_ship.png"],	["Marciano",[9,8,10,16],"Max Energy",["M","W"],"martian_ship.png"],["Androide",[2,3,12,14],"Recovery Speed",["B1","B2"],"android_ship.png"]] 
-const STATS = ["Max HP","Speed","Damage","Max Energy","Recovery Speed"]
 const COMMON_FORMS = ["D","U","C","A","L"]
 
 var buffer:= []
@@ -65,7 +63,7 @@ onready var pilot_data:= $Pilot_data
 func _randomize():
 	
 	# Seleccion de especie
-	var pilot_specie = SPECIES[randi() % SPECIES.size()]
+	var pilot_specie = Global.SPECIES[randi() % Global.SPECIES.size()]
 	var pilot_name = DRAGS_NAME[randi() % DRAGS_NAME.size()]
 	var pilot_flavor = FLAVOR_TEXT[randi() % FLAVOR_TEXT.size()]
 	var pilot_ship = load("res://Player/Sprites/Races/" + pilot_specie[4])
@@ -144,9 +142,10 @@ func _randomize():
 	#if "android" in portrait.get_node("Body").Sprites.keys()[data.Body].to_lower() && randf()<0.5:
 	var main_stat = pilot_specie[2]
 	#Analizar si el stat tiene que ser diferente si o si
-	var scd_stat = STATS[randi() % STATS.size()]
+	var scd_stat = Global.STAT_NAMES.keys()[randi() % Global.STAT_NAMES.size()]
+	#var scd_stat = STATS[randi() % STATS.size()]
 	while (main_stat == scd_stat): 
-		scd_stat = STATS[randi() % STATS.size()]	
+		scd_stat = Global.STAT_NAMES.keys()[randi() % Global.STAT_NAMES.size()]
 	
 	#Sacar esto
 	var rarity = 5  #Legendary: 6

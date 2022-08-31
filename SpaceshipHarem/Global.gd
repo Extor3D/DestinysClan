@@ -1,8 +1,13 @@
 extends Node
 
 enum themes {LAND = 1, FIRE = 2, ICE = 3}
-const SPECIES = [["Gatashi",[7,13,15],"Max HP",["Y","G"],"cat_ship.png"],["Diablo",[5,6,4],"Speed",["O","X"],"diablo_ship.png"],	["Humano",[17,18,11],"Damage",["F1","F2"],"human_ship.png"],	["Marciano",[9,8,10,16],"Max Energy",["M","W"],"martian_ship.png"],["Androide",[2,3,12,14],"Recovery Speed",["B1","B2"],"android_ship.png"]] 
+enum STAT_NAMES {MaxHP, Speed, Damage, MaxEnergy, RecoverySpeed}
 
+const SPECIES = [["Gatashi",[7,13,15],STAT_NAMES.MaxHP,["Y","G"],"cat_ship.png"],
+				 ["Diablo",[5,6,4],STAT_NAMES.Speed,["O","X"],"diablo_ship.png"],
+				 ["Humano",[17,18,11],STAT_NAMES.Damage,["F1","F2"],"human_ship.png"],
+				 ["Marciano",[9,8,10,16],STAT_NAMES.MaxEnergy,["M","W"],"martian_ship.png"],
+				 ["Androide",[2,3,12,14],STAT_NAMES.RecoverySpeed,["B1","B2"],"android_ship.png"]] 
 var current_scene = null
 
 #Game globals
@@ -39,7 +44,7 @@ func get_dummy_data(sp, co):
 	var data = {
 		name = "dum",
 		formation = "P",
-		stats = [[2, "Max HP"], [1, "Speed"]],
+		stats = [[2, STAT_NAMES.MaxHP], [1, STAT_NAMES.RecoverySpeed]],
 		color = co, 
 		specie = sp
 	}

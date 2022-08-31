@@ -1,10 +1,10 @@
 extends Node2D
 
-export(int, 0, 10) var stat_health = 5
-export(int, 0, 10) var stat_agility = 5
-export(int, 0, 10) var stat_range = 5
-export(int, 0, 10) var stat_energy = 5
-export(int, 0, 10) var stat_mind = 5
+export(int, 0, 10) var stat_health = 1
+export(int, 0, 10) var stat_agility = 1
+export(int, 0, 10) var stat_range = 1
+export(int, 0, 10) var stat_energy = 1
+export(int, 0, 10) var stat_mind = 1
 
 var softness = 0.1
 var bias = 0
@@ -34,16 +34,6 @@ func get_stat(stat, minimum, maximum):
 func _ready():
 	$ShotTimer.wait_time = cadence
 	
-	damage = get_stat(stat_range, 1, 3)
-	max_health = int(get_stat(stat_health, 5, 15))
-	max_energy = int(get_stat(stat_energy, 50, 100))
-	speed = get_stat(stat_agility, 300, 600)
-	delta_energy = get_stat(stat_mind, 0.02, 0.05)
-	
-	$Ship1.speed = speed
-	$Ship2.speed = speed
-	
-	health = max_health
 	var nextPosition = $Ship1.position
 	
 	#Variable of node a
@@ -67,6 +57,7 @@ func _ready():
 		var s = ship_scene.instance()
 		s.specie = i.specie
 		s.main_color = i.color
+		add_stats_from_ship(i)
 		s.position = Vector2(0, chain.get_node("CollisionShape2D").get_shape().height/2)
 		get_node(lastNode).add_child(s)
 		
@@ -92,6 +83,34 @@ func _ready():
 	#Attach ship and last node to joint
 	$Ship2.position = nextPosition
 	j.set_node_b(NodePath($Ship2.get_path()))
+	
+	damage = get_stat(stat_range, 1, 3)
+	max_health = int(get_stat(stat_health, 5, 15))
+	max_energy = int(get_stat(stat_energy, 50, 100))
+	speed = get_stat(stat_agility, 300, 600)
+	delta_energy = get_stat(stat_mind, 0.02, 0.05)
+	
+	$Ship1.speed = speed
+	$Ship2.speed = speed
+	
+	health = max_health
+	
+func add_stats_from_ship(s):
+	add_stat(s.stats[0][1], s.stats[0][0])
+	add_stat(s.stats[1][1], s.stats[1][0])
+	
+func add_stat(stat, amount):
+	match stat:
+		Global.STAT_NAMES.Damage:
+			stat_range = clamp(stat_range + amount, 1, 10)
+		Global.STAT_NAMES.MaxEnergy:
+			stat_energy = clamp(stat_energy + amount, 1, 10)
+		Global.STAT_NAMES.MaxHP:
+			stat_health = clamp(stat_health + amount, 1, 10)
+		Global.STAT_NAMES.RecoverySpeed:
+			stat_mind = clamp(stat_mind + amount, 1, 10)
+		Global.STAT_NAMES.Speed:
+			stat_agility = clamp(stat_agility + amount, 1, 10)
 	
 func _physics_process(_delta):
 	if collide_with_enemies():
