@@ -1,5 +1,6 @@
 extends Control
 
+var ship_scene = preload("res://Player/SmallShip.tscn")
 const TYPES = ["Female","Male"]
 const PARTS = ["Body","Cloths","Cloths/Neck","Mouth","Nose","Beard","Hair/Eyes","Hair/Brows","Hair/Eyes/Glasses","Hair","Hair/Front","BackHair","Hair/Details"]
 const COLORS = [
@@ -48,6 +49,7 @@ var buffer:= []
 var buffer_index:= 0
 var type: String = TYPES[0]
 
+onready var screen:= $Viewport
 onready var portrait:= $Viewport/Portrait
 onready var skin_material: ShaderMaterial = $Viewport/Portrait/Body.material
 onready var primary_material: ShaderMaterial = $Viewport/Portrait/Cloths.material
@@ -64,9 +66,10 @@ func _randomize():
 	
 	# Seleccion de especie
 	var pilot_specie = Global.SPECIES[randi() % Global.SPECIES.size()]
+	print(pilot_specie)
 	var pilot_name = DRAGS_NAME[randi() % DRAGS_NAME.size()]
 	var pilot_flavor = FLAVOR_TEXT[randi() % FLAVOR_TEXT.size()]
-	var pilot_ship = load("res://Player/Sprites/Races/" + pilot_specie[4])
+	#var pilot_ship = load("res://Player/Sprites/Races/" + pilot_specie[4])
 	var skin_color = 0
 
 	type = TYPES[randi() % TYPES.size()]
@@ -176,10 +179,14 @@ func _randomize():
 
 	pilot_data.add_text("[b]HÁBITOS | INTERESES[/b]" + '\n[rainbow freq=0.1]' + str(pilot_stats[0][1]) + " + " + str(pilot_stats[0][0]) + '[/rainbow]\n[rainbow freq=0.1]' + str(pilot_stats[1][1]) + " + " + str(pilot_stats[1][0]) + "[/rainbow]")
 
-	$Ship.texture = pilot_ship
-	$Ship.modulate = Color(COLORS[hair_color][0]) #Color(0.07, 0.15, 0.07)
-	$Ship.modulate.a = 1
-	$Ship.modulate.s = 1
+	var s = ship_scene.instance()
+	s.specie = pilot_specie[0]
+	s.main_color = Color(COLORS[hair_color][0]) 
+	pilot_data.add_child(s)
+	s.position = Vector2(200,250)
+	#s. = s.rotated(PI/2) # rotate 90°
+	#s.global_rotation = 1000
+	#print(s.global_rotation)
 
 	# ARMAR EL RETRATO
 	data.skin_light_color = Color(COLORS[skin_color][0])
@@ -197,7 +204,7 @@ func _randomize():
 	data.stats = pilot_stats
 	data.specie = pilot_specie[0]
 
-	print(data)
+
 	set_portrait(data)
 
 func set_portrait(data: Dictionary):
