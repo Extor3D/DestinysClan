@@ -1,6 +1,6 @@
 extends Area2D
 
-export(float) var energy = 80
+export(float) var energy = 30
 export(PackedScene) var effect_scene
 
 func do_effect(scale):

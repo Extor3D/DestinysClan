@@ -20,6 +20,7 @@ var damage
 var speed
 var ships : Array
 var chains : Array
+var forms : Array
 var ship_scene = preload("res://Player/SmallShip.tscn")
 var chain_scene = preload("res://Player/Chain.tscn")
 var shot_scene = preload("res://Player/Shot.tscn")
@@ -29,7 +30,6 @@ var is_in_formation = false
 func get_stat(stat, minimum, maximum):
 	var s = minimum + stat * (maximum - minimum) / 10 
 	return s
-	
 
 func _ready():
 	$ShotTimer.wait_time = cadence
@@ -57,6 +57,8 @@ func _ready():
 		var s = ship_scene.instance()
 		s.specie = i.specie
 		s.main_color = i.color
+		add_formation(i.formation)
+		
 		add_stats_from_ship(i)
 		s.position = Vector2(0, chain.get_node("CollisionShape2D").get_shape().height/2)
 		get_node(lastNode).add_child(s)
@@ -94,6 +96,12 @@ func _ready():
 	$Ship2.speed = speed
 	
 	health = max_health
+	
+func add_formation(id):
+	if not forms.has(id):
+		var f = Global.get_form_by_id(id)
+		$Formations.add_child(load(f.scene_path).instance())
+		forms.append(id)
 	
 func add_stats_from_ship(s):
 	add_stat(s.stats[0][1], s.stats[0][0])

@@ -1,11 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player/Sprites/ship-1.png" type="Texture" id=1]
 [ext_resource path="res://Player/Sprites/ship-2.png" type="Texture" id=2]
 [ext_resource path="res://Player/ControlledShip.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/Scripts/Player.gd" type="Script" id=4]
-[ext_resource path="res://Player/Formations/DForm.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Player/Formations/ArrowForm.tscn" type="PackedScene" id=8]
 
 [node name="Player" type="Node2D" groups=["Player"]]
 script = ExtResource( 4 )
@@ -24,10 +22,6 @@ side = 1
 sprite = ExtResource( 2 )
 
 [node name="Formations" type="Node2D" parent="."]
-
-[node name="DForm" parent="Formations" instance=ExtResource( 6 )]
-
-[node name="ArrowForm" parent="Formations" instance=ExtResource( 8 )]
 
 [node name="ShotTimer" type="Timer" parent="."]
 wait_time = 0.5
