@@ -11,9 +11,11 @@ var SPECIES =   [["Gatashi",[7,13,15],STAT_NAMES.keys()[STAT_NAMES.MaxHP],["Y","
 var current_scene = null
 
 const FORM_LOW_DEF = ">"
+const FORM_LOW_ARROW = "-"
 const FORM_DEF = "D"
 const FORM_ARROW = "A"
 const FORMATIONS = [{id = FORM_LOW_DEF, scene_path = "res://Player/Formations/LowDForm.tscn"},
+					{id = FORM_LOW_ARROW, scene_path = "res://Player/Formations/LowArrowForm.tscn"},
 					{id = FORM_DEF, scene_path = "res://Player/Formations/DForm.tscn"},
 					{id = FORM_ARROW, scene_path = "res://Player/Formations/ArrowForm.tscn"}]
 
@@ -55,7 +57,7 @@ func _ready():
 func get_dummy_data(sp, co):
 	var data = {
 		name = "dum",
-		formation = FORM_LOW_DEF,
+		formation = FORM_LOW_ARROW,
 		stats = [[2, STAT_NAMES.MaxHP], [1, STAT_NAMES.RecoverySpeed]],
 		color = co, 
 		specie = sp
