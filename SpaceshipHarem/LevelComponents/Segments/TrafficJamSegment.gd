@@ -7,7 +7,7 @@ onready var timer = $SegmentTime
 #Las diagonales solo para dificultad 5 o mas
 # Bocinazos y ruidos de trafico
 # Domingueros e Ira de Carretera para algunos autos
-
+var dificulty = Global.current_difficulty
 var spawner_scene = preload("res://LevelComponents/Spawner.tscn")
 var primary_enemy_scene = preload("res://Enemies/TrafficCar.tscn")
 
@@ -33,6 +33,7 @@ func start_segment():
 	var previous_ways = []
 	var way_passed = 3
 	rng.randomize()
+	# Ajustar vueltas por dificultad
 	for i in 2 :
 		print("Vuelta")
 		for j in 3 :
@@ -72,6 +73,6 @@ func add_traffic_line(duration,start,enemy,line):
 	spawner.start_time = start
 	spawner.duration = duration
 	spawner.warning = true
-	spawner.set_wait_time(2.35 - 0.2 * difficulty)
+	spawner.set_wait_time(1.35 - (0.2 * difficulty) )
 	add_child(spawner)
 	return spawner

@@ -73,10 +73,10 @@ bbcode_text = "[u][shake]Informacion de Perfil[/shake][/u]"
 text = "Informacion de Perfil"
 
 [node name="Pilot_data" type="RichTextLabel" parent="."]
-margin_left = 401.0
-margin_top = 74.0
-margin_right = 627.0
-margin_bottom = 355.0
+margin_left = 391.0
+margin_top = 46.0
+margin_right = 617.0
+margin_bottom = 338.0
 bbcode_enabled = true
 script = ExtResource( 5 )
 

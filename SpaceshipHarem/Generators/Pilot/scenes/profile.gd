@@ -148,7 +148,7 @@ func _randomize():
 		scd_stat = Global.STAT_NAMES.keys()[randi() % Global.STAT_NAMES.size()]
 	
 	#Sacar esto
-	var rarity = 5  #Legendary: 6
+	var rarity = Global.current_difficulty #Legendary: 6
 	var plus = 0
 	if (int(rarity) % 2) == 1:
 		plus += 1
@@ -174,13 +174,15 @@ func _randomize():
 	pilot_data.add_text('\n' + "[b][color="+ str(COLORS[skin_color][0])+"]" + pilot_specie[0] + '[/color][/b]\n' )
 	pilot_data.add_text('\n[wave]' + pilot_flavor + '[/wave]\n\n' + "Posicion Favorita: [rainbow freq=0.5 sat=10 val=20]" + pilot_formation + '[/rainbow]\n\n')
 
-	pilot_data.add_text("[b]HÁBITOS | INTERESES[/b]" + '\n[rainbow freq=0.1]' + str(pilot_stats[0][1]) + " + " + str(pilot_stats[0][0]) + '[/rainbow]\n[rainbow freq=0.1]' + str(pilot_stats[1][1]) + " + " + str(pilot_stats[1][0]) + "[/rainbow]")
+	pilot_data.add_text("[b]HÁBITOS | INTERESES[/b]" + '\n[rainbow freq=0.1]' + str(pilot_stats[0][1]) + " + " + str(pilot_stats[0][0]) + '[/rainbow]\n')
+	if (pilot_stats[1][0] > 0):
+		pilot_data.add_text('[rainbow freq=0.1]' + str(pilot_stats[1][1]) + " + " + str(pilot_stats[1][0]) + "[/rainbow]")
 
 	var s = ship_scene.instance()
 	s.specie = pilot_specie[0]
 	s.main_color = Color(COLORS[hair_color][0]) 
 	pilot_data.add_child(s)
-	s.position = Vector2(200,250)
+	s.position = Vector2(220,270)
 	#s. = s.rotated(PI/2) # rotate 90°
 	#s.global_rotation = 1000
 	#print(s.global_rotation)
