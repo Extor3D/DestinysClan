@@ -94,19 +94,6 @@ func create_level():
 		play_area.add_child(seg)
 		
 	segments[0].start_segment()
-
-func add_swarm(part, start, duration):
-	var swarmer = swarmer_scene.instance()
-	swarmer.scene = enemy_scene
-	var vars = {"speed": 300 + difficulty*20,
-				"health": 1}
-	swarmer.scene_variables = vars
-	swarmer.waves = difficulty+2
-	swarmer.rows = difficulty+5/2
-	swarmer.start = start
-	swarmer.duration = duration
-	swarmer.wait = 1/difficulty
-	part.add_child(swarmer)
 	
 func spawn_boss():
 	var boss = random_boss_scene.instance()
@@ -114,6 +101,7 @@ func spawn_boss():
 	boss.health = 100 + 20 * difficulty
 	boss.difficulty = difficulty
 	play_area.add_child(boss)
+	boss.connect("defeated", self, "end_level")
 	
 func next_segment(n):
 	if n >= segments.size():
@@ -121,4 +109,7 @@ func next_segment(n):
 	else:
 		segments[n].start_segment()
 	emit_signal("new_segment", n)
+	
+func end_level():
+	Global.goto_scene("res://UI/Screens/PilotSelect.tscn")
 

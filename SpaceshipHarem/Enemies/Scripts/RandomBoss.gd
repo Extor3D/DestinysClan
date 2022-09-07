@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal defeated
+
 export(float) var speed = 100
 export(int) var health = 100
 export(int) var hold_x = 580
@@ -34,6 +36,7 @@ func take_damage(damage):
 	#Add damage sound here
 	health -= damage
 	if health <= 0:
+		emit_signal("defeated")
 		queue_free()
 		
 func add_weapon(scn, wpn, diff):

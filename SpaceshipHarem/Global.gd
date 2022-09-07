@@ -48,11 +48,8 @@ func _ready():
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() - 1)
 	current_pilots.append(get_dummy_data("Dummy", Color.yellow))
-	current_pilots.append(get_dummy_data("Gatashi", Color.green))
-	current_pilots.append(get_dummy_data("Humano", Color.crimson))
-	current_pilots.append(get_dummy_data("Androide", Color.yellow))
-	current_pilots.append(get_dummy_data("Diablo", Color.orange))
-	current_pilots.append(get_dummy_data("Marciano", Color.blue))
+	current_pilots.append(get_dummy_data("Dummy", Color.yellow))
+	current_pilots.append(get_dummy_data("Dummy", Color.yellow))
 
 func get_dummy_data(sp, co):
 	var data = {

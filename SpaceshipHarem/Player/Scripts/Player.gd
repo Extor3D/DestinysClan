@@ -100,8 +100,9 @@ func _ready():
 func add_formation(id):
 	if not forms.has(id):
 		var f = Global.get_form_by_id(id)
-		$Formations.add_child(load(f.scene_path).instance())
-		forms.append(id)
+		if f != null:
+			$Formations.add_child(load(f.scene_path).instance())
+			forms.append(id)
 	
 func add_stats_from_ship(s):
 	add_stat(s.stats[0][1], s.stats[0][0])
