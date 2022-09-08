@@ -50,12 +50,14 @@ export (PackedScene) var secondary_scene = preload("res://Enemies/Enemy.tscn")
 export (PackedScene) var tertiary_scene = preload("res://Enemies/Enemy.tscn")
 
 var possible_segments = [thin_tunnel_segment, 
-						asteroid_segment, 
+						#asteroid_segment, 
 						trafficjam_segment,
 						deep_space_segment,
 						bomb_shower_segment,
 						bomber_segment,
 						sub_boss_segment]
+						
+var possible_musics = [dangerous_music,exploration_music,mysterious_music]
 
 
 func _ready():
@@ -65,6 +67,7 @@ func _ready():
 	theme = Global.current_theme
 	create_background(on_surface)
 	create_level()
+	music.stream = possible_musics[rng.randi_range(0, possible_musics.size() - 1)]
 	music.play()
 			
 func create_background(on_srfce: bool):
