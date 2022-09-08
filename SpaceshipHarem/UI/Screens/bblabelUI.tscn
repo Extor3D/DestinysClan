@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://LevelComponents/Segments/Label.gd" type="Script" id=1]
+
+[node name="UI" type="Node2D"]
+
+[node name="Container" type="MarginContainer" parent="."]
+margin_left = 1.0
+margin_top = 263.0
+margin_right = 645.0
+margin_bottom = 364.0
+
+[node name="Panel" type="Panel" parent="Container"]
+margin_right = 644.0
+margin_bottom = 101.0
+
+[node name="Label" type="RichTextLabel" parent="Container"]
+margin_right = 644.0
+margin_bottom = 101.0
+bbcode_enabled = true
+tab_size = 2
+script = ExtResource( 1 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 251.0
+margin_top = 335.0
+margin_right = 393.0
+margin_bottom = 357.0
+text = "OK"

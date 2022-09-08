@@ -39,6 +39,9 @@ var bomb_shower_segment = preload("res://LevelComponents/Segments/BombShowerSegm
 var bomber_segment = preload("res://LevelComponents/Segments/BomberEnemiesSegment.tscn")
 var sub_boss_segment = preload("res://LevelComponents/Segments/SubBossSegment.tscn")
 
+#Tutorial
+var tutorial1 = preload("res://LevelComponents/Segments/Tutorial1Segment.tscn")
+
 var random_boss_scene = preload("res://Enemies/Bosses/RandomBoss.tscn")
 
 #Components Scenes
@@ -50,11 +53,12 @@ export (PackedScene) var secondary_scene = preload("res://Enemies/Enemy.tscn")
 export (PackedScene) var tertiary_scene = preload("res://Enemies/Enemy.tscn")
 
 var possible_segments = [thin_tunnel_segment, 
-						#asteroid_segment, 
+						asteroid_segment, 
 						trafficjam_segment,
 						deep_space_segment,
 						bomb_shower_segment,
 						bomber_segment,
+						#tutorial1,
 						sub_boss_segment]
 						
 var possible_musics = [dangerous_music,exploration_music,mysterious_music]
