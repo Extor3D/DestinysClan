@@ -60,19 +60,19 @@ onready var pilot_data:= $Pilot_data
 var final_data
 
 func _randomize():
-	
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
 	# Seleccion de especie
 	var pilot_specie = Global.SPECIES[randi() % Global.SPECIES.size()]
 	print(pilot_specie)
 	var pilot_name = DRAGS_NAME[randi() % DRAGS_NAME.size()]
 	var pilot_flavor = FLAVOR_TEXT[randi() % FLAVOR_TEXT.size()]
-	#var pilot_ship = load("res://Player/Sprites/Races/" + pilot_specie[4])
 	var skin_color = 0
 
 	type = TYPES[randi() % TYPES.size()]
 	
 	## Completar
-	var primary_color = randi()%COLORS.size()
+	var primary_color = rng.randi() %COLORS.size()
 	var secondary_color = randi()%COLORS.size()
 	var eye_color = randi()%COLORS.size()
 	var hair_color = randi()%COLORS.size()
@@ -188,12 +188,15 @@ func _randomize():
 	#print(s.global_rotation)
 
 	# ARMAR EL RETRATO
-	data.skin_light_color = Color(COLORS[skin_color][0])
+	var pilot_skin_color = Color(COLORS[skin_color][0])
+	print(pilot_skin_color)
+	
+	data.skin_light_color = pilot_skin_color
 	data.skin_dark_color = Color(COLORS[skin_color][1])
 	data.skin_shadow_color = Color(COLORS[skin_color][2])
 	data.name = pilot_name
 	data.formation = pilot_formation
-	data.color = Color(COLORS[hair_color][0]) 
+	data.color = s.main_color
 	data.stats = pilot_stats
 	data.specie = pilot_specie[0]
 

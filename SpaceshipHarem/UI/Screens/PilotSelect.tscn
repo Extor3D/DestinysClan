@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://UI/Screens/PilotSelect.gd" type="Script" id=1]
+[ext_resource path="res://Music/pilot_selection.mp3" type="AudioStream" id=2]
 
 [node name="PilotSelect" type="Node2D"]
 script = ExtResource( 1 )
@@ -27,6 +28,9 @@ margin_top = 308.0
 margin_right = 503.0
 margin_bottom = 328.0
 text = "Aceptar"
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
 
 [connection signal="pressed" from="Prev" to="." method="_on_Prev_pressed"]
 [connection signal="pressed" from="Next" to="." method="_on_Next_pressed"]

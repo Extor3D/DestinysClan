@@ -40,20 +40,30 @@ extends Node
 # https://sfbgames.itch.io/chiptone
 
 # Audio Tracks
-# Boss Music:
-#https://pixabay.com/music/techno-trance-angrymod-110455/
-
-# Level Music:
-#https://pixabay.com/music/video-games-kim-lightyear-angel-eyes-chiptune-edit-110226/
-
-# Tutorial Music:
-#https://pixabay.com/music/video-games-pixel-perfect-112527/
 
 # Menu Music - The Future Bass - EvgenyBardyuzha:
-#https://pixabay.com/music/future-bass-the-future-bass-15017/
+# https://pixabay.com/music/future-bass-the-future-bass-15017/
 
-#Other:
-#https://pixabay.com/music/upbeat-kim-lightyear-legends-109307/
+# Pilot Selection Music 
+# https://pixabay.com/music/soft-house-ngini-ija-18489/
+
+# Level Selection Music 
+# https://pixabay.com/music/beats-changu-15832/
+
+# Boss Music:
+# https://pixabay.com/music/techno-trance-angrymod-110455/
+
+# Level Music:
+# https://pixabay.com/music/video-games-kim-lightyear-angel-eyes-chiptune-edit-110226/
+
+# Tutorial Music:
+# https://pixabay.com/music/video-games-pixel-perfect-112527/
+
+# Dangerous Level Music:
+# https://pixabay.com/music/upbeat-kim-lightyear-legends-109307/
+
+# Mysterious Level Music
+#https://pixabay.com/music/synthwave-intro-01-chiptune-c64-6581/
 
 #
 #

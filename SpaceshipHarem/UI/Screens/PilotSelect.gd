@@ -1,8 +1,9 @@
 extends Node2D
 
 var profile_scene = preload("res://Generators/Pilot/scenes/profile.tscn")
-onready var profiles = $Profiles
 
+onready var profiles = $Profiles
+onready var music =$BackgroundMusic
 var profs = []
 var curr_prof = 0
 var max_profs = 3
@@ -14,6 +15,7 @@ func _ready():
 		profiles.add_child(prof)
 		prof.visible = false
 	profs[curr_prof].visible = true
+	music.play()
 	
 func show_prof(id):
 	for i in max_profs:
@@ -30,5 +32,6 @@ func _on_Next_pressed():
 
 
 func _on_Accept_pressed():
+	music.stop()
 	Global.current_pilots.append(profs[curr_prof].final_data)
 	Global.goto_scene("res://UI/Screens/LevelSelect.tscn")

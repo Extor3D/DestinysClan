@@ -20,6 +20,7 @@ onready var music = $BackgroundMusic
 var tutorial_music = preload("res://Music/angrymod.mp3")
 var dangerous_music = preload("res://Music/kim-lightyear-legends.mp3")
 var exploration_music = preload("res://Music/kim-lightyear-angel-eyes.mp3")
+var mysterious_music = preload("res://Music/chiptune-c64.mp3")
 var boss_music = preload("res://Music/angrymod.mp3")
 
 #Background Scenes

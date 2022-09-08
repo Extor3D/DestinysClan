@@ -8,6 +8,7 @@ onready var planet1_diff = $VBoxContainer/HBoxContainer/Planet1Container/HBoxCon
 onready var planet2 = $VBoxContainer/HBoxContainer/Planet2Container/CenterContainer
 onready var planet2_type = $VBoxContainer/HBoxContainer/Planet2Container/HBoxContainer/TypeName
 onready var planet2_diff = $VBoxContainer/HBoxContainer/Planet2Container/HBoxContainer2/DiffVal
+onready var music = $BackgroundMusic
 
 var rng = RandomNumberGenerator.new()
 
@@ -20,6 +21,7 @@ func _ready():
 	planet1.add_child(p1)
 	planet1_type.text = p1_theme_key
 	planet1_diff.text = str(Global.current_difficulty + 1)
+	music.play()
 	
 	var p2_theme_key = Global.get_random_theme_key()
 	var p2 = planet_scene.instance()
