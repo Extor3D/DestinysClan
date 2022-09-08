@@ -7,5 +7,6 @@ script = ExtResource( 1 )
 difficulty = 6
 
 [node name="SegmentTime" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="timeout" from="SegmentTime" to="." method="_on_SegmentTime_timeout"]

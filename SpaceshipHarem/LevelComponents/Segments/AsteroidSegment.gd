@@ -14,7 +14,6 @@ func start_segment():
 	timer.start(time)
 
 func _on_SegmentTime_timeout():
-	spawner.stop()
 	end_segment()
 
 func _ready():

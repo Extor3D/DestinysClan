@@ -19,7 +19,6 @@ func start_segment():
 	add_bomber_spawner(time - 2)
 
 func _on_SegmentTime_timeout():
-	spawner.stop()
 	end_segment()
 
 func add_bomber_spawner(duration):
