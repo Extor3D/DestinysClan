@@ -5,4 +5,3 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="LevelGenerator" parent="." instance=ExtResource( 3 )]
-theme = 2

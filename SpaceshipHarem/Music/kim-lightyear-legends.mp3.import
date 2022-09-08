@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/kim-lightyear-legends.mp3-f83626a71e4107af4ec0bab2f1cde05b.mp3str"
+
+[deps]
+
+source_file="res://Music/kim-lightyear-legends.mp3"
+dest_files=[ "res://.import/kim-lightyear-legends.mp3-f83626a71e4107af4ec0bab2f1cde05b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

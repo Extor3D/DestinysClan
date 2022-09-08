@@ -14,6 +14,13 @@ var segments = []
 onready var play_area = $PlayArea
 onready var background = $BackGround
 onready var timer = $BossTimer
+onready var music = $BackgroundMusic
+
+#Background Music
+var tutorial_music = preload("res://Music/angrymod.mp3")
+var dangerous_music = preload("res://Music/kim-lightyear-legends.mp3")
+var exploration_music = preload("res://Music/kim-lightyear-angel-eyes.mp3")
+var boss_music = preload("res://Music/angrymod.mp3")
 
 #Background Scenes
 var space_scene = preload("res://LevelComponents/SpaceBackground.tscn")
@@ -57,6 +64,7 @@ func _ready():
 	theme = Global.current_theme
 	create_background(on_surface)
 	create_level()
+	music.play()
 			
 func create_background(on_srfce: bool):
 	if not on_srfce:
@@ -96,6 +104,9 @@ func create_level():
 	segments[0].start_segment()
 	
 func spawn_boss():
+	music.stop()
+	music.stream = boss_music
+	music.play()
 	var boss = random_boss_scene.instance()
 	boss.position = Vector2(700, 180)
 	boss.health = 100 + 20 * difficulty
@@ -111,5 +122,6 @@ func next_segment(n):
 	emit_signal("new_segment", n)
 	
 func end_level():
+	music.stop()
 	Global.goto_scene("res://UI/Screens/PilotSelect.tscn")
 
