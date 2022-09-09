@@ -33,11 +33,13 @@ var fire_surf_scene = preload("res://Scenery/Backgrounds/FireSurface/FireSurface
 #Segments
 var thin_tunnel_segment = preload("res://LevelComponents/Segments/ThinTunnelSegment.tscn")
 var asteroid_segment = preload("res://LevelComponents/Segments/AsteroidSegment.tscn")
+var bee_hive_segment = preload("res://LevelComponents/Segments/BeeHiveSegment.tscn")
 var trafficjam_segment = preload("res://LevelComponents/Segments/TrafficJamSegment.tscn")
 var deep_space_segment = preload("res://LevelComponents/Segments/DeepSpaceSegment.tscn")
 var bomb_shower_segment = preload("res://LevelComponents/Segments/BombShowerSegment.tscn")
 var bomber_segment = preload("res://LevelComponents/Segments/BomberEnemiesSegment.tscn")
 var sub_boss_segment = preload("res://LevelComponents/Segments/SubBossSegment.tscn")
+
 
 #Tutorial
 var tutorial1 = preload("res://LevelComponents/Segments/Tutorial/Tutorial1Segment.tscn")
@@ -63,7 +65,7 @@ var possible_segments = [thin_tunnel_segment,
 						bomb_shower_segment,
 						bomber_segment,
 						sub_boss_segment]
-						
+
 						
 var possible_musics = [dangerous_music,exploration_music,mysterious_music]
 
@@ -105,6 +107,7 @@ func create_level():
 		# To test a segment, use this line and comment the "possible_segments" line
 		# Remember to declare the scene at the top of this file
 		#var s = <scene>
+		#var s = bee_hive_segment
 		#var s = tutorial_segments[i-1]
 		var s = possible_segments.pop_at(rng.randi_range(0, possible_segments.size() - 1))
 		var seg = s.instance()

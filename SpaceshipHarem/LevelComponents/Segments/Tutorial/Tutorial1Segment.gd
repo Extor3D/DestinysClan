@@ -3,7 +3,7 @@ extends Segment
 onready var timer = $SegmentTime
 var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
 
-var TUTORIAL_TEXTS = ["Bienvenidos al [b]Simulador de batalla[/b].\nAqui les enseñare lo basico, aunque seguramente no lo necesiten. Todos aqui somos veteranos de las guerras conicas verdad? no?\nEste es un momento muy incomodo para todos asi que como dicen 'Al mal paso darle prisa' ",
+var TUTORIAL_TEXTS1 = ["Bienvenidos al [b]Simulador de batalla[/b].\nAqui les enseñare lo basico, aunque seguramente no lo necesiten. Todos aqui somos veteranos de las guerras conicas verdad? no?\nEste es un momento muy incomodo para todos asi que como dicen 'Al mal paso darle prisa' ",
 "[b][color=#ffc0cb]Alpha[/color][/b], he configurado los controles de tu nave segun tus  preferencias (Esta nave se controla con [b][color=#00FF00]WASD[/color][/b]).", 
 "En tu caso [b][color=yellow]Omega[/color][/b] , hemos vuelto a los controles basicos, se que no tendras quejas (Esta nave se controla con las [b][color=#00FF00]flechas[/color][/b]) . Se conocen hace mucho y los une un [b][color=red]VINCULO[/color][/b] muy estrecho, asi que creo que no hacen falta las presentaciones despues de todo."	, 
 "Se preguntaran que son esas naves del medio...  Es un experimento que he estado planificando, si tiene exito en el simulador, lo podremos trasladar a naves reales!\nEsas 3 naves son [b][color=#FFD700]Naves Conectoras[/color][/b] .",  
@@ -35,13 +35,13 @@ func _on_SegmentTime_timeout():
 func finish():
 	print("Termine")
 	var time = 10
-	add_asteroid_field(time)
 	timer.start(time)
+	add_asteroid_field(time)
 
 func _ready():
 	rng.randomize()
 	var label = label_scene.instance()
-	label.texts = TUTORIAL_TEXTS
+	label.texts = TUTORIAL_TEXTS1
 	add_child(label)
 	label.connect("end_label",self,"finish")
 	

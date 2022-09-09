@@ -3,7 +3,7 @@ extends Segment
 onready var timer = $SegmentTime
 var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
 
-var TUTORIAL_TEXTS = ["Grandioso!!! Otro exito!\n Estan casi listos para salir al espacio.",
+var TUTORIAL_TEXTS3 = ["Grandioso!!! Otro exito!\n Estan casi listos para salir al espacio.",
 "En su aventura visitaran varios planetas y lamentablemente, estan fuertemente armados.\nEs probable que se topen tarde o temprano con una [b][color=green]nave imperial[/color][/b].",
 "Las naves imperiales [b][color=#00FF00]estan fuertemente armadas y son mucho mas resistentes[/color][/b] que las naves normales.\nGeneralmente sera la ultima linea de defensa que tiene un planeta. ",
 "Simulare una de estas naves para que aprendan a lidiar con ellas.\nMucha suerte!!"]
@@ -28,13 +28,13 @@ func _on_SegmentTime_timeout():
 
 func finish():
 	print("Termine")
-	spawners.append(add_enemy_group(1,3,primary_enemy_scene))
-	timer.start(time)
+	#spawners.append(add_enemy_group(1,3,primary_enemy_scene))
+	#timer.start(time)
 
 func _ready():
 	rng.randomize()
 	var label = label_scene.instance()
-	label.texts = TUTORIAL_TEXTS
+	label.texts = TUTORIAL_TEXTS3
 	add_child(label)
 	label.connect("end_label",self,"finish")
 	

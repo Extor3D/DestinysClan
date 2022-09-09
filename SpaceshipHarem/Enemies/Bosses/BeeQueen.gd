@@ -5,14 +5,14 @@ export(float) var Yspeed = 50
 export(int) var health = 500
 export(int) var hold_x = 490
 export(int) var hold_y = 100
-export(int) var dificulty = 5
+export(int) var dificulty = 1
 
 enum mutations {NONE = 1, EARTH = 2, WIND = 3, FIRE=4 , ICE=5}
 export (mutations) var mutation = mutations.NONE
 
 var sube = true
 #corregir ajuste por dificultad?
-export(float) var cadence = 0.8 - (0.1 * dificulty/2)
+export(float) var cadence = 1 - (0.1 * dificulty/2)
 export(float) var vspeed = 0
 var spawner_bee_scene = preload("res://Enemies/BeeSpawner.tscn")
 var worber_bee_shot = preload("res://Enemies/Shots/EnemyShot.tscn")
@@ -52,17 +52,25 @@ func create_shot(p: Vector2):
 	var bee_type = randf()
 	var bee_side = randf()
 	var bee_modifier = 1
+	# Para que lado giran las abejas
 	if bee_side  > 0.50:
 		bee_modifier = -1
 	var shot = shot_scene.instance()
-	if bee_type <  (0.45 +((10 -  dificulty) *  0.05)):
+	if bee_type <  (0.45 +((10 -  dificulty) *  0.025)):
 		shot.turn_speed = 0
 		shot.shot_scene = worber_bee_shot
+		print("disparadora")	
 	else:
-		
-		shot.turn_speed = 0.3 * bee_modifier
-		if bee_type > 0.90 - (0.25 * (dificulty)):
-			shot.turn_speed = -2.7 * bee_modifier
+		print(bee_type)
+		if (bee_type > (0.90 - (0.02 * (dificulty)))):
+			shot.turn_speed = 10
+			shot.speed = 1
+			print("invocadora")	
+		else:
+			shot.turn_speed = 2.7 * bee_modifier
+			print("giroteadora")	
+
+			
 			
 	
 	

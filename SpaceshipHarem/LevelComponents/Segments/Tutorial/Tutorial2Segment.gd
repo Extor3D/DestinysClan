@@ -3,7 +3,7 @@ extends Segment
 onready var timer = $SegmentTime
 var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
 
-var TUTORIAL_TEXTS = ["Excelente!!! Sabia que lo lograrian! \nVan entendiendo como funciona su [b][color=red]PODER[/color][/b].\nHay una ventaja adicional... a diferencia de los asteroides, las naves y disparos enemigos, [b][color=#00FF00]no dañan a tus naves conectoras, esa es otra ventaja de la cadena.[/color][/b]",
+var TUTORIAL_TEXTS2 = ["Excelente!!! Sabia que lo lograrian! \nVan entendiendo como funciona su [b][color=red]PODER[/color][/b].\nHay una ventaja adicional... a diferencia de los asteroides, las naves y disparos enemigos, [b][color=#00FF00]no dañan a tus naves conectoras, esa es otra ventaja de la cadena.[/color][/b]",
 "Habras notado que he configurado tus armas en automatico,por lo que  [b][color=#00FF00]tus naves disparan todo el tiempo[/color][/b] . ", 
 "Probemos nuevamente, simulare algunos enemigos ,recuerda que [b][color=#00FF00]los disparos y las naves solo dañan tu primera y ultima nave[/color][/b].\nLo importante aqui es esquivar, no necesitas encargarte de todos los enemigos." ]
 
@@ -31,12 +31,12 @@ func finish():
 	spawners.append(add_enemy_group(time/3,3,primary_enemy_scene))
 	spawners.append(add_enemy_group(time/3,time/3,secondary_enemy_scene))
 	spawners.append(add_enemy_group(time/3,time * 2/3,tertiary_enemy_scene))
-	timer.start(time)
+	#timer.start(time)
 
 func _ready():
 	rng.randomize()
 	var label = label_scene.instance()
-	label.texts = TUTORIAL_TEXTS
+	label.texts = TUTORIAL_TEXTS2
 	add_child(label)
 	label.connect("end_label",self,"finish")
 	
