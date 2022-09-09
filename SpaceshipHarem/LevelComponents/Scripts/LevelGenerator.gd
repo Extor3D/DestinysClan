@@ -40,7 +40,9 @@ var bomber_segment = preload("res://LevelComponents/Segments/BomberEnemiesSegmen
 var sub_boss_segment = preload("res://LevelComponents/Segments/SubBossSegment.tscn")
 
 #Tutorial
-var tutorial1 = preload("res://LevelComponents/Segments/Tutorial1Segment.tscn")
+var tutorial1 = preload("res://LevelComponents/Segments/Tutorial/Tutorial1Segment.tscn")
+var tutorial2 = preload("res://LevelComponents/Segments/Tutorial/Tutorial2Segment.tscn")
+var tutorial3 = preload("res://LevelComponents/Segments/Tutorial/Tutorial3Segment.tscn")
 
 var random_boss_scene = preload("res://Enemies/Bosses/RandomBoss.tscn")
 
@@ -52,14 +54,16 @@ export (PackedScene) var enemy_scene = preload("res://Enemies/Enemy.tscn")
 export (PackedScene) var secondary_scene = preload("res://Enemies/Enemy.tscn")
 export (PackedScene) var tertiary_scene = preload("res://Enemies/Enemy.tscn")
 
+var tutorial_segments = [tutorial1,tutorial2,tutorial3]
+
 var possible_segments = [thin_tunnel_segment, 
 						asteroid_segment, 
 						trafficjam_segment,
 						deep_space_segment,
 						bomb_shower_segment,
 						bomber_segment,
-						#tutorial1,
 						sub_boss_segment]
+						
 						
 var possible_musics = [dangerous_music,exploration_music,mysterious_music]
 
@@ -101,6 +105,7 @@ func create_level():
 		# To test a segment, use this line and comment the "possible_segments" line
 		# Remember to declare the scene at the top of this file
 		#var s = <scene>
+		#var s = tutorial_segments[i-1]
 		var s = possible_segments.pop_at(rng.randi_range(0, possible_segments.size() - 1))
 		var seg = s.instance()
 		seg.difficulty = difficulty
