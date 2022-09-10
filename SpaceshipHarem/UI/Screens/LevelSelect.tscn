@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Music/level_selection.mp3" type="AudioStream" id=1]
+[ext_resource path="res://Music/Screen/level_selection.mp3" type="AudioStream" id=1]
 [ext_resource path="res://UI/Fonts/Charybdis.tres" type="DynamicFont" id=2]
 [ext_resource path="res://UI/Screens/LevelSelect.gd" type="Script" id=3]
+
 
 [node name="LevelSelectScreen" type="Node2D"]
 script = ExtResource( 3 )

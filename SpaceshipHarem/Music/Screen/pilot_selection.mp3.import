@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/pilot_selection.mp3-a9ba6a540192e1ada8ef58f9fe2a095d.mp3str"
+
+[deps]
+
+source_file="res://Music/Screen/pilot_selection.mp3"
+dest_files=[ "res://.import/pilot_selection.mp3-a9ba6a540192e1ada8ef58f9fe2a095d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/angrymod.mp3-64c79cfe6007452bf4f6e12363492e8f.mp3str"
+
+[deps]
+
+source_file="res://Music/Boss/angrymod.mp3"
+dest_files=[ "res://.import/angrymod.mp3-64c79cfe6007452bf4f6e12363492e8f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

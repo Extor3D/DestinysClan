@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/chilliwave-evolving-space.mp3-a88849b746691264d398df7441790559.mp3str"
+
+[deps]
+
+source_file="res://Music/Levels/chilliwave-evolving-space.mp3"
+dest_files=[ "res://.import/chilliwave-evolving-space.mp3-a88849b746691264d398df7441790559.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

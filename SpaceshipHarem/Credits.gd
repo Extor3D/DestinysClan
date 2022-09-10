@@ -44,17 +44,35 @@ extends Node
 # Menu Music - The Future Bass - EvgenyBardyuzha:
 # https://pixabay.com/music/future-bass-the-future-bass-15017/
 
-# Pilot Selection Music 
+# Pilot Selection Music :
 # https://pixabay.com/music/soft-house-ngini-ija-18489/
 
-# Level Selection Music 
+# Level Selection Music :
 # https://pixabay.com/music/beats-changu-15832/
 
 # Boss Music:
 # https://pixabay.com/music/techno-trance-angrymod-110455/
 
+# Boss Music 2:
+#https://pixabay.com/music/main-title-star-war-111422/
+
+# Boss Fight 3 - robot-laser-carnage:
+#https://pixabay.com/music/video-games-robot-laser-carnage-113855/
+
 # Level Music:
 # https://pixabay.com/music/video-games-kim-lightyear-angel-eyes-chiptune-edit-110226/
+
+# Dark Future Music:
+#https://pixabay.com/music/upbeat-dark-future-118750/
+
+#Chilliwave Music:
+#https://pixabay.com/music/synthwave-chilliwave-evolving-space-12181/
+
+#Confuze Music:
+#https://pixabay.com/music/upbeat-confuze-111867/
+
+#faster-tan-light Music:
+#https://pixabay.com/music/techno-trance-michael-ihde-faster-tan-light-progressive-trance-20751/
 
 # Tutorial Music:
 # https://pixabay.com/music/video-games-pixel-perfect-112527/

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/confuze.mp3-27baec1beed0e78ad2ae500f0126b8a9.mp3str"
+
+[deps]
+
+source_file="res://Music/Levels/confuze.mp3"
+dest_files=[ "res://.import/confuze.mp3-27baec1beed0e78ad2ae500f0126b8a9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

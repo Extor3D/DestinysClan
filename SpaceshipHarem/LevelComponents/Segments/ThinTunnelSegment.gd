@@ -1,7 +1,13 @@
 extends Segment
 
 var tunnel_scene = preload("res://LevelComponents/VectorTunnel.tscn")
+
 var lava_texture = preload("res://Scenery/Sprites/tile_lava.png")
+
+# ver texturas
+var earth_texture = preload("res://Scenery/Sprites/tile_earth.jpg")
+var water_texture = preload("res://Scenery/Sprites/tile_water.png")
+var steel_texture = preload("res://Scenery/Sprites/tile_other.png")
 
 onready var timer = $SegmentTime
 

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/dark-future.mp3-6ee4315a779206738534678a49acbe05.mp3str"
+
+[deps]
+
+source_file="res://Music/Levels/dark-future.mp3"
+dest_files=[ "res://.import/dark-future.mp3-6ee4315a779206738534678a49acbe05.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

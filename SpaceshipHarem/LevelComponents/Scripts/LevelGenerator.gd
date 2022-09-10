@@ -16,12 +16,22 @@ onready var background = $BackGround
 onready var timer = $BossTimer
 onready var music = $BackgroundMusic
 
-#Background Music
-var tutorial_music = preload("res://Music/angrymod.mp3")
-var dangerous_music = preload("res://Music/kim-lightyear-legends.mp3")
-var exploration_music = preload("res://Music/kim-lightyear-angel-eyes.mp3")
-var mysterious_music = preload("res://Music/chiptune-c64.mp3")
-var boss_music = preload("res://Music/angrymod.mp3")
+# Special Background Music
+var tutorial_music = preload("res://Music/Levels/pixel-perfect-tutorial.mp3")
+
+# Level Background Music
+var dangerous_music = preload("res://Music/Levels/kim-lightyear-legends.mp3")
+var exploration_music = preload("res://Music/Levels/kim-lightyear-angel-eyes.mp3")
+var mysterious_music = preload("res://Music/Levels/chiptune-c64.mp3")
+var chill_music = preload("res://Music/Levels/chilliwave-evolving-space.mp3")
+var action_music = preload("res://Music/Levels/confuze.mp3")
+var dark_music = preload("res://Music/Levels/dark-future.mp3")
+var beat_music = preload("res://Music/Levels/faster-tan-light.mp3")
+
+#Boss Background Music
+var boss_music = preload("res://Music/Boss/angrymod.mp3")
+var boss_music2 = preload("res://Music/Boss/robot-laser-carnage.mp3")
+var boss_music3 = preload("res://Music/Boss/star-war.mp3")
 
 #Background Scenes
 var space_scene = preload("res://LevelComponents/SpaceBackground.tscn")
@@ -107,10 +117,15 @@ func create_level():
 		# To test a segment, use this line and comment the "possible_segments" line
 		# Remember to declare the scene at the top of this file
 		#var s = <scene>
-		#var s = bee_hive_segment
-		#var s = tutorial_segments[i-1]
-		var s = possible_segments.pop_at(rng.randi_range(0, possible_segments.size() - 1))
+		var s = bomb_shower_segment
+		#if Global.level = 0:
+			#var s = tutorial_segments[i-1]
+		#else:
+			#var s = possible_segments.pop_at(rng.randi_range(0, possible_segments.size() - 1))
+		#var s = possible_segments.pop_at(rng.randi_range(0, possible_segments.size() - 1))	
+			
 		var seg = s.instance()
+		print(s)
 		seg.difficulty = difficulty
 		seg.number = i + 1
 		seg.connect("segment_ended", self, "next_segment")

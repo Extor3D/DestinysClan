@@ -13,11 +13,11 @@ gravity = 0.0
 polygon = PoolVector2Array( 0, -1, 2000, -1, 2000, 1, 0, 1 )
 
 [node name="Laser" type="Polygon2D" parent="."]
-color = Color( 0.478431, 0, 0.956863, 1 )
+color = Color( 0.956863, 0, 0, 0.760784 )
 polygon = PoolVector2Array( 0, -1, 2000, -1, 2000, 1, 0, 1 )
 
 [node name="Warning" type="Polygon2D" parent="."]
-color = Color( 0.956863, 0, 0, 0.760784 )
+color = Color( 0.478431, 0, 0.956863, 1 )
 polygon = PoolVector2Array( 0, -1, 2000, -1, 2000, 1, 0, 1 )
 
 [node name="WarningTime" type="Timer" parent="."]
