@@ -50,7 +50,6 @@ var bomb_shower_segment = preload("res://LevelComponents/Segments/BombShowerSegm
 var bomber_segment = preload("res://LevelComponents/Segments/BomberEnemiesSegment.tscn")
 var sub_boss_segment = preload("res://LevelComponents/Segments/SubBossSegment.tscn")
 
-
 #Tutorial
 var tutorial1 = preload("res://LevelComponents/Segments/Tutorial/Tutorial1Segment.tscn")
 var tutorial2 = preload("res://LevelComponents/Segments/Tutorial/Tutorial2Segment.tscn")
@@ -87,7 +86,10 @@ func _ready():
 	theme = Global.current_theme
 	create_background(on_surface)
 	create_level()
-	music.stream = possible_musics[rng.randi_range(0, possible_musics.size() - 1)]
+	if Global.level != 0:
+		music.stream = possible_musics[rng.randi_range(0, possible_musics.size() - 1)]
+	else:
+		music.stream = tutorial_music
 	music.play()
 			
 func create_background(on_srfce: bool):
@@ -116,14 +118,15 @@ func create_level():
 	for i in 3:
 		# To test a segment, use this line and comment the "possible_segments" line
 		# Remember to declare the scene at the top of this file
+		var s
 		#var s = <scene>
-		#var s = tutorial_segments[0]
-		#if Global.level = 0:
-		var s = tutorial_segments[i-1]
-		#else:
-			#var s = possible_segments.pop_at(rng.randi_range(0, possible_segments.size() - 1))
-		#var s = possible_segments.pop_at(rng.randi_range(0, possible_segments.size() - 1))	
-			
+		#'''
+		if Global.level == 0:
+			# Pantalla de Skip Tutorial o ...
+			s = tutorial_segments[i-1]
+		else:
+			s = possible_segments.pop_at(rng.randi_range(0, possible_segments.size() - 1))
+		#'''
 		var seg = s.instance()
 
 		seg.difficulty = difficulty
@@ -154,5 +157,9 @@ func next_segment(n):
 	
 func end_level():
 	music.stop()
-	Global.goto_scene("res://UI/Screens/PilotSelect.tscn")
-
+	if Global.level == 0:
+		Global.current_difficulty = 0
+		Global.level = 1
+		Global.goto_scene("res://UI/Screens/LevelSelect.tscn")
+	else:
+		Global.goto_scene("res://UI/Screens/PilotSelect.tscn")

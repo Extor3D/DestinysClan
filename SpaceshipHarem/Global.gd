@@ -21,7 +21,7 @@ const FORMATIONS = [{id = FORM_LOW_DEF, scene_path = "res://Player/Formations/Lo
 
 #Game globals
 var rng = RandomNumberGenerator.new()
-var level = 1
+var level = 0
 var current_difficulty = 1
 var current_theme = themes.LAND
 

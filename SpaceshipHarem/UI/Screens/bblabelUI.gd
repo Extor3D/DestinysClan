@@ -33,5 +33,5 @@ func _on_Button_pressed():
 
 func _unhandled_input(event):
 	if event is InputEventKey:
-		if event.pressed and event.scancode == KEY_SPACE:
+		if event.pressed and event.scancode == KEY_Z:
 			manage_text()

@@ -5,7 +5,7 @@ var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
 
 var TUTORIAL_TEXTS2 = ["Excelente!!! Sabia que lo lograrian! \nVan entendiendo como funciona su [b][color=red]PODER[/color][/b].\nHay una ventaja adicional... a diferencia de los asteroides, las naves y disparos enemigos, [b][color=#00FF00]no dañan a tus naves conectoras, esa es otra ventaja de la cadena.[/color][/b]",
 "Habras notado que he configurado tus armas en automatico,por lo que  [b][color=#00FF00]tus naves disparan todo el tiempo[/color][/b] . ", 
-"Probemos nuevamente, simulare algunos enemigos ,recuerda que [b][color=#00FF00]los disparos y las naves solo dañan tu primera y ultima nave[/color][/b].\nLo importante aqui es esquivar, no necesitas encargarte de todos los enemigos." ]
+"Probemos nuevamente. Simulare algunos enemigos ,recuerda que [b][color=#00FF00]los disparos y las naves solo dañan tu primera y ultima nave[/color][/b].\nLo importante aqui es esquivar, no necesitas encargarte de todos los enemigos." ]
 
 var texts_number = 0
 var spawner_scene = preload("res://LevelComponents/Spawner.tscn")
@@ -48,16 +48,16 @@ func _ready():
 func add_enemy_group(duration,start,enemy):
 	var spawner = spawner_scene.instance()
 	spawner.scene = enemy
-	var vars = {"move_speed": -70 + -difficulty*3,
+	var vars = {"move_speed": -70,
 				"rot_spd": rng.randi_range(2, 3),
-				"cadence":100}
+				"cadence":5}
 	spawner.scene_variables = vars
 	spawner.y_center = 20 + (60 * rand_range(0,4))
-	spawner.height = 20 + (10* difficulty) 
+	spawner.height = 30 
 	spawner.start_time = start
 	spawner.duration = duration
 	spawner.warning = false
-	spawner.set_wait_time(1.35 - 0.2 * difficulty)
+	spawner.set_wait_time(1)
 	add_child(spawner)
 	return spawner
 

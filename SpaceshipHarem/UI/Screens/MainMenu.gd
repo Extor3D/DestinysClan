@@ -11,5 +11,5 @@ func _on_QuitButton_pressed():
 	get_tree().quit()
 
 func _on_StartButton_pressed():
-	Global.level = 1
+	Global.level = 0
 	Global.goto_scene("res://LevelComponents/LevelGenerator.tscn")
