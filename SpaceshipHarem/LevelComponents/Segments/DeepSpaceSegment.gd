@@ -35,6 +35,10 @@ func _on_SegmentTime_timeout():
 func _ready():
 	rng.randomize()
 	
+	
+func load_enemies(enemy):
+	primary_enemy_scene = load(enemy)
+	
 func add_enemy_group(duration,start,enemy):
 	var spawner = spawner_scene.instance()
 	spawner.scene = enemy

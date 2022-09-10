@@ -13,9 +13,10 @@ func _ready():
 	$ShotTimer.start(cadence)
 
 func take_damage(damage):
-	sound.play()
+	#sound.play()
 	health -= damage
 	if health <= 0:
+		sound.play()
 		queue_free()
 
 func _on_ShotTimer_timeout():

@@ -1,6 +1,6 @@
 extends Segment
 
-onready var timer = $SegmentTime
+onready var timer = $SegmentTime3
 var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
 
 var TUTORIAL_TEXTS3 = ["Grandioso!!! Otro exito!\n Estan casi listos para salir al espacio.",
@@ -17,26 +17,32 @@ var spawners = []
 var time = 0
 
 var rng = RandomNumberGenerator.new()
+var ended3 = false
+var label = label_scene.instance()
+
 
 func start_segment():
-	time = 15 + difficulty * 2
-
-	
-func _on_SegmentTime_timeout():
-	end_segment()
-	print("Termine segmento")
-
-func finish():
-	print("Termine")
-	#spawners.append(add_enemy_group(1,3,primary_enemy_scene))
-	#timer.start(time)
-
-func _ready():
-	rng.randomize()
-	var label = label_scene.instance()
+	time = 1
 	label.texts = TUTORIAL_TEXTS3
 	add_child(label)
 	label.connect("end_label",self,"finish")
+
+	
+func _on_SegmentTime_timeout():
+	ended3 = true
+	end_segment()
+	print("Termine segmento 3")
+
+func finish():
+	if !ended3:
+		print("Termine3")
+		#spawners.append(add_enemy_group(1,3,primary_enemy_scene))
+		timer.start(time)
+		remove_child(label)
+
+func _ready():
+	rng.randomize()
+
 	
 	
 func add_enemy_group(duration,start,enemy):

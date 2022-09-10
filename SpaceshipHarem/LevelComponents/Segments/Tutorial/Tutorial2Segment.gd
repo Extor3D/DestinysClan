@@ -1,6 +1,6 @@
 extends Segment
 
-onready var timer = $SegmentTime
+onready var timer = $SegmentTime2
 var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
 
 var TUTORIAL_TEXTS2 = ["Excelente!!! Sabia que lo lograrian! \nVan entendiendo como funciona su [b][color=red]PODER[/color][/b].\nHay una ventaja adicional... a diferencia de los asteroides, las naves y disparos enemigos, [b][color=#00FF00]no dañan a tus naves conectoras, esa es otra ventaja de la cadena.[/color][/b]",
@@ -15,30 +15,34 @@ var tertiary_enemy_scene = preload("res://Enemies/Enemy2.tscn")
 
 var spawners = []
 var time = 0
-
+var ended2 = false
+var label = label_scene.instance()
 var rng = RandomNumberGenerator.new()
 
 func start_segment():
-	time = 15 + difficulty * 2
-
-	
-func _on_SegmentTime_timeout():
-	end_segment()
-	print("Termine segmento")
-
-func finish():
-	print("Termine")
-	spawners.append(add_enemy_group(time/3,3,primary_enemy_scene))
-	spawners.append(add_enemy_group(time/3,time/3,secondary_enemy_scene))
-	spawners.append(add_enemy_group(time/3,time * 2/3,tertiary_enemy_scene))
-	#timer.start(time)
-
-func _ready():
-	rng.randomize()
-	var label = label_scene.instance()
+	time = 21
 	label.texts = TUTORIAL_TEXTS2
 	add_child(label)
 	label.connect("end_label",self,"finish")
+
+func _on_SegmentTime_timeout():
+	ended2 = true
+	end_segment()
+	print("Termine segmento 2")
+
+func finish():
+	if !ended2:
+		print("Termine2")
+		spawners.append(add_enemy_group(time/3,3,primary_enemy_scene))
+		spawners.append(add_enemy_group(time/3,time/3,secondary_enemy_scene))
+		spawners.append(add_enemy_group(time/3,time * 2/3,tertiary_enemy_scene))
+		timer.start(time)
+		remove_child(label)
+
+func _ready():
+	
+	rng.randomize()
+
 	
 	
 func add_enemy_group(duration,start,enemy):

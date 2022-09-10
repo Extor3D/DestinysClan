@@ -66,7 +66,7 @@ export (PackedScene) var enemy_scene = preload("res://Enemies/Enemy.tscn")
 export (PackedScene) var secondary_scene = preload("res://Enemies/Enemy.tscn")
 export (PackedScene) var tertiary_scene = preload("res://Enemies/Enemy.tscn")
 
-var tutorial_segments = [tutorial1,tutorial2,tutorial3]
+var tutorial_segments = [tutorial2,tutorial3,tutorial1]
 
 var possible_segments = [thin_tunnel_segment, 
 						asteroid_segment, 
@@ -117,15 +117,15 @@ func create_level():
 		# To test a segment, use this line and comment the "possible_segments" line
 		# Remember to declare the scene at the top of this file
 		#var s = <scene>
-		var s = bomb_shower_segment
+		#var s = tutorial_segments[0]
 		#if Global.level = 0:
-			#var s = tutorial_segments[i-1]
+		var s = tutorial_segments[i-1]
 		#else:
 			#var s = possible_segments.pop_at(rng.randi_range(0, possible_segments.size() - 1))
 		#var s = possible_segments.pop_at(rng.randi_range(0, possible_segments.size() - 1))	
 			
 		var seg = s.instance()
-		print(s)
+
 		seg.difficulty = difficulty
 		seg.number = i + 1
 		seg.connect("segment_ended", self, "next_segment")
