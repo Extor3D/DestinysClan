@@ -22,8 +22,10 @@ func _process(_delta):
 	update()
 
 func _draw():
-	draw_circle(Vector2(0,0), radius, Color(1, 0.5, 0.1, 0.5))
-	draw_circle(Vector2(0,0), lerp(0, radius, (warn_time - timer.time_left) / warn_time), Color.orange)
+	var w_alpha = Global.WARNING_COLOR
+	w_alpha.a = 0.5
+	draw_circle(Vector2(0,0), radius, w_alpha)
+	draw_circle(Vector2(0,0), lerp(0, radius, (warn_time - timer.time_left) / warn_time), Global.WARNING_COLOR)
 
 
 func _on_WarningTimer_timeout():

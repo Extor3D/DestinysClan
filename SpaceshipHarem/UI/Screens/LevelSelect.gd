@@ -30,6 +30,8 @@ func _ready():
 	planet2.add_child(p2)
 	planet2_type.text = p2_theme_key
 	planet2_diff.text = str(Global.current_difficulty + 2)
+	
+	Global.level += 1
 
 func _on_Planet1Button_pressed():
 	Global.current_difficulty = int(planet1_diff.text)

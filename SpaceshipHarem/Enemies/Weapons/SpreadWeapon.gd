@@ -6,7 +6,7 @@ enum weapons {ROTATING = 1, HALLWAY = 2, CIRCULAR = 3, SHOTGUN = 4, BARRAGE = 5,
 onready var shoot_timer = $Timer
 onready var rotater = $Rotator
 
-export(PackedScene) var bullet_scene
+
 export(int, 0, 200) var rotate_speed = 10
 export(int, -359, 359) var rotate_from = -30
 export(int, -359, 359) var rotate_to = 30
@@ -22,8 +22,10 @@ var weapon_rotation
 var player_node
 var rotation_middle
 
-func _ready():	
-	
+var bullet_scene = preload("res://Enemies/Shots/EnemyShot.tscn")
+var charge_b_scene = preload("res://Enemies/Shots/ChargeShot.tscn")
+
+func _ready():
 	if home_in_player:
 		var nodes = get_tree().get_nodes_in_group("Player")
 		if len(nodes) > 0:
@@ -86,10 +88,18 @@ func _process(delta):
 
 func _on_ShootTimer_timeout() -> void:
 	for s in rotater.get_children():
-		var bullet = bullet_scene.instance()
-		get_tree().root.add_child(bullet)
-		bullet.position = s.global_position
-		bullet.rotation = s.global_rotation
+		create_bullet(s)
+		
+func create_bullet(rotator):
+	var bullet
+	randomize()
+	if randf() > 0.2:
+		bullet = bullet_scene.instance()
+	else:
+		bullet = charge_b_scene.instance()
+	get_tree().root.add_child(bullet)
+	bullet.position = rotator.global_position
+	bullet.rotation = rotator.global_rotation
 		
 func set_rotating_spread(diff):
 	var wait = 0.5 - float(diff) * 0.03

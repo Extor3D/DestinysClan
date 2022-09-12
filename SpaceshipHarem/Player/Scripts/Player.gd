@@ -16,6 +16,7 @@ var health
 var energy : float = 0
 var max_energy = 100
 var delta_energy = 0.5
+var energy_multi = 1
 var damage
 var speed
 var ships : Array
@@ -91,6 +92,7 @@ func _ready():
 	max_energy = int(get_stat(stat_energy, 50, 100))
 	speed = get_stat(stat_agility, 300, 600)
 	delta_energy = get_stat(stat_mind, 0.02, 0.05)
+	energy_multi = get_stat(stat_mind, 1, 3)
 	
 	$Ship1.speed = speed
 	$Ship2.speed = speed
@@ -163,6 +165,9 @@ func take_damage(d):
 		$Ship2.blink = true
 		if health <= 0:
 			queue_free()
+			
+func charge_energy(e):
+	energy = move_toward(energy, max_energy, e * energy_multi)
 
 func get_higher_ship():
 	if $Ship1.position.y < $Ship2.position.y:

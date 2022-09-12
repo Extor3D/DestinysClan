@@ -32,6 +32,9 @@ func _on_Button_pressed():
 
 
 func _unhandled_input(event):
-	if event is InputEventKey:
-		if event.pressed and event.scancode == KEY_Z:
-			manage_text()
+	if Input.is_action_just_pressed("ui_accept"):
+		manage_text()
+	
+#	if event is InputEventKey:
+#		if event.pressed and event.scancode == KEY_Z:
+#			manage_text()

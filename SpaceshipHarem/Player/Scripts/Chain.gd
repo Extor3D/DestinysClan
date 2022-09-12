@@ -9,3 +9,6 @@ func _on_Chain_body_entered(body):
 		
 func take_damage(d):
 	get_parent().take_damage(d)
+	
+func charge_energy(energy):
+	get_parent().charge_energy(energy)

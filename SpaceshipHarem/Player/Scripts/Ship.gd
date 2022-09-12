@@ -12,6 +12,9 @@ var blink = false
 
 func take_damage(damage):
 	get_parent().take_damage(damage)
+	
+func charge_energy(energy):
+	get_parent().charge_energy(energy)
 
 func _ready():
 	get_node("ShipSprite").texture = sprite

@@ -14,10 +14,14 @@ func _ready():
 	laser_graphic.hide()
 	laser_graphic.scale = Vector2(1, size)
 	warning_graphic.scale = Vector2(1, size)
+	var w_color = Global.WARNING_COLOR
+	w_color.a = 0.5
+	warning_graphic.color = w_color
 	laser_collision.scale = Vector2(1, size)
 
 func deactivate():
 	queue_free()
+	
 
 func _on_WarningTime_timeout():
 	warning_graphic.hide()

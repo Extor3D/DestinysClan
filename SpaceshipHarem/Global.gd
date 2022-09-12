@@ -19,6 +19,8 @@ const FORMATIONS = [{id = FORM_LOW_DEF, scene_path = "res://Player/Formations/Lo
 					{id = FORM_DEF, scene_path = "res://Player/Formations/DForm.tscn"},
 					{id = FORM_ARROW, scene_path = "res://Player/Formations/ArrowForm.tscn"}]
 
+var WARNING_COLOR = Color.orange
+
 #Game globals
 var rng = RandomNumberGenerator.new()
 var level = 0
