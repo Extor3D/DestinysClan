@@ -1,5 +1,7 @@
 extends Node2D
 
+signal formation_done
+
 export(int, 0, 10) var stat_health = 1
 export(int, 0, 10) var stat_agility = 1
 export(int, 0, 10) var stat_range = 1
@@ -91,7 +93,7 @@ func _ready():
 	max_health = int(get_stat(stat_health, 5, 15))
 	max_energy = int(get_stat(stat_energy, 50, 100))
 	speed = get_stat(stat_agility, 300, 600)
-	delta_energy = get_stat(stat_mind, 0.02, 0.05)
+	delta_energy = get_stat(stat_mind, 1, 3)
 	energy_multi = get_stat(stat_mind, 1, 3)
 	
 	$Ship1.speed = speed
@@ -138,14 +140,15 @@ func _physics_process(_delta):
 				f.position = get_higher_ship()
 				if is_formation_done(f):
 					is_in_formation = true
+					emit_signal("formation_done")
 					f.do_effect(s)
-					#Change the mode of the chaings to keep them in place
+					#Change the mode of the chains to keep them in place
 					for c in chains:
 						c.set_mode(RigidBody2D.MODE_CHARACTER)
 					energy -= f.energy
 			
-func _process(_delta):
-	energy = move_toward(energy, max_energy, delta_energy)
+func _process(delta):
+	energy = move_toward(energy, max_energy, delta_energy * delta)
 		
 		
 func collide_with_enemies():

@@ -22,12 +22,12 @@ func _ready():
 func deactivate():
 	queue_free()
 	
-
+func _physics_process(delta):
+	if on:
+		for s in laser_effect.get_overlapping_bodies():
+			s.take_damage(1)
+	
 func _on_WarningTime_timeout():
 	warning_graphic.hide()
 	laser_graphic.visible = true
 	on = true
-
-func _on_LaserEffect_body_entered(body):
-	if on:
-		body.take_damage(1)

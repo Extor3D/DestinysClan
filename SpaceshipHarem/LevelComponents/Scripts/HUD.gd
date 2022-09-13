@@ -2,7 +2,11 @@ extends Node2D
 
 onready var hp_bar = $HPBar
 onready var en_bar = $EnergyBar
+onready var b_bar = $BossBar
 onready var level = get_parent()
+
+var boss_active = false
+var boss = null
 
 var hp_length = 200
 var hp_top = 10
@@ -16,22 +20,28 @@ var en_left = 10
 var en_height = 5
 var en_slope = 5
 
+var b_length = -200
+var b_top = 10
+var b_left = 625
+var b_height = 10
+var b_slope = -10
+
 var segments_bars = []
 var segment_dist : float = 2
 var segment_top = 10
 var segment_height = 15
 var segment_slope = 15
-var segment_left = 220
+var segment_left = 210
 var segment_length = 200
 
 func _ready():
 	level.connect("new_segment", self, "paint_segment")
+	get_parent().connect("boss_spawned", self, "show_boss_hp")
 
 func _process(_delta):
 	#If the Player is still alive, we get the energy and health from it
 	if get_parent().has_node("Player"):
 		var player = get_parent().get_node("Player")
-		$Label.text = str(player.energy)
 		var perc_hp = float(player.health) / player.max_health
 		var perc_en = player.energy / player.max_energy
 		draw_bar(hp_left, hp_top, hp_height, hp_slope, perc_hp * hp_length, hp_bar, get_col_array(Color.red, Color.yellow, perc_hp))
@@ -46,6 +56,14 @@ func _process(_delta):
 			segments_bars.append(segment)
 			add_child(segment)
 			paint_segment(0)
+	
+	if boss_active:
+		var perc_hp = float(boss.health) / boss.max_health
+		draw_bar(b_left, b_top, b_height, b_slope, perc_hp * b_length, b_bar, get_col_array(Color.red, Color.yellow, perc_hp))
+			
+func show_boss_hp(b):
+	boss = b
+	boss_active = true
 			
 func paint_segment(n):
 	for i in segments_bars.size():

@@ -173,6 +173,7 @@ activate_formation={
 2d_physics/layer_5="Chains"
 2d_physics/layer_6="Obstacles"
 2d_physics/layer_7="Charge_Shots"
+2d_physics/layer_8="Damage_Zones"
 
 [physics]
 

@@ -13,7 +13,7 @@ warn_time = 3.0
 radius = 100
 
 [node name="ExplosionRange" type="Area2D" parent="."]
-collision_layer = 8
+collision_layer = 128
 gravity_vec = Vector2( 0, 0 )
 gravity = 0.0
 

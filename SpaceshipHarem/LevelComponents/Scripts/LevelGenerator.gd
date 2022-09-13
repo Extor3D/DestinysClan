@@ -1,6 +1,7 @@
 extends Node2D
 
 signal new_segment(number)
+signal boss_spawned(boss)
 
 export (Global.themes) var theme = Global.themes.LAND
 export (int, 1, 10) var difficulty = 1
@@ -49,6 +50,7 @@ var deep_space_segment = preload("res://LevelComponents/Segments/DeepSpaceSegmen
 var bomb_shower_segment = preload("res://LevelComponents/Segments/BombShowerSegment.tscn")
 var bomber_segment = preload("res://LevelComponents/Segments/BomberEnemiesSegment.tscn")
 var sub_boss_segment = preload("res://LevelComponents/Segments/SubBossSegment.tscn")
+var laser_shower_segment = preload("res://LevelComponents/Segments/LaserShowerSegment.tscn")
 
 #Tutorial
 var tutorial1 = preload("res://LevelComponents/Segments/Tutorial/Tutorial1Segment.tscn")
@@ -73,11 +75,13 @@ var possible_segments = [thin_tunnel_segment,
 						deep_space_segment,
 						bomb_shower_segment,
 						bomber_segment,
-						sub_boss_segment]
+						sub_boss_segment,
+						laser_shower_segment]
 
 						
 var possible_musics = [dangerous_music,exploration_music,mysterious_music]
 
+var boss = null
 
 func _ready():
 	rng.randomize()
@@ -142,12 +146,13 @@ func spawn_boss():
 	music.stop()
 	music.stream = boss_music
 	music.play()
-	var boss = random_boss_scene.instance()
+	boss = random_boss_scene.instance()
 	boss.position = Vector2(700, 180)
 	boss.health = 100 + 20 * difficulty
 	boss.difficulty = difficulty
 	play_area.add_child(boss)
 	boss.connect("defeated", self, "end_level")
+	emit_signal("boss_spawned", boss)
 	
 func next_segment(n):
 	if n >= segments.size():
