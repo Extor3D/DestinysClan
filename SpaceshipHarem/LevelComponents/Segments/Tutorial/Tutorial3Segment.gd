@@ -6,7 +6,8 @@ var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
 var TUTORIAL_TEXTS3 = ["Grandioso!!! Otro exito!\n Estan casi listos para salir al espacio.",
 "En su aventura visitaran varios planetas y lamentablemente, estan fuertemente armados.\nEs probable que se topen tarde o temprano con una [b][color=green]nave imperial[/color][/b].",
 "Las naves imperiales [b][color=#00FF00]estan fuertemente armadas y son mucho mas resistentes[/color][/b] que las naves normales.\nGeneralmente sera la ultima linea de defensa que tiene un planeta. ",
-"Simulare una de estas naves para que aprendan a lidiar con ellas.\n[b][color=#00FF00]Recuerda todo los disparos que te dañan son de color rojo[/color][/b]\nMucha suerte!!"]
+"Simulare una de estas naves para que aprendan a lidiar con ellas.\nUna cosa mas... estas naves dispararan tambien unos [b][color=#b2ffff]Disparos Azules[/color][/b]. Estos disparos, al impactar en la [b][color=#00FF00]recargaran tu enegia![/color][/b].",
+"Bueno, eso es todo por ahora...\nDerrota al jefe usando lo aprendido.[b][color=#00FF00]Recuerda que todos los disparos que te dañan son de color rojo[/color][/b]\nMucha suerte!!"]
 
 
 var texts_number = 0

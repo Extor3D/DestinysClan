@@ -3,7 +3,7 @@ extends Segment
 onready var timer = $SegmentTime1
 var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
 
-var TUTORIAL_TEXTS1 = ["Bienvenidos al [b]Simulador de batalla[/b].\nAqui les enseñare lo basico, aunque seguramente no lo necesiten. Todos aqui somos veteranos de las guerras conicas verdad? no?\nEste es un momento muy incomodo para todos asi que como dicen 'Al mal paso darle prisa'\n[b][color=green]Presiona Barra espaciadora para continuar[/color][/b] ",
+var TUTORIAL_TEXTS1 = ["Bienvenidos al [b]Simulador de batalla[/b].\nAqui les enseñare lo basico, aunque seguramente no lo necesiten. Todos aqui somos veteranos de las guerras conicas verdad? no?\nEste es un momento muy incomodo para todos asi que como dicen 'Al mal paso darle prisa'\n[b][color=green]Presiona Z o ENTER para continuar[/color][/b] ",
 "[b][color=#ffc0cb]Alpha[/color][/b], he configurado los controles de tu nave segun tus  preferencias (Esta nave se controla con [b][color=#00FF00]WASD[/color][/b]).", 
 "En tu caso [b][color=yellow]Omega[/color][/b] , hemos vuelto a los controles basicos, se que no tendras quejas (Esta nave se controla con las [b][color=#00FF00]flechas[/color][/b]) . Se conocen hace mucho y los une un [b][color=red]VINCULO[/color][/b] muy estrecho, asi que creo que no hacen falta las presentaciones despues de todo."	, 
 "Se preguntaran que son esas naves del medio...  Es un experimento que he estado planificando, si tiene exito en el simulador, lo podremos trasladar a naves reales!\nEsas 3 naves son [b][color=#FFD700]Naves Conectoras[/color][/b] .",  

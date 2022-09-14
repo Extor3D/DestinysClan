@@ -23,12 +23,7 @@ func manage_text():
 		label.add_text(texts[texts_number])
 	else:
 		container.visible = false
-		button.visible = false
 		emit_signal("end_label")
-		
-		
-func _on_Button_pressed():
-	manage_text()
 
 
 func _unhandled_input(event):
