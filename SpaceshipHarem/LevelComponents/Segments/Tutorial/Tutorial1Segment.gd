@@ -24,10 +24,14 @@ var spawners = []
 var	time
 var ended = false
 var label = label_scene.instance()
+
 func start_segment():
 	rng.randomize()
 	label.texts = TUTORIAL_TEXTS1
 	add_child(label)
+	#print(get_parent().get_parent().get_child(1))
+	var playernode = get_parent().get_parent().get_child(1)
+	playernode.connect("formation_done",self,"formation")
 	label.connect("end_label",self,"finish1")
 
 
@@ -44,6 +48,10 @@ func finish1():
 		timer.start(time)
 		add_asteroid_field(time)
 		remove_child(label)
+		
+func formation():
+	print("Formacion")
+	end_segment()
 
 func _ready():
 	pass

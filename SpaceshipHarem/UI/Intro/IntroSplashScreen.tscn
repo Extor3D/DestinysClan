@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://UI/Intro/IntroSplashScreen.gd" type="Script" id=1]
-[ext_resource path="res://UI/Intro/Logo.png" type="Texture" id=2]
+[ext_resource path="res://UI/Intro/DClogo.jpeg" type="Texture" id=2]
 [ext_resource path="res://UI/Intro/LudoverLogo.png" type="Texture" id=3]
 
 [node name="IntroSplashScreen" type="Node2D"]
@@ -19,7 +19,8 @@ texture = ExtResource( 3 )
 [node name="BlendOut" type="Tween" parent="."]
 
 [node name="Logo" type="Sprite" parent="."]
-position = Vector2( 315, 177 )
+position = Vector2( 321, 172 )
+scale = Vector2( 0.425, 0.409015 )
 texture = ExtResource( 2 )
 
 [node name="LogoWaitTime" type="Timer" parent="."]
