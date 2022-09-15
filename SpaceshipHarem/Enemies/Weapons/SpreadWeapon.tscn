@@ -10,4 +10,9 @@ autostart = true
 
 [node name="Rotator" type="Node2D" parent="."]
 
+[node name="ChargedShotTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_ShootTimer_timeout"]
+[connection signal="timeout" from="ChargedShotTimer" to="." method="_on_ChargedShotTimer_timeout"]

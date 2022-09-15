@@ -4,6 +4,7 @@ class_name SpreadWeapon
 enum weapons {ROTATING = 1, HALLWAY = 2, CIRCULAR = 3, SHOTGUN = 4, BARRAGE = 5, RANDOM = 6}
 
 onready var shoot_timer = $Timer
+onready var charged_timer = $ChargedShotTimer
 onready var rotater = $Rotator
 
 
@@ -21,6 +22,10 @@ export(bool) var home_in_player = false
 var weapon_rotation
 var player_node
 var rotation_middle
+
+var charge_time = 1
+var normal_time = 5
+var is_shooting_charge = false
 
 var bullet_scene = preload("res://Enemies/Shots/EnemyShot.tscn")
 var charge_b_scene = preload("res://Enemies/Shots/ChargeShot.tscn")
@@ -92,8 +97,7 @@ func _on_ShootTimer_timeout() -> void:
 		
 func create_bullet(rotator):
 	var bullet
-	randomize()
-	if randf() > 0.2:
+	if not is_shooting_charge:
 		bullet = bullet_scene.instance()
 	else:
 		bullet = charge_b_scene.instance()
@@ -153,3 +157,13 @@ func create_spread_settings(rot_spd, rot_from, rot_to, wait_time, spawn_count, r
 		"back_and_forth" : back_forth
 	}
 	return spread_settings
+
+
+func _on_ChargedShotTimer_timeout():
+	is_shooting_charge = not is_shooting_charge
+	randomize()
+	var t = rand_range(0, 2)
+	if is_shooting_charge:
+		charged_timer.start(charge_time + t)
+	else:
+		charged_timer.start(normal_time + t)
