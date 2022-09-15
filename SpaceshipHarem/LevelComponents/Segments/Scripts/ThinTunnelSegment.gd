@@ -32,7 +32,7 @@ func create_tunnel(duration):
 	tunnel.y = 180 
 	tunnel.step_min = -30 - difficulty
 	tunnel.step_max = 30 + difficulty
-	tunnel.top_texture = lava_texture
-	tunnel.bot_texture = lava_texture
+	tunnel.top_texture = earth_texture
+	tunnel.bot_texture = water_texture
 	tunnel.can_damage = true
 	add_child(tunnel)
