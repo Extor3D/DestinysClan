@@ -3,6 +3,9 @@ extends Node
 # Destiny's Child Logo
 # https://www.logomaker.com/
 
+# Electricity and damage effect
+# @nyk_nck at https://nyknck.itch.io/
+
 # Charybdis font
 # https://www.1001fonts.com/charybdis-font.html
 

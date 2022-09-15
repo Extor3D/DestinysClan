@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Effects/Sprites/FX046_nyknck/FX046_01.png" type="Texture" id=1]
+[ext_resource path="res://Effects/Sprites/FX046_nyknck/FX046_02.png" type="Texture" id=2]
+[ext_resource path="res://Effects/Sprites/FX046_nyknck/FX046_03.png" type="Texture" id=3]
+[ext_resource path="res://Effects/DamageEffect.gd" type="Script" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[node name="DamageEffect" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+frame = 1
+playing = true
+
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
