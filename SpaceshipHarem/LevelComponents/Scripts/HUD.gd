@@ -5,6 +5,8 @@ onready var en_bar = $EnergyBar
 onready var b_bar = $BossBar
 onready var level = get_parent()
 
+var pilot_bar_scene = preload("res://LevelComponents/PilotStatusBar.tscn")
+
 var boss_active = false
 var boss = null
 
@@ -26,6 +28,12 @@ var b_left = 625
 var b_height = 10
 var b_slope = -10
 
+var p_length = 60
+var p_top = 320
+var p_left = 10
+var p_slope = 20 
+var p_bars = []
+
 var segments_bars = []
 var segment_dist : float = 2
 var segment_top = 10
@@ -37,6 +45,12 @@ var segment_length = 200
 func _ready():
 	level.connect("new_segment", self, "paint_segment")
 	get_parent().connect("boss_spawned", self, "show_boss_hp")
+	for i in Global.current_pilots.size():
+		var pilot_node = pilot_bar_scene.instance()
+		pilot_node.position = Vector2(p_left + i * (p_length + p_slope), p_top)
+		add_child(pilot_node)
+		pilot_node.set_pilot(Global.current_pilots[i])
+		p_bars.append(pilot_node)
 
 func _process(_delta):
 	#If the Player is still alive, we get the energy and health from it
@@ -46,6 +60,8 @@ func _process(_delta):
 		var perc_en = player.energy / player.max_energy
 		draw_bar(hp_left, hp_top, hp_height, hp_slope, perc_hp * hp_length, hp_bar, get_col_array(Color.red, Color.yellow, perc_hp))
 		draw_bar(en_left, en_top, en_height, en_slope, perc_en * en_length, en_bar, get_col_array(Color.red, Color.green, perc_en))
+		for p in p_bars:
+			p.set_meter(player.energy)
 	else:
 		draw_bar(hp_left, hp_top, hp_height, hp_slope, 0, hp_bar, get_col_array(Color.red, Color.yellow, 0))
 	
@@ -64,7 +80,7 @@ func _process(_delta):
 func show_boss_hp(b):
 	boss = b
 	boss_active = true
-			
+
 func paint_segment(n):
 	for i in segments_bars.size():
 		var s = segments_bars[i]
@@ -95,20 +111,6 @@ func draw_segment_bar(s, i, n):
 	poly.append(top_left)
 	poly.append(top_right)
 	poly.append(bot_right)
-	s.set_polygon(poly)
-	s.set_vertex_colors(get_col_array(Color.green, Color.green, 1))
-
-func draw_segments_bar(s):
-	var poly : Array = []
-	var top = 10
-	var height = 20
-	var slope = 20
-	var left = 220
-	var length = 200
-	poly.append(Vector2(left, top + height))
-	poly.append(Vector2(left + slope, top))
-	poly.append(Vector2(left - slope + length, top))
-	poly.append(Vector2(left + length, top + height))
 	s.set_polygon(poly)
 	s.set_vertex_colors(get_col_array(Color.green, Color.green, 1))
 	

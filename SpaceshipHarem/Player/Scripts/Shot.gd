@@ -12,7 +12,6 @@ func _process(_delta):
 func _physics_process(delta):
 	global_position.x += speed * delta
 
-
 func _on_Shot_body_entered(body):
 	body.take_damage(damage)
 	var e = effect.instance()

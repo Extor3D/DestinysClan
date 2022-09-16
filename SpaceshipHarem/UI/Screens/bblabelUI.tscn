@@ -5,6 +5,7 @@
 [ext_resource path="res://UI/Fonts/Charybdis.tres" type="DynamicFont" id=3]
 
 [node name="UI" type="Node2D"]
+z_index = 15
 script = ExtResource( 2 )
 
 [node name="Container" type="MarginContainer" parent="."]

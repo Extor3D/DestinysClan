@@ -14,10 +14,10 @@ const FORM_LOW_DEF = ">"
 const FORM_LOW_ARROW = "-"
 const FORM_DEF = "D"
 const FORM_ARROW = "A"
-const FORMATIONS = [{id = FORM_LOW_DEF, scene_path = "res://Player/Formations/LowDForm.tscn"},
+const FORMATIONS = [{id = FORM_LOW_DEF, scene_path = "res://Player/Formations/LowDForm.tscn", icon = "res://Player/Formations/Sprites/low_d_form_icon.png", energy_req = 10},
 					{id = FORM_LOW_ARROW, scene_path = "res://Player/Formations/LowArrowForm.tscn"},
-					{id = FORM_DEF, scene_path = "res://Player/Formations/DForm.tscn"},
-					{id = FORM_ARROW, scene_path = "res://Player/Formations/ArrowForm.tscn"}]
+					{id = FORM_DEF, scene_path = "res://Player/Formations/DForm.tscn", icon = "res://Player/Formations/Sprites/d_form_icon.png", energy_req = 10},
+					{id = FORM_ARROW, scene_path = "res://Player/Formations/ArrowForm.tscn", icon = "res://Player/Formations/Sprites/arrow_form_icon.png", energy_req = 10}]
 
 var WARNING_COLOR = Color.orange
 
