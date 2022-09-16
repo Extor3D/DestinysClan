@@ -74,9 +74,10 @@ var possible_segments = [thin_tunnel_segment,
 						trafficjam_segment,
 						deep_space_segment,
 						bomb_shower_segment,
-						bomber_segment,
 						sub_boss_segment,
-						laser_shower_segment]
+						bomber_segment,
+						laser_shower_segment
+]
 
 						
 var possible_musics = [dangerous_music,exploration_music,mysterious_music]
