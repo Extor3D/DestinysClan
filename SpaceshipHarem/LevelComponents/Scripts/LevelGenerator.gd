@@ -12,10 +12,12 @@ var on_surface = true
 
 var segments = []
 
+onready var player = $Player
 onready var play_area = $PlayArea
 onready var background = $BackGround
 onready var timer = $BossTimer
 onready var music = $BackgroundMusic
+onready var tween = $Tween
 
 # Special Background Music
 var tutorial_music = preload("res://Music/Levels/pixel-perfect-tutorial.mp3")
@@ -96,6 +98,7 @@ func _ready():
 	else:
 		music.stream = tutorial_music
 	music.play()
+	player.connect("game_over", self, "game_over_animation")
 			
 func create_background(on_srfce: bool):
 	if not on_srfce:
@@ -155,6 +158,12 @@ func spawn_boss():
 	boss.connect("defeated", self, "end_level")
 	emit_signal("boss_spawned", boss)
 	
+func game_over_animation():
+	Engine.time_scale = 0.01
+	yield(get_tree().create_timer(0.02), "timeout")
+	tween.interpolate_property(Engine, "time_scale", 0.1, 1, 2, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	tween.start()
+	
 func next_segment(n):
 	if n >= segments.size():
 		timer.start(5)
@@ -172,3 +181,7 @@ func end_level():
 	#	Global.goto_scene("res://UI/Screens/Victory.tscn")
 	else:
 		Global.goto_scene("res://UI/Screens/PilotSelect.tscn")
+		
+func _on_Tween_tween_all_completed():
+	#game over
+	pass

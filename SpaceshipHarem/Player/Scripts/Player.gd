@@ -1,6 +1,7 @@
 extends Node2D
 
 signal formation_done
+signal game_over
 
 export(int, 0, 10) var stat_health = 1
 export(int, 0, 10) var stat_agility = 1
@@ -27,6 +28,8 @@ var forms : Array
 var ship_scene = preload("res://Player/SmallShip.tscn")
 var chain_scene = preload("res://Player/Chain.tscn")
 var shot_scene = preload("res://Player/Shot.tscn")
+
+onready var d_tween = $DeathTween
 
 var is_in_formation = false
 
@@ -169,7 +172,14 @@ func take_damage(d):
 		$Ship1.blink = true
 		$Ship2.blink = true
 		if health <= 0:
-			queue_free()
+			death_animation()
+			
+func death_animation():
+	emit_signal("game_over")
+	yield(get_tree().create_timer(0.1), "timeout")
+	#Explotar miticamente
+	queue_free()
+	
 			
 func charge_energy(e):
 	energy = move_toward(energy, max_energy, e * energy_multi)
@@ -244,4 +254,3 @@ func _on_InviTimer_timeout():
 
 func set_cadence(c: float):
 	$ShotTimer.wait_time = c
-	
