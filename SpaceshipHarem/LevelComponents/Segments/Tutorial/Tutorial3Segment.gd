@@ -4,9 +4,11 @@ onready var timer = $SegmentTime3
 var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
 
 var TUTORIAL_TEXTS3 = ["Grandioso!!! Otro exito!\n Estan casi listos para salir al espacio.",
+"Habran notado que en la parte superior , justo en el medio, hay 3 indicadores que pasan de [b][color=green]verde[/color][/b] a [b][color=yellow]amarillo[/color][/b].\nEsto indica el segmento del nivel.El segmento activo se muestra en [b][color=yellow]amarillo[/color][/b] para indicar que lugar te encuentras.",
 "En su aventura visitaran varios planetas y lamentablemente, estan fuertemente armados.\nEs probable que se topen tarde o temprano con una [b][color=green]nave imperial[/color][/b].",
-"Las naves imperiales [b][color=#00FF00]estan fuertemente armadas y son mucho mas resistentes[/color][/b] que las naves normales.\nGeneralmente sera la ultima linea de defensa que tiene un planeta. ",
-"Simulare una de estas naves para que aprendan a lidiar con ellas.\nUna cosa mas... estas naves dispararan tambien unos [b][color=#b2ffff]Disparos Azules[/color][/b]. Estos disparos, al impactar en la [b][color=#00FF00]recargaran tu enegia![/color][/b].",
+"Las naves imperiales [b][color=#00FF00]tienen una gran variedad de armas y son mucho mas resistentes[/color][/b] que las naves normales.\nGeneralmente sera la ultima linea de defensa que tiene un planeta. ",
+"Simulare una de estas naves para que aprendan a lidiar con ellas.\nHe instalado un Software Pirata para detectar el estado de esas naves.\n La Barra que esta arriba a la derecha [b][color=#00FF00]indica la salud del enemigo final[/color][/b]. ",
+"Una cosa mas... estas naves dispararan tambien unos [b][color=#b2ffff]Disparos Azules[/color][/b]. Estos disparos, al impactar en la [b][color=#00FF00]recargaran tu enegia![/color][/b].",
 "Bueno, eso es todo por ahora...\nDerrota al jefe usando lo aprendido.[b][color=#00FF00]Recuerda que todos los disparos que te dañan son de color rojo[/color][/b]\nMucha suerte!!"]
 
 
@@ -32,34 +34,12 @@ func start_segment():
 func _on_SegmentTime_timeout():
 	ended3 = true
 	end_segment()
-	print("Termine segmento 3")
 
 func finish():
 	if !ended3:
-		print("Termine3")
-		#spawners.append(add_enemy_group(1,3,primary_enemy_scene))
 		timer.start(time)
 		remove_child(label)
 
 func _ready():
 	rng.randomize()
-
-	
-	
-func add_enemy_group(duration,start,enemy):
-	var spawner = spawner_scene.instance()
-	spawner.scene = enemy
-	var vars = {"move_speed": -70 + -difficulty*3,
-				"rot_spd": rng.randi_range(2, 3),
-				"cadence":100}
-	spawner.scene_variables = vars
-	spawner.y_center = 20 + (60 * rand_range(0,4))
-	spawner.height = 20 + (10* difficulty) 
-	spawner.start_time = start
-	spawner.duration = duration
-	spawner.warning = false
-	spawner.set_wait_time(1.35 - 0.2 * difficulty)
-	add_child(spawner)
-	return spawner
-
 

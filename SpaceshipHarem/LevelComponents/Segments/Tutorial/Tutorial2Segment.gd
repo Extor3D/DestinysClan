@@ -9,7 +9,7 @@ var TUTORIAL_TEXTS2 = ["Ups... creo que se me paso la mano... es decir ... Excel
 
 var texts_number = 0
 var spawner_scene = preload("res://LevelComponents/Spawner.tscn")
-var primary_enemy_scene = preload("res://Enemies/BeeEnemy.tscn")
+var primary_enemy_scene = preload("res://Enemies/SpecieEnemy.tscn")
 var secondary_enemy_scene = preload("res://Enemies/Enemy.tscn")
 var tertiary_enemy_scene = preload("res://Enemies/Enemy2.tscn")
 
@@ -28,11 +28,9 @@ func start_segment():
 func _on_SegmentTime_timeout():
 	ended2 = true
 	end_segment()
-	print("Termine segmento 2")
 
 func finish():
 	if !ended2:
-		print("Termine2")
 		spawners.append(add_enemy_group(time/3,3,primary_enemy_scene))
 		spawners.append(add_enemy_group(time/3,time/3,secondary_enemy_scene))
 		spawners.append(add_enemy_group(time/3,time * 2/3,tertiary_enemy_scene))
