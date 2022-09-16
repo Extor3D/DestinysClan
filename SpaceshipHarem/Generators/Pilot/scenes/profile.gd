@@ -42,8 +42,9 @@ const OCCUPATION=["Estudiante","Monotributista","Experto en Cosas","Alma Libre",
 const FLAVOR_TEXT=[" Nada de terroristas de la gramática ,  frágiles emocionales ,  Drama Queens , incultxs o de higiene dudosa. No personas llamadas Florencia, ni tener una remera que diga 'te quiero pero soy un bardo' ni un tatuaje que diga 'soltar'.",
 "Videos y fotitos para vos¡ Info x privado¡","Hola soy de Pollux 7. Tengo 27 años busco amistad y luego se ve", "Hola Buen dia a todos soy nuevite por aqui,  tengo 26 años y divorciade, busco chongo o lo que de","Me gusta viajar , el aire libre, reunirme para pasar buenos momentos. Deseo conocer gente que tenga buen humor y buenas energías"]
 
-const COMMON_FORMS = ["D","U","C","A","L"]
-
+# Volver Atras luego de la DEMO
+#const COMMON_FORMS = ["D","U","C","A","L"]
+const COMMON_FORMS = ["D","U","C","A","L","F1"]
 var type: String = TYPES[0]
 
 onready var screen:= $Viewport
@@ -158,8 +159,10 @@ func _randomize():
 	var posible_colors = pilot_specie[1]
 	skin_color =  posible_colors[randi() % posible_colors.size()]	
 	var posible_formations = COMMON_FORMS
+	
 	#Mejorar el random?
-	posible_formations.append_array(pilot_specie[3])
+	# TAPADO PARA LA DEMO
+	#posible_formations.append_array(pilot_specie[3])
 	var pilot_formation = posible_formations[randi() % posible_formations.size()]
 
 	
