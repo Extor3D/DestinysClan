@@ -91,7 +91,7 @@ func _ready():
 	theme = Global.current_theme
 	create_background(on_surface)
 	create_level()
-	if Global.level != 0:
+	if Global.level == 0:
 		music.stream = possible_musics[rng.randi_range(0, possible_musics.size() - 1)]
 	else:
 		music.stream = tutorial_music
@@ -123,7 +123,7 @@ func create_level():
 	for i in 3:
 		var s
 		#'''
-		if Global.level == 0:
+		if Global.level != 0:
 			# Pantalla de Skip Tutorial o ...
 			s = tutorial_segments[i-1]
 		else:
@@ -164,8 +164,11 @@ func next_segment(n):
 	
 func end_level():
 	music.stop()
+	yield(get_tree().create_timer(3.0), "timeout")
 	if Global.level == 0:
 		Global.current_difficulty = 0
 		Global.goto_scene("res://UI/Screens/LevelSelect.tscn")
+	#else if Global.level > 3:
+	#	Global.goto_scene("res://UI/Screens/Victory.tscn")
 	else:
 		Global.goto_scene("res://UI/Screens/PilotSelect.tscn")
