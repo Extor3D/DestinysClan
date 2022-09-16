@@ -87,6 +87,7 @@ var possible_musics = [dangerous_music,exploration_music,mysterious_music]
 var boss = null
 
 func _ready():
+	#Engine.time_scale = 0.5
 	rng.randomize()
 	on_surface = rng.randf() < 0.5
 	difficulty = Global.current_difficulty

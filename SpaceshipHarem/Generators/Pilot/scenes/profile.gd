@@ -44,7 +44,7 @@ const FLAVOR_TEXT=[" Nada de terroristas de la gramática ,  frágiles emocional
 
 # Volver Atras luego de la DEMO
 #const COMMON_FORMS = ["D","U","C","A","L"]
-const COMMON_FORMS = ["D","U","C","A","L","F1"]
+const COMMON_FORMS = ["D","U","C","A","L"]
 var type: String = TYPES[0]
 
 onready var screen:= $Viewport
