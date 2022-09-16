@@ -105,7 +105,9 @@ func add_formation(id):
 	if not forms.has(id):
 		var f = Global.get_form_by_id(id)
 		if f != null:
-			$Formations.add_child(load(f.scene_path).instance())
+			var form_node = load(f.scene_path).instance()
+			form_node.energy = f.energy_req
+			$Formations.add_child(form_node)
 			forms.append(id)
 	
 func add_stats_from_ship(s):

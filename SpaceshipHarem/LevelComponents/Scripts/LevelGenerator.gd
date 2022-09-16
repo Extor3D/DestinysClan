@@ -123,7 +123,7 @@ func create_level():
 	for i in 3:
 		var s
 		#'''
-		if Global.level != 0:
+		if Global.level == 0:
 			# Pantalla de Skip Tutorial o ...
 			s = tutorial_segments[i-1]
 		else:

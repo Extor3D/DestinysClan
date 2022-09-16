@@ -9,6 +9,7 @@ var pilot_bar_scene = preload("res://LevelComponents/PilotStatusBar.tscn")
 
 var boss_active = false
 var boss = null
+var boss_path = null
 
 var hp_length = 200
 var hp_top = 10
@@ -73,12 +74,13 @@ func _process(_delta):
 			add_child(segment)
 			paint_segment(0)
 	
-	if boss_active:
+	if boss_active and has_node(boss_path):
 		var perc_hp = float(boss.health) / boss.max_health
 		draw_bar(b_left, b_top, b_height, b_slope, perc_hp * b_length, b_bar, get_col_array(Color.red, Color.yellow, perc_hp))
 			
 func show_boss_hp(b):
 	boss = b
+	boss_path = b.get_path()
 	boss_active = true
 
 func paint_segment(n):
