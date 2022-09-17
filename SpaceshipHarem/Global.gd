@@ -65,7 +65,7 @@ func _ready():
 func get_dummy_data(sp, co):
 	var data = {
 		name = "dum",
-		formation = FORM_WORLD,
+		formation = FORM_LOW_DEF,
 		stats = [[2, STAT_NAMES.MaxHP], [1, STAT_NAMES.RecoverySpeed]],
 		color = co, 
 		specie = sp

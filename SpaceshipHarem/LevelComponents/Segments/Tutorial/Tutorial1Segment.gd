@@ -70,15 +70,15 @@ func _ready():
 func add_asteroid_field(duration):
 	spawner = spawner_scene.instance()
 	spawner.scene = obstacle_scene
-	var vars = {"speed": -200,
+	var vars = {"speed": -150,
 				"rot_spd": rng.randi_range(2, 3)}
 	spawner.scene_variables = vars
 	spawner.y_center = 180
-	spawner.height = 600
+	spawner.height = 500
 	spawner.start_time = 0
 	spawner.duration = duration
 	spawner.warning = false
-	spawner.set_wait_time(0.1)
+	spawner.set_wait_time(0.2)
 	add_child(spawner)
 
 

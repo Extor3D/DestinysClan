@@ -22,7 +22,6 @@ func _physics_process(delta):
 
 func _ready():
 	$ShotTimer.start(cadence)
-	print(cadence)
 	if cadence == 2:
 		sprite.texture = cat_sprite
 

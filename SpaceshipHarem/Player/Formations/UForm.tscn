@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player/Formations/Scripts/UForm.gd" type="Script" id=1]
+[ext_resource path="res://Player/Formations/Effects/RecoveryEffect.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 25.0
@@ -9,18 +10,25 @@ radius = 25.0
 radius = 26.0
 
 [node name="UForm" type="Area2D"]
+position = Vector2( -143, -40 )
 script = ExtResource( 1 )
+effect_scene = ExtResource( 2 )
 
 [node name="End1" type="Area2D" parent="."]
+position = Vector2( 145, 39 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="End1"]
 shape = SubResource( 1 )
 
 [node name="End2" type="Area2D" parent="."]
-position = Vector2( 0, 116 )
+position = Vector2( 44, 41 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="End2"]
+position = Vector2( 1, 0 )
 shape = SubResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 147, 57.5871 )
+rotation = 1.58004
+scale = Vector2( 1, 0.896856 )
 polygon = PoolVector2Array( -28, -22, 74, -22, 105, 8, 107, 103, 73, 138, -26, 141, -26, 92, 32, 91, 51, 74, 51, 41, 33, 23, -28, 24 )

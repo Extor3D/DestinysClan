@@ -27,16 +27,24 @@ var types = [
 var spawners = []
 
 func start_segment():
-	print("empieza el segmento")
-	var time = 30 + difficulty * 2
+	
+	var time = 10 + difficulty * 3
 	var ways = types.size()
 	var previous_ways = []
 	var way_passed = 3
+	var trails = 2
 	rng.randomize()
 	# Ajustar vueltas por dificultad
+	if difficulty > 3:
+		if difficulty > 6:
+			trails = 4
+		else:
+			trails = 3
+		
+	
 	for i in 2 :
 		print("Vuelta")
-		for j in 3 :
+		for j in trails :
 			var way = types[rng.randi_range(0, types.size() - 1)]
 			var way_id = way[2]
 			while previous_ways.has(way_id):

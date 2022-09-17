@@ -94,7 +94,7 @@ func _ready():
 	theme = Global.current_theme
 	create_background(on_surface)
 	create_level()
-	if Global.level == 0:
+	if Global.level != 0:
 		music.stream = possible_musics[rng.randi_range(0, possible_musics.size() - 1)]
 	else:
 		music.stream = tutorial_music
