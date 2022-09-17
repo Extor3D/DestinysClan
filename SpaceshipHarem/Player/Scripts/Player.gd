@@ -142,15 +142,23 @@ func _physics_process(_delta):
 				#Calculate scaling based on number of ships
 				var s = 1 + (Global.current_pilots.size() * 0.1 - 0.5 )
 				f.scale = Vector2(s, s)
-				f.position = get_higher_ship()
+				f.position = $Ship1.position
+				yield(get_tree().create_timer(0.01), "timeout")
 				if is_formation_done(f):
-					is_in_formation = true
-					emit_signal("formation_done")
-					f.do_effect(s)
-					#Change the mode of the chains to keep them in place
-					for c in chains:
-						c.set_mode(RigidBody2D.MODE_CHARACTER)
-					energy -= f.energy
+					do_formation(f, s)
+				else:
+					f.position = $Ship2.position
+					if is_formation_done(f):
+						do_formation(f, s)
+					
+func do_formation(f, s):
+	is_in_formation = true
+	emit_signal("formation_done")
+	f.do_effect(s)
+	#Change the mode of the chains to keep them in place
+	for c in chains:
+		c.set_mode(RigidBody2D.MODE_CHARACTER)
+	energy -= f.energy
 			
 func _process(delta):
 	energy = move_toward(energy, max_energy, delta_energy * delta)
@@ -254,3 +262,7 @@ func _on_InviTimer_timeout():
 
 func set_cadence(c: float):
 	$ShotTimer.wait_time = c
+
+func set_speed_mod(m):
+	$Ship1.spd_mod = m
+	$Ship2.spd_mod = m

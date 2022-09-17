@@ -17,21 +17,22 @@ const FORM_INV = "U"
 const FORM_VEL = "C"
 const FORM_ARROW = "A"
 const FORM_ENER = "L"
+const FORM_WORLD = "O"
 const FORMATIONS = [{id = FORM_LOW_DEF, scene_path = "res://Player/Formations/LowDForm.tscn", icon = "res://Player/Formations/Sprites/low_d_form_icon.png", energy_req = 10},
 					{id = FORM_LOW_ARROW, scene_path = "res://Player/Formations/LowArrowForm.tscn"},
 					{id = FORM_DEF, scene_path = "res://Player/Formations/DForm.tscn", icon = "res://Player/Formations/Sprites/d_form_icon.png", energy_req = 10},
 					{id = FORM_ARROW, scene_path = "res://Player/Formations/ArrowForm.tscn", icon = "res://Player/Formations/Sprites/arrow_form_icon.png", energy_req = 10},
 					{id = FORM_INV, scene_path = "res://Player/Formations/UForm.tscn", icon = "res://Player/Formations/Sprites/arrow_form_icon.png", energy_req = 10},
 					{id = FORM_VEL, scene_path = "res://Player/Formations/CForm.tscn", icon = "res://Player/Formations/Sprites/arrow_form_icon.png", energy_req = 10},
-					{id = FORM_ENER, scene_path = "res://Player/Formations/LForm.tscn", icon = "res://Player/Formations/Sprites/arrow_form_icon.png", energy_req = 10}
-					
+					{id = FORM_ENER, scene_path = "res://Player/Formations/LForm.tscn", icon = "res://Player/Formations/Sprites/arrow_form_icon.png", energy_req = 10},
+					{id = FORM_WORLD, scene_path = "res://Player/Formations/OForm.tscn", icon = "res://Player/Formations/Sprites/arrow_form_icon.png", energy_req = 1}
 					]
 
 var WARNING_COLOR = Color.orange
 
 #Game globals
 var rng = RandomNumberGenerator.new()
-var level = 0
+var level = 1
 var current_difficulty = 1
 var current_theme = themes.LAND
 
@@ -64,7 +65,7 @@ func _ready():
 func get_dummy_data(sp, co):
 	var data = {
 		name = "dum",
-		formation = FORM_LOW_DEF,
+		formation = FORM_WORLD,
 		stats = [[2, STAT_NAMES.MaxHP], [1, STAT_NAMES.RecoverySpeed]],
 		color = co, 
 		specie = sp

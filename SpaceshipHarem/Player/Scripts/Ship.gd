@@ -6,6 +6,8 @@ export(sides) var side
 export(Texture) var sprite
 export var speed = 500
 
+var spd_mod = 1
+
 var movement = Vector2.ZERO
 var ship_name = "ship1"
 var blink = false
@@ -41,7 +43,7 @@ func _process(_delta):
 		$ShipSprite.set_modulate(Color.white)
 
 func _physics_process(delta):
-	apply_central_impulse(movement*delta)
+	apply_central_impulse(movement*delta*spd_mod)
 
 func _on_Ship_body_entered(body):
 	if body.get_collision_layer() == 32:
