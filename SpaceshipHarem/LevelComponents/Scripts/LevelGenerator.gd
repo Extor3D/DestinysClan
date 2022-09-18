@@ -83,6 +83,8 @@ var possible_segments = [thin_tunnel_segment,
 						enemy_tunnel_segment,
 ]
 
+
+
 						
 var possible_musics = [dangerous_music,exploration_music,mysterious_music]
 
@@ -129,6 +131,7 @@ func create_level():
 	for i in 3:
 		var s
 		#'''
+		possible_segments = [enemy_tunnel_segment,enemy_tunnel_segment,enemy_tunnel_segment]
 		if Global.level == 0:
 			# Pantalla de Skip Tutorial o ...
 			s = tutorial_segments[i-1]
