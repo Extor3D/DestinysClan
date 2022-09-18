@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/honk_sound.mp3-c6c06ef7a4921aa18e1d9f13043e14de.mp3str"
+
+[deps]
+
+source_file="res://Enemies/Sounds/Traffic/honk_sound.mp3"
+dest_files=[ "res://.import/honk_sound.mp3-c6c06ef7a4921aa18e1d9f13043e14de.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

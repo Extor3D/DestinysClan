@@ -28,7 +28,7 @@ one_shot = true
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
-volume_db = -10.0
+volume_db = -13.496
 
 [node name="Tween" type="Tween" parent="."]
 

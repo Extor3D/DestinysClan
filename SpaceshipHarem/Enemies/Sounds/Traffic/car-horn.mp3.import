@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/car-horn.mp3-4d74192bc9f5b39e318deb2f15cb75ee.mp3str"
+
+[deps]
+
+source_file="res://Enemies/Sounds/Traffic/car-horn.mp3"
+dest_files=[ "res://.import/car-horn.mp3-4d74192bc9f5b39e318deb2f15cb75ee.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

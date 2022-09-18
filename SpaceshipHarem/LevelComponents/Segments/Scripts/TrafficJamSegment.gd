@@ -11,6 +11,13 @@ var dificulty = Global.current_difficulty
 var spawner_scene = preload("res://LevelComponents/Spawner.tscn")
 var primary_enemy_scene = preload("res://Enemies/TrafficCar.tscn")
 
+#onready var  honk_sound = preload("res://Enemies/Sounds/honk_sound.mp3")
+
+var car_sound = preload("res://Enemies/Sounds/Traffic/car-horn.mp3")
+
+onready var sound = $AudioStreamPlayer
+
+
 var rng = RandomNumberGenerator.new()
 
 var types = [
@@ -27,7 +34,8 @@ var types = [
 var spawners = []
 
 func start_segment():
-	
+	sound.play()
+	#honk.play()
 	var time = 10 + difficulty * 3
 	var ways = types.size()
 	var previous_ways = []
@@ -45,6 +53,7 @@ func start_segment():
 	for i in 2 :
 		print("Vuelta")
 		for j in trails :
+			
 			var way = types[rng.randi_range(0, types.size() - 1)]
 			var way_id = way[2]
 			while previous_ways.has(way_id):
@@ -55,12 +64,17 @@ func start_segment():
 			spawners.append(add_traffic_line(time/3,way_passed,primary_enemy_scene,way))
 		#add_traffic_line(time/3,time/3,primary_enemy_scene,way)
 		#add_enemy_group(time/3,time * 2/3,primary_enemy_scene,way)
+			
 		way_passed += time/3
+		
+		
 		previous_ways.clear()
-	timer.start(time)	
+	timer.start(time)
 	
 func _on_SegmentTime_timeout():
 	print("termina")
+	sound.stop()
+
 	#for s in spawners:
 	#	s.stop()
 	end_segment()

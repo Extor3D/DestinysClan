@@ -4,11 +4,12 @@ export(float) var xspeed = 100
 export(float) var yspeed = 0
 export(int) var health = 1000
 # Cadence time the honks
-export(float) var cadence = 2
+export(float) var cadence = 0.1
 export(float) var color = 2
 export(float) var driver = "Sunday Driver"
 
 var shot_scene = preload("res://Enemies/Shots/EnemyShot.tscn")
+onready var honk = $Honk
 
 func _physics_process(delta):
 	
@@ -21,7 +22,10 @@ func _ready():
 
 func take_damage(damage):
 	#Add damage sound here
+	
 	health -= damage
+	if health <= 990:
+		honk.play()
 	if health <= 0:
 		queue_free()
 

@@ -45,6 +45,7 @@ var fire_surf_scene = preload("res://Scenery/Backgrounds/FireSurface/FireSurface
 
 #Segments
 var thin_tunnel_segment = preload("res://LevelComponents/Segments/ThinTunnelSegment.tscn")
+var enemy_tunnel_segment = preload("res://LevelComponents/Segments/EnemyTunnelSegment.tscn")
 var asteroid_segment = preload("res://LevelComponents/Segments/AsteroidSegment.tscn")
 var bee_hive_segment = preload("res://LevelComponents/Segments/BeeHiveSegment.tscn")
 var trafficjam_segment = preload("res://LevelComponents/Segments/TrafficJamSegment.tscn")
@@ -76,9 +77,10 @@ var possible_segments = [thin_tunnel_segment,
 						trafficjam_segment,
 						deep_space_segment,
 						bomb_shower_segment,
-						sub_boss_segment,
 						bomber_segment,
-						laser_shower_segment
+						sub_boss_segment,
+						laser_shower_segment,
+						enemy_tunnel_segment,
 ]
 
 						
