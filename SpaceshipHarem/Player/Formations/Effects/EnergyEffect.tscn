@@ -2,21 +2,21 @@
 
 [ext_resource path="res://Player/Formations/Effects/Scripts/RecoveryEffect.gd" type="Script" id=1]
 
-[node name="RecoveryEffect" type="Area2D"]
+[node name="EnergyEffect" type="Area2D"]
 collision_layer = 0
 collision_mask = 40
 script = ExtResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2( -26.381, 38.766 )
+position = Vector2( 74.534, 61.0759 )
 rotation = 1.55477
 color = Color( 0.109804, 0.780392, 0.870588, 0.552941 )
-polygon = PoolVector2Array( -45, -61, 19, -24, 37, 2.00001, 37, 33, 20, 56, -44, 91, 36, 74, 69, 51, 69, -7, 36, -40 )
+polygon = PoolVector2Array( 34.376, -27.9187, 19, -24, 37, 2.00001, 37, 33, 20, 56, -44, 91, 36, 74, 69, 51, 69, -7, 36, -40 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( -38.381, -3.23396 )
+position = Vector2( 62.534, 19.0759 )
 rotation = 1.57775
-polygon = PoolVector2Array( 0, -73, 63, -36, 81, -10, 81, 22, 63, 44, 1, 79, 80, 62, 113, 40, 113, -19, 80, -52 )
+polygon = PoolVector2Array( 76.5991, -46.9998, 63, -36, 81, -10, 81, 22, 24.5719, 48.4488, -27.3851, 54.8102, -45.1761, 84.9347, 80, 62, 124.764, 75.7528, 113, -19, 80, -52 )
 
 [node name="EffectTime" type="Timer" parent="."]
 wait_time = 0.2
