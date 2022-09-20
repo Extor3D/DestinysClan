@@ -3,11 +3,18 @@ extends Node
 enum themes {LAND = 1, FIRE = 2, ICE = 3}
 enum STAT_NAMES {MaxHP, Speed, Damage, MaxEnergy, RecoverySpeed}
 
-var SPECIES =   [["Gatashi",[7,13,15],STAT_NAMES.keys()[STAT_NAMES.MaxHP],["Y","G"],"cat_ship.png"],
-				 ["Diablo",[5,6,4],STAT_NAMES.keys()[STAT_NAMES.Speed],["O","X"],"diablo_ship.png"],
-				 ["Humano",[17,18,11],STAT_NAMES.keys()[STAT_NAMES.Damage],["F1","F2"],"human_ship.png"],
-				 ["Marciano",[9,8,10,16],STAT_NAMES.keys()[STAT_NAMES.MaxEnergy],["M","W"],"martian_ship.png"],
-				 ["Androide",[2,3,12,14],STAT_NAMES.keys()[STAT_NAMES.RecoverySpeed],["B1","B2"],"android_ship.png"]] 
+var STATS = [{name = "Max HP", id = STAT_NAMES.MaxHP},
+			{name = "Speed", id = STAT_NAMES.Speed},
+			{name = "Damage", id = STAT_NAMES.Damage},
+			{name = "Max Energy", id = STAT_NAMES.MaxEnergy},
+			{name = "Recovery Speed", id = STAT_NAMES.RecoverySpeed}]
+
+
+var SPECIES =   [["Gatashi",[7,13,15],STAT_NAMES.MaxHP,["Y","G"],"cat_ship.png"],
+				 ["Diablo",[5,6,4],STAT_NAMES.Speed,["O","X"],"diablo_ship.png"],
+				 ["Humano",[17,18,11],STAT_NAMES.Damage,["F1","F2"],"human_ship.png"],
+				 ["Marciano",[9,8,10,16],STAT_NAMES.MaxEnergy,["M","W"],"martian_ship.png"],
+				 ["Androide",[2,3,12,14],STAT_NAMES.RecoverySpeed,["B1","B2"],"android_ship.png"]] 
 var current_scene = null
 
 const FORM_LOW_DEF = ">"
@@ -19,13 +26,12 @@ const FORM_ARROW = "A"
 const FORM_ENER = "L"
 const FORM_WORLD = "O"
 const FORMATIONS = [{id = FORM_LOW_DEF, scene_path = "res://Player/Formations/LowDForm.tscn", icon = "res://Player/Formations/Sprites/low_d_form_icon.png", energy_req = 10},
-					{id = FORM_LOW_ARROW, scene_path = "res://Player/Formations/LowArrowForm.tscn"},
 					{id = FORM_DEF, scene_path = "res://Player/Formations/DForm.tscn", icon = "res://Player/Formations/Sprites/d_form_icon.png", energy_req = 10},
 					{id = FORM_ARROW, scene_path = "res://Player/Formations/ArrowForm.tscn", icon = "res://Player/Formations/Sprites/arrow_form_icon.png", energy_req = 10},
-					{id = FORM_LIFE, scene_path = "res://Player/Formations/UForm.tscn", icon = "res://Player/Formations/Sprites/arrow_form_icon.png", energy_req = 10},
-					{id = FORM_VEL, scene_path = "res://Player/Formations/CForm.tscn", icon = "res://Player/Formations/Sprites/arrow_form_icon.png", energy_req = 10},
-					{id = FORM_ENER, scene_path = "res://Player/Formations/LForm.tscn", icon = "res://Player/Formations/Sprites/arrow_form_icon.png", energy_req = 1},
-					{id = FORM_WORLD, scene_path = "res://Player/Formations/OForm.tscn", icon = "res://Player/Formations/Sprites/arrow_form_icon.png", energy_req = 1}
+					{id = FORM_LIFE, scene_path = "res://Player/Formations/UForm.tscn", icon = "res://Player/Formations/Sprites/u_form_icon.png", energy_req = 10},
+					{id = FORM_VEL, scene_path = "res://Player/Formations/CForm.tscn", icon = "res://Player/Formations/Sprites/c_form_icon.png", energy_req = 10},
+					{id = FORM_ENER, scene_path = "res://Player/Formations/LForm.tscn", icon = "res://Player/Formations/Sprites/L_form_icon.png", energy_req = 1},
+					{id = FORM_WORLD, scene_path = "res://Player/Formations/OForm.tscn", icon = "res://Player/Formations/Sprites/o_form_icon.png", energy_req = 1}
 					]
 
 var WARNING_COLOR = Color.orange
@@ -38,6 +44,12 @@ var current_theme = themes.LAND
 
 #Player globals
 var current_pilots = []
+
+func get_stat_by_id(id):
+	for i in STATS.size():
+		if STATS[i].id == id:
+			return STATS[i]
+	return null
 
 func get_form_by_id(id):
 	for i in FORMATIONS.size():
@@ -66,8 +78,8 @@ func get_dummy_data(sp, co):
 	var data = {
 		name = "dum",
 		#formation = FORM_LOW_DEF,
-		formation = FORM_VEL,
-		stats = [[2, STAT_NAMES.MaxHP], [1, STAT_NAMES.RecoverySpeed]],
+		formation = FORM_ENER,
+		stats = [[1, Global.STAT_NAMES.values()[randi() % Global.STAT_NAMES.size()]]],
 		color = co, 
 		specie = sp
 	}
@@ -85,6 +97,9 @@ func goto_scene(path):
 
 	call_deferred("_deferred_goto_scene", path)
 
+func _input(event):
+	if Input.is_action_pressed("quit"):
+		get_tree().quit()
 
 func _deferred_goto_scene(path):
 	# It is now safe to remove the current scene

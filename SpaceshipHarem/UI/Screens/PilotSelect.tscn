@@ -13,6 +13,7 @@ margin_left = 407.0
 margin_top = 308.0
 margin_right = 427.0
 margin_bottom = 328.0
+focus_neighbour_right = NodePath("../Accept")
 text = "<"
 
 [node name="Next" type="Button" parent="."]
@@ -20,6 +21,7 @@ margin_left = 518.0
 margin_top = 308.0
 margin_right = 538.0
 margin_bottom = 328.0
+focus_neighbour_left = NodePath("../Accept")
 text = ">"
 
 [node name="Accept" type="Button" parent="."]
@@ -27,6 +29,8 @@ margin_left = 442.0
 margin_top = 308.0
 margin_right = 503.0
 margin_bottom = 328.0
+focus_neighbour_left = NodePath("../Prev")
+focus_neighbour_right = NodePath("../Next")
 text = "Aceptar"
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]

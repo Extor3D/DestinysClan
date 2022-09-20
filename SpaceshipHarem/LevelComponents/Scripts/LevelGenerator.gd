@@ -54,6 +54,7 @@ var bomb_shower_segment = preload("res://LevelComponents/Segments/BombShowerSegm
 var bomber_segment = preload("res://LevelComponents/Segments/BomberEnemiesSegment.tscn")
 var sub_boss_segment = preload("res://LevelComponents/Segments/SubBossSegment.tscn")
 var laser_shower_segment = preload("res://LevelComponents/Segments/LaserShowerSegment.tscn")
+var tunnel_laser_segment = preload("res://LevelComponents/Segments/TunnelLaserSegment.tscn")
 
 #Tutorial
 var tutorial1 = preload("res://LevelComponents/Segments/Tutorial/Tutorial1Segment.tscn")
@@ -61,14 +62,6 @@ var tutorial2 = preload("res://LevelComponents/Segments/Tutorial/Tutorial2Segmen
 var tutorial3 = preload("res://LevelComponents/Segments/Tutorial/Tutorial3Segment.tscn")
 
 var random_boss_scene = preload("res://Enemies/Bosses/RandomBoss.tscn")
-
-#Components Scenes
-var swarmer_scene = preload("res://LevelComponents/SwarmSegment.tscn")
-
-#Objects Scenes
-export (PackedScene) var enemy_scene = preload("res://Enemies/Enemy.tscn")
-export (PackedScene) var secondary_scene = preload("res://Enemies/Enemy.tscn")
-export (PackedScene) var tertiary_scene = preload("res://Enemies/Enemy.tscn")
 
 var tutorial_segments = [tutorial2,tutorial3,tutorial1]
 
@@ -81,9 +74,8 @@ var possible_segments = [thin_tunnel_segment,
 						sub_boss_segment,
 						laser_shower_segment,
 						enemy_tunnel_segment,
+						tunnel_laser_segment
 ]
-
-
 
 						
 var possible_musics = [dangerous_music,exploration_music,mysterious_music]
@@ -91,7 +83,6 @@ var possible_musics = [dangerous_music,exploration_music,mysterious_music]
 var boss = null
 
 func _ready():
-	#Engine.time_scale = 0.5
 	rng.randomize()
 	on_surface = rng.randf() < 0.5
 	difficulty = Global.current_difficulty
@@ -131,7 +122,6 @@ func create_level():
 	for i in 3:
 		var s
 		#'''
-		#possible_segments = [enemy_tunnel_segment,enemy_tunnel_segment,enemy_tunnel_segment]
 		if Global.level == 0:
 			# Pantalla de Skip Tutorial o ...
 			s = tutorial_segments[i-1]

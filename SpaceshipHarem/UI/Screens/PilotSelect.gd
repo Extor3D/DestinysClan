@@ -4,6 +4,7 @@ var profile_scene = preload("res://Generators/Pilot/scenes/profile.tscn")
 
 onready var profiles = $Profiles
 onready var music =$BackgroundMusic
+onready var acc_button =$Accept
 var profs = []
 var curr_prof = 0
 var max_profs = 3
@@ -16,6 +17,7 @@ func _ready():
 		prof.visible = false
 	profs[curr_prof].visible = true
 	music.play()
+	acc_button.grab_focus()
 	
 func show_prof(id):
 	for i in max_profs:

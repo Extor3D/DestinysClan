@@ -25,7 +25,7 @@ var en_slope = 5
 
 var b_length = -200
 var b_top = 10
-var b_left = 625
+var b_left = 632
 var b_height = 10
 var b_slope = -10
 
@@ -40,7 +40,7 @@ var segment_dist : float = 2
 var segment_top = 10
 var segment_height = 15
 var segment_slope = 15
-var segment_left = 210
+var segment_left = 217
 var segment_length = 200
 
 func _ready():

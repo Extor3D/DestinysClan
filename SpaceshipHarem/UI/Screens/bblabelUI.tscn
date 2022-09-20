@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://LevelComponents/Segments/Label.gd" type="Script" id=1]
+[ext_resource path="res://LevelComponents/Segments/Scripts/Label.gd" type="Script" id=1]
 [ext_resource path="res://UI/Screens/bblabelUI.gd" type="Script" id=2]
 [ext_resource path="res://UI/Fonts/Charybdis.tres" type="DynamicFont" id=3]
 

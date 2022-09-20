@@ -13,6 +13,9 @@ func _ready():
 func _input(event):
 	if event is InputEventKey and event.pressed:
 		next()
+		return
+	if Input.is_action_pressed("ui_accept"):
+		next()
 
 func _on_LogoWaitTime_timeout():
 	if step == 4:

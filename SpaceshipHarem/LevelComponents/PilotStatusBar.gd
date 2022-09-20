@@ -16,7 +16,7 @@ func set_pilot(p):
 	s.main_color = p.color
 	s.specie = p.specie
 	s.scale = Vector2(0.5, 0.5)
-	s.position = Vector2(28, 10)
+	s.position = Vector2(25, 10)
 	add_child(s)
 	ship = s
 	set_form_data(p.formation)

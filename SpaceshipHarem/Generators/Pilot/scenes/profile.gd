@@ -39,8 +39,8 @@ const OTHER_NAME=["Rene Gado","Sasha Mado","Ariel Ganado","Connie Modo", "Andrea
 const OCCUPATION=["Estudiante","Monotributista","Experto en Cosas","Alma Libre",
 "Freelancer","Soy mi Propio Jefe","Arreglo Monopatines por deporte","Tu Media Naranja","De la universidad de la vida","Casi-Influencer","Contador de Estrellas"]
 
-const FLAVOR_TEXT=[" Nada de terroristas de la gramática ,  frágiles emocionales ,  Drama Queens , incultxs o de higiene dudosa. No personas llamadas Florencia, ni tener una remera que diga 'te quiero pero soy un bardo' ni un tatuaje que diga 'soltar'.",
-"Videos y fotitos para vos¡ Info x privado¡","Hola soy de Pollux 7. Tengo 27 años busco amistad y luego se ve", "Hola Buen dia a todos soy nuevite por aqui,  tengo 26 años y divorciade, busco chongo o lo que de","Me gusta viajar , el aire libre, reunirme para pasar buenos momentos. Deseo conocer gente que tenga buen humor y buenas energías"]
+const FLAVOR_TEXT=[" Nada de terroristas de la gramática, frágiles emocionales, Drama Queens, incultxs o de higiene dudosa. No personas llamadas Florencia, ni tener una remera que diga 'te quiero pero soy un bardo' ni un tatuaje que diga 'soltar'.",
+"Videos y fotitos para vos! Info x privado!","Hola soy de Pollux 7. Tengo 27 años busco amistad y luego se ve", "Hola Buen dia a todos soy nuevite por aqui, tengo 26 años y divorciade, busco chongo o lo que de","Me gusta viajar, el aire libre, reunirme para pasar buenos momentos. Deseo conocer gente que tenga buen humor y buenas energías"]
 
 # Volver Atras luego de la DEMO
 #const COMMON_FORMS = ["D","U","C","A","L"]
@@ -142,12 +142,14 @@ func _randomize():
 	
 	#if "android" in portrait.get_node("Body").Sprites.keys()[data.Body].to_lower() && randf()<0.5:
 	var main_stat = pilot_specie[2]
+	var main_stat_name = Global.get_stat_by_id(main_stat).name
 	#Analizar si el stat tiene que ser diferente si o si
-	var scd_stat = Global.STAT_NAMES.keys()[randi() % Global.STAT_NAMES.size()]
+	var scd_stat = Global.STAT_NAMES.values()[randi() % Global.STAT_NAMES.size()]
 	#var scd_stat = STATS[randi() % STATS.size()]
 	while (main_stat == scd_stat): 
-		scd_stat = Global.STAT_NAMES.keys()[randi() % Global.STAT_NAMES.size()]
+		scd_stat = Global.STAT_NAMES.values()[randi() % Global.STAT_NAMES.size()]
 	
+	var scd_stat_name = Global.get_stat_by_id(scd_stat).name
 	#Sacar esto
 	var rarity = Global.current_difficulty #Legendary: 6
 	var plus = 0
@@ -177,9 +179,9 @@ func _randomize():
 	pilot_data.add_text('\n' + "[b][color="+ str(COLORS[skin_color][0])+"]" + pilot_specie[0] + '[/color][/b]\n' )
 	pilot_data.add_text('\n[wave]' + pilot_flavor + '[/wave]\n\n' + "Formacion: [rainbow freq=0.5 sat=10 val=20]" + pilot_formation + '[/rainbow]\n\n')
 
-	pilot_data.add_text("[b]HÁBITOS | INTERESES[/b]" + '\n[rainbow freq=0.1]' + str(pilot_stats[0][1]) + " + " + str(pilot_stats[0][0]) + '[/rainbow]\n')
+	pilot_data.add_text("[b]HÁBITOS | INTERESES[/b]" + '\n[rainbow freq=0.1]' + main_stat_name + " + " + str(pilot_stats[0][0]) + '[/rainbow]\n')
 	if (pilot_stats[1][0] > 0):
-		pilot_data.add_text('[rainbow freq=0.1]' + str(pilot_stats[1][1]) + " + " + str(pilot_stats[1][0]) + "[/rainbow]")
+		pilot_data.add_text('[rainbow freq=0.1]' + scd_stat_name + " + " + str(pilot_stats[1][0]) + "[/rainbow]")
 
 	var s = ship_scene.instance()
 	s.specie = pilot_specie[0]

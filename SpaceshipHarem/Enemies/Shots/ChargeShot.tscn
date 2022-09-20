@@ -27,3 +27,4 @@ repeat = true
 playback/repeat = true
 
 [connection signal="body_entered" from="." to="." method="_on_ChargeShot_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

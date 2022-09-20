@@ -114,8 +114,8 @@ func add_formation(id):
 			forms.append(id)
 	
 func add_stats_from_ship(s):
-	add_stat(s.stats[0][1], s.stats[0][0])
-	add_stat(s.stats[1][1], s.stats[1][0])
+	for i in s.stats:
+		add_stat(i[1], i[0])
 	
 func add_stat(stat, amount):
 	match stat:
