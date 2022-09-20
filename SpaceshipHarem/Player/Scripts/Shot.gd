@@ -1,6 +1,6 @@
 extends Area2D
 
-export(float) var speed = 500
+export(float) var speed = 800
 export(int) var damage = 1
 
 var effect = preload("res://Effects/DamageEffect.tscn")
@@ -11,6 +11,7 @@ func _process(_delta):
 
 func _physics_process(delta):
 	global_position.x += speed * delta
+	scale.x += 0.05
 
 func _on_Shot_body_entered(body):
 	body.take_damage(damage)
