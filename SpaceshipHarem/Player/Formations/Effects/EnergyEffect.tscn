@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Player/Formations/Effects/Scripts/RecoveryEffect.gd" type="Script" id=1]
+[ext_resource path="res://Player/Formations/Effects/Scripts/EnergyEffect.gd" type="Script" id=1]
 
 [node name="EnergyEffect" type="Area2D"]
 collision_layer = 0
@@ -19,7 +19,7 @@ rotation = 1.57775
 polygon = PoolVector2Array( 76.5991, -46.9998, 63, -36, 81, -10, 81, 22, 24.5719, 48.4488, -27.3851, 54.8102, -45.1761, 84.9347, 80, 62, 124.764, 75.7528, 113, -19, 80, -52 )
 
 [node name="EffectTime" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 2.0
 one_shot = true
 autostart = true
 

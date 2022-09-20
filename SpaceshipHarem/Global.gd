@@ -31,7 +31,7 @@ const FORMATIONS = [{id = FORM_LOW_DEF, scene_path = "res://Player/Formations/Lo
 					{id = FORM_LIFE, scene_path = "res://Player/Formations/UForm.tscn", icon = "res://Player/Formations/Sprites/u_form_icon.png", energy_req = 10},
 					{id = FORM_VEL, scene_path = "res://Player/Formations/CForm.tscn", icon = "res://Player/Formations/Sprites/c_form_icon.png", energy_req = 10},
 					{id = FORM_ENER, scene_path = "res://Player/Formations/LForm.tscn", icon = "res://Player/Formations/Sprites/L_form_icon.png", energy_req = 1},
-					{id = FORM_WORLD, scene_path = "res://Player/Formations/OForm.tscn", icon = "res://Player/Formations/Sprites/o_form_icon.png", energy_req = 1}
+					{id = FORM_WORLD, scene_path = "res://Player/Formations/OForm.tscn", icon = "res://Player/Formations/Sprites/o_form_icon.png", energy_req = 5}
 					]
 
 var WARNING_COLOR = Color.orange
@@ -78,7 +78,7 @@ func get_dummy_data(sp, co):
 	var data = {
 		name = "dum",
 		#formation = FORM_LOW_DEF,
-		formation = FORM_ENER,
+		formation = FORM_LIFE,
 		stats = [[1, Global.STAT_NAMES.values()[randi() % Global.STAT_NAMES.size()]]],
 		color = co, 
 		specie = sp

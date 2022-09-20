@@ -58,8 +58,8 @@ func finish1():
 		
 		
 func formation():
-	ended = true
 	if label_off:
+		ended = true
 		remove_child(label)
 		end_segment()
 
