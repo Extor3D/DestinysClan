@@ -70,9 +70,16 @@ func _ready():
 	rng.randomize()
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() - 1)
+	new_game()
+	
+func new_game():
+	current_pilots = []
 	current_pilots.append(get_dummy_data("Dummy", Color.yellow))
 	current_pilots.append(get_dummy_data("Dummy", Color.yellow))
 	current_pilots.append(get_dummy_data("Dummy", Color.yellow))
+	level = 0
+	current_difficulty = 1
+	current_theme = themes.LAND
 
 func get_dummy_data(sp, co):
 	var data = {
