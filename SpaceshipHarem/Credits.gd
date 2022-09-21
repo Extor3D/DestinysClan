@@ -80,14 +80,20 @@ extends Node
 #faster-tan-light Music:
 #https://pixabay.com/music/techno-trance-michael-ihde-faster-tan-light-progressive-trance-20751/
 
-# Tutorial Music:
-# https://pixabay.com/music/video-games-pixel-perfect-112527/
-
 # Dangerous Level Music:
 # https://pixabay.com/music/upbeat-kim-lightyear-legends-109307/
 
 # Mysterious Level Music
 #https://pixabay.com/music/synthwave-intro-01-chiptune-c64-6581/
+
+# Tutorial Music:
+# https://pixabay.com/music/video-games-pixel-perfect-112527/
+
+# Game Over Music:
+# https://pixabay.com/music/beats-modern-rnb-glassworks-15669/
+
+# Victory Music:
+# https://pixabay.com/music/future-bass-future-bass-level-up-99302/
 
 #
 #

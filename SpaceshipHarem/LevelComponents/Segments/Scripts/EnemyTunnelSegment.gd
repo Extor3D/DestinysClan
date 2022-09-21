@@ -45,11 +45,9 @@ func add_enemy_group(duration,start,enemy,variation):
 	var vars
 	if variation == 1:
 		vars = {"speed": 70 + difficulty*3,
-					"turn_speed": rng.randi_range(2, 3),
 					"cadence":2}
 	else:
 		vars = {"speed": 170 + difficulty*3,
-					#"turn_speed": rng.randi_range(2, 3),
 					"cadence":4}
 	spawner.scene_variables = vars
 	spawner.y_center = 180 
@@ -58,6 +56,6 @@ func add_enemy_group(duration,start,enemy,variation):
 	spawner.start_time = start
 	spawner.duration = duration -2
 	spawner.warning = false
-	spawner.set_wait_time(1.35 - 0.2 * difficulty)
+	spawner.set_wait_time(1.35 - 0.1 * difficulty)
 	add_child(spawner)
 	return spawner

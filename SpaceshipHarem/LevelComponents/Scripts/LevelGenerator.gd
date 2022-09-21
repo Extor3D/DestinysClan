@@ -159,6 +159,7 @@ func game_over_animation():
 	yield(get_tree().create_timer(0.02), "timeout")
 	tween.interpolate_property(Engine, "time_scale", 0.1, 1, 2, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	tween.start()
+	Global.goto_scene("res://UI/Screens/Game Over.tscn")
 	
 func next_segment(n):
 	if n >= segments.size():
@@ -173,8 +174,8 @@ func end_level():
 	if Global.level == 0:
 		Global.current_difficulty = 0
 		Global.goto_scene("res://UI/Screens/LevelSelect.tscn")
-	#else if Global.level > 3:
-	#	Global.goto_scene("res://UI/Screens/Victory.tscn")
+	elif Global.level > 3:
+		Global.goto_scene("res://UI/Screens/Victory.tscn")
 	else:
 		Global.goto_scene("res://UI/Screens/PilotSelect.tscn")
 		
