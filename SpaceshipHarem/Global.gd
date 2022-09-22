@@ -84,8 +84,8 @@ func new_game():
 func get_dummy_data(sp, co):
 	var data = {
 		name = "dum",
-		#formation = FORM_LOW_DEF,
-		formation = FORM_LIFE,
+		formation = FORM_LOW_DEF,
+		#formation = FORM_ENER,
 		stats = [[1, Global.STAT_NAMES.values()[randi() % Global.STAT_NAMES.size()]]],
 		color = co, 
 		specie = sp
