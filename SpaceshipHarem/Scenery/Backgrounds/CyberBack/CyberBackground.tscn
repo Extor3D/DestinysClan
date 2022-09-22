@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenery/Backgrounds/CyberBack/tile_cyber1.png" type="Texture" id=1]
+[ext_resource path="res://Scenery/Backgrounds/CyberBack/tile_cyber2.png" type="Texture" id=2]
+[ext_resource path="res://Scenery/Backgrounds/CyberBack/CyberBackground.gd" type="Script" id=3]
+
+[node name="CyberBackground" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.2, 0 )
+motion_mirroring = Vector2( 640, 0 )
+
+[node name="TileCyber1" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 320, 180 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 160, 90 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 640, 360 )
+
+[node name="TileCyber2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 320, 180 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 86, 48 )

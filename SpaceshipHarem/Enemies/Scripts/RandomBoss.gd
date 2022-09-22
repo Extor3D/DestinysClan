@@ -7,6 +7,10 @@ export(int) var health = 100
 export(int) var hold_x = 580
 export(int, 1, 10) var difficulty = 1
 
+var sprite_count = 7
+var sprite_path_start = "res://Enemies/Sprites/Bosses/Boss_"
+var sprite_path_end = ".png"
+
 var normal_bullet : PackedScene = preload("res://Enemies/Shots/EnemyShot.tscn")
 var spread : PackedScene = preload("res://Enemies/Weapons/SpreadWeapon.tscn")
 var laser : PackedScene = preload("res://Enemies/Weapons/LaserWeapon.tscn")
@@ -14,14 +18,18 @@ var max_health = 100
 
 var circular_path : PackedScene = preload("res://Enemies/MovementTypes/CircularPath.tscn")
 
+onready var boss_sprite = $Sprite
+
 var rng = RandomNumberGenerator.new()
 var path
 
 func _ready():
 	rng.randomize()
+	var spr_tex = load(sprite_path_start + str(rng.randi_range(1, sprite_count)) + sprite_path_end)
+	boss_sprite.texture = spr_tex
 	add_weapon(spread, rng.randi_range(1, 6), difficulty)
 	add_weapon(spread, rng.randi_range(1, 6), difficulty)
-	add_weapon(laser, rng.randi_range(1, 3), difficulty)
+	add_weapon(laser, rng.randi_range(1, 2), difficulty)
 	if difficulty > 5:
 		add_weapon(spread, rng.randi_range(1, 6), difficulty - 3)
 	add_path()

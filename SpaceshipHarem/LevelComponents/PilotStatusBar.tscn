@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://LevelComponents/PilotStatusBar.gd" type="Script" id=2]
+[ext_resource path="res://LevelComponents/Scripts/PilotStatusBar.gd" type="Script" id=2]
 [ext_resource path="res://Player/Formations/Sprites/low_d_form_icon.png" type="Texture" id=3]
 
 [node name="PilotStatusBar" type="Node2D"]

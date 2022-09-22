@@ -25,13 +25,13 @@ const FORM_VEL = "C"
 const FORM_ARROW = "A"
 const FORM_ENER = "L"
 const FORM_WORLD = "O"
-const FORMATIONS = [{id = FORM_LOW_DEF, scene_path = "res://Player/Formations/LowDForm.tscn", icon = "res://Player/Formations/Sprites/low_d_form_icon.png", energy_req = 10},
+const FORMATIONS = [{id = FORM_LOW_DEF, scene_path = "res://Player/Formations/LowDForm.tscn", icon = "res://Player/Formations/Sprites/low_d_form_icon.png", energy_req = 15},
 					{id = FORM_DEF, scene_path = "res://Player/Formations/DForm.tscn", icon = "res://Player/Formations/Sprites/d_form_icon.png", energy_req = 10},
-					{id = FORM_ARROW, scene_path = "res://Player/Formations/ArrowForm.tscn", icon = "res://Player/Formations/Sprites/arrow_form_icon.png", energy_req = 10},
-					{id = FORM_LIFE, scene_path = "res://Player/Formations/UForm.tscn", icon = "res://Player/Formations/Sprites/u_form_icon.png", energy_req = 10},
+					{id = FORM_ARROW, scene_path = "res://Player/Formations/ArrowForm.tscn", icon = "res://Player/Formations/Sprites/arrow_form_icon.png", energy_req = 15},
+					{id = FORM_LIFE, scene_path = "res://Player/Formations/UForm.tscn", icon = "res://Player/Formations/Sprites/u_form_icon.png", energy_req = 20},
 					{id = FORM_VEL, scene_path = "res://Player/Formations/CForm.tscn", icon = "res://Player/Formations/Sprites/c_form_icon.png", energy_req = 10},
 					{id = FORM_ENER, scene_path = "res://Player/Formations/LForm.tscn", icon = "res://Player/Formations/Sprites/L_form_icon.png", energy_req = 1},
-					{id = FORM_WORLD, scene_path = "res://Player/Formations/OForm.tscn", icon = "res://Player/Formations/Sprites/o_form_icon.png", energy_req = 5}
+					{id = FORM_WORLD, scene_path = "res://Player/Formations/OForm.tscn", icon = "res://Player/Formations/Sprites/o_form_icon.png", energy_req = 20}
 					]
 
 var WARNING_COLOR = Color.orange

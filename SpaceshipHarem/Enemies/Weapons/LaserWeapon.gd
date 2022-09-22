@@ -1,7 +1,8 @@
 extends Node2D
 class_name LaserWeapon
 
-enum weapons {ROTATING = 1, HALLWAY = 2, CIRCULAR = 3}
+enum weapons {ROTATING = 1, CIRCULAR = 2}
+#, HALLWAY = 3}
 
 onready var laser_timer_on = $TimerOn
 onready var laser_timer_off = $TimerOff
@@ -61,8 +62,8 @@ func set_spread(type, diff):
 			set_rotating_spread(diff)
 		weapons.CIRCULAR:
 			set_circular_spread(diff)
-		weapons.HALLWAY:
-			set_hallway_spread(diff)
+		#weapons.HALLWAY:
+		#	set_hallway_spread(diff)
 
 func set_random(diff):
 	set_spread(randi() % weapons.size() + 1, diff)
@@ -112,7 +113,7 @@ func set_hallway_spread(diff):
 func set_circular_spread(diff):
 	var wait_on = 1.5 + float(diff) * 0.2
 	var wait_off = 2 - float(diff) * 0.2
-	var points = diff + 5
+	var points = diff/2 + 5
 	var size = 1 + diff
 	create_spread_settings(7, 0, 360, wait_on, wait_off, points, 10, 0, 360, size, false)
 

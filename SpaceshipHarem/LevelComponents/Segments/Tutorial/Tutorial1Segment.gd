@@ -29,16 +29,14 @@ var ended = false
 var label_off = false
 var label = label_scene.instance()
 
+onready var playernode = get_parent().get_parent().get_child(1)
+
 func start_segment():
 	rng.randomize()
 	label.texts = TUTORIAL_TEXTS1
 	add_child(label)
-	#print(get_parent().get_parent().get_child(1))
-	var playernode = get_parent().get_parent().get_child(1)
 	playernode.connect("formation_done",self,"formation")
 	label.connect("end_label",self,"finish1")
-
-
 	
 func _on_SegmentTime_timeout():
 	# Mas adelante Agregar Label de Repeticion para el Tutorial
@@ -51,21 +49,17 @@ func _on_SegmentTime_timeout():
 
 func finish1():
 	label_off = true
+	playernode.energy = clamp(playernode.energy + 15, 0, playernode.max_energy)
 	if !ended:
 		time = 5
 		timer.start(time)
 		add_asteroid_field(time)
-		
 		
 func formation():
 	if label_off:
 		ended = true
 		remove_child(label)
 		end_segment()
-
-func _ready():
-	pass
-	
 	
 func add_asteroid_field(duration):
 	spawner = spawner_scene.instance()

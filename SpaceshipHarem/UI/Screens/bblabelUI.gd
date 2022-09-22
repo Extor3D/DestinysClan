@@ -21,7 +21,7 @@ func manage_text():
 		texts_number += 1
 		label.text = ""
 		label.add_text(texts[texts_number])
-	else:
+	elif container.visible:
 		container.visible = false
 		emit_signal("end_label")
 
