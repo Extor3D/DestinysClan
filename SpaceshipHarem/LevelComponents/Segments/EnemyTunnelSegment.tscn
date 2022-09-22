@@ -2,7 +2,6 @@
 
 [ext_resource path="res://LevelComponents/Segments/Scripts/EnemyTunnelSegment.gd" type="Script" id=1]
 
-
 [node name="EnemyTunnelSegment" type="Node2D"]
 script = ExtResource( 1 )
 

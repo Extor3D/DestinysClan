@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 var pos_mod : Vector2 = Vector2(0,0)
 var previous_delta 

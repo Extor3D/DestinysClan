@@ -13,8 +13,8 @@ var rng = RandomNumberGenerator.new()
 
 func start_segment():
 	var time = 20 + difficulty * 2
-	create_tunnel(time/2,0)
-	create_tunnel(time/2,time/2)
+	create_tunnel(time,0)
+	#create_tunnel(time/2,time/2)
 	add_enemy_group(time,3,primary_enemy_scene,1)
 	timer.start(time)
 
