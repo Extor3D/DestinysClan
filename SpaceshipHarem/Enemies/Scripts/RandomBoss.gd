@@ -17,6 +17,7 @@ var laser : PackedScene = preload("res://Enemies/Weapons/LaserWeapon.tscn")
 var max_health = 100
 
 var circular_path : PackedScene = preload("res://Enemies/MovementTypes/CircularPath.tscn")
+var explosion : PackedScene = preload("res://Effects/BigExplosion.tscn")
 
 onready var boss_sprite = $Sprite
 
@@ -45,9 +46,15 @@ func take_damage(damage):
 	#Add damage sound here
 	health -= damage
 	if health <= 0:
-		emit_signal("defeated")
-		queue_free()
+		defeated()
 		
+func defeated():
+	emit_signal("defeated")
+	var e = explosion.instance()
+	e.global_position = global_position
+	get_parent().add_child(e)
+	queue_free()
+
 func add_weapon(scn, wpn, diff):
 	var spr = scn.instance()
 	spr.set_spread(wpn, diff)

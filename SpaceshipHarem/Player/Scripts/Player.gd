@@ -28,6 +28,8 @@ var forms : Array
 var ship_scene = preload("res://Player/SmallShip.tscn")
 var chain_scene = preload("res://Player/Chain.tscn")
 var shot_scene = preload("res://Player/Shot.tscn")
+var explosion_scene = preload("res://Effects/SmallExplosion.tscn")
+var shot_spawn_scene = preload("res://Effects/ShotSpawnEffect.tscn")
 
 onready var d_tween = $DeathTween
 
@@ -183,17 +185,31 @@ func take_damage(d):
 			death_animation()
 			
 func death_animation():
+	add_explosion($Ship1.global_position)
+	add_explosion($Ship2.global_position)
+	for s in ships:
+		add_explosion(s.global_position)
 	emit_signal("game_over")
 	yield(get_tree().create_timer(0.1), "timeout")
 	#Explotar miticamente
 	queue_free()
 	
+func add_explosion(pos):
+	var e = explosion_scene.instance()
+	e.global_position = pos
+	get_parent().add_child(e)
 			
 func charge_energy(e):
 	energy = move_toward(energy, max_energy, e * energy_multi)
 
 func get_higher_ship():
 	if $Ship1.position.y < $Ship2.position.y:
+		return $Ship1.position
+	else:
+		return $Ship2.position
+		
+func get_leftmost_ship():
+	if $Ship1.position.x < $Ship2.position.x:
 		return $Ship1.position
 	else:
 		return $Ship2.position
@@ -242,14 +258,17 @@ func _on_ShotTimer_timeout():
 	create_shot($Ship1.global_position + Vector2($Ship1/ShipSprite.texture.get_width()/2, 0), damage)
 	create_shot($Ship2.global_position + Vector2($Ship2/ShipSprite.texture.get_width()/2, 0), damage)
 	for s in ships:
-		create_shot(s.global_position, damage)
+		create_shot(s.global_position + Vector2(10,0), damage)
 	
 	
 func create_shot(p: Vector2, d: int):
 	var shot = shot_scene.instance()
+	var shot_effect = shot_spawn_scene.instance()
+	shot_effect.position = p
 	shot.position = p
 	shot.damage = d
 	get_tree().root.add_child(shot)
+	get_tree().root.add_child(shot_effect)
 
 func clear_formation():
 	is_in_formation = false

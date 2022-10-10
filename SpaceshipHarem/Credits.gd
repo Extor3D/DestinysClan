@@ -14,6 +14,7 @@ extends Node
 
 # Explosion Animation
 # https://opengameart.org/content/explosion-animations
+# https://opengameart.org/content/explosions-2
 
 # Open Planet Surface Background
 # https://opengameart.org/content/pixel-art-parallax-background

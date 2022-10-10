@@ -24,7 +24,7 @@ alignment = 1
 margin_right = 440.0
 margin_bottom = 17.0
 custom_fonts/font = ExtResource( 2 )
-text = "Select next stage"
+text = "SELECT_STAGE"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
@@ -53,14 +53,14 @@ margin_right = 170.0
 margin_bottom = 121.0
 
 [node name="Type" type="Label" parent="VBoxContainer/HBoxContainer/Planet1Container/HBoxContainer"]
-margin_right = 35.0
+margin_right = 28.0
 margin_bottom = 17.0
 custom_fonts/font = ExtResource( 2 )
-text = "Type:"
+text = "TYPE"
 
 [node name="TypeName" type="Label" parent="VBoxContainer/HBoxContainer/Planet1Container/HBoxContainer"]
-margin_left = 39.0
-margin_right = 39.0
+margin_left = 32.0
+margin_right = 32.0
 margin_bottom = 17.0
 custom_fonts/font = ExtResource( 2 )
 
@@ -70,14 +70,14 @@ margin_right = 170.0
 margin_bottom = 142.0
 
 [node name="Diff" type="Label" parent="VBoxContainer/HBoxContainer/Planet1Container/HBoxContainer2"]
-margin_right = 49.0
+margin_right = 42.0
 margin_bottom = 17.0
 custom_fonts/font = ExtResource( 2 )
-text = "Threat:"
+text = "THREAT"
 
 [node name="DiffVal" type="Label" parent="VBoxContainer/HBoxContainer/Planet1Container/HBoxContainer2"]
-margin_left = 53.0
-margin_right = 53.0
+margin_left = 46.0
+margin_right = 46.0
 margin_bottom = 17.0
 custom_fonts/font = ExtResource( 2 )
 
@@ -86,7 +86,7 @@ margin_top = 146.0
 margin_right = 170.0
 margin_bottom = 169.0
 custom_fonts/font = ExtResource( 2 )
-text = "Select"
+text = "SELECT"
 
 [node name="Planet2Container" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 270.0
@@ -106,14 +106,14 @@ margin_right = 170.0
 margin_bottom = 121.0
 
 [node name="Type" type="Label" parent="VBoxContainer/HBoxContainer/Planet2Container/HBoxContainer"]
-margin_right = 35.0
+margin_right = 28.0
 margin_bottom = 17.0
 custom_fonts/font = ExtResource( 2 )
-text = "Type:"
+text = "TYPE"
 
 [node name="TypeName" type="Label" parent="VBoxContainer/HBoxContainer/Planet2Container/HBoxContainer"]
-margin_left = 39.0
-margin_right = 39.0
+margin_left = 32.0
+margin_right = 32.0
 margin_bottom = 17.0
 custom_fonts/font = ExtResource( 2 )
 
@@ -123,14 +123,14 @@ margin_right = 170.0
 margin_bottom = 142.0
 
 [node name="Diff" type="Label" parent="VBoxContainer/HBoxContainer/Planet2Container/HBoxContainer2"]
-margin_right = 49.0
+margin_right = 42.0
 margin_bottom = 17.0
 custom_fonts/font = ExtResource( 2 )
-text = "Threat:"
+text = "THREAT"
 
 [node name="DiffVal" type="Label" parent="VBoxContainer/HBoxContainer/Planet2Container/HBoxContainer2"]
-margin_left = 53.0
-margin_right = 53.0
+margin_left = 46.0
+margin_right = 46.0
 margin_bottom = 17.0
 custom_fonts/font = ExtResource( 2 )
 
@@ -139,7 +139,7 @@ margin_top = 146.0
 margin_right = 170.0
 margin_bottom = 169.0
 custom_fonts/font = ExtResource( 2 )
-text = "Select"
+text = "SELECT"
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 1 )

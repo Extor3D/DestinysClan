@@ -46,24 +46,25 @@ alignment = 1
 margin_right = 61.0
 margin_bottom = 23.0
 custom_fonts/font = ExtResource( 3 )
-text = "Start"
+text = "START"
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 33.0
 margin_right = 61.0
 margin_bottom = 56.0
 custom_fonts/font = ExtResource( 3 )
-text = "Options"
+text = "OPTIONS"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 66.0
 margin_right = 61.0
 margin_bottom = 89.0
 custom_fonts/font = ExtResource( 3 )
-text = "Quit"
+text = "QUIT"
 
 [node name="IntroMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

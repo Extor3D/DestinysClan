@@ -13,3 +13,7 @@ func _on_QuitButton_pressed():
 func _on_StartButton_pressed():
 	Global.new_game()
 	Global.goto_scene("res://LevelComponents/LevelGenerator.tscn")
+
+
+func _on_OptionsButton_pressed():
+	Global.goto_scene("res://UI/Screens/OptionsMenu.tscn")
