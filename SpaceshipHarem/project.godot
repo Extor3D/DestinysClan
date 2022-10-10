@@ -184,6 +184,7 @@ quit={
 
 [locale]
 
+test="es"
 translations=PoolStringArray( "res://Localization/translations.es.translation", "res://Localization/translations.en.translation" )
 
 [physics]
