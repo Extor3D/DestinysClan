@@ -27,4 +27,4 @@ shape = SubResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( -222, 71 )
-polygon = PoolVector2Array( 70, -28, 221, -31, 189, -90, 240, -87, 280, -32, 281, 10, 71, 11 )
+polygon = PoolVector2Array( 54, -43, 213, -41, 165, -99, 248, -99, 288, -41, 325, 18, 54, 21 )

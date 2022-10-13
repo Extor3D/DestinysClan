@@ -10,8 +10,8 @@ script = ExtResource( 3 )
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.2, 0 )
-motion_mirroring = Vector2( 640, 0 )
+motion_scale = Vector2( 0.2, 0.1 )
+motion_mirroring = Vector2( 640, 360 )
 
 [node name="TileCyber1" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 320, 180 )
@@ -21,8 +21,8 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 160, 90 )
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.5, 0.5 )
-motion_mirroring = Vector2( 640, 360 )
+motion_scale = Vector2( 0.05, 0.2 )
+motion_mirroring = Vector2( 640, 380 )
 
 [node name="TileCyber2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2( 320, 180 )

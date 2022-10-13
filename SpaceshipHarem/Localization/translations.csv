@@ -9,3 +9,4 @@ THREAT,Threat:,Dificultad:
 SELECT,Select,Elegir
 BACK,Volver,Back
 LANG,Español,English
+TUTORIAL_S1_FAIL,"Ahora, prueba formar una [b][color=#b2ffff]V invertida hacia adelante (>)[/color][/b] y luego apreten el boton ACTIVAR ([b][color=#00FF00]Barra espaciadora[/color][/b]). Prueba","Now, try something [b][color=#b2ffff]V inverted (>)[/color][/b]"

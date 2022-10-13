@@ -21,14 +21,14 @@ position = Vector2( 0.669098, -1.51574 )
 shape = SubResource( 1 )
 
 [node name="End2" type="Area2D" parent="."]
-position = Vector2( -100.331, 0.484257 )
+position = Vector2( 102, -1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="End2"]
 position = Vector2( 1, 0 )
 shape = SubResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( 2.66912, 17.0714 )
+position = Vector2( 103, 18 )
 rotation = 1.58004
 scale = Vector2( 1, 0.896856 )
-polygon = PoolVector2Array( -28, -22, 64.8489, -9.95778, 72.9872, 6.68414, 75.4308, 60.1815, 78.8558, 111.439, 55.0233, 131.755, -26, 141, -26, 92, 21.6642, 88.6121, 20.4978, 68.5531, 21.2944, 44.0137, 20.1835, 30.6445, -28, 24 )
+polygon = PoolVector2Array( -42.2945, -26.6943, 64.8489, -9.95778, 72.9872, 6.68414, 75.4308, 60.1815, 78.8558, 111.439, 55.0233, 131.755, -41.8802, 143.905, -41.3424, 88.1464, 0.637297, 85.4836, 7.4891, 67.5721, 7.31347, 46.3879, 1.19356, 31.9553, -41.8693, 24.5938 )

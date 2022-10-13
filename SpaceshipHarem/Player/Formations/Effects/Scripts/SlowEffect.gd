@@ -5,7 +5,7 @@ func _ready():
 	Engine.time_scale = 0.5
 
 func _physics_process(_delta):
-	position = get_parent().get_higher_ship()
+	position = get_parent().get_leftmost_ship()
 
 func _on_EffectTime_timeout():
 	get_parent().set_speed_mod(1)

@@ -13,10 +13,11 @@ var TUTORIAL_TEXTS1 = ["Bienvenidos al [b]Simulador de batalla[/b].\nAqui les en
 "Ahora simulare una pared de asteroides. Es imposible de atravesarla para una nave convencional...  [b][color=#00FF00]Los asteroides dañaran cualquiera de tus naves que colisionen[/color][/b].\nAqui es donde entra en juego su [b][color=red]PODER[/color][/b]. ", 
 "He incluido una [b][color=#b2ffff]FORMACION[/color][/b] a la cadena de naves. Si en algun momento, ubican las naves de forma de imitar esa formacion, [b][color=red]algo especial sucedera[/color][/b]..."	, 
 "En la parte inferior de la pantalla veras las formaciones que tienes disponibles. [b][color=#b2ffff]Las 3 naves de prueba tienen la misma.[/color][/b]\nAl lado de cada formacion, hay una barra que te indicara cuando esta disponible para ser utilizada."	, 
-"Ahora, prueba formar una [b][color=#b2ffff]V invertida hacia adelante (>)[/color][/b] y luego apreten el boton ACTIVAR ([b][color=#00FF00]Barra espaciadora[/color][/b])  .",  
+"Ahora, prueba formar una [b][color=#b2ffff]V invertida hacia adelante (>)[/color][/b] y luego apreten el boton ACTIVAR ([b][color=#00FF00]Barra espaciadora[/color][/b])  .",
+tr("TUTORIAL_S1_FAIL")  
 ]
 
-var ERROR_TEXT = ["Bueno, eso no salio muy bien, probemos otra vez"]
+var ERROR_TEXT = [tr("TUTORIAL_S1_FAIL")]
 
 var spawner_scene = preload("res://LevelComponents/Spawner.tscn")
 var obstacle_scene = preload("res://Scenery/Obstacle.tscn")
