@@ -3,11 +3,18 @@ extends Segment
 onready var timer = $SegmentTime1
 var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
 
-var TUTORIAL_TEXTS1 = ["Bienvenidos al [b]Simulador de batalla[/b].\nAqui les enseñare lo basico, aunque seguramente no lo necesiten. Todos aqui somos veteranos de las guerras conicas verdad? No?\nEste es un momento muy incomodo para todos asi que como dicen 'Al mal paso darle prisa'\n[b][color=green]Presiona Z o ENTER para continuar[/color][/b] ",
+var TUTORIAL_TEXTS = ["Bienvenidos al [b]Simulador de batalla[/b].\nAqui les enseñare lo basico, aunque seguramente no lo necesiten. Todos aqui somos veteranos de las guerras conicas, verdad? \nTratare de ser breve...\n[b][color=green]Presiona Z o ENTER para continuar[/color][/b] ",
 "[b][color=#ffc0cb]Alpha[/color][/b], he configurado los controles de tu nave segun tus preferencias (Esta nave se controla con [b][color=#00FF00]WASD[/color][/b]).", 
 "En tu caso [b][color=yellow]Omega[/color][/b], hemos vuelto a los controles basicos, se que no tendras quejas (Esta nave se controla con las [b][color=#00FF00]flechas[/color][/b]). Se conocen hace mucho y los une un [b][color=red]VINCULO[/color][/b] muy estrecho, asi que creo que no hacen falta las presentaciones despues de todo."	, 
-"Se preguntaran que son esas naves del medio...  Es un experimento que he estado planificando, si tiene exito en el simulador, lo podremos trasladar a naves reales!\nEsas 3 naves son [b][color=#FFD700]Naves Conectoras[/color][/b].",  
-"Cuando una nave une a la formacion entre las naves de ustedes 2 forma una [b][color=red]Cadena[/color][/b]. Esta cadena liberara todo su potencial. Por ahora he incluido 3 naves con pilotos de choques. No serviran de mucho pero quizas [b][color=red]Alguien Especial[/color][/b] se una a ustedes en su travesia.\nPero basta de chacharas, vamos a movernos!",
+"Se preguntaran que son esas naves del medio...  Es un experimento que he estado planificando, si tiene exito en el simulador, lo podremos trasladar a naves reales!\nEsas 3 naves son [b][color=#FFD700]Naves Conectoras[/color][/b]. Conectan la [b][color=#ffc0cb]primera nave[/color][/b] a la [b][color=#00FF00]ultima nave[/color][/b], moviendose en conjunto.",
+"Escuchen con Atencion. Las naves del medio no se moveran por si solas, [b][color=yellow]seran arrastradas por sus naves [/color][/b], las que se encuentran en cada punta de la formacion."  ,
+"Las naves del medio estan protegidas por una fuerza especial, [b][color=red]el hilo rojo[/color][/b].\nEsta fuerza evitara que sean dañadas por [b][color=green]Disparos y Enemigos[/color][/b] pero recibira daño de asteroides.",
+"Ahora simulare algunos enemigos, intenta esquivarlos moviendo ambas naves.\nRecuerda! Solo recibiras daño si golpean la primera o la ultima nave de la formacion, asi que puedes dejar pasar enemigos y disparos por entre tus naves."
+]
+var EXTRA_TEXTS = [
+	
+"Esta cadena liberara todo su potencial. Por ahora he incluido 3 naves con pilotos de choques. No serviran de mucho pero quizas [b][color=red]Alguien Especial[/color][/b] se una a ustedes en su travesia.\nPero basta de chacharas, vamos a movernos!",
+
 "En la pantalla veran muchas barras y graficos. No se asusten!\nArriba a la izquierda hay 2 barras, la de arriba de todo es la [b][color=red]SALUD[/color][/b] de la formacion, la segunda es tu [b][color=#728FCE]ENERGIA[/color][/b]. Como veran, esta se recarga poco a poco.\nUna particularidad de su poder es que [b][color=#00FF00]todas tus naves comparten salud. Si golpean a una golpean a todas[/color][/b].  "	, 
 #"La segunda barra, corresponde a la energia disponible, se recarga automaticamente y te servira para [b][color=#00FF00]Activar Formaciones[/color][/b]  "	, 
 "Ahora simulare una pared de asteroides. Es imposible de atravesarla para una nave convencional...  [b][color=#00FF00]Los asteroides dañaran cualquiera de tus naves que colisionen[/color][/b].\nAqui es donde entra en juego su [b][color=red]PODER[/color][/b]. ", 
@@ -34,7 +41,7 @@ onready var playernode = get_parent().get_parent().get_child(1)
 
 func start_segment():
 	rng.randomize()
-	label.texts = TUTORIAL_TEXTS1
+	label.texts = TUTORIAL_TEXTS
 	add_child(label)
 	playernode.connect("formation_done",self,"formation")
 	label.connect("end_label",self,"finish1")
