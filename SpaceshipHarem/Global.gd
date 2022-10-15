@@ -104,10 +104,6 @@ func goto_scene(path):
 
 	call_deferred("_deferred_goto_scene", path)
 
-func _input(event):
-	if Input.is_action_pressed("quit"):
-		get_tree().quit()
-
 func _deferred_goto_scene(path):
 	# It is now safe to remove the current scene
 	current_scene.free()

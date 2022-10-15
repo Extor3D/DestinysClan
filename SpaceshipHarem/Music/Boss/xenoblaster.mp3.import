@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/xenoblaster.mp3-505ff862b91da2f1a09af286e97ff4d1.mp3str"
+
+[deps]
+
+source_file="res://Music/Boss/xenoblaster.mp3"
+dest_files=[ "res://.import/xenoblaster.mp3-505ff862b91da2f1a09af286e97ff4d1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

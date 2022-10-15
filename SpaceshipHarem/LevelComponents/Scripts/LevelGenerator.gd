@@ -62,6 +62,9 @@ var tutorial1 = preload("res://LevelComponents/Segments/Tutorial/Tutorial1Segmen
 var tutorial2 = preload("res://LevelComponents/Segments/Tutorial/Tutorial2Segment.tscn")
 var tutorial3 = preload("res://LevelComponents/Segments/Tutorial/Tutorial3Segment.tscn")
 
+#PauseMenu
+var pause_scene = preload("res://UI/Screens/PauseScene.tscn")
+
 var random_boss_scene = preload("res://Enemies/Bosses/RandomBoss.tscn")
 
 var tutorial_segments = [tutorial2,tutorial3,tutorial1]
@@ -185,3 +188,9 @@ func end_level():
 		
 func _on_Tween_tween_all_completed():
 	Global.goto_scene("res://UI/Screens/Game Over.tscn")
+	
+func _input(event):
+	if Input.is_action_pressed("quit"):
+		var pause = pause_scene.instance()
+		add_child(pause)
+		get_tree().paused = true
