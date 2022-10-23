@@ -6,6 +6,9 @@ extends Node
 # Healing Sound
 # https://freesound.org/people/SilverIllusionist/sounds/580814/
 
+# Energy recharge Sound
+# https://freesound.org/people/Rickplayer/sounds/530488/
+
 # Destiny's Child Logo
 # https://www.logomaker.com/
 
@@ -70,7 +73,7 @@ extends Node
 #https://pixabay.com/music/video-games-robot-laser-carnage-113855/
 
 # Boss Fight 4 - xenoblaster:
-https://pixabay.com/music/techno-trance-xenoblaster-115556/
+# https://pixabay.com/music/techno-trance-xenoblaster-115556/
 
 # Level Music:
 # https://pixabay.com/music/video-games-kim-lightyear-angel-eyes-chiptune-edit-110226/
