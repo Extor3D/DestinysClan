@@ -36,6 +36,7 @@ animations = [ {
 } ]
 
 [node name="ShotSpawnEffect" type="Node2D"]
+z_index = 2
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

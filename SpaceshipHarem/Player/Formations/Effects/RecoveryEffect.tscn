@@ -1,18 +1,51 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/Formations/Effects/Scripts/RecoveryEffect.gd" type="Script" id=1]
+[ext_resource path="res://Effects/Sprites/starParticle.png" type="Texture" id=2]
+[ext_resource path="res://Effects/Sounds/healingSound.wav" type="AudioStream" id=3]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.345528, 0.678862, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.318741, 0.927246, 0.335412, 1, 0.319061, 0.960938, 0.336409, 0.831373, 1, 1, 1, 0.27451 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0.0153257, 0.0147059 ), 0.0, 0.0, 0, 0, Vector2( 0.436782, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 1
+emission_sphere_radius = 50.0
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 50.0
+orbit_velocity = 0.2
+orbit_velocity_random = 0.0
+tangential_accel = 10.0
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
 
 [node name="RecoveryEffect" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2( 78, 42 )
-rotation = 1.55477
-color = Color( 0.109804, 0.780392, 0.870588, 0.552941 )
-polygon = PoolVector2Array( -45, -61, 19, -24, 37, 2.00001, 37, 33, 20, 56, -44, 91, 36, 74, 69, 51, 69, -7, 36, -40 )
-
 [node name="EffectTime" type="Timer" parent="."]
+wait_time = 2.5
 one_shot = true
 autostart = true
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 57, 52 )
+amount = 30
+process_material = SubResource( 5 )
+texture = ExtResource( 2 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
 
 [connection signal="timeout" from="EffectTime" to="." method="_on_EffectTime_timeout"]

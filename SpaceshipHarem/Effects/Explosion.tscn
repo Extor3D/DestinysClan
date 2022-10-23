@@ -53,6 +53,7 @@ animations = [ {
 } ]
 
 [node name="Explosion" type="Node2D"]
+z_index = 2
 script = ExtResource( 1 )
 size = 300
 

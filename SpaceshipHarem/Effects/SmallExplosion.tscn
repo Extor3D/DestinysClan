@@ -37,6 +37,7 @@ animations = [ {
 } ]
 
 [node name="SmallExplosion" type="Node2D"]
+z_index = 2
 script = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

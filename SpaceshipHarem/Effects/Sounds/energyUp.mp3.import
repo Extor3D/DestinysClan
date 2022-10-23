@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/energyUp.mp3-13350076da8f92bd801dd5c2f7a82278.mp3str"
+
+[deps]
+
+source_file="res://Effects/Sounds/energyUp.mp3"
+dest_files=[ "res://.import/energyUp.mp3-13350076da8f92bd801dd5c2f7a82278.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

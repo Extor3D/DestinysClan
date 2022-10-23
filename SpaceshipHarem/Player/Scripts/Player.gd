@@ -29,9 +29,11 @@ var ship_scene = preload("res://Player/SmallShip.tscn")
 var chain_scene = preload("res://Player/Chain.tscn")
 var shot_scene = preload("res://Player/Shot.tscn")
 var explosion_scene = preload("res://Effects/SmallExplosion.tscn")
+var energy_restore_scene = preload("res://Effects/EnergyRestore.tscn")
 var shot_spawn_scene = preload("res://Effects/ShotSpawnEffect.tscn")
 
 onready var d_tween = $DeathTween
+onready var energy_restore_sound = $EnergyRestoreSound
 
 var is_in_formation = false
 
@@ -191,7 +193,6 @@ func death_animation():
 		add_explosion(s.global_position)
 	emit_signal("game_over")
 	yield(get_tree().create_timer(0.1), "timeout")
-	#Explotar miticamente
 	queue_free()
 	
 func add_explosion(pos):
@@ -200,7 +201,19 @@ func add_explosion(pos):
 	get_parent().add_child(e)
 			
 func charge_energy(e):
+	if !energy_restore_sound.is_playing():
+		energy_restore_sound.play()
+	add_energy_effect($Ship1.global_position)
+	add_energy_effect($Ship2.global_position)
+	for s in ships:
+		add_energy_effect(s.global_position)
 	energy = move_toward(energy, max_energy, e * energy_multi)
+
+func add_energy_effect(pos):
+	var e = energy_restore_scene.instance()
+	e.global_position = pos
+	e.set_emitting(true)
+	get_parent().add_child(e)
 
 func get_higher_ship():
 	if $Ship1.position.y < $Ship2.position.y:

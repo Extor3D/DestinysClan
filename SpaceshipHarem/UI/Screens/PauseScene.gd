@@ -1,9 +1,12 @@
 extends Node2D
 
 onready var cont_button = $VBoxContainer/Continue
+onready var skip_button = $VBoxContainer/Skip
 
 func _ready():
 	cont_button.grab_focus()
+	if Global.level != 0:
+		skip_button.queue_free()
 
 func _on_Continue_pressed():
 	get_tree().paused = false

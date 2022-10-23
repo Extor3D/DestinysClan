@@ -3,6 +3,9 @@ extends Node
 # Space Background
 # https://bacteri.itch.io/background-space
 
+# Healing Sound
+# https://freesound.org/people/SilverIllusionist/sounds/580814/
+
 # Destiny's Child Logo
 # https://www.logomaker.com/
 
