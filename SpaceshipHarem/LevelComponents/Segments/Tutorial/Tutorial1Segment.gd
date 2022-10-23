@@ -4,8 +4,8 @@ onready var timer = $SegmentTime1
 var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
 
 var TUTORIAL_TEXTS = ["Bienvenidos al [b]Simulador de batalla[/b].\nAqui les enseñare lo basico, aunque seguramente no lo necesiten. Todos aqui somos veteranos de las guerras conicas, verdad? \nTratare de ser breve...\n[b][color=green]Presiona Z o ENTER para continuar[/color][/b] ",
-"[b][color=#ffc0cb]Alpha[/color][/b], he configurado los controles de tu nave segun tus preferencias (Esta nave se controla con [b][color=#00FF00]WASD[/color][/b]).", 
-"En tu caso [b][color=yellow]Omega[/color][/b], hemos vuelto a los controles basicos, se que no tendras quejas (Esta nave se controla con las [b][color=#00FF00]flechas[/color][/b]). Se conocen hace mucho y los une un [b][color=red]VINCULO[/color][/b] muy estrecho, asi que creo que no hacen falta las presentaciones despues de todo."	, 
+"[b][color=#b2ffff]Alpha[/color][/b], he configurado los controles de tu nave segun tus preferencias (Esta nave se controla con [b][color=#00FF00]WASD[/color][/b]).", 
+"En tu caso [b][color=#EE4B2B]Omega[/color][/b], hemos vuelto a los controles basicos, se que no tendras quejas (Esta nave se controla con las [b][color=#00FF00]flechas[/color][/b]). Se conocen hace mucho y los une un [b][color=red]VINCULO[/color][/b] muy estrecho, asi que creo que no hacen falta las presentaciones despues de todo."	, 
 "Se preguntaran que son esas naves del medio...  Es un experimento que he estado planificando, si tiene exito en el simulador, lo podremos trasladar a naves reales!\nEsas 3 naves son [b][color=#FFD700]Naves Conectoras[/color][/b]. Conectan la [b][color=#ffc0cb]primera nave[/color][/b] a la [b][color=#00FF00]ultima nave[/color][/b], moviendose en conjunto.",
 "Escuchen con Atencion. Las naves del medio no se moveran por si solas, [b][color=yellow]seran arrastradas por sus naves [/color][/b], las que se encuentran en cada punta de la formacion."  ,
 "Las naves del medio estan protegidas por una fuerza especial, [b][color=red]el hilo rojo[/color][/b].\nEsta fuerza evitara que sean dañadas por [b][color=green]Disparos y Enemigos[/color][/b] pero recibira daño de asteroides.",
@@ -24,63 +24,59 @@ var EXTRA_TEXTS = [
 tr("TUTORIAL_S1_FAIL")  
 ]
 
-var ERROR_TEXT = [tr("TUTORIAL_S1_FAIL")]
-
-var spawner_scene = preload("res://LevelComponents/Spawner.tscn")
-var obstacle_scene = preload("res://Scenery/Obstacle.tscn")
-var rng = RandomNumberGenerator.new()
-var spawner
-
-var spawners = []
-var	time
-var ended = false
-var label_off = false
-var label = label_scene.instance()
-
 onready var playernode = get_parent().get_parent().get_child(1)
 
+
+var spawner_scene = preload("res://LevelComponents/Spawner.tscn")
+var spawner
+var texts_number = 0
+
+var primary_enemy_scene = preload("res://Enemies/SpecieEnemy.tscn")
+var secondary_enemy_scene = preload("res://Enemies/Enemy.tscn")
+
+var spawners = []
+var time = 0
+var ended2 = false
+var label = label_scene.instance()
+var rng = RandomNumberGenerator.new()
+
 func start_segment():
-	rng.randomize()
+	time = 21
 	label.texts = TUTORIAL_TEXTS
 	add_child(label)
-	playernode.connect("formation_done",self,"formation")
-	label.connect("end_label",self,"finish1")
+	label.connect("end_label",self,"finish")
 	
-func _on_SegmentTime_timeout():
-	# Mas adelante Agregar Label de Repeticion para el Tutorial
-	label.container.visible = true
-	label.texts = ERROR_TEXT
-	if !ended:
-		time = 5
-		timer.start(time)
-		add_asteroid_field(time)
 
-func finish1():
-	label_off = true
-	playernode.energy = clamp(playernode.energy + 15, 0, playernode.max_energy)
-	if !ended:
-		time = 5
+func _on_SegmentTime_timeout():
+	ended2 = true
+	end_segment()
+
+func finish():
+	if !ended2:
+		spawners.append(add_enemy_group(time/3,3,primary_enemy_scene))
+		spawners.append(add_enemy_group(time/3,time/3,secondary_enemy_scene))
+		spawners.append(add_enemy_group(time/3,time * 2/3,secondary_enemy_scene))
 		timer.start(time)
-		add_asteroid_field(time)
-		
-func formation():
-	if label_off:
-		ended = true
 		remove_child(label)
-		end_segment()
+
+func _ready():
+	playernode.set_cadence(1000)
+	rng.randomize()
+
 	
-func add_asteroid_field(duration):
-	spawner = spawner_scene.instance()
-	spawner.scene = obstacle_scene
-	var vars = {"speed": -150,
-				"rot_spd": rng.randi_range(2, 3)}
+	
+func add_enemy_group(duration,start,enemy):
+	var spawner = spawner_scene.instance()
+	spawner.scene = enemy
+	var vars = {"move_speed": -70,
+				"rot_spd": rng.randi_range(2, 3),
+				"cadence":5}
 	spawner.scene_variables = vars
-	spawner.y_center = 180
-	spawner.height = 500
-	spawner.start_time = 0
+	spawner.y_center = 20 + (60 * rand_range(0,4))
+	spawner.height = 200 
+	spawner.start_time = start
 	spawner.duration = duration
 	spawner.warning = false
-	spawner.set_wait_time(0.2)
+	spawner.set_wait_time(1)
 	add_child(spawner)
-
-
+	return spawner
