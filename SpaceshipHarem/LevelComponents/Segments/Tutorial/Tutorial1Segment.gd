@@ -3,14 +3,13 @@ extends Segment
 onready var timer = $SegmentTime1
 var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
 
-var TUTORIAL_TEXTS = ["Bienvenidos al [b]Simulador de batalla[/b].\nAqui les enseñare lo basico, aunque seguramente no lo necesiten. Todos aqui somos veteranos de las guerras conicas, verdad? \nTratare de ser breve...\n[b][color=green]Presiona Z o ENTER para continuar[/color][/b] ",
-"[b][color=#b2ffff]Alpha[/color][/b], he configurado los controles de tu nave segun tus preferencias (Esta nave se controla con [b][color=#00FF00]WASD[/color][/b]).", 
-"En tu caso [b][color=#EE4B2B]Omega[/color][/b], hemos vuelto a los controles basicos, se que no tendras quejas (Esta nave se controla con las [b][color=#00FF00]flechas[/color][/b]). Se conocen hace mucho y los une un [b][color=red]VINCULO[/color][/b] muy estrecho, asi que creo que no hacen falta las presentaciones despues de todo."	, 
-"Se preguntaran que son esas naves del medio...  Es un experimento que he estado planificando, si tiene exito en el simulador, lo podremos trasladar a naves reales!\nEsas 3 naves son [b][color=#FFD700]Naves Conectoras[/color][/b]. Conectan la [b][color=#ffc0cb]primera nave[/color][/b] a la [b][color=#00FF00]ultima nave[/color][/b], moviendose en conjunto.",
-"Escuchen con Atencion. Las naves del medio no se moveran por si solas, [b][color=yellow]seran arrastradas por sus naves [/color][/b], las que se encuentran en cada punta de la formacion."  ,
-"Las naves del medio estan protegidas por una fuerza especial, [b][color=red]el hilo rojo[/color][/b].\nEsta fuerza evitara que sean dañadas por [b][color=green]Disparos y Enemigos[/color][/b] pero recibira daño de asteroides.",
-"Ahora simulare algunos enemigos, intenta esquivarlos moviendo ambas naves.\nRecuerda! Solo recibiras daño si golpean la primera o la ultima nave de la formacion, asi que puedes dejar pasar enemigos y disparos por entre tus naves."
-]
+var TUTORIAL_TEXTS = [tr("TUTORIAL_S1_L1"),
+tr("TUTORIAL_S1_L2"), 
+tr("TUTORIAL_S1_L3"), 
+tr("TUTORIAL_S1_L4"), 
+tr("TUTORIAL_S1_L5"), 
+tr("TUTORIAL_S1_L6"), 
+tr("TUTORIAL_S1_L7")]
 var EXTRA_TEXTS = [
 	
 "Esta cadena liberara todo su potencial. Por ahora he incluido 3 naves con pilotos de choques. No serviran de mucho pero quizas [b][color=red]Alguien Especial[/color][/b] se una a ustedes en su travesia.\nPero basta de chacharas, vamos a movernos!",
@@ -39,19 +38,26 @@ var time = 0
 var ended2 = false
 var label = label_scene.instance()
 var rng = RandomNumberGenerator.new()
+var cadence = 0.5
 
 func start_segment():
-	time = 21
+	#playernode.set_cadence(1000)
+	cadence = playernode.cadence
+
+	print(playernode.cadence)
+	time = 11
 	label.texts = TUTORIAL_TEXTS
 	add_child(label)
 	label.connect("end_label",self,"finish")
 	
 
 func _on_SegmentTime_timeout():
+
 	ended2 = true
 	end_segment()
 
 func finish():
+	playernode.set_cadence(cadence)
 	if !ended2:
 		spawners.append(add_enemy_group(time/3,3,primary_enemy_scene))
 		spawners.append(add_enemy_group(time/3,time/3,secondary_enemy_scene))
@@ -60,7 +66,6 @@ func finish():
 		remove_child(label)
 
 func _ready():
-	playernode.set_cadence(1000)
 	rng.randomize()
 
 	
