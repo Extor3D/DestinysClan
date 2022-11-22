@@ -11,6 +11,10 @@ var TUTORIAL_TEXTS2 = [" Excelente!!! Sabia que lo lograrian! \n Puede parecer
 "Lo siguiente... He configurado sus armas en automatico, por lo que [b][color=#00FF00]tus naves disparan todo el tiempo[/color][/b].  Eso les ahorrara el pensar en atacar, concentrense en moverse!", 
 "Probemos nuevamente. Simulare algunos enemigos mas, recuerda que [b][color=#00FF00]los disparos y las naves solo dañan tu primera y ultima nave[/color][/b].\nLo importante aqui es esquivar, no necesitas encargarte de todos los enemigos." ]
 
+#var TUTORIAL_TEXTS2 = [tr("TUTORIAL_S2_L1"),
+#tr("TUTORIAL_S2_L2"), 
+#tr("TUTORIAL_S2_L3"), 
+#tr("TUTORIAL_S2_L4"), ]
 
 var texts_number = 0
 var spawner_scene = preload("res://LevelComponents/Spawner.tscn")

@@ -34,11 +34,16 @@ const BLACK_COLOR = "#0f0814"
 const BUFFER_SIZE = 128
 
 const DRAGS_NAME=["Claire Geeman","Thea Terre","Tira Mendus","Deedee Sign","Sasha Sass","Enna Fincible","Siam Pathy","Phara Waye","Selly Foxx","Juju Bee","Bella Lush","Sella Stice","Claire Rickal","Melody Gale","Mistress Galore","Noë Stalgia","Chichi Swank","Bea Constrictor","May Stirius","Sam Armie","Sia Gothic","Sara Donique","Anna Conda","Sofie Moore","Elle Lectrick","Sue Burben","Eva Siff","Jo Nee","Genna Russ","Liv Lee","Connie Fidence","Barba Rouse","Kaye Bye","Eve Forric","Penny Ramma","Miss Fortune","Lea Ness","Remi Nissent","Cecil Sunshine","Miss Sanguine","Lisse Truss","Raye Bitt","Ora Kelle","Sue Missif","Sia Dellic","Ella Gants","Raye Nessance","Lucy Luck","Vye Sual","Poppy Cox","Kitsch Kitsch Bang Bang","Maggie Magma","Super Nova"]
+const SPACE_NAME=["Astro Labe","Luther Nova"]
+const CAT_NAMES =["Devon Rex","Maine Coon","Reggie Doll","Sphynx Eas","Percy Ann","Amy Sinian"]
+const DIABLO_NAMES =["Starel","Galaxyel","Novael"]
 const OTHER_NAME=["Rene Gado","Sasha Mado","Ariel Ganado","Connie Modo", "Andrea Eaeaea" , "Charlie Mon"]
 
+# Pasar al archivo de Idiomas
 const OCCUPATION=["Estudiante","Monotributista","Experto en Cosas","Alma Libre",
 "Freelancer","Soy mi Propio Jefe","Arreglo Monopatines por deporte","Tu Media Naranja","De la universidad de la vida","Casi-Influencer","Contador de Estrellas"]
 
+# Pasar al archivo de Idiomas
 const FLAVOR_TEXT=[" Nada de terroristas de la gramática, frágiles emocionales, Drama Queens, incultxs o de higiene dudosa. No personas llamadas Florencia, ni tener una remera que diga 'te quiero pero soy un bardo' ni un tatuaje que diga 'soltar'.",
 "Videos y fotitos para vos! Info x privado!","Hola soy de Pollux 7. Tengo 27 años busco amistad y luego se ve", "Hola Buen dia a todos soy nuevite por aqui, tengo 26 años y divorciade, busco chongo o lo que de","Me gusta viajar, el aire libre, reunirme para pasar buenos momentos. Deseo conocer gente que tenga buen humor y buenas energías"]
 
@@ -66,7 +71,10 @@ func _randomize():
 	# Seleccion de especie
 	var pilot_specie = Global.SPECIES[randi() % Global.SPECIES.size()]
 	print(pilot_specie)
-	var pilot_name = DRAGS_NAME[randi() % DRAGS_NAME.size()]
+	var posible_names = DRAGS_NAME
+	posible_names.append_array(SPACE_NAME)
+	posible_names.append_array(OTHER_NAME)
+	var pilot_name = posible_names[randi() % posible_names.size()]
 	var pilot_flavor = FLAVOR_TEXT[randi() % FLAVOR_TEXT.size()]
 	var skin_color = 0
 
