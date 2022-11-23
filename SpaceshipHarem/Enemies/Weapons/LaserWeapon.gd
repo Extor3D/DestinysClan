@@ -101,12 +101,12 @@ func _on_TimerOff_timeout():
 func set_rotating_spread(diff):
 	var wait_on = 1.5 + float(diff) * 0.1
 	var wait_off = 3 - float(diff) * 0.2
-	var size = 1 + diff
+	var size = 10
 	create_spread_settings(15, -40, 40, wait_on, wait_off, 1, 10, 0, 360, size, true)
 		
 func set_hallway_spread(diff):
 	var speed = 5 + diff * 0.5
-	var size = 5 + diff * 1
+	var size = 10
 	var arc = 50 - diff
 	create_spread_settings(speed, -arc/2, 0, 10, 1, 2, 10, 0, arc, size, true)
 		
@@ -114,7 +114,7 @@ func set_circular_spread(diff):
 	var wait_on = 1.5 + float(diff) * 0.2
 	var wait_off = 2 - float(diff) * 0.2
 	var points = diff/2 + 5
-	var size = 1 + diff
+	var size = 10
 	create_spread_settings(7, 0, 360, wait_on, wait_off, points, 10, 0, 360, size, false)
 
 func create_spread_settings(rot_spd, rot_from, rot_to, lsr_on, lsr_off, spawn_count, rad, lsr_from, lsr_to, lsr_size, back_forth):

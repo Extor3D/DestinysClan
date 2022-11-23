@@ -24,7 +24,7 @@ func start_segment():
 	create_tunnel(time)
 	rng.randomize()
 	var laser_time = 2 - float(difficulty)/25
-	l_size = 10 + difficulty * 0.5
+	l_size = 10
 	l_time = 1.5 + difficulty * 0.1
 	timer.start(time)
 	laser_timer.start(laser_time)

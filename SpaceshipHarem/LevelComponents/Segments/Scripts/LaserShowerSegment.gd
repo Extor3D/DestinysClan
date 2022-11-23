@@ -14,7 +14,7 @@ func start_segment():
 	rng.randomize()
 	var time = 15 + difficulty * 2
 	var laser_time = 0.85 - float(difficulty)/25
-	l_size = 10 + difficulty * 0.5
+	l_size = 10
 	l_time = 1.5 + difficulty * 0.1
 	timer.start(time)
 	laser_timer.start(laser_time)
