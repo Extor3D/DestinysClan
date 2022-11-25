@@ -32,6 +32,8 @@ var explosion_scene = preload("res://Effects/SmallExplosion.tscn")
 var energy_restore_scene = preload("res://Effects/EnergyRestore.tscn")
 var shot_spawn_scene = preload("res://Effects/ShotSpawnEffect.tscn")
 
+var is_shooting = true
+
 onready var d_tween = $DeathTween
 onready var energy_restore_sound = $EnergyRestoreSound
 
@@ -40,7 +42,7 @@ var is_in_formation = false
 func get_stat(stat, minimum, maximum):
 	var s = minimum + stat * (maximum - minimum) / 10 
 	return s
-
+	
 func _ready():
 	$ShotTimer.wait_time = cadence
 	
@@ -275,10 +277,11 @@ func is_formation_done(formation):
 
 func _on_ShotTimer_timeout():
 	#Add sound here
-	create_shot($Ship1.global_position + Vector2($Ship1/ShipSprite.texture.get_width()/2, 0), damage)
-	create_shot($Ship2.global_position + Vector2($Ship2/ShipSprite.texture.get_width()/2, 0), damage)
-	for s in ships:
-		create_shot(s.global_position + Vector2(10,0), damage)
+	if is_shooting:
+		create_shot($Ship1.global_position + Vector2($Ship1/ShipSprite.texture.get_width()/2, 0), damage)
+		create_shot($Ship2.global_position + Vector2($Ship2/ShipSprite.texture.get_width()/2, 0), damage)
+		for s in ships:
+			create_shot(s.global_position + Vector2(10,0), damage)
 	
 	
 func create_shot(p: Vector2, d: int):
@@ -306,3 +309,9 @@ func set_cadence(c: float):
 func set_speed_mod(m):
 	$Ship1.spd_mod = m
 	$Ship2.spd_mod = m
+
+func stop_shooting():
+	is_shooting = false
+	
+func start_shooting():
+	is_shooting = true
