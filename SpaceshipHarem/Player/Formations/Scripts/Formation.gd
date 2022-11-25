@@ -2,6 +2,7 @@ extends Area2D
 
 export(float) var energy = 0
 export(PackedScene) var effect_scene
+var id = ""
 
 func do_effect(scale):
 	#Scale and position the formation in the higher ship position.

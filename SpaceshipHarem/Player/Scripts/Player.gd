@@ -2,6 +2,8 @@ extends Node2D
 
 signal formation_done
 signal game_over
+signal formation_usable
+signal formation_unusable
 
 export(int, 0, 10) var stat_health = 1
 export(int, 0, 10) var stat_agility = 1
@@ -116,6 +118,7 @@ func add_formation(id):
 		if f != null:
 			var form_node = load(f.scene_path).instance()
 			form_node.energy = f.energy_req
+			form_node.id = id
 			$Formations.add_child(form_node)
 			forms.append(id)
 	
@@ -148,21 +151,26 @@ func _physics_process(_delta):
 			for c in chains:
 				c.set_mode(RigidBody2D.MODE_RIGID)
 	#Formations logic
-	if Input.is_action_pressed("activate_formation") and not is_in_formation:
+	if not is_in_formation:
 		#Iterate all formations when button pressed
 		for f in $Formations.get_children():
-			if f.energy <= energy:
-				#Calculate scaling based on number of ships
-				var s = 1 + (Global.current_pilots.size() * 0.1 - 0.5 )
-				f.scale = Vector2(s, s)
-				f.position = $Ship1.position
-				yield(get_tree().create_timer(0.01), "timeout")
-				if is_formation_done(f):
+			#Calculate scaling based on number of ships
+			var s = 1 + (Global.current_pilots.size() * 0.1 - 0.5 )
+			f.scale = Vector2(s, s)
+			f.position = $Ship1.position
+			yield(get_tree().create_timer(0.01), "timeout")
+			if is_formation_done(f) and f.energy <= energy:
+				emit_signal("formation_usable", f.id)
+				if Input.is_action_pressed("activate_formation"):
 					do_formation(f, s)
-				else:
-					f.position = $Ship2.position
-					if is_formation_done(f):
+			else:
+				f.position = $Ship2.position
+				if is_formation_done(f) and f.energy <= energy:
+					emit_signal("formation_usable", f.id)
+					if Input.is_action_pressed("activate_formation"):
 						do_formation(f, s)
+				else:
+					emit_signal("formation_unusable", f.id)
 					
 func do_formation(f, s):
 	is_in_formation = true

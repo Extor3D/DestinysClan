@@ -2,6 +2,7 @@ extends Area2D
 
 export(float) var energy = 10
 var effect_scene = preload("res://Player/Formations/Effects/SlowEffect.tscn")
+var id = ""
 
 func do_effect(scale):
 	#Scale and position the formation in the higher ship position.

@@ -3,11 +3,13 @@ extends Node2D
 onready var fill_meter = $FillMeter
 onready var meter = $Meter
 onready var form_icon = $Form
+onready var high = $High
 
 var ship_scene = preload("res://Player/SmallShip.tscn")
 
 var ship = null
 var req_energy = 10
+var form_id = ""
 
 func set_pilot(p):
 	if ship:
@@ -24,7 +26,9 @@ func set_pilot(p):
 func set_form_data(id):
 	var form = Global.get_form_by_id(id)
 	form_icon.texture = load(form.icon)
+	form_id = form.id
 	req_energy = form.energy_req
+	
 
 func set_meter(e):
 	var f = clamp(float(e / req_energy), 0, 1)
@@ -35,3 +39,11 @@ func draw_bar(bar, f):
 	poly[1] = poly[0].linear_interpolate(poly[1], f)
 	poly[2] = poly[3].linear_interpolate(poly[2], f)
 	bar.set_polygon(PoolVector2Array(poly))
+	
+func highlight_formation(i):
+	if form_id == i:
+		high.show()
+	
+func not_highlight_formation(i):
+	if form_id == i:
+		high.hide()

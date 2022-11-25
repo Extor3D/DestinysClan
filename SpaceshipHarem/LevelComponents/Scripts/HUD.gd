@@ -52,6 +52,9 @@ func _ready():
 		add_child(pilot_node)
 		pilot_node.set_pilot(Global.current_pilots[i])
 		p_bars.append(pilot_node)
+		if get_parent().has_node("Player"):
+			get_parent().get_node("Player").connect("formation_usable", pilot_node, "highlight_formation")
+			get_parent().get_node("Player").connect("formation_unusable", pilot_node, "not_highlight_formation")
 
 func _process(_delta):
 	#If the Player is still alive, we get the energy and health from it
