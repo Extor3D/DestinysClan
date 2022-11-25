@@ -137,7 +137,14 @@ func add_stat(stat, amount):
 func _physics_process(_delta):
 	if collide_with_enemies():
 		take_damage(1)
-	
+		
+	if not is_in_formation: 
+		if Input.is_action_pressed("keep_formation"):
+			for c in chains:
+				c.set_mode(RigidBody2D.MODE_CHARACTER)
+		if Input.is_action_just_released("keep_formation"):
+			for c in chains:
+				c.set_mode(RigidBody2D.MODE_RIGID)
 	#Formations logic
 	if Input.is_action_pressed("activate_formation") and not is_in_formation:
 		#Iterate all formations when button pressed
@@ -285,8 +292,9 @@ func create_shot(p: Vector2, d: int):
 
 func clear_formation():
 	is_in_formation = false
-	for c in chains:
-		c.set_mode(RigidBody2D.MODE_RIGID)
+	if not Input.is_action_pressed("keep_formation"):
+		for c in chains:
+			c.set_mode(RigidBody2D.MODE_RIGID)
 
 func _on_InviTimer_timeout():
 	$Ship1.blink = false
