@@ -10,6 +10,8 @@ tr("TUTORIAL_S1_L4"),
 tr("TUTORIAL_S1_L5"), 
 tr("TUTORIAL_S1_L6"), 
 tr("TUTORIAL_S1_L7")]
+
+# agregar colores a ultima frase TUTORIAL_S1_L7
 var EXTRA_TEXTS = [
 	
 "Esta cadena liberara todo su potencial. Por ahora he incluido 3 naves con pilotos de choques. No serviran de mucho pero quizas [b][color=red]Alguien Especial[/color][/b] se una a ustedes en su travesia.\nPero basta de chacharas, vamos a movernos!",
@@ -42,7 +44,7 @@ var cadence = 0.5
 
 func start_segment():
 	playernode.stop_shooting()
-	time = 11
+	time = 21
 	label.texts = TUTORIAL_TEXTS
 	add_child(label)
 	label.connect("end_label",self,"finish")
