@@ -13,14 +13,22 @@ margin_left = -1.0
 margin_top = 263.0
 margin_right = 645.0
 margin_bottom = 364.0
+rect_scale = Vector2( 0.998642, 1 )
 
 [node name="Panel" type="Panel" parent="Container"]
 margin_right = 646.0
 margin_bottom = 101.0
 
+[node name="Character" type="Sprite" parent="Container"]
+position = Vector2( 588.31, 52.0035 )
+scale = Vector2( 1.181, 1.08335 )
+flip_h = true
+
 [node name="Label" type="RichTextLabel" parent="Container"]
 margin_right = 646.0
 margin_bottom = 101.0
+grow_horizontal = 0
+rect_clip_content = false
 custom_fonts/mono_font = ExtResource( 3 )
 custom_fonts/bold_font = ExtResource( 3 )
 custom_fonts/normal_font = ExtResource( 3 )

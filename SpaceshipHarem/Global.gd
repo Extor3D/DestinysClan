@@ -77,8 +77,8 @@ func new_game():
 	current_pilots.append(get_dummy_data("Dummy", Color.yellow))
 	current_pilots.append(get_dummy_data("Dummy", Color.yellow))
 	current_pilots.append(get_dummy_data("Dummy", Color.yellow))
-	level = 0
-	current_difficulty = 0
+	level = 1
+	current_difficulty = 1
 	current_theme = themes.LAND
 
 func get_dummy_data(sp, co):

@@ -84,6 +84,8 @@ var possible_segments = [thin_tunnel_segment,
 						
 var possible_musics = [dangerous_music,exploration_music,mysterious_music]
 
+
+# Codigo de Labels
 var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
 var label1 = label_scene.instance()
 var label2 = label_scene.instance()
@@ -94,6 +96,14 @@ var labels = [label1,label2,label3]
 var SEGMENT_TEXTS = [["Estamos en el primer Segmento!","Vamos a empezar!!"],
  ["llegamos al 2do segmento!","Falta menos!"],
 ["Tercero!","Ya casi estamos!","Que venga el jefe!"]]
+
+# Definir Personajes
+const Char_Alpha = 	"res://Player/Sprites/candidates/pilot/candidate116.png"
+const Char_Omega = 	"res://Player/Sprites/candidates/pilot/candidate011.png"
+const Char_Kokoro = "res://Player/Sprites/candidates/pilot/candidate103.png"
+const Char_Dummy = 	"res://Player/Sprites/candidates/pilot/dummypilot.png"
+
+var Chars_Speaking = [[Char_Kokoro,Char_Dummy],[Char_Alpha,Char_Omega],[Char_Kokoro,Char_Alpha,Char_Omega]]
 
 var boss = null
 
@@ -160,10 +170,12 @@ func create_level():
 		play_area.add_child(seg)
 	#Agrego texto al segmento 1 para que muestre el label
 	labels[0].texts = SEGMENT_TEXTS[0]
+	labels[0].character_img = Chars_Speaking[0]
 	add_child(labels[0])
 	segments[0].start_segment()
 	
 func spawn_boss():
+	#Agregar dialogos para el jefe (de corresponder)
 	music.stop()
 	music.stream = boss_music
 	music.play()
@@ -189,6 +201,7 @@ func next_segment(n):
 		#Agrego texto a los segmentos 2 y 3
 		remove_child(labels[n-1])
 		labels[n].texts = SEGMENT_TEXTS[n]
+		labels[n].character_img = Chars_Speaking[n]
 		add_child(labels[n])
 		segments[n].start_segment()
 	emit_signal("new_segment", n)

@@ -8,7 +8,7 @@ extends RichTextLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	rect_size.x = 400 # Replace with function body.
 
 func add_text(text_to_add):
 	append_bbcode(text_to_add)
