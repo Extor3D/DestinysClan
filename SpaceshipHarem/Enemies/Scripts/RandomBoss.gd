@@ -29,8 +29,9 @@ func _ready():
 	var spr_tex = load(sprite_path_start + str(rng.randi_range(1, sprite_count)) + sprite_path_end)
 	boss_sprite.texture = spr_tex
 	add_weapon(spread, rng.randi_range(1, 6), difficulty)
-	add_weapon(spread, rng.randi_range(1, 6), difficulty)
-	add_weapon(laser, rng.randi_range(1, 2), difficulty)
+	if difficulty > 0:
+		add_weapon(spread, rng.randi_range(1, 6), difficulty)
+		add_weapon(laser, rng.randi_range(1, 2), difficulty)
 	if difficulty > 5:
 		add_weapon(spread, rng.randi_range(1, 6), difficulty - 3)
 	add_path()

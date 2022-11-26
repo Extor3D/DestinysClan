@@ -1,6 +1,7 @@
 extends Segment
 
 onready var timer = $SegmentTime3
+onready var playernode = get_parent().get_parent().get_child(1)
 var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
 
 var TUTORIAL_TEXTS3 = ["Grandioso!!! Otro exito!\n Estan casi listos para salir al espacio.",
@@ -25,6 +26,7 @@ var label = label_scene.instance()
 
 
 func start_segment():
+	playernode.start_shooting()
 	time = 1
 	label.texts = TUTORIAL_TEXTS3
 	add_child(label)

@@ -41,10 +41,7 @@ var rng = RandomNumberGenerator.new()
 var cadence = 0.5
 
 func start_segment():
-	#playernode.set_cadence(1000)
-	cadence = playernode.cadence
-
-	print(playernode.cadence)
+	playernode.stop_shooting()
 	time = 11
 	label.texts = TUTORIAL_TEXTS
 	add_child(label)

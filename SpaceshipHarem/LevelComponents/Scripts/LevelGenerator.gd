@@ -84,6 +84,17 @@ var possible_segments = [thin_tunnel_segment,
 						
 var possible_musics = [dangerous_music,exploration_music,mysterious_music]
 
+var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
+var label1 = label_scene.instance()
+var label2 = label_scene.instance()
+var label3=  label_scene.instance()
+
+var labels = [label1,label2,label3]
+
+var SEGMENT_TEXTS = [["Estamos en el primer Segmento!","Vamos a empezar!!"],
+ ["llegamos al 2do segmento!","Falta menos!"],
+["Tercero!","Ya casi estamos!","Que venga el jefe!"]]
+
 var boss = null
 
 func _ready():
@@ -147,7 +158,9 @@ func create_level():
 		seg.connect("segment_ended", self, "next_segment")
 		segments.append(seg)
 		play_area.add_child(seg)
-		
+	#Agrego texto al segmento 1 para que muestre el label
+	labels[0].texts = SEGMENT_TEXTS[0]
+	add_child(labels[0])
 	segments[0].start_segment()
 	
 func spawn_boss():
@@ -170,8 +183,13 @@ func game_over_animation():
 	
 func next_segment(n):
 	if n >= segments.size():
+		remove_child(labels[0])
 		timer.start(5)
 	else:
+		#Agrego texto a los segmentos 2 y 3
+		remove_child(labels[n-1])
+		labels[n].texts = SEGMENT_TEXTS[n]
+		add_child(labels[n])
 		segments[n].start_segment()
 	emit_signal("new_segment", n)
 	
@@ -179,7 +197,7 @@ func end_level():
 	music.stop()
 	yield(get_tree().create_timer(3.0), "timeout")
 	if Global.level == 0:
-		Global.current_difficulty = 0
+		Global.current_difficulty = 1
 		Global.goto_scene("res://UI/Screens/LevelSelect.tscn")
 	elif Global.level > 3:
 		Global.goto_scene("res://UI/Screens/Victory.tscn")

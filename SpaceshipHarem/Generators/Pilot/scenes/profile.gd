@@ -37,7 +37,8 @@ const DRAGS_NAME=["Claire Geeman","Thea Terre","Tira Mendus","Deedee Sign","Sash
 const SPACE_NAME=["Astro Labe","Luther Nova"]
 const CAT_NAMES =["Devon Rex","Maine Coon","Reggie Doll","Sphynx Eas","Percy Ann","Amy Sinian"]
 const DIABLO_NAMES =["Starel","Galaxyel","Novael"]
-const OTHER_NAME=["Rene Gado","Sasha Mado","Ariel Ganado","Connie Modo", "Andrea Eaeaea" , "Charlie Mon"]
+const OTHER_NAME=["Rene Gado","Sasha Mado","Ariel Ganado","Connie Modo", "Andrea Eaeaea" , "Charlie Mon",
+"Mary Sue", "Gary Stu"]
 
 # Pasar al archivo de Idiomas
 const OCCUPATION=["Estudiante","Monotributista","Experto en Cosas","Alma Libre",
