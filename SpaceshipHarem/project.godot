@@ -68,6 +68,10 @@ window/size/test_height=720
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
+[gui]
+
+theme/custom_font="res://UI/Fonts/Charybdis.tres"
+
 [importer_defaults]
 
 texture={

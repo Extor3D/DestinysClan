@@ -18,9 +18,9 @@ margin_bottom = 360.0
 alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
-margin_top = 43.0
+margin_top = 27.0
 margin_right = 640.0
-margin_bottom = 223.0
+margin_bottom = 207.0
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/CenterContainer"]
 margin_left = 160.0
@@ -29,36 +29,43 @@ margin_bottom = 180.0
 texture = ExtResource( 1 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 227.0
+margin_top = 211.0
 margin_right = 640.0
-margin_bottom = 316.0
+margin_bottom = 333.0
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
-margin_left = 289.0
-margin_right = 350.0
-margin_bottom = 89.0
+margin_left = 282.0
+margin_right = 357.0
+margin_bottom = 122.0
 size_flags_vertical = 3
 custom_constants/separation = 10
 alignment = 1
 
 [node name="StartButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_right = 61.0
+margin_right = 75.0
 margin_bottom = 23.0
 custom_fonts/font = ExtResource( 3 )
 text = "START"
 
-[node name="OptionsButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="FormButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 33.0
-margin_right = 61.0
+margin_right = 75.0
 margin_bottom = 56.0
+custom_fonts/font = ExtResource( 3 )
+text = "FORM_TEST"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 66.0
+margin_right = 75.0
+margin_bottom = 89.0
 custom_fonts/font = ExtResource( 3 )
 text = "OPTIONS"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 66.0
-margin_right = 61.0
-margin_bottom = 89.0
+margin_top = 99.0
+margin_right = 75.0
+margin_bottom = 122.0
 custom_fonts/font = ExtResource( 3 )
 text = "QUIT"
 
@@ -66,5 +73,6 @@ text = "QUIT"
 stream = ExtResource( 4 )
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/FormButton" to="." method="_on_FormButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

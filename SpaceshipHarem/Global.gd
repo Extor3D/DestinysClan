@@ -70,28 +70,27 @@ func _ready():
 	rng.randomize()
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() - 1)
-	new_game()
+	new_game(FORM_LOW_DEF)
 	
-func new_game():
+func new_game(f_id):
 	current_pilots = []
-	current_pilots.append(get_dummy_data("Dummy", Color.yellow))
-	current_pilots.append(get_dummy_data("Dummy", Color.yellow))
-	current_pilots.append(get_dummy_data("Dummy", Color.yellow))
+	current_pilots.append(get_dummy_data("Dummy", Color.yellow, f_id))
+	current_pilots.append(get_dummy_data("Dummy", Color.yellow, f_id))
+	current_pilots.append(get_dummy_data("Dummy", Color.yellow, f_id))
 	level = 1
 	current_difficulty = 1
 	current_theme = themes.LAND
 
-func get_dummy_data(sp, co):
+func get_dummy_data(sp, co, f_id):
 	var data = {
 		name = "dum",
-		formation = FORM_LOW_DEF,
-		#formation = FORM_ENER,
+		formation = f_id,
 		stats = [[1, Global.STAT_NAMES.values()[randi() % Global.STAT_NAMES.size()]]],
 		color = co, 
 		specie = sp
 	}
 	return data
-
+	
 func goto_scene(path):
 	# This function will usually be called from a signal callback,
 	# or some other function in the current scene.

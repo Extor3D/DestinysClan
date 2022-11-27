@@ -69,7 +69,7 @@ func _process(_delta):
 	else:
 		draw_bar(hp_left, hp_top, hp_height, hp_slope, 0, hp_bar, get_col_array(Color.red, Color.yellow, 0))
 	
-	if segments_bars.empty():
+	if segments_bars.empty() and "segments" in level:
 		for i in level.segments.size():
 			var segment = Polygon2D.new()
 			draw_segment_bar(segment, i, level.segments.size())
