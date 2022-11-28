@@ -97,6 +97,8 @@ var SEGMENT_TEXTS = [["Estamos en el primer Segmento!","Vamos a empezar!!"],
  ["llegamos al 2do segmento!","Falta menos!"],
 ["Tercero!","Ya casi estamos!","Que venga el jefe!"]]
 
+
+
 # Definir Personajes
 const Char_Alpha = 	"res://Player/Sprites/candidates/pilot/candidate116.png"
 const Char_Omega = 	"res://Player/Sprites/candidates/pilot/candidate011.png"
@@ -169,9 +171,9 @@ func create_level():
 		segments.append(seg)
 		play_area.add_child(seg)
 	#Agrego texto al segmento 1 para que muestre el label
-	labels[0].texts = SEGMENT_TEXTS[0]
-	labels[0].character_img = Chars_Speaking[0]
-	add_child(labels[0])
+	#labels[0].texts = SEGMENT_TEXTS[0]
+	#labels[0].character_img = Chars_Speaking[0]
+	#add_child(labels[0])
 	segments[0].start_segment()
 	
 func spawn_boss():
@@ -199,10 +201,10 @@ func next_segment(n):
 		timer.start(5)
 	else:
 		#Agrego texto a los segmentos 2 y 3
-		remove_child(labels[n-1])
-		labels[n].texts = SEGMENT_TEXTS[n]
-		labels[n].character_img = Chars_Speaking[n]
-		add_child(labels[n])
+		#remove_child(labels[n-1])
+		#labels[n].texts = SEGMENT_TEXTS[n]
+		#labels[n].character_img = Chars_Speaking[n]
+		#add_child(labels[n])
 		segments[n].start_segment()
 	emit_signal("new_segment", n)
 	

@@ -9,10 +9,29 @@ var earth_texture = preload("res://Scenery/Sprites/tile_earth.jpg")
 var water_texture = preload("res://Scenery/Sprites/tile_water.png")
 var steel_texture = preload("res://Scenery/Sprites/tile_other.png")
 
+var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
+var label = label_scene.instance()
+
 onready var timer = $SegmentTime
+
+var SEGMENT_TEXTS = ["Estamos en un segmento de tunel!","Habra que pasar por el medio!!"]
+var FIRE_TEXTS = ["Este planeta de fuego es peligroso, tengamos cuidado con las paredes."]
+var ICE_TEXTS = ["Este planeta es de hielo, podemos quedar pegado a las paredes."]
+var EARTH_TEXTS = ["Este planeta de tierra es tranquilo"]
+
+# Story Characters
+const Char_Alpha = 	Global.Char_Alpha
+const Char_Omega = 	Global.Char_Omega
+const Char_Kokoro = Global.Char_Kokoro
+const Char_Dummy = 	Global.Char_Dummy
+
+var Chars_Speaking = [Char_Kokoro,Char_Dummy]
 
 func start_segment():
 	var time = 15 + difficulty * 2
+	label.texts = SEGMENT_TEXTS
+	label.character_img = Chars_Speaking
+	add_child(label)
 	create_tunnel(time)
 	timer.start(time)
 

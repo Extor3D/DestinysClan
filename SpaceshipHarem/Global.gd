@@ -45,6 +45,12 @@ var current_theme = themes.LAND
 #Player globals
 var current_pilots = []
 
+# Story Characters
+const Char_Alpha = 	"res://Player/Sprites/candidates/pilot/candidate116.png"
+const Char_Omega = 	"res://Player/Sprites/candidates/pilot/candidate011.png"
+const Char_Kokoro = "res://Player/Sprites/candidates/pilot/candidate103.png"
+const Char_Dummy = 	"res://Player/Sprites/candidates/pilot/dummypilot.png"
+
 func get_stat_by_id(id):
 	for i in STATS.size():
 		if STATS[i].id == id:
