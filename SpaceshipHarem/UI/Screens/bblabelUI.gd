@@ -1,9 +1,9 @@
 extends Node2D
 signal end_label
 
-onready var container = $Container
-onready var label = $Container/Label
-onready var character = $Container/Character
+onready var container = $HSplitContainer
+onready var label = $HSplitContainer/Label
+onready var character = $HSplitContainer/Panel2/Character
 
 var texts
 export (int) var texts_number = 0

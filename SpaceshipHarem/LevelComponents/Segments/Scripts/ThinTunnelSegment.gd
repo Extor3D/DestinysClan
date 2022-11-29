@@ -36,6 +36,7 @@ func start_segment():
 	timer.start(time)
 
 func _on_SegmentTime_timeout():
+	remove_child(label)
 	end_segment()
 
 func create_tunnel(duration):

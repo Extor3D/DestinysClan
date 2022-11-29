@@ -2,6 +2,9 @@ extends Segment
 
 onready var timer = $SegmentTime
 
+var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
+var label = label_scene.instance()
+
 
 #Backlog
 #Las diagonales solo para dificultad 5 o mas
@@ -16,6 +19,16 @@ var primary_enemy_scene = preload("res://Enemies/TrafficCar.tscn")
 var car_sound = preload("res://Enemies/Sounds/Traffic/car-horn.mp3")
 
 onready var sound = $AudioStreamPlayer
+
+# Label interactions
+
+var SEGMENT_TEXTS = ["Embotellamiento detectado mas adelante.","Como? Aqui en el espacio?"]
+const Char_Alpha = 	Global.Char_Alpha
+const Char_Omega = 	Global.Char_Omega
+const Char_Kokoro = Global.Char_Kokoro
+const Char_Dummy = 	Global.Char_Dummy
+
+var Chars_Speaking = [Char_Dummy,Char_Omega]
 
 
 var rng = RandomNumberGenerator.new()
@@ -35,7 +48,9 @@ var spawners = []
 
 func start_segment():
 	sound.play()
-	#honk.play()
+	label.texts = SEGMENT_TEXTS
+	label.character_img = Chars_Speaking
+	add_child(label)
 	var time = 10 + difficulty * 3
 	var ways = types.size()
 	var previous_ways = []
@@ -72,7 +87,7 @@ func start_segment():
 	timer.start(time)
 	
 func _on_SegmentTime_timeout():
-	print("termina")
+	remove_child(label)
 	sound.stop()
 
 	#for s in spawners:

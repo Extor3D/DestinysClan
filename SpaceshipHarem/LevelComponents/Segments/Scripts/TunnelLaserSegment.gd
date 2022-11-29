@@ -3,12 +3,16 @@ extends Segment
 var tunnel_scene = preload("res://LevelComponents/VectorTunnel.tscn")
 var laser : PackedScene = preload("res://Enemies/Shots/LaserShot.tscn")
 
+var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
+var label = label_scene.instance()
+
 var lava_texture = preload("res://Scenery/Sprites/tile_lava.png")
 
 # ver texturas
 var earth_texture = preload("res://Scenery/Sprites/tile_earth.jpg")
 var water_texture = preload("res://Scenery/Sprites/tile_water.png")
 var steel_texture = preload("res://Scenery/Sprites/tile_other.png")
+	
 
 onready var timer = $SegmentTime
 onready var laser_timer = $LaserSpawnTimer
@@ -19,7 +23,19 @@ var l_size = 10
 var l_time = 1
 var warn_time = 1
 
+# Label interactions
+var SEGMENT_TEXTS = ["Doble Amenaza detectada. Lasers y Camino Angosto.","Alpha: Omega, tengamos cuidado."]
+const Char_Alpha = 	Global.Char_Alpha
+const Char_Omega = 	Global.Char_Omega
+const Char_Kokoro = Global.Char_Kokoro
+const Char_Dummy = 	Global.Char_Dummy
+
+var Chars_Speaking = [Char_Dummy,Char_Alpha]
+
 func start_segment():
+	label.texts = SEGMENT_TEXTS
+	label.character_img = Chars_Speaking
+	add_child(label)
 	var time = 15 + difficulty * 2
 	create_tunnel(time)
 	rng.randomize()
@@ -49,6 +65,7 @@ func create_tunnel(duration):
 
 func _on_SegmentTime_timeout():
 	laser_timer.stop()
+	remove_child(label)
 	end_segment()
 
 func _on_LaserSpawnTimer_timeout():

@@ -80,7 +80,6 @@ var possible_segments = [thin_tunnel_segment,
 						enemy_tunnel_segment,
 						tunnel_laser_segment
 ]
-
 						
 var possible_musics = [dangerous_music,exploration_music,mysterious_music]
 
@@ -93,19 +92,19 @@ var label3=  label_scene.instance()
 
 var labels = [label1,label2,label3]
 
-var SEGMENT_TEXTS = [["Estamos en el primer Segmento!","Vamos a empezar!!"],
- ["llegamos al 2do segmento!","Falta menos!"],
-["Tercero!","Ya casi estamos!","Que venga el jefe!"]]
+#var SEGMENT_TEXTS = [["Estamos en el primer Segmento!","Vamos a empezar!!"],
+# ["llegamos al 2do segmento!","Falta menos!"],
+#["Tercero!","Ya casi estamos!","Que venga el jefe!"]]
 
 
 
 # Definir Personajes
-const Char_Alpha = 	"res://Player/Sprites/candidates/pilot/candidate116.png"
-const Char_Omega = 	"res://Player/Sprites/candidates/pilot/candidate011.png"
-const Char_Kokoro = "res://Player/Sprites/candidates/pilot/candidate103.png"
-const Char_Dummy = 	"res://Player/Sprites/candidates/pilot/dummypilot.png"
+#const Char_Alpha = 	"res://Player/Sprites/candidates/pilot/candidate116.png"
+#const Char_Omega = 	"res://Player/Sprites/candidates/pilot/candidate011.png"
+#const Char_Kokoro = "res://Player/Sprites/candidates/pilot/candidate103.png"
+#const Char_Dummy = 	"res://Player/Sprites/candidates/pilot/dummypilot.png"
 
-var Chars_Speaking = [[Char_Kokoro,Char_Dummy],[Char_Alpha,Char_Omega],[Char_Kokoro,Char_Alpha,Char_Omega]]
+#var Chars_Speaking = [[Char_Kokoro,Char_Dummy],[Char_Alpha,Char_Omega],[Char_Kokoro,Char_Alpha,Char_Omega]]
 
 var boss = null
 

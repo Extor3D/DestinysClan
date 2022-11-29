@@ -1,31 +1,45 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://LevelComponents/Segments/Scripts/Label.gd" type="Script" id=1]
 [ext_resource path="res://UI/Screens/bblabelUI.gd" type="Script" id=2]
 [ext_resource path="res://UI/Fonts/Charybdis.tres" type="DynamicFont" id=3]
+
+[sub_resource type="Theme" id=1]
 
 [node name="UI" type="Node2D"]
 z_index = 15
 script = ExtResource( 2 )
 
 [node name="Container" type="MarginContainer" parent="."]
-margin_left = -1.0
-margin_top = 263.0
-margin_right = 645.0
-margin_bottom = 364.0
+margin_left = 68.0
+margin_top = 117.0
+margin_right = 714.0
+margin_bottom = 218.0
 rect_scale = Vector2( 0.998642, 1 )
 
-[node name="Panel" type="Panel" parent="Container"]
-margin_right = 646.0
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+margin_left = -12.0
+margin_top = 262.0
+margin_right = 648.0
+margin_bottom = 363.0
+
+[node name="Panel" type="Panel" parent="HSplitContainer"]
 margin_bottom = 101.0
 
-[node name="Character" type="Sprite" parent="Container"]
-position = Vector2( 588.31, 52.0035 )
+[node name="Panel2" type="Panel" parent="HSplitContainer"]
+margin_left = 12.0
+margin_right = 660.0
+margin_bottom = 101.0
+theme = SubResource( 1 )
+
+[node name="Character" type="Sprite" parent="HSplitContainer/Panel2"]
+position = Vector2( 576.31, 52.0035 )
 scale = Vector2( 1.181, 1.08335 )
 flip_h = true
 
-[node name="Label" type="RichTextLabel" parent="Container"]
-margin_right = 646.0
+[node name="Label" type="RichTextLabel" parent="HSplitContainer"]
+margin_left = 12.0
+margin_right = 648.0
 margin_bottom = 101.0
 grow_horizontal = 0
 rect_clip_content = false
