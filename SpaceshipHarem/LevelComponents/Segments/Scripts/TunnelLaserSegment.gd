@@ -25,12 +25,7 @@ var warn_time = 1
 
 # Label interactions
 var SEGMENT_TEXTS = ["Doble Amenaza detectada. Lasers y Camino Angosto.","Alpha: Omega, tengamos cuidado."]
-const Char_Alpha = 	Global.Char_Alpha
-const Char_Omega = 	Global.Char_Omega
-const Char_Kokoro = Global.Char_Kokoro
-const Char_Dummy = 	Global.Char_Dummy
-
-var Chars_Speaking = [Char_Dummy,Char_Alpha]
+var Chars_Speaking = [Global.Char_Dummy,Global.Char_Alpha]
 
 func start_segment():
 	label.texts = SEGMENT_TEXTS

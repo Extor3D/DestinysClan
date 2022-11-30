@@ -19,13 +19,7 @@ var FIRE_TEXTS = ["Este planeta de fuego es peligroso, tengamos cuidado con las 
 var ICE_TEXTS = ["Este planeta es de hielo, podemos quedar pegado a las paredes."]
 var EARTH_TEXTS = ["Este planeta de tierra es tranquilo"]
 
-# Story Characters
-const Char_Alpha = 	Global.Char_Alpha
-const Char_Omega = 	Global.Char_Omega
-const Char_Kokoro = Global.Char_Kokoro
-const Char_Dummy = 	Global.Char_Dummy
-
-var Chars_Speaking = [Char_Kokoro,Char_Dummy]
+var Chars_Speaking = [Global.Char_Kokoro,Global.Char_Dummy]
 
 func start_segment():
 	var time = 15 + difficulty * 2

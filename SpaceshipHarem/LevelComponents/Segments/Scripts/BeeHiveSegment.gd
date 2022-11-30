@@ -17,7 +17,16 @@ var queen_dead = false
 
 var rng = RandomNumberGenerator.new()
 
+# Label interactions
+var SEGMENT_TEXTS = ["Criaturas Desconocidas Detectadas en grandes cantidades.","Abejas? En el espacio?"]
+var Chars_Speaking = [Global.Char_Dummy,Global.Char_Omega]
+var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
+var label = label_scene.instance()
+
 func start_segment():
+	label.texts = SEGMENT_TEXTS
+	label.character_img = Chars_Speaking
+	add_child(label)
 	var time = 35 + difficulty * 2
 	#spawners.append(add_bee_group(time,3,primary_enemy_scene))
 	#spawners.append(add_bee_group(time/3,time/3,secondary_enemy_scene))
@@ -30,6 +39,7 @@ func start_segment():
 	
 func _on_SegmentTime_timeout():
 	if (queen_dead):
+		remove_child(label)
 		end_segment()
 	
 func _ready():

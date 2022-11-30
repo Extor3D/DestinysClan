@@ -23,12 +23,8 @@ onready var sound = $AudioStreamPlayer
 # Label interactions
 
 var SEGMENT_TEXTS = ["Embotellamiento detectado mas adelante.","Como? Aqui en el espacio?"]
-const Char_Alpha = 	Global.Char_Alpha
-const Char_Omega = 	Global.Char_Omega
-const Char_Kokoro = Global.Char_Kokoro
-const Char_Dummy = 	Global.Char_Dummy
 
-var Chars_Speaking = [Char_Dummy,Char_Omega]
+var Chars_Speaking = [Global.Char_Dummy,Global.Char_Omega]
 
 
 var rng = RandomNumberGenerator.new()

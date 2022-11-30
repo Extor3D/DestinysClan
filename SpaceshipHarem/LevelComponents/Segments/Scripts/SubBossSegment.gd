@@ -3,9 +3,21 @@ extends Segment
 var spawner_scene = preload("res://LevelComponents/Spawner.tscn")
 var bullet_hell_scene = preload("res://Enemies/BulletHellEnemy.tscn")
 
+# Label interactions
+var SEGMENT_TEXTS = ["Nave Fuertemente Armada Aproximandose.","Alpha: Preparemonos para el combate."]
+var Chars_Speaking = [Global.Char_Dummy,Global.Char_Alpha]
+var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
+var label = label_scene.instance()
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	label.texts = SEGMENT_TEXTS
+	label.character_img = Chars_Speaking
+	add_child(label)
+	
+func end_segment():
+	remove_child(label)
 
 func start_segment():
 	add_hell_sub_boss()

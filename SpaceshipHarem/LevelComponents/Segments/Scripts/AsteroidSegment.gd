@@ -8,12 +8,23 @@ var obstacle_scene = preload("res://Scenery/Obstacle.tscn")
 var rng = RandomNumberGenerator.new()
 var spawner
 
+# Label interactions
+var SEGMENT_TEXTS = ["Lluvia de Asteroides. Procedamos con precaucion.","Que ninguna nave se acerque a esas rocas."]
+var Chars_Speaking = [Global.Char_Dummy,Global.Char_Alpha]
+var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
+var label = label_scene.instance()
+
+
 func start_segment():
+	label.texts = SEGMENT_TEXTS
+	label.character_img = Chars_Speaking
+	add_child(label)
 	var time = 15 + difficulty * 2
 	add_asteroid_field(time)
 	timer.start(time)
 
 func _on_SegmentTime_timeout():
+	remove_child(label)
 	end_segment()
 
 func _ready():

@@ -8,10 +8,19 @@ var lava_texture = preload("res://Scenery/Sprites/tile_lava.png")
 # ver texturas
 var earth_texture = preload("res://Scenery/Sprites/tile_earth.jpg")
 
+# Label interactions
+var SEGMENT_TEXTS = ["Un grupo de enemigos prepara una emboscada.","Debemos pasar ese tunel de todas maneras!."]
+var Chars_Speaking = [Global.Char_Dummy,Global.Char_Alpha]
+var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
+var label = label_scene.instance()
+
 onready var timer = $SegmentTime
 var rng = RandomNumberGenerator.new()
 
 func start_segment():
+	label.texts = SEGMENT_TEXTS
+	label.character_img = Chars_Speaking
+	add_child(label)
 	var time = 20 + difficulty * 2
 	create_tunnel(time,0)
 	#create_tunnel(time/2,time/2)
@@ -19,6 +28,7 @@ func start_segment():
 	timer.start(time)
 
 func _on_SegmentTime_timeout():
+	remove_child(label)
 	end_segment()
 
 func create_tunnel(duration,start):

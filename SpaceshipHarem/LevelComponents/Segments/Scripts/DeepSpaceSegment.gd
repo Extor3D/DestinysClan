@@ -18,11 +18,20 @@ var types = [
 [{"yspeed": 70  -difficulty*3,"xspeed": -70 ,"cadence":100,"rotation_degrees": 315},[400,-50,50,50],"DIAG4"]
 ]
 
+# Label interactions
+var SEGMENT_TEXTS = ["Enemigos Aproximandose a gran velocidad.","Son demasiados!."]
+var Chars_Speaking = [Global.Char_Dummy,Global.Char_Omega]
+var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
+var label = label_scene.instance()
+
 var spawners = []
 
 var rng = RandomNumberGenerator.new()
 
 func start_segment():
+	label.texts = SEGMENT_TEXTS
+	label.character_img = Chars_Speaking
+	add_child(label)
 	var time = 15 + difficulty * 2
 	spawners.append(add_enemy_group(time/3,3,primary_enemy_scene,1))
 	spawners.append(add_enemy_group(time/3,time/3,secondary_enemy_scene,1))
@@ -30,6 +39,7 @@ func start_segment():
 	timer.start(time)
 	
 func _on_SegmentTime_timeout():
+	remove_child(label)
 	end_segment()
 	
 func _ready():
