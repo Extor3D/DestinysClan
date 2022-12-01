@@ -12,14 +12,15 @@ var label = label_scene.instance()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	label.texts = SEGMENT_TEXTS
-	label.character_img = Chars_Speaking
-	add_child(label)
+	pass
 	
 func end_segment():
 	remove_child(label)
 
 func start_segment():
+	label.texts = SEGMENT_TEXTS
+	label.character_img = Chars_Speaking
+	add_child(label)
 	add_hell_sub_boss()
 
 func add_hell_sub_boss():

@@ -10,37 +10,45 @@
 z_index = 15
 script = ExtResource( 2 )
 
-[node name="Container" type="MarginContainer" parent="."]
-margin_left = 68.0
-margin_top = 117.0
-margin_right = 714.0
-margin_bottom = 218.0
-rect_scale = Vector2( 0.998642, 1 )
-
 [node name="HSplitContainer" type="HSplitContainer" parent="."]
-margin_left = -12.0
+margin_left = 110.0
 margin_top = 262.0
 margin_right = 648.0
 margin_bottom = 363.0
 
-[node name="Panel" type="Panel" parent="HSplitContainer"]
-margin_bottom = 101.0
+[node name="Container3" type="Container" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
 
-[node name="Panel2" type="Panel" parent="HSplitContainer"]
-margin_left = 12.0
-margin_right = 660.0
+[node name="Container" type="MarginContainer" parent="Container3"]
+margin_left = 7.0
+margin_top = 256.0
+margin_right = 108.0
+margin_bottom = 357.0
+rect_scale = Vector2( 0.998642, 1 )
+
+[node name="Panel2" type="Panel" parent="Container3/Container"]
+margin_right = 101.0
 margin_bottom = 101.0
 theme = SubResource( 1 )
 
-[node name="Character" type="Sprite" parent="HSplitContainer/Panel2"]
-position = Vector2( 576.31, 52.0035 )
+[node name="Character" type="Sprite" parent="Container3/Container/Panel2"]
+position = Vector2( 51.0693, 47.004 )
 scale = Vector2( 1.181, 1.08335 )
-flip_h = true
 
-[node name="Label" type="RichTextLabel" parent="HSplitContainer"]
-margin_left = 12.0
-margin_right = 648.0
-margin_bottom = 101.0
+[node name="Container2" type="MarginContainer" parent="Container3"]
+margin_left = 114.0
+margin_top = 254.0
+margin_right = 636.0
+margin_bottom = 358.0
+
+[node name="Panel" type="Panel" parent="Container3/Container2"]
+margin_right = 522.0
+margin_bottom = 104.0
+
+[node name="Label" type="RichTextLabel" parent="Container3/Container2"]
+margin_right = 522.0
+margin_bottom = 104.0
 grow_horizontal = 0
 rect_clip_content = false
 custom_fonts/mono_font = ExtResource( 3 )
