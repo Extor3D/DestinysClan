@@ -15,6 +15,15 @@ var SPECIES =   [["Gatashi",[7,13,15],STAT_NAMES.MaxHP,["Y","G"],"cat_ship.png"]
 				 ["Humano",[17,18,11],STAT_NAMES.Damage,["F1","F2"],"human_ship.png"],
 				 ["Marciano",[9,8,10,16],STAT_NAMES.MaxEnergy,["M","W"],"martian_ship.png"],
 				 ["Androide",[2,3,12,14],STAT_NAMES.RecoverySpeed,["B1","B2"],"android_ship.png"]] 
+				
+				
+var PILOT_FORMATIONS ={
+	"O":"Detener el tiempo",
+	"U":"Restauracion",
+	"C":"Supervelocidad",
+	"A":"Disparos Veloces",
+	"L": "Carga Rapida"
+}
 var current_scene = null
 
 const FORM_LOW_DEF = ">"

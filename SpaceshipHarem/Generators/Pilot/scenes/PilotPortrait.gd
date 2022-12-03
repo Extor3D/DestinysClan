@@ -7,10 +7,11 @@ const DIABLO_NAMES =["Starel","Galaxyel","Novael"]
 const OTHER_NAME=["Rene Gado","Sasha Mado","Ariel Ganado","Connie Modo", "Andrea Eaeaea" , "Charlie Mon",
 "Mary Sue", "Gary Stu"]
 
+# Pasar al archivo de Idiomas
+# Ajustar de acuerdo al Lore
 const OCCUPATION=["Estudiante","Monotributista","Experto en Cosas","Alma Libre",
 "Freelancer","Soy mi Propio Jefe","Arreglo Monopatines por deporte","Tu Media Naranja","De la universidad de la vida","Casi-Influencer","Contador de Estrellas"]
 
-# Pasar al archivo de Idiomas
 const FLAVOR_TEXT=[" Nada de terroristas de la gramática, frágiles emocionales, Drama Queens, incultxs o de higiene dudosa. No personas llamadas Florencia, ni tener una remera que diga 'te quiero pero soy un bardo' ni un tatuaje que diga 'soltar'.",
 "Videos y fotitos para vos! Info x privado!","Hola soy de Pollux 7. Tengo 27 años busco amistad y luego se ve", "Hola Buen dia a todos soy nuevite por aqui, tengo 26 años y divorciade, busco chongo o lo que de","Me gusta viajar, el aire libre, reunirme para pasar buenos momentos. Deseo conocer gente que tenga buen humor y buenas energías"]
 
@@ -48,6 +49,7 @@ const BLACK_COLOR = "#0f0814"
 const BUFFER_SIZE = 128
 
 const COMMON_FORMS = ["O","U","C","A","L"]
+var PILOT_FORMATIONS = Global.PILOT_FORMATIONS
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -171,7 +173,7 @@ func create_random_data():
 	# TAPADO PARA LA DEMO
 	#posible_formations.append_array(pilot_specie[3])
 	var pilot_formation = posible_formations[randi() % posible_formations.size()]
-
+	var pilot_formation_desc = PILOT_FORMATIONS[pilot_formation]
 	
 	# PERFIL DEL CANDIDATO
 	var pilot_age = int(rand_range(18,39))
@@ -191,6 +193,7 @@ func create_random_data():
 	data.name = pilot_name
 	data.flavor = pilot_flavor
 	data.formation = pilot_formation
+	data.formation_desc = pilot_formation_desc
 	data.color = Color(COLORS[hair_color][0])
 	data.stats = pilot_stats
 	data.specie = pilot_specie[0]
