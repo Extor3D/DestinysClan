@@ -95,8 +95,8 @@ margin_right = 321.0
 margin_bottom = 56.0
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
-margin_right = 37.0
-margin_bottom = 14.0
+margin_right = 42.0
+margin_bottom = 17.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 size_flags_stretch_ratio = 3.02

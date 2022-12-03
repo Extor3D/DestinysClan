@@ -62,7 +62,6 @@ func start_segment():
 		
 	
 	for i in 2 :
-		print("Vuelta")
 		for j in trails :
 			
 			var way = types[rng.randi_range(0, types.size() - 1)]
@@ -70,7 +69,6 @@ func start_segment():
 			while previous_ways.has(way_id):
 				way = types[rng.randi_range(0, types.size() - 1)]
 				way_id = way[2]
-				print("Repetido")
 			previous_ways.append(way_id)
 			spawners.append(add_traffic_line(time/3,way_passed,primary_enemy_scene,way))
 		#add_traffic_line(time/3,time/3,primary_enemy_scene,way)
@@ -94,7 +92,6 @@ func _ready():
 	rng.randomize()
 	
 func add_traffic_line(duration,start,enemy,line):
-	print("agrego linea")
 	var spawner = spawner_scene.instance()
 	spawner.scene = enemy
 	var vars = line[0]

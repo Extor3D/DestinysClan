@@ -68,7 +68,6 @@ func create_random_data():
 	rng.randomize()
 	# Seleccion de especie
 	var pilot_specie = Global.SPECIES[randi() % Global.SPECIES.size()]
-	print(pilot_specie)
 	var posible_names = DRAGS_NAME
 	posible_names.append_array(SPACE_NAME)
 	posible_names.append_array(OTHER_NAME)
@@ -182,7 +181,6 @@ func create_random_data():
 	
 	# ARMAR EL RETRATO
 	var pilot_skin_color = Color(COLORS[skin_color][0])
-	print(pilot_skin_color)
 	
 	data.skin_light_color = pilot_skin_color
 	data.skin_dark_color = Color(COLORS[skin_color][1])

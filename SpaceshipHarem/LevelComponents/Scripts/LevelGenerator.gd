@@ -69,17 +69,24 @@ var random_boss_scene = preload("res://Enemies/Bosses/RandomBoss.tscn")
 
 var tutorial_segments = [tutorial2,tutorial3,tutorial1]
 
-var possible_segments = [thin_tunnel_segment, 
-						asteroid_segment, 
-						trafficjam_segment,
-						deep_space_segment,
-						bomb_shower_segment,
-						bomber_segment,
-						sub_boss_segment,
-						laser_shower_segment,
-						enemy_tunnel_segment,
-						tunnel_laser_segment
+# Test Variables
+var test_segment = preload("res://LevelComponents/Segments/Special/TestSegment.tscn")
+var possible_segments = [test_segment, 
+						test_segment, 
+						test_segment
 ]
+# CRTL + K to comment/uncomment
+#var possible_segments = [thin_tunnel_segment, 
+#						asteroid_segment, 
+#						trafficjam_segment,
+#						deep_space_segment,
+#						bomb_shower_segment,
+#						bomber_segment,
+#						sub_boss_segment,
+#						laser_shower_segment,
+#						enemy_tunnel_segment,
+#						tunnel_laser_segment
+#]
 						
 var possible_musics = [dangerous_music,exploration_music,mysterious_music]
 

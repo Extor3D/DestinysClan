@@ -22,8 +22,10 @@ func _randomize():
 	var main_stat_name = Global.get_stat_by_id(data.stats[0][1]).name
 
 	pilot_data.add_text("[b]HÁBITOS | INTERESES[/b]" + '\n[rainbow freq=0.1]' + main_stat_name + " + " + str(data.stats[0][0]) + '[/rainbow]\n')
+	var new_stat
 	if (data.stats[1][0] > 0):
-		pilot_data.add_text('[rainbow freq=0.1]' + data.stats[1][1] + " + " + str(data.stats[1][0]) + "[/rainbow]")
+		new_stat = Global.get_stat_by_id(data.stats[1][1]).name
+		pilot_data.add_text('[rainbow freq=0.1]' + new_stat + " + " + str(data.stats[1][0]) + "[/rainbow]")
 
 	var s = ship_scene.instance()
 	s.specie = data.specie
