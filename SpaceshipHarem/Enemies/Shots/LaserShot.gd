@@ -21,7 +21,7 @@ func _ready():
 	warning_back.scale = Vector2(1, size)
 	line.scale = Vector2(1, size)
 	var w_color = Global.WARNING_COLOR
-	w_color.a = 0.5
+	w_color.a = 0.3
 	warning_line.default_color = Global.WARNING_COLOR
 	warning_back.default_color = w_color
 	warning_appear()

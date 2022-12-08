@@ -11,7 +11,7 @@ func _on_QuitButton_pressed():
 	get_tree().quit()
 
 func _on_StartButton_pressed():
-	Global.new_game(Global.FORM_LOW_DEF)
+	Global.new_game(Global.FORM_LOW_DEF, 3)
 	Global.goto_scene("res://LevelComponents/LevelGenerator.tscn")
 
 func _on_OptionsButton_pressed():

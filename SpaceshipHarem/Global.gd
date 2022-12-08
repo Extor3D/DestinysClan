@@ -48,6 +48,8 @@ var current_theme = themes.LAND
 #Player globals
 var current_pilots = []
 
+var form_test_ships = 3
+
 # Story Characters
 const Char_Alpha = 	"res://Player/Sprites/candidates/pilot/candidate116.png"
 const Char_Omega = 	"res://Player/Sprites/candidates/pilot/candidate011.png"
@@ -79,13 +81,12 @@ func _ready():
 	rng.randomize()
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() - 1)
-	new_game(FORM_LOW_DEF)
+	new_game(FORM_LOW_DEF, 3)
 	
-func new_game(f_id):
+func new_game(f_id, amount):
 	current_pilots = []
-	current_pilots.append(get_dummy_data("Dummy", Color.yellow, f_id))
-	current_pilots.append(get_dummy_data("Dummy", Color.yellow, f_id))
-	current_pilots.append(get_dummy_data("Dummy", Color.yellow, f_id))
+	for i in amount:
+		current_pilots.append(get_dummy_data("Dummy", Color.yellow, f_id))
 	level = 1
 	current_difficulty = 1
 	current_theme = themes.LAND

@@ -12,10 +12,55 @@ scale = Vector2( 0.7, 0.7 )
 z_index = -5
 texture = ExtResource( 1 )
 
-[node name="FormScroller" type="ScrollContainer" parent="."]
-margin_left = 219.0
-margin_top = 80.0
-margin_right = 422.0
-margin_bottom = 339.0
+[node name="Screen" type="HBoxContainer" parent="."]
+margin_right = 638.0
+margin_bottom = 358.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="FormContainer" type="VBoxContainer" parent="FormScroller"]
+[node name="FormScroller" type="ScrollContainer" parent="Screen"]
+margin_left = 158.0
+margin_top = 179.0
+margin_right = 158.0
+margin_bottom = 179.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="FormContainer" type="VBoxContainer" parent="Screen/FormScroller"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="Screen"]
+margin_left = 321.0
+margin_right = 638.0
+margin_bottom = 358.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Screen/CenterContainer"]
+margin_left = 135.0
+margin_top = 167.0
+margin_right = 181.0
+margin_bottom = 190.0
+
+[node name="LessShips" type="Button" parent="Screen/CenterContainer/HBoxContainer"]
+margin_right = 19.0
+margin_bottom = 23.0
+text = "<"
+
+[node name="Ships" type="Label" parent="Screen/CenterContainer/HBoxContainer"]
+margin_left = 23.0
+margin_top = 3.0
+margin_right = 23.0
+margin_bottom = 20.0
+
+[node name="MoreShips" type="Button" parent="Screen/CenterContainer/HBoxContainer"]
+margin_left = 27.0
+margin_right = 46.0
+margin_bottom = 23.0
+text = ">"
+
+[connection signal="pressed" from="Screen/CenterContainer/HBoxContainer/LessShips" to="." method="_on_LessShips_pressed"]
+[connection signal="pressed" from="Screen/CenterContainer/HBoxContainer/MoreShips" to="." method="_on_MoreShips_pressed"]
