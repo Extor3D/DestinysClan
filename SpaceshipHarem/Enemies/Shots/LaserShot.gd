@@ -30,7 +30,7 @@ func _ready():
 func deactivate():
 	queue_free()
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	if on:
 		ray()
 		

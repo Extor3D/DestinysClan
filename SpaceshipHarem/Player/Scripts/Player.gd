@@ -36,10 +36,13 @@ var shot_spawn_scene = preload("res://Effects/ShotSpawnEffect.tscn")
 
 var is_shooting = true
 
-onready var d_tween = $DeathTween
 onready var energy_restore_sound = $EnergyRestoreSound
+onready var ship1_forms = $Ship1/Formations
+onready var ship2_forms = $Ship2/Formations
 
 var is_in_formation = false
+
+var form_scale = 1 + (Global.current_pilots.size() * 0.1 - 0.5 )
 
 func get_stat(stat, minimum, maximum):
 	var s = minimum + stat * (maximum - minimum) / 10 
@@ -119,7 +122,13 @@ func add_formation(id):
 			var form_node = load(f.scene_path).instance()
 			form_node.energy = f.energy_req
 			form_node.id = id
-			$Formations.add_child(form_node)
+			form_node.scale = Vector2(form_scale, form_scale)
+			ship1_forms.add_child(form_node)
+			var form_node2 = load(f.scene_path).instance()
+			form_node2.energy = f.energy_req
+			form_node2.id = id
+			form_node2.scale = Vector2(form_scale, form_scale)
+			ship2_forms.add_child(form_node2)
 			forms.append(id)
 	
 func add_stats_from_ship(s):
@@ -153,33 +162,33 @@ func _physics_process(_delta):
 	#Formations logic
 	if not is_in_formation:
 		#Iterate all formations when button pressed
-		for f in $Formations.get_children():
-			#Calculate scaling based on number of ships
-			var s = 1 + (Global.current_pilots.size() * 0.1 - 0.5 )
-			f.scale = Vector2(s, s)
-			f.position = $Ship1.position
-			yield(get_tree().create_timer(0.01), "timeout")
-			if is_formation_done(f) and f.energy <= energy:
-				emit_signal("formation_usable", f.id)
+		for i in ship1_forms.get_children().size():
+			var ship = can_use_formation(i)
+			if ship > 0:
+				emit_signal("formation_usable", ship1_forms.get_children()[i].id)
 				if Input.is_action_pressed("activate_formation"):
-					do_formation(f, s)
+					do_formation(ship, i)
 			else:
-				f.position = $Ship2.position
-				if is_formation_done(f) and f.energy <= energy:
-					emit_signal("formation_usable", f.id)
-					if Input.is_action_pressed("activate_formation"):
-						do_formation(f, s)
-				else:
-					emit_signal("formation_unusable", f.id)
+				emit_signal("formation_unusable", ship1_forms.get_children()[i].id)
 					
-func do_formation(f, s):
+func can_use_formation(i):
+	if is_formation_done(ship1_forms.get_children()[i]) and ship1_forms.get_children()[i].energy <= energy:
+		return 1
+	if is_formation_done(ship2_forms.get_children()[i]) and ship2_forms.get_children()[i].energy <= energy:
+		return 2
+	return 0
+					
+func do_formation(ship, i):
 	is_in_formation = true
 	emit_signal("formation_done")
-	f.do_effect(s)
+	if ship == 1:
+		ship1_forms.get_children()[i].do_effect(form_scale)
+	if ship == 2:
+		ship2_forms.get_children()[i].do_effect(form_scale)
 	#Change the mode of the chains to keep them in place
 	for c in chains:
 		c.set_mode(RigidBody2D.MODE_CHARACTER)
-	energy -= f.energy
+	energy -= ship1_forms.get_children()[i].energy
 			
 func _process(delta):
 	energy = move_toward(energy, max_energy, delta_energy * delta)

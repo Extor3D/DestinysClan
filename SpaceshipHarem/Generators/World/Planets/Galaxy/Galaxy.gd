@@ -4,7 +4,7 @@ func set_pixels(amount):
 	$Galaxy.material.set_shader_param("pixels", amount)
 	$Galaxy.rect_size = Vector2(amount, amount) 
 
-func set_light(pos):
+func set_light(_pos):
 	pass
 
 func set_seed(sd):

@@ -17,12 +17,11 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="End2" type="Area2D" parent="."]
-position = Vector2( 62, 0 )
+position = Vector2( 64, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="End2"]
 shape = SubResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( 12, -2 )
-scale = Vector2( 0.657581, 0.652292 )
-polygon = PoolVector2Array( 22.8109, 39.8594, 22, -24, 3.04145, -30.6611, 0, -52.1239, 13.6865, -72.0536, 48.6632, -72.0536, 54.7461, -55.19, 51.7047, -33.7272, 36, -24, 36.4974, 38.3264, 88.2021, 36.7933, 117.096, 18.3967, 125, -36, 122, -77, 107, -124, 76, -143, -17, -142, -48, -121, -65, -79, -68, -38, -65.3912, 3.06611, -30.4145, 39.8594 )
+polygon = PoolVector2Array( 12, 26, 12, -14, 4, -22, 4, -38, 12, -46, 28, -46, 36, -38, 36, -22, 28, -14, 28, 26, 68, 26, 76, 10, 76, -22, 76, -46, 68, -70, 44, -86, -4, -86, -28, -70, -36, -46, -36, -22, -36, 10, -28, 26 )

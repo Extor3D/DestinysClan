@@ -11,6 +11,14 @@ BACK,Volver,Back
 LANG,Español,English
 CONTINUE,Continuar,Continue
 SKIP,Saltear Tutorial,Skip Tutorial
+FORM_TEST,Probar Formaciones,Test Formations
+FORM_LOW_DEF,Escudo Basico,Basic Shield
+FORM_DEF,Escudo,Shield
+FORM_ARROW,Disparos Veloces,Fast Shooting
+FORM_LIFE,Restauracion,Regeneration
+FORM_VEL,Supervelocidad,Superspeed
+FORM_ENER,Carga Rapida,Energy Charge
+FORM_WORLD,Detener el tiempo,Stop time
 TUTORIAL_S1_L1,"Bienvenidos al [b]Simulador de batalla[/b].\nAqui les enseñare lo basico, aunque seguramente no lo necesiten. Todos aqui somos veteranos de las guerras conicas, verdad? \nTratare de ser breve...\n[b][color=green]Presiona Z o ENTER para continuar[/color][/b] ,","Welcome to the [b]Battle Simulator[/b].\nHere I'll teach you the basics, although you probably won't need it. We are all veterans of the cone wars, right? \nI'll try to be brief...\n[color=green]Press Z or ENTER to continue[/color]"
 TUTORIAL_S1_L2,"[b][color=#b2ffff]Alpha[/color][/b], he configurado los controles de tu nave segun tus preferencias (Esta nave se controla con [b][color=#00FF00]WASD[/color][/b]).","[b][color=#b2ffff]Alpha[/color][/b], I have configured the controls of your ship according to your preferences (This ship is controlled with [color=#00FF00]WASD[/color])."
 TUTORIAL_S1_L3,"En tu caso [b][color=#EE4B2B]Omega[/color][/b], hemos vuelto a los controles basicos, se que no tendras quejas (Esta nave se controla con las [b][color=#00FF00]flechas[/color][/b]). Se conocen hace mucho y los une un [b][color=red]VINCULO[/color][/b] muy estrecho, asi que creo que no hacen falta las presentaciones despues de todo.","For you, [b][color=#EE4B2B]Omega[/color][/b], we have returned to the basic controls, I know you will have no complaints (This ship is controlled with the [b][color=#00FF00] arrows[/color][/b]). You've known each other for a long time and are linked by a very close [b][color=red]BOND[/color][/b], so I guess there's no need for introductions after all."

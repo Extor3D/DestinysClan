@@ -48,8 +48,7 @@ const WHITE_COLOR = "#ffffff"
 const BLACK_COLOR = "#0f0814"
 const BUFFER_SIZE = 128
 
-const COMMON_FORMS = ["O","U","C","A","L"]
-var PILOT_FORMATIONS = Global.PILOT_FORMATIONS
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -167,13 +166,13 @@ func create_random_data():
 	var pilot_stats = [[(rarity/2 + plus  ),main_stat],[floor(rarity/2),scd_stat]]
 	var posible_colors = pilot_specie[1]
 	skin_color =  posible_colors[randi() % posible_colors.size()]	
-	var posible_formations = COMMON_FORMS
+	var posible_formations = Global.COMMON_FORMS
 	
 	#Mejorar el random?
 	# TAPADO PARA LA DEMO
 	#posible_formations.append_array(pilot_specie[3])
 	var pilot_formation = posible_formations[randi() % posible_formations.size()]
-	var pilot_formation_desc = PILOT_FORMATIONS[pilot_formation]
+	var pilot_formation_desc = tr(Global.get_form_by_id(pilot_formation).name)
 	
 	# PERFIL DEL CANDIDATO
 	var pilot_age = int(rand_range(18,39))

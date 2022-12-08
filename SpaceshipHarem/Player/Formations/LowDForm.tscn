@@ -19,11 +19,10 @@ effect_scene = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="End2" type="Area2D" parent="."]
-position = Vector2( 0, 74 )
+position = Vector2( 0, 72 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="End2"]
 shape = SubResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( -222, 71 )
-polygon = PoolVector2Array( 241, -21, 265, -34, 241, -51, 201, -51, 201, -93, 240, -93, 320, -59, 350, -32, 321, -6, 243, 23, 200, 23, 199, -21 )
+polygon = PoolVector2Array( 16, 48, 40, 36, 16, 24, -24, 24, -24, -24, 16, -24, 80, -8, 128, 36, 80, 80, 16, 96, -24, 96, -24, 48 )
