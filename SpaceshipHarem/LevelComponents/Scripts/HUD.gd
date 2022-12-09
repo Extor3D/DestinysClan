@@ -46,11 +46,11 @@ var segment_length = 200
 func _ready():
 	level.connect("new_segment", self, "paint_segment")
 	get_parent().connect("boss_spawned", self, "show_boss_hp")
-	for i in Global.current_pilots.size():
+	for i in Global.equipped_pilots.size():
 		var pilot_node = pilot_bar_scene.instance()
 		pilot_node.position = Vector2(p_left + i * (p_length + p_slope), p_top)
 		add_child(pilot_node)
-		pilot_node.set_pilot(Global.current_pilots[i])
+		pilot_node.set_pilot(Global.equipped_pilots[i])
 		p_bars.append(pilot_node)
 		if get_parent().has_node("Player"):
 			get_parent().get_node("Player").connect("formation_usable", pilot_node, "highlight_formation")

@@ -35,5 +35,5 @@ func _on_Next_pressed():
 
 func _on_Accept_pressed():
 	music.stop()
-	Global.current_pilots.append(profs[curr_prof].final_data)
-	Global.goto_scene("res://UI/Screens/LevelSelect.tscn")
+	Global.benched_pilots.append(profs[curr_prof].final_data)
+	Global.goto_scene("res://UI/Screens/EquipPilotsScene.tscn")

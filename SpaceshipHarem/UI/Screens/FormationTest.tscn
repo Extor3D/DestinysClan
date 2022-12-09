@@ -19,16 +19,16 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="FormScroller" type="ScrollContainer" parent="Screen"]
-margin_left = 158.0
-margin_top = 179.0
-margin_right = 158.0
-margin_bottom = 179.0
+margin_right = 317.0
+margin_bottom = 358.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="FormContainer" type="VBoxContainer" parent="Screen/FormScroller"]
+margin_right = 317.0
+margin_bottom = 358.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 

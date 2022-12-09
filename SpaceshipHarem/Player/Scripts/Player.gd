@@ -42,7 +42,7 @@ onready var ship2_forms = $Ship2/Formations
 
 var is_in_formation = false
 
-var form_scale = 1 + (Global.current_pilots.size() * 0.1 - 0.5 )
+var form_scale = 1 + (Global.equipped_pilots.size() * 0.1 - 0.5 )
 
 func get_stat(stat, minimum, maximum):
 	var s = minimum + stat * (maximum - minimum) / 10 
@@ -69,7 +69,7 @@ func _ready():
 	#Calculate next position
 	nextPosition = calc_next_position(chain.position, chain)
 	
-	for i in Global.current_pilots:
+	for i in Global.equipped_pilots:
 		#Create ship and put it at the end of the chain
 		var s = ship_scene.instance()
 		s.specie = i.specie

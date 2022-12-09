@@ -46,7 +46,8 @@ var current_difficulty = 1
 var current_theme = themes.LAND
 
 #Player globals
-var current_pilots = []
+var benched_pilots = []
+var equipped_pilots = []
 
 var form_test_ships = 3
 
@@ -84,9 +85,9 @@ func _ready():
 	new_game(FORM_LOW_DEF, 3)
 	
 func new_game(f_id, amount):
-	current_pilots = []
+	equipped_pilots = []
 	for i in amount:
-		current_pilots.append(get_dummy_data("Dummy", Color.yellow, f_id))
+		equipped_pilots.append(get_dummy_data("Dummy", Color.yellow, f_id))
 	level = 1
 	current_difficulty = 1
 	current_theme = themes.LAND
