@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://UI/Screens/EquipPilotsScene.gd" type="Script" id=1]
 [ext_resource path="res://Generators/Pilot/scenes/PilotPortrait.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/Sprites/candidates/pilot/dummypilot.png" type="Texture" id=3]
 
 [node name="EquipPilotsScene" type="Node2D"]
 script = ExtResource( 1 )
@@ -49,6 +50,11 @@ rect_min_size = Vector2( 0, 110 )
 
 [node name="PilotPortrait" parent="Screen/Columns/PilotContainer/CenterContainer" instance=ExtResource( 2 )]
 position = Vector2( 78, 53 )
+
+[node name="DummySprite" type="Sprite" parent="Screen/Columns/PilotContainer/CenterContainer"]
+visible = false
+position = Vector2( 78, 53 )
+texture = ExtResource( 3 )
 
 [node name="StatsLabel" type="Label" parent="Screen/Columns/PilotContainer"]
 margin_top = 135.0
@@ -142,6 +148,7 @@ size_flags_vertical = 3
 margin_right = 154.0
 margin_bottom = 17.0
 text = "ALL_STATS_LABEL"
+align = 1
 
 [node name="FinishButton" type="Button" parent="Screen/Columns/StatsContainer"]
 margin_top = 302.0

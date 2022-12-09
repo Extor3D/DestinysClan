@@ -9,12 +9,18 @@ var STATS = [{name = "Max HP", id = STAT_NAMES.MaxHP},
 			{name = "Max Energy", id = STAT_NAMES.MaxEnergy},
 			{name = "Recovery Speed", id = STAT_NAMES.RecoverySpeed}]
 
+const GATASHI_ID = "GATASHI"
+const DIABLO_ID = "DIABLO"
+const HUMAN_ID = "HUMAN"
+const MARTIAN_ID = "MARTIAN"
+const ANDROID_ID = "ANDROID"
+const DUMMY_ID = "DUMMY"
 
-var SPECIES =   [["Gatashi",[7,13,15],STAT_NAMES.MaxHP,["Y","G"],"cat_ship.png"],
-				 ["Diablo",[5,6,4],STAT_NAMES.Speed,["O","X"],"diablo_ship.png"],
-				 ["Humano",[17,18,11],STAT_NAMES.Damage,["F1","F2"],"human_ship.png"],
-				 ["Marciano",[9,8,10,16],STAT_NAMES.MaxEnergy,["M","W"],"martian_ship.png"],
-				 ["Androide",[2,3,12,14],STAT_NAMES.RecoverySpeed,["B1","B2"],"android_ship.png"]] 
+var SPECIES =   [[GATASHI_ID,[7,13,15],STAT_NAMES.MaxHP,["Y","G"],"cat_ship.png"],
+				 [DIABLO_ID,[5,6,4],STAT_NAMES.Speed,["O","X"],"diablo_ship.png"],
+				 [HUMAN_ID,[17,18,11],STAT_NAMES.Damage,["F1","F2"],"human_ship.png"],
+				 [MARTIAN_ID,[9,8,10,16],STAT_NAMES.MaxEnergy,["M","W"],"martian_ship.png"],
+				 [ANDROID_ID,[2,3,12,14],STAT_NAMES.RecoverySpeed,["B1","B2"],"android_ship.png"]] 
 
 var current_scene = null
 
@@ -87,7 +93,7 @@ func _ready():
 func new_game(f_id, amount):
 	equipped_pilots = []
 	for i in amount:
-		equipped_pilots.append(get_dummy_data("Dummy", Color.yellow, f_id))
+		equipped_pilots.append(get_dummy_data(DUMMY_ID, Color.yellow, f_id))
 	level = 1
 	current_difficulty = 1
 	current_theme = themes.LAND

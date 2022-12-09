@@ -48,11 +48,6 @@ const WHITE_COLOR = "#ffffff"
 const BLACK_COLOR = "#0f0814"
 const BUFFER_SIZE = 128
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 onready var portrait = $Portrait
 onready var skin_material: ShaderMaterial = $Portrait/Body.material
 onready var primary_material: ShaderMaterial = $Portrait/Cloths.material
@@ -60,7 +55,6 @@ onready var secondary_material: ShaderMaterial = $Portrait/Cloths/Secondary.mate
 onready var detail_material: ShaderMaterial = $Portrait/Cloths/Details.material
 onready var eye_material: ShaderMaterial = $Portrait/Hair/Eyes.material
 onready var hair_material: ShaderMaterial = $Portrait/Hair.material
-
 
 var type: String = TYPES[0]
 
@@ -162,7 +156,6 @@ func create_random_data():
 	if (int(rarity) % 2) == 1:
 		plus += 1
 	
-	
 	var pilot_stats = [[(rarity/2 + plus  ),main_stat],[floor(rarity/2),scd_stat]]
 	var posible_colors = pilot_specie[1]
 	skin_color =  posible_colors[randi() % posible_colors.size()]	
@@ -178,7 +171,6 @@ func create_random_data():
 	var pilot_age = int(rand_range(18,39))
 	var pilot_distance = stepify(rand_range(45,95), 0.01)
 	var pilot_occupation = OCCUPATION[randi() % OCCUPATION.size()]
-	
 	
 	# ARMAR EL RETRATO
 	var pilot_skin_color = Color(COLORS[skin_color][0])
@@ -237,7 +229,3 @@ func set_data(data: Dictionary):
 	hair_material.set_shader_param("shadow_color", data.hair_shadow_color)
 	hair_material.set_shader_param("white_color", data.white_color)
 	hair_material.set_shader_param("black_color", data.black_color)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
