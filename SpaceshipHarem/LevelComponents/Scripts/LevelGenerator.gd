@@ -70,49 +70,40 @@ var random_boss_scene = preload("res://Enemies/Bosses/RandomBoss.tscn")
 var tutorial_segments = [tutorial2,tutorial3,tutorial1]
 
 # Test Variables
-var test_segment = preload("res://LevelComponents/Segments/Special/TestSegment.tscn")
-var possible_segments = [test_segment, 
-						test_segment, 
-						test_segment
-]
-# CRTL + K to comment/uncomment
-#var possible_segments = [thin_tunnel_segment, 
-#						asteroid_segment, 
-#						trafficjam_segment,
-#						deep_space_segment,
-#						bomb_shower_segment,
-#						bomber_segment,
-#						sub_boss_segment,
-#						laser_shower_segment,
-#						enemy_tunnel_segment,
-#						tunnel_laser_segment
+#var test_segment = preload("res://LevelComponents/Segments/Special/TestSegment.tscn")
+#var possible_segments = [test_segment, 
+#						test_segment, 
+#						test_segment
 #]
+
+
+var story_segment1 = preload("res://LevelComponents/Segments/Story/FirstStorySegment.tscn")
+var story_segment2 = preload("res://LevelComponents/Segments/Story/SecondStorySegment.tscn")
+var story_segment3 = preload("res://LevelComponents/Segments/Story/ThirdStorySegment.tscn")
+
+# CRTL + K to comment/uncomment
+var possible_segments = [thin_tunnel_segment, 
+						asteroid_segment, 
+						trafficjam_segment,
+						deep_space_segment,
+						bomb_shower_segment,
+						bomber_segment,
+						sub_boss_segment,
+						laser_shower_segment,
+						enemy_tunnel_segment,
+						tunnel_laser_segment
+]
 						
 var possible_musics = [dangerous_music,exploration_music,mysterious_music]
 
 
 # Codigo de Labels
 var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
-var label1 = label_scene.instance()
-var label2 = label_scene.instance()
-var label3=  label_scene.instance()
-
-var labels = [label1,label2,label3]
-
-#var SEGMENT_TEXTS = [["Estamos en el primer Segmento!","Vamos a empezar!!"],
-# ["llegamos al 2do segmento!","Falta menos!"],
-#["Tercero!","Ya casi estamos!","Que venga el jefe!"]]
-
-
-
-# Definir Personajes
-#const Char_Alpha = 	"res://Player/Sprites/candidates/pilot/candidate116.png"
-#const Char_Omega = 	"res://Player/Sprites/candidates/pilot/candidate011.png"
-#const Char_Kokoro = "res://Player/Sprites/candidates/pilot/candidate103.png"
-#const Char_Dummy = 	"res://Player/Sprites/candidates/pilot/dummypilot.png"
-
-#var Chars_Speaking = [[Char_Kokoro,Char_Dummy],[Char_Alpha,Char_Omega],[Char_Kokoro,Char_Alpha,Char_Omega]]
-
+#var label1 = label_scene.instance()
+#var label2 = label_scene.instance()
+#var label3=  label_scene.instance()
+#
+#var labels = [label1,label2,label3]
 var boss = null
 
 func _ready():
@@ -203,7 +194,6 @@ func game_over_animation():
 	
 func next_segment(n):
 	if n >= segments.size():
-		remove_child(labels[0])
 		timer.start(5)
 	else:
 		#Agrego texto a los segmentos 2 y 3

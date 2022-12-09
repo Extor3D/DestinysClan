@@ -94,13 +94,13 @@ func new_game(f_id, amount):
 	equipped_pilots = []
 	for i in amount:
 		equipped_pilots.append(get_dummy_data(DUMMY_ID, Color.yellow, f_id))
-	level = 1
+	level = 0
 	current_difficulty = 1
 	current_theme = themes.LAND
 
 func get_dummy_data(sp, co, f_id):
 	var data = {
-		name = "dum",
+		name = "Bond Test Dummy",
 		formation = f_id,
 		stats = [[1, Global.STAT_NAMES.values()[randi() % Global.STAT_NAMES.size()]]],
 		color = co, 

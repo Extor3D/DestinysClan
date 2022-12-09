@@ -41,6 +41,8 @@ func start_segment():
 	time = 21
 	playernode.connect("formation_done",self,"formation")
 	label.texts = TUTORIAL_TEXTS2
+	var Chars_Speaking = [Global.Char_Kokoro,Global.Char_Kokoro,Global.Char_Kokoro,Global.Char_Kokoro,Global.Char_Kokoro,Global.Char_Kokoro,Global.Char_Kokoro]
+	label.character_img = Chars_Speaking
 	add_child(label)
 	label.connect("end_label",self,"finish")
 	

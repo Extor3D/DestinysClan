@@ -42,10 +42,14 @@ var label = label_scene.instance()
 var rng = RandomNumberGenerator.new()
 var cadence = 0.5
 
+var Chars_Speaking = [Global.Char_Kokoro,Global.Char_Kokoro,Global.Char_Kokoro,Global.Char_Kokoro,Global.Char_Kokoro,Global.Char_Kokoro,Global.Char_Kokoro]
+
+
 func start_segment():
 	playernode.stop_shooting()
 	time = 21
 	label.texts = TUTORIAL_TEXTS
+	label.character_img = Chars_Speaking
 	add_child(label)
 	label.connect("end_label",self,"finish")
 	

@@ -5,6 +5,11 @@ var planet_scene = preload("res://Generators/World/PlanetGenerator.tscn")
 const NAME_PART_1 = ["Mercury","Venus","Vesta","Mars","Jupiter","Saturn","Uranus","Neptune","Giant Pluto","Janus","Minerva","Carmentis","Ceres","Falacer","Flora","Furrina","Palatua","Pomona","Portunus","Vulcan","Volturnus","Fortuna","Aurora","Cupid"]
 const NAME_PART_2 = ["Prime", "Tulip", "Centauri","Draconis", "Dracarys", "Melonis", "Tulip" , "Requiem", "Tango", "Bravo"]
 
+const TIPS = [
+"Recuerda: Tener mas naves en una formacion significa disparar mas, pero tambien que la formacion sera mas dificil de controlar."
+,
+"Recuerda: Algunas formaciones seran mas sencillas o mas dificiles, segun cuantos pilotos tengas en tu formacion."
+]
 onready var planet1 = $VBoxContainer/HBoxContainer/Planet1Container/CenterContainer
 onready var planet1_name = $VBoxContainer/HBoxContainer/Planet1Container/PlanetName
 onready var planet1_type = $VBoxContainer/HBoxContainer/Planet1Container/HBoxContainer/TypeName
