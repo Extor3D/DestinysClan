@@ -19,8 +19,17 @@ var types = [
 ]
 
 # Label interactions
-var SEGMENT_TEXTS = ["Enemigos Aproximandose a gran velocidad.","Son demasiados!."]
-var Chars_Speaking = [Global.Char_Dummy,Global.Char_Omega]
+var SEGMENT_TEXTS = ["Estamos haciendo lo correcto.Verdad?",
+"No lo se... Supongo.",
+"Estamos por infiltrarnos en los territorios del imperio. Es el sistema planetario mas protegido de todos...",
+"Ademas de que tu eres de ahi, no?",
+"Era... me expulsaron cuando la guerra termino.",
+"Dejame adivinar, se volvieron mas exclusivos que antes y ya no eras bienvenido?",
+"...",
+"Alerta, Defensas enemigas detectadas"
+]
+var Chars_Speaking = [Global.Char_Alpha,Global.Char_Omega,Global.Char_Alpha,Global.Char_Omega,Global.Char_Alpha,Global.Char_Omega,Global.Char_Alpha,Global.Char_Dummy]
+
 var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
 var label = label_scene.instance()
 

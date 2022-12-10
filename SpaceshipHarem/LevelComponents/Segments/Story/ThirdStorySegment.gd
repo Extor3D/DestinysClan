@@ -19,8 +19,15 @@ var types = [
 ]
 
 # Label interactions
-var SEGMENT_TEXTS = ["Enemigos Aproximandose a gran velocidad.","Son demasiados!."]
-var Chars_Speaking = [Global.Char_Dummy,Global.Char_Omega]
+var SEGMENT_TEXTS = ["Hay algo raro aqui...",
+"?",
+"Kokoro dijo que habria una base en este planeta, pero como sabe que la base sigue ahi?",
+"Tendra algun conocido.",
+"No es muy conveniente que conozca tantas bases secretas en el camino?",
+"O seran solo una serie de antros que frecuentaba?",
+"Alerta! ingresando a zona restringida."]
+var Chars_Speaking = [Global.Char_Omega,Global.Char_Alpha,Global.Char_Omega,Global.Char_Alpha,Global.Char_Dummy]
+
 var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
 var label = label_scene.instance()
 

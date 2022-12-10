@@ -16,7 +16,7 @@ func _randomize():
 	label.text = data.name +" , " + str(data.age) + ".\n  " + data.occupation+ ".\n A unos " + str(data.distance) + " millones de kilómetros de ti."
 
 	pilot_data.add_text('\n' + "[b][color="+ str(data.skin_light_color)+"]" + data.specie + '[/color][/b]\n' )
-	pilot_data.add_text('\n[wave]' + data.flavor + '[/wave]\n\n' + "Habilidad: [rainbow freq=0.1 sat=10 val=20]" + data.formation_desc + '[/rainbow]\n\n')
+	pilot_data.add_text('\n[wave]' + data.flavor + '[/wave]\n\n' + "Habilidad: [rainbow freq=0.1 sat=10 val=3]" + data.formation_desc + '[/rainbow]\n\n')
 
 	var main_stat_name = Global.get_stat_by_id(data.stats[0][1]).name
 

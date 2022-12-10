@@ -19,8 +19,14 @@ var types = [
 ]
 
 # Label interactions
-var SEGMENT_TEXTS = ["Enemigos Aproximandose a gran velocidad.","Son demasiados!."]
-var Chars_Speaking = [Global.Char_Dummy,Global.Char_Omega]
+var SEGMENT_TEXTS = ["Estoy emocionada por toda la gente que conoceremos! Deberiamos sacarnos una nueva foto para nuestro perfil.",
+"Recuerda que no debemos elegirlos por cosas superficiales si no por lo que puedan aportar a la mision",
+"Si! Si! Cuando lleguemos al planeta hay que elegir al mejor piloto para la formacion, pero no nada de malo en divertirse en el proceso",
+"Cuando llegue el momento concentremonos en los ATRIBUTOS y HABILIDADES que aporten.",
+"Alerta, naves enemigas acercandose"
+]
+var Chars_Speaking = [Global.Char_Omega,Global.Char_Alpha,Global.Char_Omega,Global.Char_Alpha,Global.Char_Dummy]
+
 var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
 var label = label_scene.instance()
 
