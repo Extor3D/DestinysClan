@@ -9,9 +9,9 @@ var EX_TUTORIAL_TEXTS2 = ["Ups... creo que se me paso la mano... es decir... Exc
 "Habras notado que he configurado tus armas en automatico, por lo que [b][color=#00FF00]tus naves disparan todo el tiempo[/color][/b]. ", 
 "Probemos nuevamente. Simulare algunos enemigos, recuerda que [b][color=#00FF00]los disparos y las naves solo dañan tu primera y ultima nave[/color][/b].\nLo importante aqui es esquivar, no necesitas encargarte de todos los enemigos." ]
 
-var TUTORIAL_TEXTS2 = [" Excelente!!! Sabia que lo lograrian! \n Puede parecerles algo incomodo tener sus naves unidas, pero tiene su utilidad. Ya lo veran!",
+var TUTORIAL_TEXTS2 = ["Excelente!!! Sabia que lo lograrian! \nPuede parecerles algo incomodo tener sus naves unidas, pero tiene su utilidad. Ya lo veran!",
 "Ahora quiero enseñarles algo mas... [b][color=red]El poder que une las tres naves del medio [/color][/b] no solo sirve para hacerlas inmunes al daño tambien les permite usar [b][color=#00FF00]Habilidades Especiales[/color][/b].",
-"Estas habilidades son llamadas [b][color=#00FF00]Formaciones[/color][/b], para esta simulacion, les he agregado la [b][color=blue]Formacion >[/color][/b].",
+"Estas habilidades son llamadas [b][color=#00FF00]Formaciones[/color][/b], para esta simulacion, les he agregado la [b][color=#00FF00]Formacion >[/color][/b].",
 "para activarla, deberas mover tu formacion de nave imitando el signo > y luego apretar [b][color=#00FF00]ESPACIO[/color][/b].",
 "En la parte inferior de la pantalla veras unos indicadores que te mostraran las formaciones disponibles y la energia necesaria para activarla. Ademas, los indicadores [b][color=green]brillaran cuando estes en la posicion correcta para activarla[/color][/b].",
 "Las 3 naves de prueba tienen la misma [b][color=#00FF00]Formacion >[/color][/b], mas adelante podras conseguir mas.",

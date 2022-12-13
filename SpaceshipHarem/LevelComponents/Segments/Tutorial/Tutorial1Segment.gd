@@ -11,6 +11,8 @@ tr("TUTORIAL_S1_L5"),
 tr("TUTORIAL_S1_L6"), 
 tr("TUTORIAL_S1_L7")]
 
+#Cambiar en TUTORIAL_SI_L6 asteroides con color
+
 # agregar colores a ultima frase TUTORIAL_S1_L7
 var EXTRA_TEXTS = [
 	

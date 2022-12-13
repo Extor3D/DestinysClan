@@ -22,7 +22,9 @@ func _physics_process(delta):
 
 func _ready():
 	$ShotTimer.start(cadence)
-	if cadence == 2:
+	if Global.level == 0:
+		sprite.texture = dummy_sprite
+	elif cadence == 2:
 		sprite.texture = cat_sprite
 
 func take_damage(damage):

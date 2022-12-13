@@ -81,6 +81,8 @@ var story_segment1 = preload("res://LevelComponents/Segments/Story/FirstStorySeg
 var story_segment2 = preload("res://LevelComponents/Segments/Story/SecondStorySegment.tscn")
 var story_segment3 = preload("res://LevelComponents/Segments/Story/ThirdStorySegment.tscn")
 
+var first_level_segments = [story_segment3,story_segment2,story_segment1]
+
 # CRTL + K to comment/uncomment
 var possible_segments = [thin_tunnel_segment, 
 						asteroid_segment, 
@@ -153,6 +155,8 @@ func create_level():
 		if Global.level == 0:
 			# Pantalla de Skip Tutorial o ...
 			s = tutorial_segments[i-1]
+		elif Global.level == 1:
+			s = first_level_segments[i-1]
 		else:
 			s = possible_segments.pop_at(rng.randi_range(0, possible_segments.size() - 1))
 		#'''
@@ -196,11 +200,6 @@ func next_segment(n):
 	if n >= segments.size():
 		timer.start(5)
 	else:
-		#Agrego texto a los segmentos 2 y 3
-		#remove_child(labels[n-1])
-		#labels[n].texts = SEGMENT_TEXTS[n]
-		#labels[n].character_img = Chars_Speaking[n]
-		#add_child(labels[n])
 		segments[n].start_segment()
 	emit_signal("new_segment", n)
 	
@@ -208,6 +207,9 @@ func end_level():
 	music.stop()
 	yield(get_tree().create_timer(3.0), "timeout")
 	if Global.level == 0:
+		Global.level = 1
+		Global.goto_scene("res://LevelComponents/LevelGenerator.tscn")
+	elif Global.level == 1:
 		Global.current_difficulty = 1
 		Global.goto_scene("res://UI/Screens/LevelSelect.tscn")
 	elif Global.level > 3:

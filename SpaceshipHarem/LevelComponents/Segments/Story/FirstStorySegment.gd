@@ -19,8 +19,8 @@ var types = [
 ]
 
 # Label interactions
-var SEGMENT_TEXTS = ["Estamos haciendo lo correcto.Verdad?",
-"No lo se... Supongo.",
+var SEGMENT_TEXTS = ["Alpha:Estamos haciendo lo correcto.\nVerdad?",
+"Omega:No lo se... Supongo.",
 "Estamos por infiltrarnos en los territorios del imperio. Es el sistema planetario mas protegido de todos...",
 "Ademas de que tu eres de ahi, no?",
 "Era... me expulsaron cuando la guerra termino.",
@@ -40,7 +40,10 @@ var rng = RandomNumberGenerator.new()
 func start_segment():
 	label.texts = SEGMENT_TEXTS
 	label.character_img = Chars_Speaking
+	label.connect("end_label",self,"finish")
 	add_child(label)
+	
+func finish():
 	var time = 15 + difficulty * 2
 	spawners.append(add_enemy_group(time/3,3,primary_enemy_scene,1))
 	spawners.append(add_enemy_group(time/3,time/3,secondary_enemy_scene,1))

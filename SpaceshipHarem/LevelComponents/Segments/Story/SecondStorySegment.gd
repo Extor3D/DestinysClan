@@ -7,29 +7,27 @@ var primary_enemy_scene = preload("res://Enemies/SpecieEnemy.tscn")
 var secondary_enemy_scene = preload("res://Enemies/Enemy.tscn")
 var tertiary_enemy_scene = preload("res://Enemies/Enemy2.tscn")
 
-var types = [
-[{"xspeed": -70 - difficulty*3,"cadence":100,"rotation_degrees": 0},[150,-50,50,50],"DI"], # Derecha a izq
-[{"xspeed": 70  + difficulty*3,"cadence":100,"rotation_degrees": 180},[300,650,50,50],"ID"], #  Izq a Der
-[{"yspeed": 70 + difficulty*3,"xspeed": 10 ,"cadence":100,"rotation_degrees": 90},[550,550,50,50],"HAR"], # Hacia Arriba
-[{"yspeed": -70  -difficulty*3,"xspeed": 10 ,"cadence":100,"rotation_degrees": 270},[-50,50,50,50],"HAB"], # Hacia Abajo
-[{"yspeed": -70  -difficulty*3,"xspeed": -70 ,"cadence":100,"rotation_degrees": 45},[-50,-50,50,50],"DIAG1"],
-[{"yspeed": -70  -difficulty*3,"xspeed": 70 ,"cadence":100,"rotation_degrees": 135},[-50,550,50,50],"DIAG2"],
-[{"yspeed": 70  -difficulty*3,"xspeed": 70 ,"cadence":100,"rotation_degrees": 225},[400,650,50,50],"DIAG3"],
-[{"yspeed": 70  -difficulty*3,"xspeed": -70 ,"cadence":100,"rotation_degrees": 315},[400,-50,50,50],"DIAG4"]
-]
-
 # Label interactions
 var SEGMENT_TEXTS = ["Estoy emocionada por toda la gente que conoceremos! Deberiamos sacarnos una nueva foto para nuestro perfil.",
 "Recuerda que no debemos elegirlos por cosas superficiales si no por lo que puedan aportar a la mision",
-"Si! Si! Cuando lleguemos al planeta hay que elegir al mejor piloto para la formacion, pero no nada de malo en divertirse en el proceso",
+"Si! Si! Cuando lleguemos al planeta hay que elegir al mejor piloto para la formacion, pero no hay nada de malo en divertirse en el proceso",
 "Cuando llegue el momento concentremonos en los ATRIBUTOS y HABILIDADES que aporten.",
 "Alerta, naves enemigas acercandose"
 ]
+
+
 var Chars_Speaking = [Global.Char_Omega,Global.Char_Alpha,Global.Char_Omega,Global.Char_Alpha,Global.Char_Dummy]
+
+var BOSS_TEXTS = ["Nave Imperial Acercandose! Alerta Maxima!",
+"Omega, preparate!",
+"Destruyamos esa nave!"
+]
+
+var Chars_Speaking_boss = [Global.Char_Dummy,Global.Char_Alpha,Global.Char_Omega]
 
 var label_scene = preload("res://UI/Screens/bblabelUI.tscn")
 var label = label_scene.instance()
-
+var labelboss = label_scene.instance()
 var spawners = []
 
 var rng = RandomNumberGenerator.new()
@@ -37,7 +35,10 @@ var rng = RandomNumberGenerator.new()
 func start_segment():
 	label.texts = SEGMENT_TEXTS
 	label.character_img = Chars_Speaking
+	label.connect("end_label",self,"finish")
 	add_child(label)
+	
+func finish():
 	var time = 15 + difficulty * 2
 	spawners.append(add_enemy_group(time/3,3,primary_enemy_scene,1))
 	spawners.append(add_enemy_group(time/3,time/3,secondary_enemy_scene,1))
@@ -46,6 +47,12 @@ func start_segment():
 	
 func _on_SegmentTime_timeout():
 	remove_child(label)
+	labelboss.texts = BOSS_TEXTS
+	labelboss.character_img = Chars_Speaking_boss
+	labelboss.connect("end_label",self,"callboss")
+	add_child(labelboss)
+	
+func callboss():
 	end_segment()
 	
 func _ready():
