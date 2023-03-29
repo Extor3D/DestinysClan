@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://LevelComponents/Segments/Scripts/Label.gd" type="Script" id=1]
 [ext_resource path="res://UI/Screens/bblabelUI.gd" type="Script" id=2]
 [ext_resource path="res://UI/Fonts/Charybdis.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Generators/Pilot/scenes/PilotPortrait.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Theme" id=1]
 
@@ -34,6 +35,10 @@ theme = SubResource( 1 )
 
 [node name="Character" type="Sprite" parent="Container3/Container/Panel2"]
 position = Vector2( 51.0693, 47.004 )
+scale = Vector2( 1.181, 1.08335 )
+
+[node name="PilotPortrait" parent="Container3/Container/Panel2" instance=ExtResource( 4 )]
+position = Vector2( 50.068, 49 )
 scale = Vector2( 1.181, 1.08335 )
 
 [node name="Container2" type="MarginContainer" parent="Container3"]

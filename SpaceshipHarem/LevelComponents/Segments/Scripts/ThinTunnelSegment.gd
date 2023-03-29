@@ -14,12 +14,16 @@ var label = label_scene.instance()
 
 onready var timer = $SegmentTime
 
-var SEGMENT_TEXTS = ["Estamos en un segmento de tunel!","Habra que pasar por el medio!!"]
+var SEGMENT_TEXTS = [tr("THIN_TUNNEL_DUMMY"),tr("THIN_TUNNEL_DUMMYR")]
+var NORMAL_TEXTS = ["Estamos en un segmento de tunel!","Habra que pasar por el medio!!"]
 var FIRE_TEXTS = ["Este planeta de fuego es peligroso, tengamos cuidado con las paredes."]
 var ICE_TEXTS = ["Este planeta es de hielo, podemos quedar pegado a las paredes."]
 var EARTH_TEXTS = ["Este planeta de tierra es tranquilo"]
 
-var Chars_Speaking = [Global.Char_Kokoro,Global.Char_Dummy]
+var rng = RandomNumberGenerator.new()
+# Ver esto que sea random de verdad
+var dialog_starter = rng.randi() % Global.equipped_pilots.size()
+var Chars_Speaking = [dialog_starter,Global.Char_Omega]
 
 func start_segment():
 	var time = 15 + difficulty * 2
