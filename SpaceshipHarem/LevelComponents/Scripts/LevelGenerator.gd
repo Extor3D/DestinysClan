@@ -209,9 +209,6 @@ func end_level():
 	if Global.level == 0:
 		Global.level = 1
 		Global.goto_scene("res://LevelComponents/LevelGenerator.tscn")
-	elif Global.level == 1:
-		Global.current_difficulty = 1
-		Global.goto_scene("res://UI/Screens/LevelSelect.tscn")
 	elif Global.level > 3:
 		Global.goto_scene("res://UI/Screens/Victory.tscn")
 	else:

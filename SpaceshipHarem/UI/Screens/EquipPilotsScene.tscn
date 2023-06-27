@@ -150,6 +150,35 @@ margin_bottom = 17.0
 text = "ALL_STATS_LABEL"
 align = 1
 
+[node name="StatsList" type="VBoxContainer" parent="Screen/Columns/StatsContainer/VBoxContainer"]
+margin_top = 21.0
+margin_right = 154.0
+margin_bottom = 122.0
+
+[node name="StatMaxHP" type="Label" parent="Screen/Columns/StatsContainer/VBoxContainer/StatsList"]
+margin_right = 154.0
+margin_bottom = 17.0
+
+[node name="StatSpeed" type="Label" parent="Screen/Columns/StatsContainer/VBoxContainer/StatsList"]
+margin_top = 21.0
+margin_right = 154.0
+margin_bottom = 38.0
+
+[node name="StatDamage" type="Label" parent="Screen/Columns/StatsContainer/VBoxContainer/StatsList"]
+margin_top = 42.0
+margin_right = 154.0
+margin_bottom = 59.0
+
+[node name="StatMaxEnergy" type="Label" parent="Screen/Columns/StatsContainer/VBoxContainer/StatsList"]
+margin_top = 63.0
+margin_right = 154.0
+margin_bottom = 80.0
+
+[node name="StatRecoverySpeed" type="Label" parent="Screen/Columns/StatsContainer/VBoxContainer/StatsList"]
+margin_top = 84.0
+margin_right = 154.0
+margin_bottom = 101.0
+
 [node name="FinishButton" type="Button" parent="Screen/Columns/StatsContainer"]
 margin_top = 302.0
 margin_right = 154.0
